@@ -35,7 +35,7 @@ def write_graphml(drawing: odis.Drawing, path: Path) -> None:
         x_data = SubElement(node_el, 'data', {'key': 'x'})
         x_data.text = str(node.x)
         y_data = SubElement(node_el, 'data', {'key': 'y'})
-        y_data.text = str(node.y)
+        y_data.text = str(-node.y)
 
     for source, target in drawing.edges:
         SubElement(graph, 'edge', {'source': str(source), 'target': str(target)})
