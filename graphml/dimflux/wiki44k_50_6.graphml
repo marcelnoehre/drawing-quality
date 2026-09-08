@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="y" for="node" attr.name="y" attr.type="double" />
+  <key id="x" for="node" attr.name="x" attr.type="double" />
+  <graph edgedefault="directed">
+    <node id="0">
+      <data key="x">0.36964811535590303</data>
+      <data key="y">10.829017843138477</data>
+    </node>
+    <node id="1">
+      <data key="x">18.36438161383232</data>
+      <data key="y">1.8458294348664486</data>
+    </node>
+    <node id="2">
+      <data key="x">23.938050672825533</data>
+      <data key="y">1.139583967389226</data>
+    </node>
+    <node id="3">
+      <data key="x">-22.40018403523315</data>
+      <data key="y">1.2579299680207654</data>
+    </node>
+    <node id="4">
+      <data key="x">8.966868128660055</data>
+      <data key="y">1.311160325884814</data>
+    </node>
+    <node id="5">
+      <data key="x">3.4934172689437384</data>
+      <data key="y">1.7413903478949615</data>
+    </node>
+    <node id="6">
+      <data key="x">-9.13990048979402</data>
+      <data key="y">1.9285910238233706</data>
+    </node>
+    <node id="7">
+      <data key="x">16.194697503793606</data>
+      <data key="y">-0.00914236336318823</data>
+    </node>
+    <node id="8">
+      <data key="x">20.782138884602027</data>
+      <data key="y">0.8782243227196296</data>
+    </node>
+    <node id="9">
+      <data key="x">-19.790153842758215</data>
+      <data key="y">0.09318099846935979</data>
+    </node>
+    <node id="10">
+      <data key="x">-24.69875479482592</data>
+      <data key="y">-0.057002911715098525</data>
+    </node>
+    <node id="11">
+      <data key="x">-15.530632233438425</data>
+      <data key="y">0.887093632058336</data>
+    </node>
+    <node id="12">
+      <data key="x">5.590602381136946</data>
+      <data key="y">0.24536181017873648</data>
+    </node>
+    <node id="13">
+      <data key="x">-8.970087736398833</data>
+      <data key="y">-0.06117883687373882</data>
+    </node>
+    <node id="14">
+      <data key="x">18.61245477456331</data>
+      <data key="y">-0.9767474755100072</data>
+    </node>
+    <node id="15">
+      <data key="x">-22.08872460235098</data>
+      <data key="y">-1.2217518812665038</data>
+    </node>
+    <node id="16">
+      <data key="x">-15.313885798745542</data>
+      <data key="y">-1.0555516991509053</data>
+    </node>
+    <node id="17">
+      <data key="x">28.164509975384043</data>
+      <data key="y">-0.39040366400570303</data>
+    </node>
+    <node id="18">
+      <data key="x">-4.337822741097632</data>
+      <data key="y">0.33107344827730883</data>
+    </node>
+    <node id="19">
+      <data key="x">-31.657589471563732</data>
+      <data key="y">-0.057213928123353686</data>
+    </node>
+    <node id="20">
+      <data key="x">-0.811315614034826</data>
+      <data key="y">-0.03221468928418239</data>
+    </node>
+    <node id="21">
+      <data key="x">33.95017643346878</data>
+      <data key="y">-0.000705249504319938</data>
+    </node>
+    <node id="22">
+      <data key="x">13.474316720665536</data>
+      <data key="y">-0.6478386120738358</data>
+    </node>
+    <node id="23">
+      <data key="x">8.161652767124094</data>
+      <data key="y">-1.2007695881796558</data>
+    </node>
+    <node id="24">
+      <data key="x">3.275865474497067</data>
+      <data key="y">-1.103090321737604</data>
+    </node>
+    <node id="25">
+      <data key="x">-8.649224579737808</data>
+      <data key="y">-2.066431208185591</data>
+    </node>
+    <node id="26">
+      <data key="x">1.9253834730989152</data>
+      <data key="y">-9.782453782623737</data>
+    </node>
+    <edge source="16" target="26" />
+    <edge source="18" target="26" />
+    <edge source="4" target="12" />
+    <edge source="3" target="10" />
+    <edge source="20" target="26" />
+    <edge source="0" target="2" />
+    <edge source="22" target="26" />
+    <edge source="0" target="5" />
+    <edge source="0" target="11" />
+    <edge source="2" target="8" />
+    <edge source="10" target="15" />
+    <edge source="0" target="20" />
+    <edge source="2" target="17" />
+    <edge source="24" target="26" />
+    <edge source="15" target="26" />
+    <edge source="3" target="9" />
+    <edge source="12" target="24" />
+    <edge source="5" target="12" />
+    <edge source="0" target="1" />
+    <edge source="8" target="14" />
+    <edge source="0" target="4" />
+    <edge source="11" target="16" />
+    <edge source="17" target="26" />
+    <edge source="0" target="19" />
+    <edge source="1" target="8" />
+    <edge source="19" target="26" />
+    <edge source="6" target="13" />
+    <edge source="13" target="25" />
+    <edge source="21" target="26" />
+    <edge source="12" target="23" />
+    <edge source="23" target="26" />
+    <edge source="4" target="22" />
+    <edge source="0" target="3" />
+    <edge source="14" target="26" />
+    <edge source="0" target="6" />
+    <edge source="9" target="15" />
+    <edge source="1" target="7" />
+    <edge source="0" target="21" />
+    <edge source="0" target="18" />
+    <edge source="25" target="26" />
+    <edge source="7" target="14" />
+  </graph>
+</graphml>

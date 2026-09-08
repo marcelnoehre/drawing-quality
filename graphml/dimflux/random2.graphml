@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="y" for="node" attr.name="y" attr.type="double" />
+  <key id="x" for="node" attr.name="x" attr.type="double" />
+  <graph edgedefault="directed">
+    <node id="0">
+      <data key="x">3.567524768450361</data>
+      <data key="y">19.94790412089787</data>
+    </node>
+    <node id="1">
+      <data key="x">2.361761333103054</data>
+      <data key="y">11.108309954163637</data>
+    </node>
+    <node id="2">
+      <data key="x">-3.455588172571175</data>
+      <data key="y">14.158843401655508</data>
+    </node>
+    <node id="3">
+      <data key="x">-8.334080471966097</data>
+      <data key="y">15.407909997172457</data>
+    </node>
+    <node id="4">
+      <data key="x">5.155174760439009</data>
+      <data key="y">14.360275763865179</data>
+    </node>
+    <node id="5">
+      <data key="x">14.322329714199572</data>
+      <data key="y">9.410316405188034</data>
+    </node>
+    <node id="6">
+      <data key="x">-7.629520872371633</data>
+      <data key="y">8.99083755952629</data>
+    </node>
+    <node id="7">
+      <data key="x">1.5966096760264676</data>
+      <data key="y">6.729313646048036</data>
+    </node>
+    <node id="8">
+      <data key="x">-3.281882623368455</data>
+      <data key="y">7.978380241564984</data>
+    </node>
+    <node id="9">
+      <data key="x">9.0254318226929</data>
+      <data key="y">6.662254058054666</data>
+    </node>
+    <node id="10">
+      <data key="x">-2.5773230237739897</data>
+      <data key="y">1.5613078039188166</data>
+    </node>
+    <node id="11">
+      <data key="x">7.111846916127151</data>
+      <data key="y">2.5231198547461124</data>
+    </node>
+    <node id="12">
+      <data key="x">14.761546456699058</data>
+      <data key="y">4.062550152962395</data>
+    </node>
+    <node id="13">
+      <data key="x">20.048153573880725</data>
+      <data key="y">1.3130408478142017</data>
+    </node>
+    <node id="14">
+      <data key="x">2.937914216326693</data>
+      <data key="y">-2.6448859873831054</data>
+    </node>
+    <node id="15">
+      <data key="x">-7.7296743031532</data>
+      <data key="y">-1.0325063175555642</data>
+    </node>
+    <node id="16">
+      <data key="x">10.80573044093816</data>
+      <data key="y">-4.754791268317522</data>
+    </node>
+    <node id="17">
+      <data key="x">18.45542998151007</data>
+      <data key="y">-3.21536097010124</data>
+    </node>
+    <node id="18">
+      <data key="x">6.018340651468365</data>
+      <data key="y">-10.230020890550273</data>
+    </node>
+    <edge source="6" target="15" />
+    <edge source="4" target="6" />
+    <edge source="4" target="12" />
+    <edge source="5" target="13" />
+    <edge source="0" target="2" />
+    <edge source="0" target="5" />
+    <edge source="9" target="11" />
+    <edge source="17" target="18" />
+    <edge source="11" target="14" />
+    <edge source="1" target="9" />
+    <edge source="13" target="17" />
+    <edge source="7" target="10" />
+    <edge source="3" target="6" />
+    <edge source="5" target="9" />
+    <edge source="14" target="18" />
+    <edge source="5" target="12" />
+    <edge source="0" target="1" />
+    <edge source="0" target="4" />
+    <edge source="2" target="7" />
+    <edge source="10" target="14" />
+    <edge source="11" target="16" />
+    <edge source="1" target="8" />
+    <edge source="13" target="16" />
+    <edge source="6" target="10" />
+    <edge source="16" target="18" />
+    <edge source="12" target="14" />
+    <edge source="3" target="8" />
+    <edge source="12" target="17" />
+    <edge source="0" target="3" />
+    <edge source="8" target="10" />
+    <edge source="1" target="7" />
+    <edge source="2" target="6" />
+    <edge source="7" target="11" />
+    <edge source="15" target="18" />
+  </graph>
+</graphml>
