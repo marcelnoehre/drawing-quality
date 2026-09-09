@@ -112,3 +112,58 @@ def rank_groups(rank: Dict[Hashable, int]) -> Dict[int, List[Hashable]]:
     for node, r in rank.items():
         groups.setdefault(r, []).append(node)
     return groups
+
+
+def freese_ranks(graph: nx.DiGraph) -> Dict[Hashable, int]:
+    '''
+    Freese's rank function (Freese, "Automated Lattice Drawing", ICFCA 2004,
+    LNCS 2961, pp. 112-127, Sec. 4.1):
+
+        rank(a) = height(a) - depth(a) + M
+
+    where height(a) is the length of the longest chain from a down to a
+    minimal element, depth(a) is the length of the longest chain from a up
+    to a maximal element (both measured along cover relations, i.e. the
+    transitive reduction), and M is the length of the longest chain in the
+    poset, chosen so minimal elements get rank 0.
+
+    Unlike ``longest_path_ranks`` (pure bottom-up distance from a source),
+    this centers each element between its distance from the bottom and its
+    distance from the top -- the rank function line_diagrams/freese/freese.py
+    uses to seed the vertical axis of its own drawings, so it is a
+    theoretically grounded target for 'does this drawing's layering match
+    the poset's intrinsic structure' independent of that specific
+    force-directed algorithm.
+    '''
+    cover = nx.transitive_reduction(graph)
+    order = list(nx.topological_sort(cover))
+
+    depth: Dict[Hashable, int] = {}
+    for a in reversed(order):
+        upper_covers = list(cover.successors(a))
+        depth[a] = 0 if not upper_covers else 1 + max(depth[p] for p in upper_covers)
+
+    height: Dict[Hashable, int] = {}
+    for a in order:
+        lower_covers = list(cover.predecessors(a))
+        height[a] = 0 if not lower_covers else 1 + max(height[c] for c in lower_covers)
+
+    m = max(height[a] + depth[a] for a in cover.nodes())
+    return {a: height[a] - depth[a] + m for a in cover.nodes()}
+
+
+def group_within_tolerance(sorted_values: np.ndarray, tolerance: float) -> List[list]:
+    '''
+    Partition sorted 1-D values into contiguous groups, starting a new
+    group whenever a gap exceeds ``tolerance``.
+
+    Equivalent to DBSCAN(eps=tolerance, min_samples=1) on 1-D data, computed
+    directly instead of pulling in scikit-learn for what a single sort and
+    scan already gives exactly.
+    '''
+    groups = [[sorted_values[0]]]
+    for value in sorted_values[1:]:
+        if value - groups[-1][-1] > tolerance:
+            groups.append([])
+        groups[-1].append(value)
+    return groups

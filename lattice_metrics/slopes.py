@@ -12,17 +12,15 @@ from typing import Sequence
 
 import numpy as np
 
-from .graph_utils import LatticeLayout
+from .graph_utils import LatticeLayout, group_within_tolerance
 
-# A small set of visually 'nice' slopes: perfectly horizontal (same rank,
-# should not normally occur in an upward drawing but is included for
-# robustness), 45 degrees (the default expectation for a single Hasse-edge
-# step), and perfectly vertical (a strict single-file chain). Callers with a
-# house style favoring other slopes (e.g. octilinear 22.5/67.5 degree
-# routing) should pass their own set explicitly -- this default is
-# intentionally minimal rather than encoding unstated assumptions.
-DEFAULT_CANONICAL_ANGLES = (0.0, 45.0, 90.0)
-
+DEFAULT_CANONICAL_ANGLES = (
+    0.0,
+    float(np.degrees(np.arctan(4 / 5))),
+    45.0,
+    float(np.degrees(np.arctan(3 / 2))),
+    90.0,
+)
 
 def _unsigned_edge_angles(layout: LatticeLayout) -> np.ndarray:
     positions = layout.positions
@@ -34,23 +32,6 @@ def _unsigned_edge_angles(layout: LatticeLayout) -> np.ndarray:
             continue
         angles.append(np.degrees(np.arctan2(abs(dy), abs(dx))))
     return np.array(angles)
-
-
-def _group_within_tolerance(sorted_values: np.ndarray, tolerance: float) -> list:
-    '''
-    Partition sorted 1-D values into contiguous groups, starting a new
-    group whenever a gap exceeds ``tolerance``.
-
-    Equivalent to DBSCAN(eps=tolerance, min_samples=1) on 1-D data, computed
-    directly instead of pulling in scikit-learn for what a single sort and
-    scan already gives exactly.
-    '''
-    groups = [[sorted_values[0]]]
-    for value in sorted_values[1:]:
-        if value - groups[-1][-1] > tolerance:
-            groups.append([])
-        groups[-1].append(value)
-    return groups
 
 
 def slope_harmony_score(layout: LatticeLayout, angle_tolerance: float = 5.0) -> float:
@@ -71,7 +52,7 @@ def slope_harmony_score(layout: LatticeLayout, angle_tolerance: float = 5.0) -> 
     if len(angles) == 1:
         return 1.0
 
-    groups = _group_within_tolerance(np.sort(angles), angle_tolerance)
+    groups = group_within_tolerance(np.sort(angles), angle_tolerance)
     sizes = np.array([len(g) for g in groups], dtype=float)
     if len(sizes) == 1:
         return 1.0
