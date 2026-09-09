@@ -14,7 +14,6 @@ from .crossing_angle import crossing_angle_score
 from .edge_crossings import edge_crossing_score
 from .graph_utils import LatticeLayout, load_layout, poset_width
 from .layering import layer_consistency_score, structural_width, visual_layer_x_score, visual_layer_y_score
-from .node_conflict_distance import node_conflict_distance_score
 from .slopes import slope_harmony_score, slope_standard_score
 
 __all__ = [
@@ -23,7 +22,6 @@ __all__ = [
     'poset_width',
     'visual_chain_linearity_score',
     'node_edge_conflict_score',
-    'node_conflict_distance_score',
     'crossing_angle_score',
     'edge_crossing_score',
     'layer_consistency_score',
@@ -38,7 +36,6 @@ __all__ = [
 _SCORE_METRICS = {
     'visual_chain_linearity': visual_chain_linearity_score,
     'node_edge_conflict': node_edge_conflict_score,
-    'node_conflict_distance': node_conflict_distance_score,
     'crossing_angle': crossing_angle_score,
     'edge_crossing': edge_crossing_score,
     'layer_consistency': layer_consistency_score,

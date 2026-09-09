@@ -14,7 +14,6 @@ from lattice_metrics.crossing_angle import crossing_angle_score
 from lattice_metrics.edge_crossings import edge_crossing_score
 from lattice_metrics.graph_utils import LatticeLayout, freese_ranks
 from lattice_metrics.layering import layer_consistency_score, visual_layer_x_score, visual_layer_y_score
-from lattice_metrics.node_conflict_distance import node_conflict_distance_score
 from lattice_metrics.slopes import slope_harmony_score, slope_standard_score
 
 
@@ -138,12 +137,6 @@ def test_visual_layer_x_has_no_layer_count_correction():
     assert visual_layer_x_score(all_singleton_x) == pytest.approx(1.0)
 
 # --------------------------------------------------------------- overlap ---
-
-def test_overlapping_nodes_score_lower_than_well_spaced():
-    spaced = layout_of(DIAMOND_EDGES, {'a': (0, 2), 'b': (-1, 1), 'c': (1, 1), 'd': (0, 0)})
-    overlapping = layout_of(DIAMOND_EDGES, {'a': (0, 2), 'b': (0, 2), 'c': (1, 1), 'd': (0, 0)})
-    assert node_conflict_distance_score(overlapping) < node_conflict_distance_score(spaced)
-
 
 def test_node_on_top_of_edge_scores_lower():
     clear = layout_of(DIAMOND_EDGES, {'a': (0, 2), 'b': (-1, 1), 'c': (1, 1), 'd': (0, 0)})

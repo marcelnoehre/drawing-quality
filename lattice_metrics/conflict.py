@@ -1,12 +1,12 @@
 '''
 Shared scoring for 'something is too close to something else' metrics.
 
-Both node-node overlap and node-edge proximity are instances of the same
-question: given a set of measured distances and a perceptual threshold below
-which two drawn elements are hard to tell apart, how bad is the drawing?
-Centralizing the scoring keeps both metrics bounded in [0, 1] with the same,
-documented shape instead of each inventing its own ad hoc squashing
-function.
+Given a set of measured distances and a perceptual threshold below which two
+drawn elements are hard to tell apart, how bad is the drawing? Kept as a
+standalone function (currently used by node-edge proximity, see
+:mod:`lattice_metrics.conflict_distance`) rather than inlined, so any other
+'too close' metric can reuse the same, documented [0, 1] shape instead of
+inventing its own ad hoc squashing function.
 '''
 from __future__ import annotations
 
