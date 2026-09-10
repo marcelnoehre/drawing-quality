@@ -14,6 +14,7 @@ from .crossing_angle import crossing_angle_score
 from .edge_crossings import edge_crossing_score
 from .graph_utils import LatticeLayout, load_layout, poset_width
 from .layering import layer_consistency_score, structural_width, visual_layer_x_score, visual_layer_y_score
+from .nesting import bottleneck_clearance_radius, nested_suitability_score
 from .slopes import slope_harmony_score, slope_standard_score
 
 __all__ = [
@@ -30,6 +31,8 @@ __all__ = [
     'structural_width',
     'slope_harmony_score',
     'slope_standard_score',
+    'bottleneck_clearance_radius',
+    'nested_suitability_score',
     'evaluate_all',
 ]
 
@@ -43,6 +46,7 @@ _SCORE_METRICS = {
     'visual_layer_y': visual_layer_y_score,
     'slope_harmony': slope_harmony_score,
     'slope_standard': slope_standard_score,
+    'nested_suitability': nested_suitability_score,
 }
 
 def evaluate_all(layout: LatticeLayout) -> dict:

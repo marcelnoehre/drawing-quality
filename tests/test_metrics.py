@@ -14,6 +14,7 @@ from lattice_metrics.crossing_angle import crossing_angle_score
 from lattice_metrics.edge_crossings import edge_crossing_score
 from lattice_metrics.graph_utils import LatticeLayout, freese_ranks
 from lattice_metrics.layering import layer_consistency_score, visual_layer_x_score, visual_layer_y_score
+from lattice_metrics.nesting import bottleneck_clearance_radius, nested_suitability_score
 from lattice_metrics.slopes import slope_harmony_score, slope_standard_score
 
 
@@ -161,3 +162,38 @@ def test_forty_five_degree_edges_are_maximally_standard():
 def test_off_canonical_slope_scores_below_one():
     layout = layout_of([('a', 'b')], {'a': (0, 1), 'b': (2, 0.3)})
     assert slope_standard_score(layout) < 1.0
+
+
+# -------------------------------------------------------------- nesting ---
+
+def test_spacious_layout_has_full_nesting_suitability():
+    layout = layout_of(DIAMOND_EDGES, {'a': (0, 4), 'b': (-2, 2), 'c': (2, 2), 'd': (0, 0)})
+    assert nested_suitability_score(layout) == pytest.approx(1.0)
+
+
+def test_cramped_non_adjacent_nodes_score_lower_than_spacious():
+    spacious = layout_of(DIAMOND_EDGES, {'a': (0, 4), 'b': (-2, 2), 'c': (2, 2), 'd': (0, 0)})
+    # b and c are not adjacent (only a-b, a-c, b-d, c-d are edges), so
+    # pulling them close together shrinks d_node for both without an edge
+    # ever crossing anything.
+    cramped = layout_of(DIAMOND_EDGES, {'a': (0, 4), 'b': (-0.3, 2), 'c': (0.3, 2), 'd': (0, 0)})
+    assert nested_suitability_score(cramped) < nested_suitability_score(spacious)
+
+
+def test_node_on_top_of_edge_has_lower_bottleneck_clearance():
+    clear = layout_of(DIAMOND_EDGES, {'a': (0, 2), 'b': (-1, 1), 'c': (1, 1), 'd': (0, 0)})
+    # move c onto the a-b edge's midpoint (c is not incident to a-b)
+    on_edge = layout_of(DIAMOND_EDGES, {'a': (0, 2), 'b': (-2, 0), 'c': (-1, 1), 'd': (0, 0)})
+    assert bottleneck_clearance_radius(on_edge) < bottleneck_clearance_radius(clear)
+
+
+def test_both_already_overlapping_layouts_still_ranked_by_severity():
+    # b and c are pulled onto the same point in 'severe', merely very close
+    # in 'mild' -- both have a negative bottleneck clearance (an outright
+    # overlap before any nesting is added), but 'mild' overlaps less.
+    mild = layout_of(DIAMOND_EDGES, {'a': (0, 4), 'b': (-0.05, 2), 'c': (0.05, 2), 'd': (0, 0)})
+    severe = layout_of(DIAMOND_EDGES, {'a': (0, 4), 'b': (0, 2), 'c': (0, 2), 'd': (0, 0)})
+    assert bottleneck_clearance_radius(mild) < 0
+    assert bottleneck_clearance_radius(severe) < 0
+    assert nested_suitability_score(severe) < nested_suitability_score(mild)
+    assert nested_suitability_score(mild) > 0.0
