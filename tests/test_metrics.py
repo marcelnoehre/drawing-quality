@@ -9,7 +9,9 @@ import numpy as np
 import pytest
 
 from lattice_metrics.chains import visual_chain_linearity_score
-from lattice_metrics.conflict_distance import node_edge_conflict_score
+from lattice_metrics.conflict import distance_conflict_score
+from lattice_metrics.conflict_distance import DEFAULT_THRESHOLD_FACTOR, node_edge_conflict_score
+from lattice_metrics.geometry import point_segment_distance
 from lattice_metrics.crossing_angle import crossing_angle_score
 from lattice_metrics.edge_crossings import edge_crossing_score
 from lattice_metrics.graph_utils import LatticeLayout, freese_ranks
@@ -144,6 +146,27 @@ def test_node_on_top_of_edge_scores_lower():
     # move c onto the a-b edge's midpoint (c is not incident to a-b)
     on_edge = layout_of(DIAMOND_EDGES, {'a': (0, 2), 'b': (-2, 0), 'c': (-1, 1), 'd': (0, 0)})
     assert node_edge_conflict_score(on_edge) < node_edge_conflict_score(clear)
+
+
+def test_node_edge_conflict_uses_nearest_edge_per_node_not_mean_over_all_pairs():
+    '''
+    A node's conflict score must be driven by its single nearest
+    non-incident edge. Averaging over *every* non-incident edge instead
+    (most of which are structurally guaranteed to be far away and
+    irrelevant) dilutes a real conflict by a factor of roughly the edge
+    count -- regression test for that dilution bug.
+    '''
+    on_edge = layout_of(DIAMOND_EDGES, {'a': (0, 2), 'b': (-2, 0), 'c': (-1, 1), 'd': (0, 0)})
+    positions = on_edge.positions
+    cover_edges = list(on_edge.transitive_reduction.edges)
+    threshold = on_edge.average_cover_edge_length() * DEFAULT_THRESHOLD_FACTOR
+
+    all_pairs = [
+        point_segment_distance(positions[v], positions[i], positions[j])
+        for v in positions for i, j in cover_edges if v != i and v != j
+    ]
+    diluted_by_mean_over_all_pairs = distance_conflict_score(all_pairs, threshold)
+    assert node_edge_conflict_score(on_edge) < diluted_by_mean_over_all_pairs
 
 
 # ----------------------------------------------------------------- slope ---
