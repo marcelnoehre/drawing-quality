@@ -89,12 +89,19 @@ def main() -> None:
         print(f'\n{dataset}: {len(cxt_paths)} contexts')
         for cxt_path in cxt_paths:
             name = slug(cxt_path.stem)
+            graphml_path = graphml_dir / f'{name}.graphml'
+            if graphml_path.exists():
+                print(
+                    f'skipped {cxt_path.name}: '
+                    f'{graphml_path.relative_to(REPO_ROOT)} already exists'
+                )
+                continue
+
             try:
                 order = redraw_algorithm.compute_drawing(str(cxt_path), DIMENSION, False)
             except Exception as exc:
                 print(f'skipped {cxt_path.name}: {exc}')
                 continue
-            graphml_path = graphml_dir / f'{name}.graphml'
             write_graphml(order, graphml_path)
             draw_graphml(graphml_path, drawings_dir / f'{name}.pdf', title=name)
             print(

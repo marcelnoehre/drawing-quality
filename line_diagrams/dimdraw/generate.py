@@ -64,14 +64,22 @@ def main() -> None:
         cxt_paths = sorted(contexts_dir.glob('*.cxt'))
         print(f'\n{dataset}: {len(cxt_paths)} contexts')
         for cxt_path in cxt_paths:
-            context = odis.FormalContext.from_file(str(cxt_path))
-            drawing = context.draw('dimdraw')
-            if drawing is None:
-                print(f'skipped {cxt_path.name}: no drawing found')
-                continue
             name = slug(cxt_path.stem)
             graphml_path = graphml_dir / f'{name}.graphml'
             pdf_path = drawings_dir / f'{name}.pdf'
+
+            if graphml_path.exists():
+                print(
+                    f'skipped {cxt_path.name}: '
+                    f'{graphml_path.relative_to(REPO_ROOT)} already exists'
+                )
+                continue
+            
+            context = odis.FormalContext.from_file(str(cxt_path))
+            drawing = context.draw('dimdraw', 60000)
+            if drawing is None:
+                print(f'skipped {cxt_path.name}: no drawing found')
+                continue
             write_graphml(drawing, graphml_path)
             draw_graphml(graphml_path, pdf_path, title=name)
             print(

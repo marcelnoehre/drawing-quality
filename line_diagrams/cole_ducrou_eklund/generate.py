@@ -67,15 +67,23 @@ def main() -> None:
         cxt_paths = sorted(contexts_dir.glob('*.cxt'))
         print(f'\n{dataset}: {len(cxt_paths)} contexts')
         for cxt_path in cxt_paths:
+            name = slug(cxt_path.stem)
+            graphml_path = graphml_dir / f'{name}.graphml'
+            pdf_path = drawings_dir / f'{name}.pdf'
+
+            if graphml_path.exists():
+                print(
+                    f'skipped {cxt_path.name}: '
+                    f'{graphml_path.relative_to(REPO_ROOT)} already exists'
+                )
+                continue
+
             context = odis.FormalContext.from_file(str(cxt_path))
             try:
                 layout = ColeDucrouEklund(context)
             except RuntimeError as e:
                 print(f'skipped {cxt_path.name}: {e}')
                 continue
-            name = slug(cxt_path.stem)
-            graphml_path = graphml_dir / f'{name}.graphml'
-            pdf_path = drawings_dir / f'{name}.pdf'
             write_graphml(layout, graphml_path)
             draw_graphml(graphml_path, pdf_path, title=name)
             print(
