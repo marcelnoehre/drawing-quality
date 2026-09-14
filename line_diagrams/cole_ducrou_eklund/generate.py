@@ -14,8 +14,9 @@ from plotting import draw_graphml
 
 CONTEXT_DIRS = {
     'm4': REPO_ROOT / 'contexts' / 'm4',
+    'random': REPO_ROOT / 'contexts' / 'random',
     'theory': REPO_ROOT / 'contexts' / 'theory',
-    'real_world_reduced': REPO_ROOT / 'contexts' / 'real_world' / 'reduced',
+    'real_world_reduced': REPO_ROOT / 'contexts' / 'real-world' / 'reduced',
 }
 GRAPHML_ROOT = REPO_ROOT / 'graphml' / 'cole_ducrou_eklund'
 DRAWINGS_ROOT = REPO_ROOT / 'drawings' / 'cole_ducrou_eklund'
