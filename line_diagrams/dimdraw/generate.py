@@ -10,9 +10,13 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
 from plotting import draw_graphml
 
-CONTEXTS_DIR = REPO_ROOT / 'contexts'
-GRAPHML_DIR = REPO_ROOT / 'graphml' / 'dimdraw'
-DRAWINGS_DIR = REPO_ROOT / 'drawings' / 'dimdraw'
+CONTEXT_DIRS = {
+    'm4': REPO_ROOT / 'contexts' / 'm4',
+    'theory': REPO_ROOT / 'contexts' / 'theory',
+    'real_world_reduced': REPO_ROOT / 'contexts' / 'real_world' / 'reduced',
+}
+GRAPHML_ROOT = REPO_ROOT / 'graphml' / 'dimdraw'
+DRAWINGS_ROOT = REPO_ROOT / 'drawings' / 'dimdraw'
 
 GRAPHML_NS = 'http://graphml.graphdrawing.org/xmlns'
 XSI_NS = 'http://www.w3.org/2001/XMLSchema-instance'
@@ -45,19 +49,35 @@ def write_graphml(drawing: odis.Drawing, path: Path) -> None:
     tree.write(path, encoding='utf-8', xml_declaration=True)
 
 def main() -> None:
-    GRAPHML_DIR.mkdir(parents=True, exist_ok=True)
-    DRAWINGS_DIR.mkdir(parents=True, exist_ok=True)
-    for cxt_path in sorted(CONTEXTS_DIR.glob('*.cxt')):
-        context = odis.FormalContext.from_file(str(cxt_path))
-        drawing = context.draw('dimdraw')
-        if drawing is None:
-            print(f'skipped {cxt_path.name}: no drawing found')
+    for dataset, contexts_dir in CONTEXT_DIRS.items():
+        graphml_dir = GRAPHML_ROOT / dataset
+        drawings_dir = DRAWINGS_ROOT / dataset
+
+        graphml_dir.mkdir(parents=True, exist_ok=True)
+        drawings_dir.mkdir(parents=True, exist_ok=True)
+
+        if not contexts_dir.exists():
+            print(f'skipped {dataset}: directory not found: {contexts_dir}')
             continue
-        name = slug(cxt_path.stem)
-        graphml_path = GRAPHML_DIR / f'{name}.graphml'
-        write_graphml(drawing, graphml_path)
-        draw_graphml(graphml_path, DRAWINGS_DIR / f'{name}.pdf', title=name)
-        print(f'{cxt_path.name} -> {graphml_path.name}, {name}.pdf')
+
+        cxt_paths = sorted(contexts_dir.glob('*.cxt'))
+        print(f'\n{dataset}: {len(cxt_paths)} contexts')
+        for cxt_path in cxt_paths:
+            context = odis.FormalContext.from_file(str(cxt_path))
+            drawing = context.draw('dimdraw')
+            if drawing is None:
+                print(f'skipped {cxt_path.name}: no drawing found')
+                continue
+            name = slug(cxt_path.stem)
+            graphml_path = graphml_dir / f'{name}.graphml'
+            pdf_path = drawings_dir / f'{name}.pdf'
+            write_graphml(drawing, graphml_path)
+            draw_graphml(graphml_path, pdf_path, title=name)
+            print(
+                f'{cxt_path.name} -> '
+                f'{graphml_path.relative_to(REPO_ROOT)}, '
+                f'{pdf_path.relative_to(REPO_ROOT)}'
+            )
 
 if __name__ == '__main__':
     main()

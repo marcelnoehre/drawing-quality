@@ -19,9 +19,13 @@ REDRAW_ROOT = Path(os.environ.get('REDRAW_ROOT', REPO_ROOT.parent / 'redraw'))
 sys.path.insert(0, str(REDRAW_ROOT))
 import algorithm as redraw_algorithm
 
-CONTEXTS_DIR = REPO_ROOT / 'contexts'
-GRAPHML_DIR = REPO_ROOT / 'graphml' / 'redraw'
-DRAWINGS_DIR = REPO_ROOT / 'drawings' / 'redraw'
+CONTEXT_DIRS = {
+    'm4': REPO_ROOT / 'contexts' / 'm4',
+    'theory': REPO_ROOT / 'contexts' / 'theory',
+    'real_world_reduced': REPO_ROOT / 'contexts' / 'real_world' / 'reduced',
+}
+GRAPHML_ROOT = REPO_ROOT / 'graphml' / 'redraw'
+DRAWINGS_ROOT = REPO_ROOT / 'drawings' / 'redraw'
 
 GRAPHML_NS = 'http://graphml.graphdrawing.org/xmlns'
 XSI_NS = 'http://www.w3.org/2001/XMLSchema-instance'
@@ -69,19 +73,34 @@ def write_graphml(order: 'redraw_algorithm.util.Order', path: Path) -> None:
     tree.write(path, encoding='utf-8', xml_declaration=True)
 
 def main() -> None:
-    GRAPHML_DIR.mkdir(parents=True, exist_ok=True)
-    DRAWINGS_DIR.mkdir(parents=True, exist_ok=True)
-    for cxt_path in sorted(CONTEXTS_DIR.glob('*.cxt')):
-        name = slug(cxt_path.stem)
-        try:
-            order = redraw_algorithm.compute_drawing(str(cxt_path), DIMENSION, False)
-        except Exception as exc:
-            print(f'skipped {cxt_path.name}: {exc}')
+    for dataset, contexts_dir in CONTEXT_DIRS.items():
+        graphml_dir = GRAPHML_ROOT / dataset
+        drawings_dir = DRAWINGS_ROOT / dataset
+
+        graphml_dir.mkdir(parents=True, exist_ok=True)
+        drawings_dir.mkdir(parents=True, exist_ok=True)
+
+        if not contexts_dir.exists():
+            print(f'skipped {dataset}: directory not found: {contexts_dir}')
             continue
-        graphml_path = GRAPHML_DIR / f'{name}.graphml'
-        write_graphml(order, graphml_path)
-        draw_graphml(graphml_path, DRAWINGS_DIR / f'{name}.pdf', title=name)
-        print(f'{cxt_path.name} -> {graphml_path.name}, {name}.pdf')
+
+        cxt_paths = sorted(contexts_dir.glob('*.cxt'))
+        print(f'\n{dataset}: {len(cxt_paths)} contexts')
+        for cxt_path in cxt_paths:
+            name = slug(cxt_path.stem)
+            try:
+                order = redraw_algorithm.compute_drawing(str(cxt_path), DIMENSION, False)
+            except Exception as exc:
+                print(f'skipped {cxt_path.name}: {exc}')
+                continue
+            graphml_path = graphml_dir / f'{name}.graphml'
+            write_graphml(order, graphml_path)
+            draw_graphml(graphml_path, drawings_dir / f'{name}.pdf', title=name)
+            print(
+                f'{cxt_path.name} -> '
+                f'{graphml_path.relative_to(REPO_ROOT)}, '
+                f'{(drawings_dir / f"{name}.pdf").relative_to(REPO_ROOT)}'
+            )
 
 if __name__ == '__main__':
     main()
