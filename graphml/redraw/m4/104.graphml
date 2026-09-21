@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="y" for="node" attr.name="y" attr.type="double" />
+  <key id="x" for="node" attr.name="x" attr.type="double" />
+  <graph edgedefault="directed">
+    <node id="0">
+      <data key="x">-0.19402260306305008</data>
+      <data key="y">-9.974575812214013</data>
+    </node>
+    <node id="1">
+      <data key="x">-1.276161677784987</data>
+      <data key="y">-7.4994617926561835</data>
+    </node>
+    <node id="2">
+      <data key="x">1.4958522985858318</data>
+      <data key="y">-8.761447364249177</data>
+    </node>
+    <node id="3">
+      <data key="x">1.5769043695920428</data>
+      <data key="y">-6.271764252369101</data>
+    </node>
+    <node id="4">
+      <data key="x">-0.45686388932021615</data>
+      <data key="y">-5.678843592261756</data>
+    </node>
+    <node id="5">
+      <data key="x">-1.6613564823517015</data>
+      <data key="y">-5.678029920358625</data>
+    </node>
+    <node id="6">
+      <data key="x">0.3782576095942789</data>
+      <data key="y">-6.272171540086699</data>
+    </node>
+    <node id="7">
+      <data key="x">-0.5907577568307597</data>
+      <data key="y">-3.5857454908437307</data>
+    </node>
+    <node id="8">
+      <data key="x">2.1449551125105644</data>
+      <data key="y">-3.9383206876980332</data>
+    </node>
+    <node id="9">
+      <data key="x">-2.0222955683242794</data>
+      <data key="y">-3.769437519784024</data>
+    </node>
+    <node id="10">
+      <data key="x">0.5929096792567508</data>
+      <data key="y">-3.585543665991945</data>
+    </node>
+    <node id="11">
+      <data key="x">0.012578908135525483</data>
+      <data key="y">-1.2372606393490684</data>
+    </node>
+    <edge source="11" target="9" />
+    <edge source="11" target="7" />
+    <edge source="11" target="8" />
+    <edge source="7" target="4" />
+    <edge source="10" target="4" />
+    <edge source="11" target="10" />
+    <edge source="7" target="3" />
+    <edge source="8" target="3" />
+    <edge source="8" target="6" />
+    <edge source="10" target="6" />
+    <edge source="5" target="1" />
+    <edge source="4" target="1" />
+    <edge source="9" target="5" />
+    <edge source="10" target="5" />
+    <edge source="1" target="0" />
+    <edge source="3" target="0" />
+    <edge source="2" target="0" />
+    <edge source="5" target="2" />
+    <edge source="6" target="2" />
+  </graph>
+</graphml>

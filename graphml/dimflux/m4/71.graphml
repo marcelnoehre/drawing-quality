@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="y" for="node" attr.name="y" attr.type="double" />
+  <key id="x" for="node" attr.name="x" attr.type="double" />
+  <graph edgedefault="directed">
+    <node id="0">
+      <data key="x">-0.7284959331827427</data>
+      <data key="y">7.998163037422362</data>
+    </node>
+    <node id="1">
+      <data key="x">-9.41573650634054</data>
+      <data key="y">2.4703081410490406</data>
+    </node>
+    <node id="2">
+      <data key="x">1.7124429635554002</data>
+      <data key="y">2.25591640346232</data>
+    </node>
+    <node id="3">
+      <data key="x">-3.7484755335810593</data>
+      <data key="y">2.4513311729153338</data>
+    </node>
+    <node id="4">
+      <data key="x">6.9092082124636995</data>
+      <data key="y">2.6918508058360815</data>
+    </node>
+    <node id="5">
+      <data key="x">-4.651838781974109</data>
+      <data key="y">-2.14035539531208</data>
+    </node>
+    <node id="6">
+      <data key="x">-10.11275727911057</data>
+      <data key="y">-1.9449406258590658</data>
+    </node>
+    <node id="7">
+      <data key="x">2.4195307028560284</data>
+      <data key="y">-2.7972005545958267</data>
+    </node>
+    <node id="8">
+      <data key="x">-3.944751042673481</data>
+      <data key="y">-7.193472353370227</data>
+    </node>
+    <edge source="0" target="1" />
+    <edge source="0" target="4" />
+    <edge source="2" target="7" />
+    <edge source="1" target="5" />
+    <edge source="5" target="8" />
+    <edge source="3" target="7" />
+    <edge source="6" target="8" />
+    <edge source="0" target="3" />
+    <edge source="0" target="2" />
+    <edge source="3" target="6" />
+    <edge source="1" target="6" />
+    <edge source="2" target="5" />
+    <edge source="4" target="7" />
+    <edge source="7" target="8" />
+  </graph>
+</graphml>

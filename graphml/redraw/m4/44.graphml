@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="y" for="node" attr.name="y" attr.type="double" />
+  <key id="x" for="node" attr.name="x" attr.type="double" />
+  <graph edgedefault="directed">
+    <node id="0">
+      <data key="x">-0.017150107496181337</data>
+      <data key="y">-7.953871470512873</data>
+    </node>
+    <node id="1">
+      <data key="x">-1.6761258628868025</data>
+      <data key="y">-4.778909038217048</data>
+    </node>
+    <node id="2">
+      <data key="x">0.04438449021221359</data>
+      <data key="y">-5.911549358183859</data>
+    </node>
+    <node id="3">
+      <data key="x">1.2116636570784862</data>
+      <data key="y">-5.9111836409971446</data>
+    </node>
+    <node id="4">
+      <data key="x">-0.3465337750894847</data>
+      <data key="y">-2.5870221168823027</data>
+    </node>
+    <node id="5">
+      <data key="x">-1.5559719552774138</data>
+      <data key="y">-2.6245446324419817</data>
+    </node>
+    <node id="6">
+      <data key="x">1.2319467723730924</data>
+      <data key="y">-3.9195382288715424</data>
+    </node>
+    <node id="7">
+      <data key="x">1.2724340729044155</data>
+      <data key="y">-2.6096117983846585</data>
+    </node>
+    <node id="8">
+      <data key="x">-0.16464729181832524</data>
+      <data key="y">-0.20806593810520305</data>
+    </node>
+    <edge source="5" target="1" />
+    <edge source="4" target="1" />
+    <edge source="5" target="3" />
+    <edge source="6" target="3" />
+    <edge source="8" target="4" />
+    <edge source="8" target="7" />
+    <edge source="8" target="5" />
+    <edge source="4" target="2" />
+    <edge source="6" target="2" />
+    <edge source="3" target="0" />
+    <edge source="2" target="0" />
+    <edge source="1" target="0" />
+    <edge source="7" target="6" />
+  </graph>
+</graphml>

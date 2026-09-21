@@ -17,7 +17,7 @@ class DimFlux:
     def __init__(
         self, cxt: Union[str, pd.DataFrame],
         w_rep: float = 100.0, w_att: float = 1.0, w_grav: float = 30.0,
-        timeout: Optional[int] = 1000,
+        timeout_ms: Optional[int] = 60000,
     ) -> None:
         vars = Variables(cxt, {
             'plot_si_graph': False,
@@ -30,7 +30,7 @@ class DimFlux:
             'plot_combined_forces': False,
             'plot_gradients': False,
             'plot_origin': False,
-        }, w_rep=w_rep, w_att=w_att, w_grav=w_grav, timeout=timeout)
+        }, w_rep=w_rep, w_att=w_att, w_grav=w_grav, timeout_ms=timeout_ms)
 
         realizer = Realizer(vars)
         vars.base_vectors = realizer.base_vectors

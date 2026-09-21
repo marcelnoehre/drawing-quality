@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="y" for="node" attr.name="y" attr.type="double" />
+  <key id="x" for="node" attr.name="x" attr.type="double" />
+  <graph edgedefault="directed">
+    <node id="0">
+      <data key="x">0.006419578505424649</data>
+      <data key="y">-7.316901747390453</data>
+    </node>
+    <node id="1">
+      <data key="x">-0.8396205423525065</data>
+      <data key="y">-5.096180247538066</data>
+    </node>
+    <node id="2">
+      <data key="x">0.6142931402496169</data>
+      <data key="y">-5.8115801714646995</data>
+    </node>
+    <node id="3">
+      <data key="x">1.6451955383141754</data>
+      <data key="y">-1.8686164365986395</data>
+    </node>
+    <node id="4">
+      <data key="x">-1.8938281417822884</data>
+      <data key="y">-2.5993301503854176</data>
+    </node>
+    <node id="5">
+      <data key="x">1.4311576375222057</data>
+      <data key="y">-3.786239610220755</data>
+    </node>
+    <node id="6">
+      <data key="x">-0.773986619063068</data>
+      <data key="y">-2.5994835623694392</data>
+    </node>
+    <node id="7">
+      <data key="x">-0.18963059139355987</data>
+      <data key="y">-0.287331900092969</data>
+    </node>
+    <edge source="4" target="1" />
+    <edge source="3" target="1" />
+    <edge source="7" target="3" />
+    <edge source="7" target="6" />
+    <edge source="7" target="4" />
+    <edge source="2" target="0" />
+    <edge source="1" target="0" />
+    <edge source="7" target="5" />
+    <edge source="5" target="2" />
+    <edge source="6" target="2" />
+  </graph>
+</graphml>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="y" for="node" attr.name="y" attr.type="double" />
+  <key id="x" for="node" attr.name="x" attr.type="double" />
+  <graph edgedefault="directed">
+    <node id="0">
+      <data key="x">0.056828081925544456</data>
+      <data key="y">-7.4888914760809175</data>
+    </node>
+    <node id="1">
+      <data key="x">-1.568125089120403</data>
+      <data key="y">-5.467696424212608</data>
+    </node>
+    <node id="2">
+      <data key="x">1.2241887608438442</data>
+      <data key="y">-4.88461406182469</data>
+    </node>
+    <node id="3">
+      <data key="x">-0.087290825096271</data>
+      <data key="y">-4.881950195615573</data>
+    </node>
+    <node id="4">
+      <data key="x">1.9418801502632421</data>
+      <data key="y">-2.9675328128883676</data>
+    </node>
+    <node id="5">
+      <data key="x">0.8278447529932113</data>
+      <data key="y">-2.973643436770972</data>
+    </node>
+    <node id="6">
+      <data key="x">-2.105825860322348</data>
+      <data key="y">-4.029969190714042</data>
+    </node>
+    <node id="7">
+      <data key="x">-0.2872704259142116</data>
+      <data key="y">-2.9854500525214247</data>
+    </node>
+    <node id="8">
+      <data key="x">-0.0022295455726085195</data>
+      <data key="y">-0.6132731063637764</data>
+    </node>
+    <edge source="8" target="4" />
+    <edge source="8" target="5" />
+    <edge source="8" target="7" />
+    <edge source="7" target="2" />
+    <edge source="4" target="2" />
+    <edge source="3" target="0" />
+    <edge source="1" target="0" />
+    <edge source="2" target="0" />
+    <edge source="6" target="1" />
+    <edge source="7" target="1" />
+    <edge source="7" target="3" />
+    <edge source="5" target="3" />
+    <edge source="8" target="6" />
+  </graph>
+</graphml>
