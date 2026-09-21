@@ -18,6 +18,7 @@ from lattice_metrics.graph_utils import LatticeLayout, freese_ranks
 from lattice_metrics.layering import layer_consistency_score
 from lattice_metrics.nesting import bottleneck_clearance_radius, nested_suitability_score
 from lattice_metrics.slopes import slope_harmony_score, slope_standard_score
+from lattice_metrics.symmetry import vertical_axis_balance_score
 
 
 def layout_of(edges, positions) -> LatticeLayout:
@@ -220,3 +221,53 @@ def test_both_already_overlapping_layouts_still_ranked_by_severity():
     assert bottleneck_clearance_radius(severe) < 0
     assert nested_suitability_score(severe) < nested_suitability_score(mild)
     assert nested_suitability_score(mild) > 0.0
+
+
+# -------------------------------------------------------------- symmetry ---
+
+def test_symmetric_diamond_scores_one():
+    layout = layout_of(DIAMOND_EDGES, {'a': (0, 0), 'b': (-1, 1), 'c': (1, 1), 'd': (0, 2)})
+    assert vertical_axis_balance_score(layout) == pytest.approx(1.0)
+
+
+# 9 nodes sit just left of the axis (x=-1) and 1 sits far to its right
+# (x=9): the signed offsets sum to (near) zero -- what naively summing raw
+# x-values, or equivalently just comparing total left/right *mass*, would
+# score as perfectly balanced -- even though 9 of the poset's 10 middle
+# elements are visibly bunched on one side. count_balance is what actually
+# catches this.
+def _fan_edges(n):
+    return [('bottom', f'm{i}') for i in range(n)] + [(f'm{i}', 'top') for i in range(n)]
+
+
+def test_count_imbalance_penalized_despite_balanced_mass():
+    positions = {'bottom': (0, 0), 'top': (0, 3)}
+    positions.update({f'm{i}': (-1, 1) for i in range(9)})
+    positions['m9'] = (9, 1)
+    layout = layout_of(_fan_edges(10), positions)
+    assert vertical_axis_balance_score(layout) < 0.5
+
+
+def test_mass_imbalance_penalized_despite_equal_counts():
+    symmetric = layout_of(DIAMOND_EDGES, {'a': (0, 0), 'b': (-1, 1), 'c': (1, 1), 'd': (0, 2)})
+    # one node left, one node right (equal counts), but the left one sits
+    # three times further from the axis than the right one.
+    lopsided_mass = layout_of(DIAMOND_EDGES, {'a': (0, 0), 'b': (-3, 1), 'c': (1, 1), 'd': (0, 2)})
+    assert vertical_axis_balance_score(lopsided_mass) < vertical_axis_balance_score(symmetric)
+
+
+def test_bottom_off_axis_penalized_harder_than_equal_offset_elsewhere():
+    # Both layouts introduce the exact same x-shift (0.5) from an otherwise
+    # symmetric diamond -- once applied to the bottom element, once applied
+    # to a middle element instead -- to isolate bottom_alignment's stricter,
+    # cover-edge-length-scaled tolerance from the aggregate count/mass
+    # tolerance the middle elements are judged against.
+    bottom_shifted = layout_of(DIAMOND_EDGES, {'a': (0.5, 0), 'b': (-2, 2), 'c': (2, 2), 'd': (0, 4)})
+    peer_shifted = layout_of(DIAMOND_EDGES, {'a': (0, 0), 'b': (-1.5, 2), 'c': (2, 2), 'd': (0, 4)})
+    assert vertical_axis_balance_score(bottom_shifted) < vertical_axis_balance_score(peer_shifted)
+
+
+def test_raises_without_a_unique_top_and_bottom():
+    layout = layout_of(DISJOINT_CHAINS_EDGES, {'w1': (0, 0), 'x1': (0, 1), 'w2': (2, 0), 'x2': (2, 1)})
+    with pytest.raises(ValueError):
+        vertical_axis_balance_score(layout)

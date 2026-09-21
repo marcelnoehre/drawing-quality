@@ -16,6 +16,7 @@ from .graph_utils import LatticeLayout, load_layout, poset_width
 from .layering import layer_consistency_score, structural_width
 from .nesting import bottleneck_clearance_radius, nested_suitability_score
 from .slopes import slope_harmony_score, slope_standard_score
+from .symmetry import vertical_axis_balance_score
 
 __all__ = [
     'LatticeLayout',
@@ -31,6 +32,7 @@ __all__ = [
     'slope_standard_score',
     'bottleneck_clearance_radius',
     'nested_suitability_score',
+    'vertical_axis_balance_score',
     'evaluate_all',
 ]
 
@@ -43,6 +45,7 @@ _SCORE_METRICS = {
     'slope_harmony': slope_harmony_score,
     'slope_standard': slope_standard_score,
     'nested_suitability': nested_suitability_score,
+    'vertical_axis_balance': vertical_axis_balance_score,
 }
 
 def evaluate_all(layout: LatticeLayout) -> dict:

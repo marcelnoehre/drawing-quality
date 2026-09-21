@@ -107,6 +107,30 @@ def poset_width(graph: nx.DiGraph) -> int:
     return graph.number_of_nodes() - matched
 
 
+def top_node(transitive_closure: nx.DiGraph) -> Hashable:
+    '''
+    The lattice's greatest element: the unique node with nothing above it
+    (out-degree 0 in the transitive closure). Every concept lattice has
+    exactly one by construction; raises if ``transitive_closure`` doesn't,
+    since that means it isn't actually a lattice's Hasse diagram.
+    '''
+    tops = [n for n in transitive_closure.nodes if transitive_closure.out_degree(n) == 0]
+    if len(tops) != 1:
+        raise ValueError(f'expected exactly one top element (out-degree 0), found {len(tops)}')
+    return tops[0]
+
+
+def bottom_node(transitive_closure: nx.DiGraph) -> Hashable:
+    '''
+    The lattice's least element: the unique node with nothing below it
+    (in-degree 0 in the transitive closure). See :func:`top_node`.
+    '''
+    bottoms = [n for n in transitive_closure.nodes if transitive_closure.in_degree(n) == 0]
+    if len(bottoms) != 1:
+        raise ValueError(f'expected exactly one bottom element (in-degree 0), found {len(bottoms)}')
+    return bottoms[0]
+
+
 def rank_groups(rank: Dict[Hashable, int]) -> Dict[int, List[Hashable]]:
     groups: Dict[int, List[Hashable]] = {}
     for node, r in rank.items():
