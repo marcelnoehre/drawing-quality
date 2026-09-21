@@ -11,6 +11,7 @@ the whole battery at once.
 from .chains import visual_chain_linearity_score
 from .conflict_distance import node_edge_conflict_score
 from .crossing_angle import crossing_angle_score
+from .edge_conflict import edge_edge_conflict_score
 from .edge_crossings import edge_crossing_score
 from .edge_length import edge_length_uniformity_score
 from .graph_utils import LatticeLayout, load_layout, poset_width
@@ -27,6 +28,7 @@ __all__ = [
     'visual_chain_linearity_score',
     'node_edge_conflict_score',
     'crossing_angle_score',
+    'edge_edge_conflict_score',
     'edge_crossing_score',
     'edge_length_uniformity_score',
     'layer_consistency_score',
@@ -44,6 +46,7 @@ _SCORE_METRICS = {
     'visual_chain_linearity': visual_chain_linearity_score,
     'node_edge_conflict': node_edge_conflict_score,
     'crossing_angle': crossing_angle_score,
+    'edge_edge_conflict': edge_edge_conflict_score,
     'edge_crossing': edge_crossing_score,
     'edge_length_uniformity': edge_length_uniformity_score,
     'layer_consistency': layer_consistency_score,

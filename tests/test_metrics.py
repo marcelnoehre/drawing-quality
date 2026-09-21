@@ -4,6 +4,8 @@ known-bad geometric property, rather than only checking they run. Each test
 asserts the metric responds in the correct *direction* to a targeted
 perturbation, which is what actually matters for trusting the numbers.
 '''
+from itertools import combinations
+
 import networkx as nx
 import numpy as np
 import pytest
@@ -11,8 +13,9 @@ import pytest
 from lattice_metrics.chains import visual_chain_linearity_score
 from lattice_metrics.conflict import distance_conflict_score
 from lattice_metrics.conflict_distance import DEFAULT_THRESHOLD_FACTOR, node_edge_conflict_score
-from lattice_metrics.geometry import point_segment_distance
+from lattice_metrics.geometry import point_segment_distance, unsigned_angle_deg
 from lattice_metrics.crossing_angle import crossing_angle_score
+from lattice_metrics.edge_conflict import edge_edge_conflict_score
 from lattice_metrics.edge_crossings import edge_crossing_score
 from lattice_metrics.edge_length import edge_length_uniformity_score
 from lattice_metrics.graph_utils import LatticeLayout, freese_ranks
@@ -20,7 +23,7 @@ from lattice_metrics.layering import layer_consistency_score
 from lattice_metrics.nesting import bottleneck_clearance_radius, nested_suitability_score
 from lattice_metrics.node_conflict import DEFAULT_THRESHOLD_FACTOR as NODE_CONFLICT_THRESHOLD_FACTOR
 from lattice_metrics.node_conflict import node_node_conflict_score
-from lattice_metrics.slopes import slope_harmony_score, slope_standard_score
+from lattice_metrics.slopes import DEFAULT_ANGLE_TOLERANCE, slope_harmony_score, slope_standard_score
 from lattice_metrics.symmetry import vertical_axis_balance_score
 
 
@@ -293,6 +296,66 @@ def test_lone_outlier_slope_does_not_drag_down_a_uniform_majority():
 def test_no_edges_returns_one():
     layout = layout_of([], {'a': (0, 0)})
     assert edge_length_uniformity_score(layout) == 1.0
+
+
+# --------------------------------------------------------- edge conflict ---
+
+def test_well_spread_incident_edges_score_one():
+    # At every vertex of a symmetric diamond, the two incident cover edges
+    # meet at 90 degrees.
+    layout = layout_of(DIAMOND_EDGES, {'a': (0, 0), 'b': (-1, 1), 'c': (1, 1), 'd': (0, 2)})
+    assert edge_edge_conflict_score(layout) == pytest.approx(1.0)
+
+
+NEAR_PARALLEL_EDGES = [('bottom', 'p1'), ('bottom', 'p2')]
+NEAR_PARALLEL_POSITIONS = {'bottom': (0, 0), 'p1': (1, 10), 'p2': (1.02, 10)}
+
+
+def test_near_parallel_incident_edges_penalized():
+    # p1 and p2 both leave 'bottom' at nearly the same angle (< 2 degrees
+    # apart) -- exactly the angular ambiguity this metric exists to catch.
+    layout = layout_of(NEAR_PARALLEL_EDGES, NEAR_PARALLEL_POSITIONS)
+    assert edge_edge_conflict_score(layout) < 1.0
+
+
+def test_catches_what_slope_harmony_does_not():
+    # slope_harmony_score *rewards* p1 and p2 for sharing (almost) the same
+    # slope -- with only one slope cluster in the whole drawing, it scores
+    # a perfect 1.0. But the two edges meet at a single shared vertex, so
+    # that same near-identical slope is exactly the angular ambiguity
+    # edge_edge_conflict_score is meant to catch: the two concerns are
+    # complementary, not redundant.
+    layout = layout_of(NEAR_PARALLEL_EDGES, NEAR_PARALLEL_POSITIONS)
+    assert slope_harmony_score(layout) == pytest.approx(1.0)
+    assert edge_edge_conflict_score(layout) < 1.0
+
+
+def test_edge_edge_conflict_uses_min_pair_per_vertex_not_mean_over_all_pairs():
+    '''
+    Mirrors the node-edge/node-node dilution regression tests: a vertex's
+    score must be driven by its single closest pair of incident edges, not
+    averaged over every pair meeting there -- p1/p3 and p2/p3 are both
+    well-separated (~50 degrees) and would dilute the one genuinely bad
+    pair, p1/p2, if averaged in.
+    '''
+    edges = [('bottom', 'p1'), ('bottom', 'p2'), ('bottom', 'p3')]
+    positions = {'bottom': (0, 0), 'p1': (1, 10), 'p2': (1.02, 10), 'p3': (-10, 10)}
+    layout = layout_of(edges, positions)
+    pos = layout.positions
+    vectors = [pos['p1'] - pos['bottom'], pos['p2'] - pos['bottom'], pos['p3'] - pos['bottom']]
+
+    all_pair_angles = [unsigned_angle_deg(v1, v2) for v1, v2 in combinations(vectors, 2)]
+    diluted_by_mean_over_all_pairs = distance_conflict_score(
+        all_pair_angles, DEFAULT_ANGLE_TOLERANCE, floor=0.0,
+    )
+    assert edge_edge_conflict_score(layout) < diluted_by_mean_over_all_pairs
+
+
+def test_no_vertex_with_two_incident_edges_returns_one():
+    # Both endpoints of a single edge have degree 1 -- no vertex has a pair
+    # of incident edges to compare, so there is nothing to penalize.
+    layout = layout_of([('a', 'b')], {'a': (0, 0), 'b': (1, 1)})
+    assert edge_edge_conflict_score(layout) == pytest.approx(1.0)
 
 
 # -------------------------------------------------------------- nesting ---
