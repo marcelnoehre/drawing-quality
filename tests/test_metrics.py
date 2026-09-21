@@ -59,6 +59,31 @@ def test_no_interior_vertex_returns_one():
     assert visual_chain_linearity_score(layout) == 1.0
 
 
+# v has two predecessors (a: straight below v, e: off to the side) but only
+# one successor (b, straight above v). The smaller side (b, the lone
+# successor) has a perfectly straight partner in a, so the extra off-axis
+# predecessor e -- which can never be simultaneously collinear with b -- must
+# not drag the score down.
+TWO_PREDS_ONE_SUCC_EDGES = [('a', 'v'), ('e', 'v'), ('v', 'b')]
+
+
+def test_off_axis_extra_predecessor_does_not_penalize_straight_match():
+    layout = layout_of(
+        TWO_PREDS_ONE_SUCC_EDGES,
+        {'a': (0, -1), 'v': (0, 0), 'b': (0, 1), 'e': (1, -1)},
+    )
+    assert visual_chain_linearity_score(layout) == pytest.approx(1.0)
+
+
+def test_smaller_side_still_penalized_when_no_good_match_exists():
+    # Neither predecessor lines up with the lone successor b at all.
+    layout = layout_of(
+        TWO_PREDS_ONE_SUCC_EDGES,
+        {'a': (1, -1), 'v': (0, 0), 'b': (0, 1), 'e': (-1, -1)},
+    )
+    assert visual_chain_linearity_score(layout) < 1.0
+
+
 # ------------------------------------------------------------- crossings ---
 
 def test_no_possible_crossings_in_a_chain():
