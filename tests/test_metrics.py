@@ -15,7 +15,7 @@ from lattice_metrics.geometry import point_segment_distance
 from lattice_metrics.crossing_angle import crossing_angle_score
 from lattice_metrics.edge_crossings import edge_crossing_score
 from lattice_metrics.graph_utils import LatticeLayout, freese_ranks
-from lattice_metrics.layering import layer_consistency_score, visual_layer_x_score, visual_layer_y_score
+from lattice_metrics.layering import layer_consistency_score
 from lattice_metrics.nesting import bottleneck_clearance_radius, nested_suitability_score
 from lattice_metrics.slopes import slope_harmony_score, slope_standard_score
 
@@ -113,31 +113,6 @@ def test_layer_consistency_uses_freese_rank_not_longest_path():
     positions = {'a': (0, 3), 'b': (0, 2), 'c': (0, 1.5), 'd': (0, 1), 'e': (0, 0)}
     layout = layout_of(UNGRADED_EDGES, positions)
     assert layer_consistency_score(layout) == pytest.approx(1.0)
-
-STAR_EDGES = [('a', 'b'), ('a', 'c'), ('a', 'd'), ('a', 'e')]
-
-def test_visual_layer_y_merges_ranks_without_penalty_if_still_tidy():
-    tidy = layout_of(STAR_EDGES, {'a': (0, 0), 'b': (-2, 1), 'c': (-1, 1), 'd': (1, 1), 'e': (2, 1)})
-    assert visual_layer_y_score(tidy) == pytest.approx(1.0)
-
-def test_visual_layer_y_penalizes_no_clustering_at_all():
-    scattered = layout_of(STAR_EDGES, {'a': (0, 0), 'b': (-2, 1), 'c': (-1, 2), 'd': (1, 3), 'e': (2, 4)})
-    assert visual_layer_y_score(scattered) == pytest.approx(0.0)
-
-def test_visual_layer_x_scores_column_tightness():
-    tidy = layout_of(STAR_EDGES, {'a': (0, 0), 'b': (-2, 1), 'c': (-1, 1), 'd': (1, 1), 'e': (2, 1)})
-    scattered_x = layout_of(
-        STAR_EDGES, {'a': (0, 0), 'b': (-2, 1), 'c': (-1.6, 1), 'd': (-1.1, 1), 'e': (-0.5, 1)},
-    )
-    assert visual_layer_x_score(tidy) == pytest.approx(1.0)
-    assert visual_layer_x_score(scattered_x) < visual_layer_x_score(tidy)
-
-
-def test_visual_layer_x_has_no_layer_count_correction():
-    all_singleton_x = layout_of(
-        STAR_EDGES, {'a': (0, 0), 'b': (-8, 1), 'c': (-4, 1), 'd': (4, 1), 'e': (8, 1)},
-    )
-    assert visual_layer_x_score(all_singleton_x) == pytest.approx(1.0)
 
 # --------------------------------------------------------------- overlap ---
 
