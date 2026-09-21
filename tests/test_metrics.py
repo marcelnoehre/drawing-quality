@@ -14,9 +14,12 @@ from lattice_metrics.conflict_distance import DEFAULT_THRESHOLD_FACTOR, node_edg
 from lattice_metrics.geometry import point_segment_distance
 from lattice_metrics.crossing_angle import crossing_angle_score
 from lattice_metrics.edge_crossings import edge_crossing_score
+from lattice_metrics.edge_length import edge_length_uniformity_score
 from lattice_metrics.graph_utils import LatticeLayout, freese_ranks
 from lattice_metrics.layering import layer_consistency_score
 from lattice_metrics.nesting import bottleneck_clearance_radius, nested_suitability_score
+from lattice_metrics.node_conflict import DEFAULT_THRESHOLD_FACTOR as NODE_CONFLICT_THRESHOLD_FACTOR
+from lattice_metrics.node_conflict import node_node_conflict_score
 from lattice_metrics.slopes import slope_harmony_score, slope_standard_score
 from lattice_metrics.symmetry import vertical_axis_balance_score
 
@@ -170,6 +173,54 @@ def test_node_edge_conflict_uses_nearest_edge_per_node_not_mean_over_all_pairs()
     assert node_edge_conflict_score(on_edge) < diluted_by_mean_over_all_pairs
 
 
+# --------------------------------------------------------- node overlap ---
+
+def test_well_separated_nodes_score_one():
+    layout = layout_of(DIAMOND_EDGES, {'a': (0, 0), 'b': (-2, 2), 'c': (2, 2), 'd': (0, 4)})
+    assert node_node_conflict_score(layout) == pytest.approx(1.0)
+
+
+def test_incident_nodes_collapsed_together_are_penalized():
+    # a and b are connected by a cover edge shrunk to near-zero length,
+    # while every other edge in the diagram stays a normal size -- an edge
+    # collapsing its own endpoints together is exactly the kind of
+    # node-node conflict this metric should catch, not exempt just because
+    # the two nodes are incident.
+    layout = layout_of(DIAMOND_EDGES, {'a': (0, 0), 'b': (0, 0.001), 'c': (2, 2), 'd': (0, 4)})
+    assert node_node_conflict_score(layout) < 1.0
+
+
+def test_non_incident_nodes_too_close_are_penalized_even_when_far_from_every_edge():
+    # z1 and z2 are not connected to anything and sit nowhere near the
+    # single real edge (w1-w2), so node_edge_conflict_score sees nothing
+    # wrong -- but z1 and z2 are drawn almost on top of each other, which
+    # node_node_conflict_score must still catch.
+    edges = [('w1', 'w2')]
+    positions = {'w1': (0, 0), 'w2': (0, 4), 'z1': (20, 20), 'z2': (20.01, 20)}
+    layout = layout_of(edges, positions)
+    assert node_edge_conflict_score(layout) == pytest.approx(1.0)
+    assert node_node_conflict_score(layout) < 1.0
+
+
+def test_node_node_conflict_uses_nearest_node_per_node_not_mean_over_all_pairs():
+    '''
+    Mirrors the node-edge dilution regression test above: a node's score
+    must be driven by its single nearest other node, not averaged over
+    every other node in the layout (most of which are structurally
+    guaranteed to be irrelevant in a larger lattice).
+    '''
+    layout = layout_of(DIAMOND_EDGES, {'a': (0, 0), 'b': (0, 0.001), 'c': (2, 2), 'd': (0, 4)})
+    positions = layout.positions
+    threshold = layout.average_cover_edge_length() * NODE_CONFLICT_THRESHOLD_FACTOR
+
+    all_pairs = [
+        float(np.linalg.norm(positions[u] - positions[v]))
+        for u in positions for v in positions if u != v
+    ]
+    diluted_by_mean_over_all_pairs = distance_conflict_score(all_pairs, threshold)
+    assert node_node_conflict_score(layout) < diluted_by_mean_over_all_pairs
+
+
 # ----------------------------------------------------------------- slope ---
 
 def test_uniform_slopes_score_higher_than_mixed():
@@ -186,6 +237,62 @@ def test_forty_five_degree_edges_are_maximally_standard():
 def test_off_canonical_slope_scores_below_one():
     layout = layout_of([('a', 'b')], {'a': (0, 1), 'b': (2, 0.3)})
     assert slope_standard_score(layout) < 1.0
+
+
+# ---------------------------------------------------------- edge length ---
+
+def test_uniform_same_slope_edges_score_one():
+    # All four cover edges share the same 45-degree slope and the same
+    # length by construction.
+    layout = layout_of(DIAMOND_EDGES, {'a': (0, 0), 'b': (-1, 1), 'c': (1, 1), 'd': (0, 2)})
+    assert edge_length_uniformity_score(layout) == pytest.approx(1.0)
+
+
+def test_different_slopes_at_same_layer_are_not_penalized():
+    # d has four cover edges at two distinct slopes (~33.7 and ~81.5
+    # degrees), each pair internally identical in length. A naive
+    # whole-diagram length check would flag this (lengths range from ~2.0
+    # to ~3.6), but that variation is exactly what different slopes at a
+    # fixed vertical span *require* -- not a drawing flaw -- so grouping by
+    # slope first should still score this perfectly uniform.
+    edges = [('d', 'b1'), ('d', 'b2'), ('d', 'c1'), ('d', 'c2')]
+    positions = {
+        'd': (0, 4),
+        'b1': (-3, 2), 'b2': (3, 2),      # dx=3, dy=2 -> ~33.7 deg, len ~3.606
+        'c1': (-0.3, 2), 'c2': (0.3, 2),  # dx=0.3, dy=2 -> ~81.5 deg, len ~2.022
+    }
+    layout = layout_of(edges, positions)
+    assert edge_length_uniformity_score(layout) == pytest.approx(1.0)
+
+
+def test_length_variation_within_a_shared_slope_is_penalized():
+    # b1 and b2 share the exact same slope (dy/dx = 2/3 for both) but b2 is
+    # half the length of b1 -- unlike the previous test, this variation
+    # can't be explained away by a slope difference, so it should cost.
+    edges = [('d', 'b1'), ('d', 'b2')]
+    positions = {'d': (0, 4), 'b1': (-3, 2), 'b2': (1.5, 3)}
+    layout = layout_of(edges, positions)
+    assert edge_length_uniformity_score(layout) < 1.0
+
+
+def test_lone_outlier_slope_does_not_drag_down_a_uniform_majority():
+    # Three edges share a 45-degree slope and an identical length; a fourth
+    # edge at a very different, unmatched slope and a wildly different
+    # length has nothing to be compared against, so it can't be scored and
+    # must not drag the (otherwise perfectly uniform) result down.
+    edges = [('d', 'p1'), ('p1', 'q'), ('d', 'p2'), ('d', 'r')]
+    positions = {
+        'd': (0, 4),
+        'p1': (-1, 3), 'q': (-2, 2), 'p2': (1, 3),  # all 45 deg, length sqrt(2)
+        'r': (50, 0),                                # ~4.6 deg, length ~50.2
+    }
+    layout = layout_of(edges, positions)
+    assert edge_length_uniformity_score(layout) == pytest.approx(1.0)
+
+
+def test_no_edges_returns_one():
+    layout = layout_of([], {'a': (0, 0)})
+    assert edge_length_uniformity_score(layout) == 1.0
 
 
 # -------------------------------------------------------------- nesting ---

@@ -8,11 +8,39 @@ drawing's own scale.
 '''
 from __future__ import annotations
 
+from typing import Dict, Hashable
+
 from .conflict import distance_conflict_score
 from .geometry import point_segment_distance
 from .graph_utils import LatticeLayout
 
 DEFAULT_THRESHOLD_FACTOR = 0.5
+
+
+def nearest_non_incident_edge_distances(layout: LatticeLayout) -> Dict[Hashable, float]:
+    '''
+    Every node's distance to its *nearest* cover edge it is not an
+    endpoint of -- ``float('inf')`` for a node incident to every cover
+    edge (e.g. a very small lattice), rather than skipping it, so callers
+    can decide for themselves whether 'nothing to compare against' means
+    'no constraint' (:mod:`lattice_metrics.nesting`) or 'not scored'
+    (:func:`node_edge_conflict_score`).
+
+    Shared so every metric that needs 'how close is this node to an edge
+    it shouldn't be on' -- currently this one and the clearance-radius
+    computation in :mod:`lattice_metrics.nesting` -- answers it the same
+    way instead of each re-deriving its own version.
+    '''
+    positions = layout.positions
+    cover_edges = list(layout.transitive_reduction.edges)
+    distances: Dict[Hashable, float] = {}
+    for v in positions:
+        non_incident = [(i, j) for i, j in cover_edges if v != i and v != j]
+        distances[v] = (
+            min(point_segment_distance(positions[v], positions[i], positions[j]) for i, j in non_incident)
+            if non_incident else float('inf')
+        )
+    return distances
 
 
 def node_edge_conflict_score(
@@ -38,21 +66,12 @@ def node_edge_conflict_score(
     account 'is this node's worst threat acceptable', matching the
     perceptual claim in the module docstring.
     '''
-    positions = layout.positions
     cover_edges = list(layout.transitive_reduction.edges)
     if not cover_edges:
         return 1.0
 
-    avg_edge_len = layout.average_cover_edge_length()
-    threshold = avg_edge_len * threshold_factor
-
-    nearest_distances = []
-    for v in positions:
-        candidates = [
-            point_segment_distance(positions[v], positions[i], positions[j])
-            for i, j in cover_edges
-            if v != i and v != j
-        ]
-        if candidates:
-            nearest_distances.append(min(candidates))
+    threshold = layout.average_cover_edge_length() * threshold_factor
+    nearest_distances = [
+        d for d in nearest_non_incident_edge_distances(layout).values() if d != float('inf')
+    ]
     return distance_conflict_score(nearest_distances, threshold)

@@ -12,9 +12,11 @@ from .chains import visual_chain_linearity_score
 from .conflict_distance import node_edge_conflict_score
 from .crossing_angle import crossing_angle_score
 from .edge_crossings import edge_crossing_score
+from .edge_length import edge_length_uniformity_score
 from .graph_utils import LatticeLayout, load_layout, poset_width
 from .layering import layer_consistency_score, structural_width
 from .nesting import bottleneck_clearance_radius, nested_suitability_score
+from .node_conflict import node_node_conflict_score
 from .slopes import slope_harmony_score, slope_standard_score
 from .symmetry import vertical_axis_balance_score
 
@@ -26,12 +28,14 @@ __all__ = [
     'node_edge_conflict_score',
     'crossing_angle_score',
     'edge_crossing_score',
+    'edge_length_uniformity_score',
     'layer_consistency_score',
     'structural_width',
     'slope_harmony_score',
     'slope_standard_score',
     'bottleneck_clearance_radius',
     'nested_suitability_score',
+    'node_node_conflict_score',
     'vertical_axis_balance_score',
     'evaluate_all',
 ]
@@ -41,10 +45,12 @@ _SCORE_METRICS = {
     'node_edge_conflict': node_edge_conflict_score,
     'crossing_angle': crossing_angle_score,
     'edge_crossing': edge_crossing_score,
+    'edge_length_uniformity': edge_length_uniformity_score,
     'layer_consistency': layer_consistency_score,
     'slope_harmony': slope_harmony_score,
     'slope_standard': slope_standard_score,
     'nested_suitability': nested_suitability_score,
+    'node_node_conflict': node_node_conflict_score,
     'vertical_axis_balance': vertical_axis_balance_score,
 }
 

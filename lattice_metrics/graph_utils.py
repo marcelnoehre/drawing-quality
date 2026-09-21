@@ -178,16 +178,25 @@ def freese_ranks(graph: nx.DiGraph) -> Dict[Hashable, int]:
 
 def group_within_tolerance(sorted_values: np.ndarray, tolerance: float) -> List[list]:
     '''
-    Partition sorted 1-D values into contiguous groups, starting a new
-    group whenever a gap exceeds ``tolerance``.
+    Partition sorted 1-D values into contiguous groups, each with diameter
+    (max - min) at most ``tolerance``: a new group starts whenever the next
+    value is more than ``tolerance`` past the *current group's first*
+    value, not just its most recently added one.
 
-    Equivalent to DBSCAN(eps=tolerance, min_samples=1) on 1-D data, computed
-    directly instead of pulling in scikit-learn for what a single sort and
-    scan already gives exactly.
+    This is complete-linkage clustering -- every pair of values within a
+    group is guaranteed to be within ``tolerance`` of each other -- rather
+    than single-linkage/DBSCAN-style chaining, which only bounds gaps
+    between consecutive values and lets a group's total span drift
+    arbitrarily far through a chain of small steps (e.g. tolerance=5 would
+    single-link 0, 4, 8, 12, ... into one group despite the ends being far
+    apart). The greedy left-to-right sweep below is optimal -- it minimizes
+    the number of groups -- for this bounded-diameter partition of sorted
+    1-D data: extending the current group as far as the diameter allows is
+    never worse than closing it early.
     '''
     groups = [[sorted_values[0]]]
     for value in sorted_values[1:]:
-        if value - groups[-1][-1] > tolerance:
+        if value - groups[-1][0] > tolerance:
             groups.append([])
         groups[-1].append(value)
     return groups

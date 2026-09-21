@@ -8,7 +8,7 @@ matters, not which side it leans to.
 '''
 from __future__ import annotations
 
-from typing import Sequence
+from typing import Sequence, Tuple
 
 import numpy as np
 
@@ -22,19 +22,34 @@ DEFAULT_CANONICAL_ANGLES = (
     90.0,
 )
 
-def _unsigned_edge_angles(layout: LatticeLayout) -> np.ndarray:
+DEFAULT_ANGLE_TOLERANCE = 5.0
+
+
+def edge_angles_and_lengths(layout: LatticeLayout) -> Tuple[np.ndarray, np.ndarray]:
+    '''
+    Every edge's unsigned angle from horizontal (in [0, 90]) paired with its
+    drawn length, in matching order -- the shared per-edge geometry this
+    module and :mod:`lattice_metrics.edge_length` both score. Zero-length
+    edges (coincident endpoints) have no defined angle and are skipped.
+    '''
     positions = layout.positions
     angles = []
+    lengths = []
     for u, v in layout.graph.edges():
         dx = positions[u][0] - positions[v][0]
         dy = positions[u][1] - positions[v][1]
         if dx == 0 and dy == 0:
             continue
-        angles.append(np.degrees(np.arctan2(abs(dy), abs(dx))))
-    return np.array(angles)
+        angles.append(float(np.degrees(np.arctan2(abs(dy), abs(dx)))))
+        lengths.append(float(np.hypot(dx, dy)))
+    return np.array(angles), np.array(lengths)
 
 
-def slope_harmony_score(layout: LatticeLayout, angle_tolerance: float = 5.0) -> float:
+def _unsigned_edge_angles(layout: LatticeLayout) -> np.ndarray:
+    return edge_angles_and_lengths(layout)[0]
+
+
+def slope_harmony_score(layout: LatticeLayout, angle_tolerance: float = DEFAULT_ANGLE_TOLERANCE) -> float:
     '''
     1.0 = every edge shares (up to ``angle_tolerance`` degrees) a common
     slope; lower as edges spread across more, and more evenly populated,

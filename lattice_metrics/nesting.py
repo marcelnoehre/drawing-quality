@@ -18,8 +18,9 @@ from typing import Tuple
 import numpy as np
 
 from .conflict import distance_conflict_score
-from .geometry import point_segment_distance
+from .conflict_distance import nearest_non_incident_edge_distances
 from .graph_utils import LatticeLayout
+from .node_conflict import nearest_node_distances
 
 DEFAULT_R_MIN_NEST_FACTOR = 1 / 3
 
@@ -52,52 +53,25 @@ def _distance_to_bounds(p: np.ndarray, min_xy: np.ndarray, max_xy: np.ndarray) -
     return float(min(p[0] - min_xy[0], max_xy[0] - p[0], p[1] - min_xy[1], max_xy[1] - p[1]))
 
 
-def _node_clearance_radius(
-    node,
-    layout: LatticeLayout,
-    min_xy: np.ndarray = None,
-    max_xy: np.ndarray = None,
-) -> float:
-    '''
-    R_i: the largest radius a disc centered at ``node`` can have without
-    overlapping an equal disc at the nearest other node (d_node / 2) or
-    crossing the nearest non-incident cover edge (d_edge).
-
-    If ``min_xy``/``max_xy`` are supplied, the padded drawing boundary is
-    also enforced (d_bound) -- this is an *optional* extra constraint, not
-    part of the node/edge conflict definition itself. Pass both or neither;
-    they are only ever supplied together by :func:`_all_node_clearances`.
-    '''
-    positions = layout.positions
-    p = positions[node]
-
-    other = [q for u, q in positions.items() if u != node]
-    d_node = min((float(np.linalg.norm(p - q)) for q in other), default=np.inf)
-
-    cover_edges = layout.transitive_reduction.edges
-    non_incident = [(i, j) for i, j in cover_edges if i != node and j != node]
-    d_edge = min(
-        (point_segment_distance(p, positions[i], positions[j]) for i, j in non_incident),
-        default=np.inf,
-    )
-
-    radius = min(d_node / 2.0, d_edge)
-
-    if min_xy is not None and max_xy is not None:
-        d_bound = _distance_to_bounds(p, min_xy, max_xy)
-        radius = min(radius, d_bound)
-
-    return radius
-
-
 def _all_node_clearances(
     layout: LatticeLayout,
     epsilon_factor: float,
     include_boundary: bool = False,
 ) -> list:
     '''
-    R_i - epsilon for every node, i.e. each node's own clearance radius
-    (see :func:`_node_clearance_radius`) after the fixed safety margin.
+    R_i - epsilon for every node, where R_i is the largest radius a disc
+    centered at that node can have without overlapping an equal disc at
+    the nearest other node (d_node / 2), crossing the nearest non-incident
+    cover edge (d_edge), or -- if ``include_boundary`` -- spilling past the
+    padded drawing boundary (d_bound).
+
+    d_node and d_edge are the same nearest-other-node
+    (:func:`~lattice_metrics.node_conflict.nearest_node_distances`) and
+    nearest-non-incident-edge
+    (:func:`~lattice_metrics.conflict_distance.nearest_non_incident_edge_distances`)
+    distances the node-node and node-edge conflict metrics score, so 'how
+    close is too close' means the same thing everywhere in this package,
+    computed once for every node up front rather than re-derived per node.
 
     ``include_boundary`` controls whether a node's clearance is also capped
     by distance to the padded drawing boundary. Node/edge conflict alone
@@ -110,10 +84,17 @@ def _all_node_clearances(
     else:
         min_xy = max_xy = None
     epsilon = epsilon_factor * layout.average_cover_edge_length()
-    return [
-        _node_clearance_radius(node, layout, min_xy, max_xy) - epsilon
-        for node in layout.positions
-    ]
+
+    d_node = nearest_node_distances(layout)
+    d_edge = nearest_non_incident_edge_distances(layout)
+
+    clearances = []
+    for node, dn in zip(layout.positions, d_node):
+        radius = min(float(dn) / 2.0, d_edge[node])
+        if min_xy is not None and max_xy is not None:
+            radius = min(radius, _distance_to_bounds(layout.positions[node], min_xy, max_xy))
+        clearances.append(radius - epsilon)
+    return clearances
 
 
 def bottleneck_clearance_radius(

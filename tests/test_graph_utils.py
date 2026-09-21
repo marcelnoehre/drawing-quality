@@ -2,7 +2,7 @@ import networkx as nx
 import numpy as np
 import pytest
 
-from lattice_metrics.graph_utils import LatticeLayout, longest_path_ranks, poset_width
+from lattice_metrics.graph_utils import LatticeLayout, group_within_tolerance, longest_path_ranks, poset_width
 
 
 def diamond() -> nx.DiGraph:
@@ -39,3 +39,21 @@ def test_layout_is_comparable():
     layout = LatticeLayout(graph=diamond(), positions=positions)
     assert layout.is_comparable('a', 'd')
     assert not layout.is_comparable('b', 'c')
+
+
+def test_group_within_tolerance_does_not_chain_across_a_wide_span():
+    # Each consecutive gap is 4, within tolerance=5, so single-linkage
+    # chaining would merge all four values into one group spanning 12 --
+    # far more than the tolerance actually promises. Complete linkage
+    # instead bounds every group's own diameter to the tolerance.
+    values = np.array([0.0, 4.0, 8.0, 12.0])
+    groups = group_within_tolerance(values, tolerance=5.0)
+    assert [list(g) for g in groups] == [[0.0, 4.0], [8.0, 12.0]]
+    for group in groups:
+        assert max(group) - min(group) <= 5.0
+
+
+def test_group_within_tolerance_single_group_when_diameter_fits():
+    values = np.array([0.0, 2.0, 4.0])
+    groups = group_within_tolerance(values, tolerance=5.0)
+    assert len(groups) == 1
