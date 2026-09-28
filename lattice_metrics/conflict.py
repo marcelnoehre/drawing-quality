@@ -3,9 +3,9 @@ Shared scoring for 'something is too close to something else' metrics.
 
 Given a set of measured distances and a perceptual threshold below which two
 drawn elements are hard to tell apart, how bad is the drawing? Kept as a
-standalone function (currently used by node-edge proximity, see
-:mod:`lattice_metrics.conflict_distance`) rather than inlined, so any other
-'too close' metric can reuse the same, documented [0, 1] shape instead of
+standalone function (used by the node-node, node-edge and edge-edge
+conflict metrics and by nesting) rather than inlined, so any other 'too
+close' metric can reuse the same, documented [0, 1] shape instead of
 inventing its own ad hoc squashing function.
 '''
 from __future__ import annotations
@@ -25,6 +25,12 @@ import numpy as np
 # (log(1e-12) is still enormously more negative than any real item can
 # get) without the discontinuous collapse.
 _MIN_GEOMETRIC_FACTOR = 1e-12
+
+
+def _goodness_factors(distances: Sequence[float], threshold: float, floor: float) -> np.ndarray:
+    d = np.asarray(distances, dtype=float)
+    penalty = np.clip((threshold - d) / (threshold - floor), 0.0, 1.0) ** 2
+    return 1.0 - penalty
 
 
 def distance_conflict_score(
@@ -68,9 +74,7 @@ def distance_conflict_score(
     '''
     if len(distances) == 0 or threshold <= floor:
         return 1.0
-    d = np.asarray(distances, dtype=float)
-    penalty = np.clip((threshold - d) / (threshold - floor), 0.0, 1.0) ** 2
-    factors = 1.0 - penalty
+    factors = _goodness_factors(distances, threshold, floor)
 
     if aggregation == 'mean':
         return float(np.mean(factors))
@@ -79,3 +83,21 @@ def distance_conflict_score(
         return float(np.exp(np.mean(log_factors)))
     else:
         raise ValueError(f"Unknown aggregation: {aggregation!r}. Use 'mean' or 'geometric'.")
+
+
+def distance_conflict_min_score(
+    distances: Sequence[float],
+    threshold: float,
+    floor: float = 0.0,
+) -> float:
+    '''
+    The single worst item's score under the same per-item penalty as
+    :func:`distance_conflict_score` -- i.e. the minimum of the per-item
+    factors whose arithmetic mean that function returns -- so a metric's
+    average (its score) and its worst case share one [0, 1] scale.
+
+    Returns 1.0 under the same conditions as :func:`distance_conflict_score`.
+    '''
+    if len(distances) == 0 or threshold <= floor:
+        return 1.0
+    return float(np.min(_goodness_factors(distances, threshold, floor)))

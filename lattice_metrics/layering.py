@@ -1,14 +1,18 @@
 '''
 Layering quality: does the drawing visually express the poset's structure?
 
-:func:`layer_consistency_score` groups nodes by Freese's rank function
-(Sec. 4.1 of the reference below), the *exact*, graph-theoretic notion of
-which elements belong on the same layer. Elements of equal rank should be
-drawn at the same coordinate along the layering axis. The score itself is
-within-group spread compared to the average gap between consecutive group
-centroids -- i.e. 'is the spread within a group small relative to the
-spacing between groups', which is scale-invariant and needs no manually
-tuned tolerance.
+:func:`layer_consistency_score` compares each node's axis coordinate to its
+Freese rank (Sec. 4.1 of the reference below), the *exact*, graph-theoretic
+notion of which elements belong on the same layer -- the same quantity
+line_diagrams/freese/freese.py itself uses to seed the layering axis. The
+score is the R^2 (squared Pearson correlation) of the least-squares affine
+fit between rank and coordinate: 1.0 means the coordinate is a perfect
+(possibly rescaled/reflected) affine function of rank, which both requires
+equal-rank nodes to land at equal coordinates *and* requires unequal ranks
+to be spaced proportionally to their rank difference. R^2 is scale-invariant
+and needs no manually tuned tolerance, and unlike a purely within-group
+comparison it stays meaningful even when every rank is unique (e.g. a
+chain), where there is nothing to compare *within* a rank group.
 
 An 'upward drawing' criterion (every cover edge moves consistently along the
 layering axis) was deliberately dropped from this module: for a valid line
@@ -34,55 +38,45 @@ Reference
 '''
 from __future__ import annotations
 
-from typing import Sequence
-
 import numpy as np
 
-from .graph_utils import LatticeLayout, freese_ranks, poset_width, rank_groups
+from .graph_utils import LatticeLayout, freese_ranks, poset_width
 
 LAYER_AXIS = 1  # y
 
 
-def _spread_vs_gap_score(groups: Sequence[Sequence[float]]) -> float:
+def _rank_alignment_score(ranks: np.ndarray, coords: np.ndarray) -> float:
     '''
-    Shared core of both layering scores: 1.0 = every group sits at a single,
-    consistent coordinate; lower means groups are internally scattered
-    relative to how far apart they are from their neighbors.
-
-    ``groups`` must already be ordered so that consecutive entries are
-    neighbors along the axis being scored (by rank, or by sorted
-    coordinate).
+    R^2 of the least-squares affine fit ``coord ~ a * rank + b``: 1.0 = the
+    coordinate is a perfect affine function of rank, 0.0 = no linear
+    relationship. Well-defined even when every rank is unique, unlike a
+    within-rank-group spread comparison.
     '''
-    if len(groups) <= 1:
+    if np.ptp(ranks) < 1e-12:
+        # Every node shares one rank: nothing for the axis to align with.
         return 1.0
+    if np.ptp(coords) < 1e-12:
+        # Collapsed onto one coordinate despite >1 distinct rank: no linear
+        # relationship is possible, so this can't be considered aligned.
+        return 0.0
 
-    centroids = [float(np.mean(g)) for g in groups]
-    within_stds = [float(np.std(g)) for g in groups]
-    sizes = [len(g) for g in groups]
-
-    avg_gap = float(np.mean(np.abs(np.diff(centroids))))
-    if avg_gap < 1e-12:
-        # All groups collapse onto the same coordinate: only consistent if
-        # every group is also internally a single point.
-        return 1.0 if max(within_stds) < 1e-12 else 0.0
-
-    weighted_std = float(np.average(within_stds, weights=sizes))
-    return float(1.0 - np.clip(weighted_std / avg_gap, 0.0, 1.0))
+    r = float(np.corrcoef(ranks, coords)[0, 1])
+    return r ** 2
 
 
 def layer_consistency_score(layout: LatticeLayout, axis: int = LAYER_AXIS) -> float:
     '''
-    1.0 = every Freese rank is drawn at a single, consistent coordinate
-    along ``axis``; lower means nodes of the same rank are visually
-    scattered.
+    1.0 = the ``axis`` coordinate is a perfect affine function of Freese
+    rank (equal ranks at equal coordinates, unequal ranks spaced
+    proportionally to their rank difference); lower means the drawing's
+    layering doesn't track the poset's intrinsic rank structure.
     '''
-    groups = rank_groups(freese_ranks(layout.graph))
+    ranks = freese_ranks(layout.graph)
     positions = layout.positions
-    coord_groups = [
-        np.array([positions[n][axis] for n in groups[r]])
-        for r in sorted(groups)
-    ]
-    return _spread_vs_gap_score(coord_groups)
+    nodes = list(ranks)
+    rank_arr = np.array([ranks[n] for n in nodes], dtype=float)
+    coord_arr = np.array([positions[n][axis] for n in nodes], dtype=float)
+    return _rank_alignment_score(rank_arr, coord_arr)
 
 
 def structural_width(layout: LatticeLayout) -> int:

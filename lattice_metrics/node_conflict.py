@@ -14,7 +14,7 @@ from __future__ import annotations
 import numpy as np
 from scipy.spatial import cKDTree
 
-from .conflict import distance_conflict_score
+from .conflict import distance_conflict_min_score, distance_conflict_score
 from .graph_utils import LatticeLayout
 
 DEFAULT_THRESHOLD_FACTOR = 0.5
@@ -73,3 +73,19 @@ def node_node_conflict_score(
 
     threshold = layout.average_cover_edge_length() * threshold_factor
     return distance_conflict_score(nearest_node_distances(layout), threshold)
+
+
+def node_node_conflict_min_score(
+    layout: LatticeLayout,
+    threshold_factor: float = DEFAULT_THRESHOLD_FACTOR,
+) -> float:
+    '''
+    The worst single node's term in :func:`node_node_conflict_score`: the
+    penalty for the closest pair of nodes in the drawing, on the same
+    [0, 1] scale as the score, which is the mean of these per-node terms.
+    '''
+    if layout.n < 2:
+        return 1.0
+
+    threshold = layout.average_cover_edge_length() * threshold_factor
+    return distance_conflict_min_score(nearest_node_distances(layout), threshold)

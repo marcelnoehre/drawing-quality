@@ -22,23 +22,37 @@ Known in the graph-drawing literature as angular resolution (Formann et
 al., "Drawing Graphs in the Plane with High Angular Resolution", 1993): the
 minimum angle between any two edges incident to the same vertex.
 :func:`edge_edge_conflict_score` scores each vertex's own minimum incident
-angle against the same tolerance :mod:`lattice_metrics.slopes` already uses
-as this package's operational definition of 'the same slope' -- two
-incident edges closer together than that are exactly the edges
-``slope_harmony_score`` would itself cluster as indistinguishable, just now
-meeting at a shared point instead of scattered across the drawing.
+angle against :data:`DEFAULT_ANGLE_TOLERANCE`.
 '''
 from __future__ import annotations
 
 from itertools import combinations
+from typing import List
 
-from .conflict import distance_conflict_score
+from .conflict import distance_conflict_min_score, distance_conflict_score
 from .geometry import unsigned_angle_deg
 from .graph_utils import LatticeLayout
-from .slopes import DEFAULT_ANGLE_TOLERANCE
+
+# Deliberately *not* the tolerance :mod:`lattice_metrics.slopes` uses for
+# 'the same slope' (5 degrees). That one answers whether two *separate*
+# edges read as parallel, and orientation differences of a few degrees are
+# already noticeable. This one answers whether two edges leaving the *same*
+# point can be told apart, and they overlap near that point: their
+# separation at distance r from it is only about r * sin(angle), so edges a
+# few degrees apart stay merged, under the node marker and stroke width,
+# along much of their length. On this repo's drawings a 5 degree tolerance
+# gave 87% of drawings a perfect score, flagging almost only near-collinear
+# (< 1 degree) pairs that the node-edge conflict metric already catches.
+#
+# Kept well below the structural ceiling: a vertex with k upper (or lower)
+# covers has to fit those k edges into a half-plane, so some pair of them
+# is at most 180 / (k - 1) degrees apart however it is drawn. At 15
+# degrees, only vertices with more than 13 covers on one side are
+# penalized regardless of how well they are drawn.
+DEFAULT_ANGLE_TOLERANCE = 15.0
 
 
-def _min_incident_angle(node, layout: LatticeLayout) -> float:
+def _incident_angles(node, layout: LatticeLayout) -> List[float]:
     positions = layout.positions
     p = positions[node]
     tr = layout.transitive_reduction
@@ -47,9 +61,19 @@ def _min_incident_angle(node, layout: LatticeLayout) -> float:
     vectors = [positions[u] - p for u in neighbors]
     vectors = [v for v in vectors if float(v @ v) >= 1e-18]
     if len(vectors) < 2:
-        return float('inf')
+        return []
 
-    return min(unsigned_angle_deg(v1, v2) for v1, v2 in combinations(vectors, 2))
+    return [unsigned_angle_deg(v1, v2) for v1, v2 in combinations(vectors, 2)]
+
+
+def _min_incident_angle(node, layout: LatticeLayout) -> float:
+    angles = _incident_angles(node, layout)
+    return min(angles) if angles else float('inf')
+
+
+def _vertex_min_angles(layout: LatticeLayout) -> List[float]:
+    angles = (_min_incident_angle(node, layout) for node in layout.graph.nodes)
+    return [angle for angle in angles if angle != float('inf')]
 
 
 def edge_edge_conflict_score(
@@ -72,12 +96,16 @@ def edge_edge_conflict_score(
     compare and are excluded, not counted as a trivial pass or fail.
     Returns 1.0 if no vertex has two or more incident edges.
     '''
-    min_angles = []
-    for node in layout.graph.nodes:
-        angle = _min_incident_angle(node, layout)
-        if angle != float('inf'):
-            min_angles.append(angle)
+    return distance_conflict_score(_vertex_min_angles(layout), angle_tolerance, floor=0.0)
 
-    if not min_angles:
-        return 1.0
-    return distance_conflict_score(min_angles, angle_tolerance, floor=0.0)
+
+def edge_edge_conflict_min_score(
+    layout: LatticeLayout,
+    angle_tolerance: float = DEFAULT_ANGLE_TOLERANCE,
+) -> float:
+    '''
+    The worst single vertex's term in :func:`edge_edge_conflict_score`: the
+    penalty for the narrowest incident angle in the drawing, on the same
+    [0, 1] scale as the score, which is the mean of these per-vertex terms.
+    '''
+    return distance_conflict_min_score(_vertex_min_angles(layout), angle_tolerance, floor=0.0)

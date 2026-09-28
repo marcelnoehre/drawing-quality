@@ -8,9 +8,9 @@ drawing's own scale.
 '''
 from __future__ import annotations
 
-from typing import Dict, Hashable
+from typing import Dict, Hashable, List
 
-from .conflict import distance_conflict_score
+from .conflict import distance_conflict_min_score, distance_conflict_score
 from .geometry import point_segment_distance
 from .graph_utils import LatticeLayout
 
@@ -43,6 +43,10 @@ def nearest_non_incident_edge_distances(layout: LatticeLayout) -> Dict[Hashable,
     return distances
 
 
+def _finite_nearest_distances(layout: LatticeLayout) -> List[float]:
+    return [d for d in nearest_non_incident_edge_distances(layout).values() if d != float('inf')]
+
+
 def node_edge_conflict_score(
     layout: LatticeLayout,
     threshold_factor: float = DEFAULT_THRESHOLD_FACTOR,
@@ -66,12 +70,24 @@ def node_edge_conflict_score(
     account 'is this node's worst threat acceptable', matching the
     perceptual claim in the module docstring.
     '''
-    cover_edges = list(layout.transitive_reduction.edges)
-    if not cover_edges:
+    if not layout.transitive_reduction.edges:
         return 1.0
 
     threshold = layout.average_cover_edge_length() * threshold_factor
-    nearest_distances = [
-        d for d in nearest_non_incident_edge_distances(layout).values() if d != float('inf')
-    ]
-    return distance_conflict_score(nearest_distances, threshold)
+    return distance_conflict_score(_finite_nearest_distances(layout), threshold)
+
+
+def node_edge_conflict_min_score(
+    layout: LatticeLayout,
+    threshold_factor: float = DEFAULT_THRESHOLD_FACTOR,
+) -> float:
+    '''
+    The worst single node's term in :func:`node_edge_conflict_score`: the
+    penalty for the node closest to a non-incident edge, on the same
+    [0, 1] scale as the score, which is the mean of these per-node terms.
+    '''
+    if not layout.transitive_reduction.edges:
+        return 1.0
+
+    threshold = layout.average_cover_edge_length() * threshold_factor
+    return distance_conflict_min_score(_finite_nearest_distances(layout), threshold)

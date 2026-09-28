@@ -11,19 +11,31 @@ import numpy as np
 import pytest
 
 from lattice_metrics.chains import visual_chain_linearity_score
-from lattice_metrics.conflict import distance_conflict_score
-from lattice_metrics.conflict_distance import DEFAULT_THRESHOLD_FACTOR, node_edge_conflict_score
-from lattice_metrics.geometry import point_segment_distance, unsigned_angle_deg
-from lattice_metrics.crossing_angle import crossing_angle_score
-from lattice_metrics.edge_conflict import edge_edge_conflict_score
+from lattice_metrics.conflict import distance_conflict_min_score, distance_conflict_score
+from lattice_metrics.conflict_distance import (
+    DEFAULT_THRESHOLD_FACTOR,
+    nearest_non_incident_edge_distances,
+    node_edge_conflict_min_score,
+    node_edge_conflict_score,
+)
+from lattice_metrics.geometry import find_crossings, point_segment_distance, unsigned_angle_deg
+from lattice_metrics.crossing_angle import crossing_angle_min_score, crossing_angle_score
+from lattice_metrics.edge_conflict import DEFAULT_ANGLE_TOLERANCE as EDGE_CONFLICT_ANGLE_TOLERANCE
+from lattice_metrics.edge_conflict import edge_edge_conflict_min_score, edge_edge_conflict_score
 from lattice_metrics.edge_crossings import edge_crossing_score
 from lattice_metrics.edge_length import edge_length_uniformity_score
 from lattice_metrics.graph_utils import LatticeLayout, freese_ranks
 from lattice_metrics.layering import layer_consistency_score
 from lattice_metrics.nesting import bottleneck_clearance_radius, nested_suitability_score
 from lattice_metrics.node_conflict import DEFAULT_THRESHOLD_FACTOR as NODE_CONFLICT_THRESHOLD_FACTOR
-from lattice_metrics.node_conflict import node_node_conflict_score
-from lattice_metrics.slopes import DEFAULT_ANGLE_TOLERANCE, slope_harmony_score, slope_standard_score
+from lattice_metrics.node_conflict import nearest_node_distances, node_node_conflict_min_score, node_node_conflict_score
+from lattice_metrics.slopes import (
+    DEFAULT_ANGLE_TOLERANCE,
+    edge_min_slope,
+    slope_harmony_score,
+    slope_standard_score,
+    slope_verticality_score,
+)
 from lattice_metrics.symmetry import vertical_axis_balance_score
 
 
@@ -125,6 +137,54 @@ def test_perpendicular_crossing_scores_higher_than_near_parallel():
     assert crossing_angle_score(perpendicular) > crossing_angle_score(near_parallel)
 
 
+def test_crossing_angle_min_score_one_when_no_crossings():
+    layout = layout_of(CHAIN_EDGES, {'a': (0, 3), 'b': (0, 2), 'c': (0, 1), 'd': (0, 0)})
+    assert crossing_angle_min_score(layout) == pytest.approx(1.0)
+
+
+def test_crossing_angle_min_score_is_sharpest_crossing_on_score_scale():
+    '''
+    A right-angle crossing and a far-away near-parallel one: the score is
+    the mean of the per-crossing terms angle / 90, the min score the
+    sharpest crossing's term -- so min <= score, with equality only when
+    every crossing is equally sharp.
+    '''
+    edges = [
+        ('a1', 'a2'), ('b1', 'b2'),  # a right-angle crossing
+        ('c1', 'c2'), ('d1', 'd2'),  # a near-parallel crossing, far away and unrelated
+    ]
+    positions = {
+        'a1': (0, 0), 'a2': (1, 1),
+        'b1': (0, 1), 'b2': (1, 0),
+        'c1': (100, 0), 'c2': (101, 0.02),
+        'd1': (100, 0.02), 'd2': (101, 0),
+    }
+    layout = layout_of(edges, positions)
+    pos = layout.positions
+
+    expected_angles = []
+    for crossing in find_crossings(edges, pos):
+        d1 = pos[crossing.edge_a[1]] - pos[crossing.edge_a[0]]
+        d2 = pos[crossing.edge_b[1]] - pos[crossing.edge_b[0]]
+        angle = unsigned_angle_deg(d1, d2)
+        expected_angles.append(min(angle, 180.0 - angle))
+    assert len(expected_angles) == 2
+    assert min(expected_angles) < 10.0 < max(expected_angles)  # genuinely different severities
+
+    assert crossing_angle_score(layout) == pytest.approx(np.mean(expected_angles) / 90.0)
+    assert crossing_angle_min_score(layout) == pytest.approx(min(expected_angles) / 90.0)
+
+
+def test_crossing_angle_min_score_treats_overlapping_edges_as_worst_case():
+    # a1-a2 and b1-b2 lie on the same line and overlap along a sub-segment
+    # rather than crossing at a single point -- the worst case, per
+    # crossing_angle_score's own docstring.
+    edges = [('a1', 'a2'), ('b1', 'b2')]
+    positions = {'a1': (0, 0), 'a2': (2, 0), 'b1': (1, 0), 'b2': (3, 0)}
+    layout = layout_of(edges, positions)
+    assert crossing_angle_min_score(layout) == pytest.approx(0.0)
+
+
 # -------------------------------------------------------------- layering ---
 
 def test_same_rank_nodes_aligned_scores_higher():
@@ -145,6 +205,22 @@ def test_layer_consistency_uses_freese_rank_not_longest_path():
     positions = {'a': (0, 3), 'b': (0, 2), 'c': (0, 1.5), 'd': (0, 1), 'e': (0, 0)}
     layout = layout_of(UNGRADED_EDGES, positions)
     assert layer_consistency_score(layout) == pytest.approx(1.0)
+
+def test_layer_consistency_penalizes_bad_layout_even_with_all_distinct_ranks():
+    # A chain gives every node a distinct Freese rank, so there is nothing
+    # to compare *within* a rank group -- the score must instead check that
+    # the coordinate tracks rank order/spacing, not just default to 1.0.
+    ranks = freese_ranks(nx.DiGraph(CHAIN_EDGES))
+    assert len(set(ranks.values())) == len(ranks)  # sanity check: no ties
+
+    ordered = layout_of(CHAIN_EDGES, {'a': (0, 3), 'b': (0, 2), 'c': (0, 1), 'd': (0, 0)})
+    scrambled = layout_of(CHAIN_EDGES, {'a': (0, 1), 'b': (0, 3), 'c': (0, 0), 'd': (0, 2)})
+    assert layer_consistency_score(ordered) == pytest.approx(1.0)
+    assert layer_consistency_score(scrambled) < 1.0
+
+def test_layer_consistency_zero_when_distinct_ranks_collapse_to_one_coordinate():
+    layout = layout_of(CHAIN_EDGES, {'a': (0, 0), 'b': (0, 0), 'c': (0, 0), 'd': (0, 0)})
+    assert layer_consistency_score(layout) == pytest.approx(0.0)
 
 # --------------------------------------------------------------- overlap ---
 
@@ -174,6 +250,33 @@ def test_node_edge_conflict_uses_nearest_edge_per_node_not_mean_over_all_pairs()
     ]
     diluted_by_mean_over_all_pairs = distance_conflict_score(all_pairs, threshold)
     assert node_edge_conflict_score(on_edge) < diluted_by_mean_over_all_pairs
+
+
+def test_node_edge_conflict_min_score_one_when_no_conflict():
+    layout = layout_of(DIAMOND_EDGES, {'a': (0, 2), 'b': (-1, 1), 'c': (1, 1), 'd': (0, 0)})
+    assert node_edge_conflict_min_score(layout) == pytest.approx(1.0)
+
+
+def test_node_edge_conflict_min_score_is_worst_node_on_score_scale():
+    '''
+    Two nodes crowd edges to different degrees: the score is the mean of
+    the per-node penalty terms, the min score the worst node's term.
+    '''
+    edges = [('p1', 'p2'), ('p3', 'p4')]
+    positions = {
+        'p1': (-5, 0), 'p2': (5, 0),
+        'p3': (-5, 6), 'p4': (5, 6),
+        'v': (0, 1),  # close to p1-p2
+        'w': (3, 5.8),  # very close to p3-p4
+    }
+    layout = layout_of(edges, positions)
+    threshold = layout.average_cover_edge_length() * DEFAULT_THRESHOLD_FACTOR
+    nearest = [d for d in nearest_non_incident_edge_distances(layout).values() if d != float('inf')]
+
+    terms = [1.0 - max(0.0, 1.0 - d / threshold) ** 2 for d in nearest]
+    assert min(terms) < max(t for t in terms if t < 1.0) < 1.0  # two conflicts, different severities
+    assert node_edge_conflict_score(layout) == pytest.approx(np.mean(terms))
+    assert node_edge_conflict_min_score(layout) == pytest.approx(min(terms))
 
 
 # --------------------------------------------------------- node overlap ---
@@ -224,6 +327,31 @@ def test_node_node_conflict_uses_nearest_node_per_node_not_mean_over_all_pairs()
     assert node_node_conflict_score(layout) < diluted_by_mean_over_all_pairs
 
 
+def test_node_node_conflict_min_score_one_when_no_conflict():
+    layout = layout_of(DIAMOND_EDGES, {'a': (0, 0), 'b': (-2, 2), 'c': (2, 2), 'd': (0, 4)})
+    assert node_node_conflict_min_score(layout) == pytest.approx(1.0)
+
+
+def test_node_node_conflict_min_score_is_closest_pair_on_score_scale():
+    '''
+    Two node pairs overlap to different degrees: the score is the mean of
+    the per-node penalty terms, the min score the closest pair's term.
+    '''
+    edges = [('w1', 'w2')]
+    positions = {
+        'w1': (0, 0), 'w2': (0, 10),
+        'z1': (20, 20), 'z2': (20.5, 20),  # close
+        'y1': (40, 40), 'y2': (43, 40),  # less close
+    }
+    layout = layout_of(edges, positions)
+    threshold = layout.average_cover_edge_length() * NODE_CONFLICT_THRESHOLD_FACTOR
+
+    terms = [1.0 - max(0.0, 1.0 - d / threshold) ** 2 for d in nearest_node_distances(layout)]
+    assert min(terms) < max(t for t in terms if t < 1.0) < 1.0  # two conflicts, different severities
+    assert node_node_conflict_score(layout) == pytest.approx(np.mean(terms))
+    assert node_node_conflict_min_score(layout) == pytest.approx(min(terms))
+
+
 # ----------------------------------------------------------------- slope ---
 
 def test_uniform_slopes_score_higher_than_mixed():
@@ -240,6 +368,97 @@ def test_forty_five_degree_edges_are_maximally_standard():
 def test_off_canonical_slope_scores_below_one():
     layout = layout_of([('a', 'b')], {'a': (0, 1), 'b': (2, 0.3)})
     assert slope_standard_score(layout) < 1.0
+
+
+def test_horizontal_edge_is_least_standard():
+    # 0 degrees is not canonical; the nearest canonical angle is arctan(4/5),
+    # which is also the worst-case deviation, so a horizontal edge scores 0.
+    layout = layout_of([('a', 'b')], {'a': (0, 0), 'b': (1, 0)})
+    assert slope_standard_score(layout) == pytest.approx(0.0)
+
+
+def test_slope_standard_known_value():
+    # Edges at 45 (deviation 0) and arctan(4/5)/2 (deviation half the worst
+    # case): mean normalized deviation 1/4.
+    half = np.arctan(4 / 5) / 2
+    layout = layout_of(
+        [('a', 'b'), ('c', 'd')],
+        {'a': (0, 1), 'b': (1, 0), 'c': (0, np.sin(half)), 'd': (np.cos(half), 0)},
+    )
+    assert slope_standard_score(layout) == pytest.approx(0.75)
+
+
+def test_single_canonical_angle_uses_farther_end_as_worst_case():
+    # With canonical {45}, the worst deviation is 45 (at 0 or 90), not 90.
+    layout = layout_of([('a', 'b')], {'a': (0, 0), 'b': (1, 0)})
+    assert slope_standard_score(layout, canonical_angles=(45.0,)) == pytest.approx(0.0)
+
+
+def test_edge_min_slope_none_when_no_edges():
+    layout = layout_of([], {'a': (0, 0)})
+    assert edge_min_slope(layout) is None
+
+
+def test_edge_min_slope_reports_min_angle_from_horizontal():
+    '''
+    Neither slope_harmony_score (only cares whether edges agree with each
+    other) nor slope_standard_score (averages over all edges) flags a
+    single near-horizontal edge on its own -- the minimum here is what actually surfaces that risk, since a
+    near-horizontal edge in a Hasse diagram makes it hard to tell which
+    endpoint sits above the other in the order.
+    '''
+    edges = [('r', 'a'), ('r', 'b'), ('r', 'c')]
+    positions = {'r': (0, 0), 'a': (10, 10), 'b': (10, 1), 'c': (1, 10)}
+    layout = layout_of(edges, positions)
+    pos = layout.positions
+
+    expected_angles = [
+        float(np.degrees(np.arctan2(abs(pos[u][1] - pos[v][1]), abs(pos[u][0] - pos[v][0]))))
+        for u, v in edges
+    ]
+    minimum = edge_min_slope(layout)
+    assert minimum == pytest.approx(min(expected_angles))
+    assert minimum < 10.0  # (r, b) is nearly horizontal and should be what this flags
+
+
+def test_slope_verticality_score_no_edges_is_perfect():
+    layout = layout_of([], {'a': (0, 0)})
+    assert slope_verticality_score(layout) == pytest.approx(1.0)
+
+
+def test_slope_verticality_score_vertical_edge_is_perfect():
+    layout = layout_of([('a', 'b')], {'a': (0, 1), 'b': (0, 0)})
+    assert slope_verticality_score(layout) == pytest.approx(1.0)
+
+
+def test_slope_verticality_score_horizontal_edge_is_zero():
+    layout = layout_of([('a', 'b')], {'a': (0, 0.001), 'b': (1, 0)})
+    assert slope_verticality_score(layout) == pytest.approx(0.0, abs=2e-3)
+
+
+def test_slope_verticality_score_matches_sine_of_doubled_clamped_edge_min_slope():
+    edges = [('r', 'a'), ('r', 'b'), ('r', 'c')]
+    positions = {'r': (0, 0), 'a': (10, 10), 'b': (10, 1), 'c': (1, 10)}
+    layout = layout_of(edges, positions)
+    clamped = min(edge_min_slope(layout), 45.0)
+    expected = np.sin(np.radians(2.0 * clamped))
+    assert slope_verticality_score(layout) == pytest.approx(expected)
+
+
+def test_slope_verticality_score_forty_five_degrees_is_perfect():
+    # A 45-degree edge already reads as unambiguous, so it should score
+    # a full 1.0 rather than being flatly halved by a linear theta/90
+    # degree ratio.
+    layout = layout_of([('a', 'b')], {'a': (0, 1), 'b': (1, 0)})
+    assert slope_verticality_score(layout) == pytest.approx(1.0)
+
+
+def test_slope_verticality_score_steeper_than_forty_five_stays_perfect():
+    # Angles beyond 45 degrees are clamped before doubling, so a
+    # 60-degree edge (which would otherwise fall past the sin(2*theta)
+    # peak) still scores a full 1.0, matching a vertical edge.
+    layout = layout_of([('a', 'b')], {'a': (0, np.sqrt(3)), 'b': (1, 0)})
+    assert slope_verticality_score(layout) == pytest.approx(1.0)
 
 
 # ---------------------------------------------------------- edge length ---
@@ -346,9 +565,47 @@ def test_edge_edge_conflict_uses_min_pair_per_vertex_not_mean_over_all_pairs():
 
     all_pair_angles = [unsigned_angle_deg(v1, v2) for v1, v2 in combinations(vectors, 2)]
     diluted_by_mean_over_all_pairs = distance_conflict_score(
-        all_pair_angles, DEFAULT_ANGLE_TOLERANCE, floor=0.0,
+        all_pair_angles, EDGE_CONFLICT_ANGLE_TOLERANCE, floor=0.0,
     )
     assert edge_edge_conflict_score(layout) < diluted_by_mean_over_all_pairs
+
+
+def test_edge_edge_conflict_min_score_one_when_no_conflict():
+    layout = layout_of(DIAMOND_EDGES, {'a': (0, 0), 'b': (-1, 1), 'c': (1, 1), 'd': (0, 2)})
+    assert edge_edge_conflict_min_score(layout) == pytest.approx(1.0)
+
+
+def test_edge_edge_conflict_min_score_is_narrowest_vertex_on_score_scale():
+    '''
+    Two vertices with near-parallel incident edges of different severity:
+    the score is the mean of the per-vertex penalty terms, the min score
+    the narrowest vertex's term.
+    '''
+    edges = [('s', 'p1'), ('s', 'p2'), ('t', 'q1'), ('t', 'q2')]
+    positions = {
+        's': (0, 0), 'p1': (1, 10), 'p2': (1.1, 10),  # ~0.6 degrees apart
+        't': (50, 0), 'q1': (51, 10), 'q2': (51.5, 10),  # ~2.8 degrees apart
+    }
+    layout = layout_of(edges, positions)
+    pos = layout.positions
+
+    def narrowest(v, a, b):
+        return unsigned_angle_deg(pos[a] - pos[v], pos[b] - pos[v])
+
+    # p1, p2, q1, q2 have a single incident edge and are skipped
+    angles = [narrowest('s', 'p1', 'p2'), narrowest('t', 'q1', 'q2')]
+    terms = [1.0 - max(0.0, 1.0 - a / EDGE_CONFLICT_ANGLE_TOLERANCE) ** 2 for a in angles]
+    assert terms[0] < terms[1] < 1.0
+    assert edge_edge_conflict_score(layout) == pytest.approx(np.mean(terms))
+    assert edge_edge_conflict_min_score(layout) == pytest.approx(min(terms))
+
+
+def test_distance_conflict_min_score_is_min_of_mean_terms():
+    distances = [0.0, 0.25, 0.5, 2.0]
+    terms = [0.0, 1.0 - 0.75 ** 2, 1.0 - 0.5 ** 2, 1.0]
+    assert distance_conflict_score(distances, threshold=1.0) == pytest.approx(np.mean(terms))
+    assert distance_conflict_min_score(distances, threshold=1.0) == pytest.approx(0.0)
+    assert distance_conflict_min_score([], threshold=1.0) == pytest.approx(1.0)
 
 
 def test_no_vertex_with_two_incident_edges_returns_one():
@@ -381,16 +638,31 @@ def test_node_on_top_of_edge_has_lower_bottleneck_clearance():
     assert bottleneck_clearance_radius(on_edge) < bottleneck_clearance_radius(clear)
 
 
-def test_both_already_overlapping_layouts_still_ranked_by_severity():
+def test_nesting_ranks_near_overlap_above_coincidence_and_zero_at_coincidence():
     # b and c are pulled onto the same point in 'severe', merely very close
-    # in 'mild' -- both have a negative bottleneck clearance (an outright
-    # overlap before any nesting is added), but 'mild' overlaps less.
+    # in 'mild'. Nodes are points, so the bottleneck clearance bottoms out
+    # at exactly 0 when two of them coincide -- the one fully conflicting
+    # case -- and near-overlaps still score strictly above it.
     mild = layout_of(DIAMOND_EDGES, {'a': (0, 4), 'b': (-0.05, 2), 'c': (0.05, 2), 'd': (0, 0)})
     severe = layout_of(DIAMOND_EDGES, {'a': (0, 4), 'b': (0, 2), 'c': (0, 2), 'd': (0, 0)})
-    assert bottleneck_clearance_radius(mild) < 0
-    assert bottleneck_clearance_radius(severe) < 0
-    assert nested_suitability_score(severe) < nested_suitability_score(mild)
+    assert bottleneck_clearance_radius(severe) == pytest.approx(0.0)
+    assert bottleneck_clearance_radius(mild) > 0.0
+    assert nested_suitability_score(severe) == pytest.approx(0.0)
     assert nested_suitability_score(mild) > 0.0
+
+
+def test_nested_suitability_matches_hand_computed_value():
+    '''
+    Diamond with b and c pulled to within 0.4 of each other. All four cover
+    edges have length sqrt(0.2^2 + 2^2), so r_min_nest = that / 2. The
+    bottleneck is the b-c pair: d_node / 2 = 0.2, while b's nearest
+    non-incident edge (a-c) is ~0.398 away and a and d are ~2 from
+    everything, so R_uniform = 0.2.
+    '''
+    layout = layout_of(DIAMOND_EDGES, {'a': (0, 4), 'b': (-0.2, 2), 'c': (0.2, 2), 'd': (0, 0)})
+    r_min_nest = np.hypot(0.2, 2.0) / 2
+    assert bottleneck_clearance_radius(layout) == pytest.approx(0.2)
+    assert nested_suitability_score(layout) == pytest.approx(1.0 - (1.0 - 0.2 / r_min_nest) ** 2)
 
 
 # -------------------------------------------------------------- symmetry ---

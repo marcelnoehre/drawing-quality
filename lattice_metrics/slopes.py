@@ -8,14 +8,13 @@ matters, not which side it leans to.
 '''
 from __future__ import annotations
 
-from typing import Sequence, Tuple
+from typing import Optional, Sequence, Tuple
 
 import numpy as np
 
 from .graph_utils import LatticeLayout, group_within_tolerance
 
 DEFAULT_CANONICAL_ANGLES = (
-    0.0,
     float(np.degrees(np.arctan(4 / 5))),
     45.0,
     float(np.degrees(np.arctan(3 / 2))),
@@ -47,6 +46,57 @@ def edge_angles_and_lengths(layout: LatticeLayout) -> Tuple[np.ndarray, np.ndarr
 
 def _unsigned_edge_angles(layout: LatticeLayout) -> np.ndarray:
     return edge_angles_and_lengths(layout)[0]
+
+
+def edge_min_slope(layout: LatticeLayout) -> Optional[float]:
+    '''
+    Minimum edge angle from horizontal (in [0, 90]), or ``None`` if the
+    drawing has no (non-degenerate) edges.
+
+    A companion to slope_harmony_score/slope_standard_score's squashed
+    numbers, neither of which flags a single near-horizontal edge on its
+    own: slope_harmony only cares whether edges agree with *each other*
+    (a drawing where every edge is equally near-horizontal scores a
+    perfect 1.0), and slope_standard averages over all edges, so one
+    horizontal edge among many canonical ones barely moves it. A
+    near-horizontal edge is its own distinct
+    legibility problem in a Hasse diagram -- the vertical position is
+    what signals which endpoint sits above the other in the order -- so
+    the single shallowest edge in the drawing is what actually surfaces
+    that risk; the average slope has no comparable diagnostic meaning,
+    since a merely middling average says nothing about whether any one
+    edge is dangerously close to horizontal.
+    '''
+    angles = _unsigned_edge_angles(layout)
+    if len(angles) == 0:
+        return None
+    return float(np.min(angles))
+
+
+def slope_verticality_score(layout: LatticeLayout) -> float:
+    '''
+    1.0 = every edge is drawn at least 45 degrees from horizontal;
+    0.0 = some edge is drawn perfectly horizontal. Returns 1.0 for
+    layouts with no (non-degenerate) edges, since there is nothing to
+    penalize.
+
+    The [0, 1]-normalized counterpart to edge_min_slope, via
+    sin(2 * min(theta_min, 45deg)) rather than a linear theta_min / 90
+    degree ratio. A 45-degree edge already reads as unambiguous in
+    practice -- there is no further legibility to gain from steepening
+    it past that point -- so the angle is clamped to 45deg before
+    doubling: the score rises from 0 to 1 as theta_min goes from 0 to
+    45deg, then stays pinned at 1.0 all the way to 90deg. Doubling the
+    (clamped) angle before taking sin(), rather than using theta_min
+    directly, is what makes that rise front-loaded -- e.g. a 30-degree
+    edge already scores sin(60deg) ~= 0.87 -- so only edges flattening
+    toward horizontal are penalized at all.
+    '''
+    minimum = edge_min_slope(layout)
+    if minimum is None:
+        return 1.0
+    clamped = min(minimum, 45.0)
+    return float(np.sin(np.radians(2.0 * clamped)))
 
 
 def slope_harmony_score(layout: LatticeLayout, angle_tolerance: float = DEFAULT_ANGLE_TOLERANCE) -> float:
@@ -84,20 +134,18 @@ def slope_standard_score(
 ) -> float:
     '''
     1.0 = every edge's slope exactly matches one of ``canonical_angles``;
-    0.0 = every edge sits as far as possible (in the worst case, halfway
-    between two canonical angles) from all of them.
+    0.0 = every edge sits as far as possible from all of them -- halfway
+    between two neighbouring canonical angles, or at 0 / 90 degrees when
+    that is farther from the nearest one (with the defaults, a horizontal
+    edge is the worst case, arctan(4/5) ~ 38.7 degrees away).
     '''
     angles = _unsigned_edge_angles(layout)
     if len(angles) == 0:
         return 1.0
 
     canonicals = np.sort(np.asarray(canonical_angles, dtype=float))
-    if len(canonicals) == 1:
-        max_dev = 90.0
-    else:
-        gaps = np.diff(canonicals)
-        max_dev = float(np.max(gaps)) / 2.0
-        max_dev = max(max_dev, float(canonicals[0]), float(90.0 - canonicals[-1]))
+    half_gaps = np.diff(canonicals) / 2.0
+    max_dev = max(float(canonicals[0]), float(90.0 - canonicals[-1]), *half_gaps)
 
     deviations = np.array([np.min(np.abs(a - canonicals)) for a in angles])
     score = 1.0 - float(np.mean(deviations)) / max_dev

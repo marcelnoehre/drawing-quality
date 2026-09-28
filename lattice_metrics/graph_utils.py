@@ -131,13 +131,6 @@ def bottom_node(transitive_closure: nx.DiGraph) -> Hashable:
     return bottoms[0]
 
 
-def rank_groups(rank: Dict[Hashable, int]) -> Dict[int, List[Hashable]]:
-    groups: Dict[int, List[Hashable]] = {}
-    for node, r in rank.items():
-        groups.setdefault(r, []).append(node)
-    return groups
-
-
 def freese_ranks(graph: nx.DiGraph) -> Dict[Hashable, int]:
     '''
     Freese's rank function (Freese, "Automated Lattice Drawing", ICFCA 2004,
@@ -183,16 +176,22 @@ def group_within_tolerance(sorted_values: np.ndarray, tolerance: float) -> List[
     value is more than ``tolerance`` past the *current group's first*
     value, not just its most recently added one.
 
-    This is complete-linkage clustering -- every pair of values within a
-    group is guaranteed to be within ``tolerance`` of each other -- rather
-    than single-linkage/DBSCAN-style chaining, which only bounds gaps
-    between consecutive values and lets a group's total span drift
+    This enforces the complete-linkage property -- every pair of values
+    within a group is guaranteed to be within ``tolerance`` of each other
+    -- rather than single-linkage/DBSCAN-style chaining, which only bounds
+    gaps between consecutive values and lets a group's total span drift
     arbitrarily far through a chain of small steps (e.g. tolerance=5 would
     single-link 0, 4, 8, 12, ... into one group despite the ends being far
-    apart). The greedy left-to-right sweep below is optimal -- it minimizes
-    the number of groups -- for this bounded-diameter partition of sorted
-    1-D data: extending the current group as far as the diameter allows is
-    never worse than closing it early.
+    apart). It is not the textbook bottom-up complete-linkage algorithm
+    (which merges the globally closest pair by max pairwise distance at
+    each step); on ties, that procedure can assign the same values to
+    differently-shaped groups of the same count. The greedy left-to-right
+    sweep below instead compares each candidate to the current group's
+    first (smallest) member, which is always that group's prospective
+    diameter, and is optimal -- it minimizes the number of groups -- for
+    this bounded-diameter partition of sorted 1-D data: extending the
+    current group as far as the diameter allows is never worse than
+    closing it early.
     '''
     groups = [[sorted_values[0]]]
     for value in sorted_values[1:]:
