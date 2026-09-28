@@ -32,8 +32,11 @@ GRAPHML_NS = 'http://graphml.graphdrawing.org/xmlns'
 XSI_NS = 'http://www.w3.org/2001/XMLSchema-instance'
 
 # starting embedding dimension for the dimensional-reduction force layout,
-# stepped down to 2 via PCA; matches redraw's own algorithm.py:main() example
+# stepped down to 2 via PCA; matches redraw's own algorithm.py:main() example.
+# If redraw fails at a dimension, it is retried one dimension lower, down to
+# MIN_DIMENSION.
 DIMENSION = 5
+MIN_DIMENSION = 2
 
 def slug(stem: str) -> str:
     return stem.lower().replace('-', '_')
@@ -73,6 +76,15 @@ def write_graphml(order: 'redraw_algorithm.util.Order', path: Path) -> None:
     indent(tree, space='  ')
     tree.write(path, encoding='utf-8', xml_declaration=True)
 
+def compute_drawing(cxt_path: Path) -> 'redraw_algorithm.util.Order':
+    for dimension in range(DIMENSION, MIN_DIMENSION - 1, -1):
+        try:
+            return redraw_algorithm.compute_drawing(str(cxt_path), dimension, False)
+        except Exception as exc:
+            if dimension == MIN_DIMENSION:
+                raise
+            print(f'{cxt_path.name}: failed at dimension {dimension} ({exc}), retrying with {dimension - 1}')
+
 def main() -> None:
     for dataset, contexts_dir in CONTEXT_DIRS.items():
         graphml_dir = GRAPHML_ROOT / dataset
@@ -98,7 +110,7 @@ def main() -> None:
                 continue
 
             try:
-                order = redraw_algorithm.compute_drawing(str(cxt_path), DIMENSION, False)
+                order = compute_drawing(cxt_path)
             except Exception as exc:
                 print(f'skipped {cxt_path.name}: {exc}')
                 continue
