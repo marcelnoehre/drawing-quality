@@ -4,6 +4,7 @@ import math
 import networkx as nx
 import odis
 
+from collections import Counter
 from dataclasses import dataclass, field
 from fractions import Fraction
 from itertools import combinations
@@ -40,21 +41,30 @@ class Args:
         these.
     max_search_calls : int
         Not part of the paper: a hard cap on the number of `_next` calls
-        (i.e. backtracking search nodes) performed before giving up. The
-        paper's own pruning (§4.2) keeps the search tractable in a fast,
-        compiled implementation; in this pure-Python reference
-        implementation a context with many attributes relative to
-        concepts (so that collisions among the few candidate x-offsets
+        (i.e. backtracking search nodes) performed in each pass before
+        giving up on it. The paper's own pruning (§4.2) keeps the search
+        tractable in a fast, compiled implementation; in this pure-Python
+        reference implementation a context with many attributes relative
+        to concepts (so that collisions among the few candidate x-offsets
         only become likely very late in the attribute order) can make the
         search tree explode long before `max_solutions` satisfactory
         diagrams are found. This cap turns that into a clear failure
-        instead of an unbounded hang.
+        instead of an unbounded hang. It is applied per pass, so that a
+        pass thrashing on a too-small offset pool does not starve the
+        later passes with larger pools.
+    fallback_passes : int
+        Not part of the paper: if the `n2` passes find no solution at
+        all, up to this many further passes (each making `n1` more
+        candidate offsets available, exactly like the paper's own passes)
+        are run until one finds a solution. 0 keeps the paper's search
+        unchanged. `self.passes` records how many passes were run.
     '''
     n1: int = 5
     n2: int = 3
     max_solutions: int = 500
     top_n: int = 5
     max_search_calls: int = 300_000
+    fallback_passes: int = 0
 
 
 @dataclass
@@ -255,16 +265,14 @@ class ColeDucrouEklund():
         needed by the metrics of §4.3: the top/bottom concepts, the
         meet-irreducible concepts (those with exactly one parent -- the
         standard characterisation of meet-irreducibility in a finite
-        lattice), the maximal chains from top to bottom (for the average
-        path width metric), and every (child, parent, grandparent) /
+        lattice), a top-down topological order of the concepts (for the
+        average path width metric), and every (child, parent, grandparent) /
         (child, parent, grandparent, great-grandparent) run of consecutive
         cover edges (for the two-/three-chain metrics).'''
         self._top = next(a for a in self.concepts if not self.parents(a))
         self._bottom = next(a for a in self.concepts if not self.children(a))
         self._meet_irreducibles = frozenset(a for a in self.concepts if len(self.parents(a)) == 1)
-        self._maximal_chains: List[List[int]] = list(
-            nx.all_simple_paths(self._cover_digraph_, self._top, self._bottom)
-        )
+        self._topological_order: List[int] = list(nx.topological_sort(self._cover_digraph_))
         self._two_chain_triples: List[Tuple[int, int, int]] = [
             (c, p, g)
             for p in self.concepts
@@ -300,9 +308,10 @@ class ColeDucrouEklund():
         The pool of n1*n2 candidate x-offsets, vec_i = (-1)^i * floor(i/2)
         for i = 1..n1*n2 (§4.2): 0, 1, -1, 2, -2, 3, -3, ... `self._offsets`
         is 1-indexed (index 0 unused) to match the 1-based candidate
-        indices used throughout the search.
+        indices used throughout the search. The pool is extended by n1
+        offsets for each of the `fallback_passes`.
         '''
-        total = self.args.n1 * self.args.n2
+        total = self.args.n1 * (self.args.n2 + self.args.fallback_passes)
         self._offsets: List[int] = [0] + [((-1) ** i) * (i // 2) for i in range(1, total + 1)]
 
     def _build_subcontexts(self):
@@ -408,14 +417,19 @@ class ColeDucrouEklund():
         attribute at a time, from 1..base, pruning any extension that
         makes pos_k unsatisfactory; once v assigns all `num_attr`
         attributes, keep it as a solution if it has no node-line overlap.
-        Also aborts once `max_search_calls` search nodes have been visited
-        (see `Args.max_search_calls`).
+        An assignment already stored by an earlier pass (every pass
+        re-explores the smaller pools of the passes before it) is not
+        stored again. Also aborts once `max_search_calls` search nodes
+        have been visited in this pass (see `Args.max_search_calls`).
         '''
         self._search_calls += 1
         if self._search_calls > self.args.max_search_calls:
             return
 
         if len(v) == num_attr:
+            if tuple(v) in self._found:
+                return
+            self._found.add(tuple(v))
             x = self._positions(v)
             if not self._has_line_overlap(x):
                 self._solutions.append(_Diagram(v=list(v), x=x))
@@ -433,21 +447,29 @@ class ColeDucrouEklund():
     def _search(self) -> List[_Diagram]:
         '''Fig. 2's `solutions`: run `_next` for n2 passes, the i'th
         allowing candidate offsets 1..i*n1, until `max_solutions`
-        satisfactory diagrams have been collected (or `max_search_calls`
-        search nodes have been visited, see `Args.max_search_calls`).'''
+        satisfactory diagrams have been collected (each pass visiting at
+        most `max_search_calls` search nodes, see `Args.max_search_calls`).
+        If no pass found a solution, up to `fallback_passes` further passes
+        are run until one does (see `Args.fallback_passes`).'''
         N = len(self.attribute_order)
         self._solution_count = 0
-        self._search_calls = 0
         self._solutions: List[_Diagram] = []
-        for i in range(1, self.args.n2 + 1):
+        self._found: set = set()
+        self.passes = 0
+        for i in range(1, self.args.n2 + self.args.fallback_passes + 1):
+            if i > self.args.n2 and self._solutions:
+                break
+            self._search_calls = 0
             self._next([], N, i * self.args.n1)
-            if self._solution_count >= self.args.max_solutions or self._search_calls > self.args.max_search_calls:
+            self.passes = i
+            if self._solution_count >= self.args.max_solutions:
                 break
         if not self._solutions:
             raise RuntimeError(
-                'no satisfactory layer diagram found within the candidate '
-                'offset pool, max_solutions and max_search_calls; try '
-                'increasing n1, n2, max_solutions or max_search_calls'
+                f'no satisfactory layer diagram found within {self.passes} '
+                f'passes (candidate offset pool of {self.passes * self.args.n1}), '
+                f'max_solutions and max_search_calls per pass; try increasing '
+                f'n1, n2, fallback_passes, max_solutions or max_search_calls'
             )
         return self._solutions
 
@@ -507,11 +529,24 @@ class ColeDucrouEklund():
     def _average_path_width(self, x: Dict[int, int]) -> float:
         '''Average path width (§4.3): for each maximal chain (path from
         top to bottom in the cover digraph), max(x) - min(x) over its
-        concepts, averaged over all such chains.'''
-        if not self._maximal_chains:
-            return 0.0
-        widths = [max(x[a] for a in chain) - min(x[a] for a in chain) for chain in self._maximal_chains]
-        return sum(widths) / len(widths)
+        concepts, averaged over all such chains.
+
+        The number of maximal chains can be exponential in the number of
+        concepts, so they are not enumerated. Instead, every concept a
+        carries the number of chains from the top down to a for each
+        (min x, max x) pair seen along the way, propagated top-down along
+        cover edges. The chains that reach the bottom then give the exact
+        average. This takes O(|edges| * R^2) steps, where R is the number
+        of distinct x-positions.'''
+        chains: Dict[int, Counter] = {a: Counter() for a in self.concepts}
+        chains[self._top][(x[self._top], x[self._top])] = 1
+        for p in self._topological_order:
+            for c in self.children(p):
+                xc = x[c]
+                for (lo, hi), count in chains[p].items():
+                    chains[c][(min(lo, xc), max(hi, xc))] += count
+        at_bottom = chains[self._bottom]
+        return sum((hi - lo) * count for (lo, hi), count in at_bottom.items()) / sum(at_bottom.values())
 
     def _child_balance(self, x: Dict[int, int]) -> int:
         '''Child balance (§4.3): number of unbalanced children, where a
@@ -546,11 +581,12 @@ class ColeDucrouEklund():
         '''Sum of logs of number of elements at average points (§4.3):
         sum over unordered pairs a, b of logth(count_ave_points(a, b)),
         logth(n) = log(n) if n >= 1 else 0.'''
-        xs = list(x.values())
+        at_x = Counter(x.values())
         total = 0.0
         for a, b in combinations(self.concepts, 2):
-            avg = (x[a] + x[b]) / 2
-            count = sum(1 for v in xs if v == avg)
+            if (x[a] + x[b]) % 2:
+                continue
+            count = at_x[(x[a] + x[b]) // 2]
             if count >= 1:
                 total += math.log(count)
         return total

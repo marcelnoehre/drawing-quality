@@ -97,7 +97,7 @@ def pending_contexts() -> list[tuple[str, Path]]:
                 pending.append((dataset, cxt_path))
     return pending
 
-def generate(dataset: str, cxt_path: Path) -> None:
+def generate(dataset: str, cxt_path: Path) -> bool:
     name = slug(cxt_path.stem)
     graphml_dir = GRAPHML_ROOT / dataset
     drawings_dir = DRAWINGS_ROOT / dataset
@@ -111,13 +111,13 @@ def generate(dataset: str, cxt_path: Path) -> None:
             f'skipped {cxt_path.name}: '
             f'{graphml_path.relative_to(REPO_ROOT)} already exists'
         )
-        return
+        return True
 
     try:
         order = compute_drawing(cxt_path)
     except Exception as exc:
         print(f'skipped {cxt_path.name}: {exc}')
-        return
+        return False
     write_graphml(order, graphml_path)
     draw_graphml(graphml_path, pdf_path, title=name)
     print(
@@ -125,6 +125,7 @@ def generate(dataset: str, cxt_path: Path) -> None:
         f'{graphml_path.relative_to(REPO_ROOT)}, '
         f'{pdf_path.relative_to(REPO_ROOT)}'
     )
+    return True
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -141,7 +142,8 @@ def main() -> None:
     if args.context is not None:
         if args.dataset is None:
             parser.error('--context requires --dataset')
-        generate(args.dataset, args.context.resolve())
+        if not generate(args.dataset, args.context.resolve()):
+            sys.exit(1)
         return
 
     for dataset, contexts_dir in CONTEXT_DIRS.items():

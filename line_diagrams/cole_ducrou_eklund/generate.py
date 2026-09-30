@@ -25,6 +25,11 @@ DRAWINGS_ROOT = REPO_ROOT / 'drawings' / 'cole_ducrou_eklund'
 GRAPHML_NS = 'http://graphml.graphdrawing.org/xmlns'
 XSI_NS = 'http://www.w3.org/2001/XMLSchema-instance'
 
+# If the paper's n2 passes find no layer diagram, up to FALLBACK_PASSES
+# further passes are run, each making n1 more candidate x-offsets
+# available, until one finds a diagram (see Args.fallback_passes).
+FALLBACK_PASSES = 3
+
 def slug(stem: str) -> str:
     return stem.lower().replace('-', '_')
 
@@ -64,7 +69,7 @@ def pending_contexts() -> list[tuple[str, Path]]:
                 pending.append((dataset, cxt_path))
     return pending
 
-def generate(dataset: str, cxt_path: Path) -> None:
+def generate(dataset: str, cxt_path: Path) -> bool:
     name = slug(cxt_path.stem)
     graphml_dir = GRAPHML_ROOT / dataset
     drawings_dir = DRAWINGS_ROOT / dataset
@@ -78,14 +83,16 @@ def generate(dataset: str, cxt_path: Path) -> None:
             f'skipped {cxt_path.name}: '
             f'{graphml_path.relative_to(REPO_ROOT)} already exists'
         )
-        return
+        return True
 
     context = odis.FormalContext.from_file(str(cxt_path))
     try:
-        layout = ColeDucrouEklund(context)
+        layout = ColeDucrouEklund(context, {'fallback_passes': FALLBACK_PASSES})
     except RuntimeError as e:
         print(f'skipped {cxt_path.name}: {e}')
-        return
+        return False
+    if layout.passes > layout.args.n2:
+        print(f'{cxt_path.name}: no diagram within {layout.args.n2} passes, found one in fallback pass {layout.passes}')
     write_graphml(layout, graphml_path)
     draw_graphml(graphml_path, pdf_path, title=name)
     print(
@@ -93,6 +100,7 @@ def generate(dataset: str, cxt_path: Path) -> None:
         f'{graphml_path.relative_to(REPO_ROOT)}, '
         f'{pdf_path.relative_to(REPO_ROOT)}'
     )
+    return True
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -109,7 +117,8 @@ def main() -> None:
     if args.context is not None:
         if args.dataset is None:
             parser.error('--context requires --dataset')
-        generate(args.dataset, args.context.resolve())
+        if not generate(args.dataset, args.context.resolve()):
+            sys.exit(1)
         return
 
     for dataset, contexts_dir in CONTEXT_DIRS.items():
