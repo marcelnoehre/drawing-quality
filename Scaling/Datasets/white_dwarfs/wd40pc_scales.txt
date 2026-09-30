@@ -1,0 +1,70 @@
+# Scales for wd40pc.cxt  (1078 objects, 28 attributes, 728 concepts)
+
+[W1 Spectral features]  (30 concepts)
+  hydrogen lines (A)
+  helium lines (B)
+  featureless spectrum (DC)
+  carbon features (Q)
+  metal lines (Z, polluted)
+  magnetic (H or P)
+  emission lines (e)
+  peculiar, warm or uncertain type
+
+[W2 Atmosphere and fit]  (7 concepts)
+  hydrogen-dominated atmosphere (fit)
+  Gaia parameters available
+  IR-faint (collision-induced absorption)
+
+[W3 Mass (interordinal)]  (6 concepts)
+  Gaia parameters available
+  mass < 0.45 Msun (low mass)
+  mass > 0.9 Msun (massive)
+  mass > 1.1 Msun (ultramassive)
+
+[W4 Temperature (ordinal)]  (5 concepts)
+  Gaia parameters available
+  Teff > 5000 K
+  Teff > 10500 K
+  Teff > 12500 K
+
+[W5 Cooling age (ordinal)]  (5 concepts)
+  Gaia parameters available
+  cooling age > 0.1 Gyr
+  cooling age > 1 Gyr
+  cooling age > 10 Gyr
+
+[W6 Binarity]  (13 concepts)
+  in wide binary or multiple (A6)
+  wide main-sequence companion
+  wide white-dwarf companion
+  wide brown-dwarf companion
+  wide system with >=3 members
+  unresolved binary evidence (DD or Gaia orbit)
+
+[W7 Observational]  (3 concepts)
+  within 20 pc
+  within 10 pc
+
+[X1 Spectral evolution along the cooling sequence]  (40 concepts)
+  hydrogen lines (A)
+  featureless spectrum (DC)
+  carbon features (Q)
+  metal lines (Z, polluted)
+  hydrogen-dominated atmosphere (fit)
+  Teff > 5000 K
+  Teff > 10500 K
+  Teff > 12500 K
+
+[X2 Binary-evolution and merger signatures]  (23 concepts)
+  mass < 0.45 Msun (low mass)
+  mass > 0.9 Msun (massive)
+  mass > 1.1 Msun (ultramassive)
+  magnetic (H or P)
+  peculiar, warm or uncertain type
+  unresolved binary evidence (DD or Gaia orbit)
+  wide white-dwarf companion
+
+Meta-groups (scales may recur):
+  N1 Intrinsic properties: W1 Spectral features; W3 Mass (interordinal); W4 Temperature (ordinal); W5 Cooling age (ordinal); X1 Spectral evolution along the cooling sequence   -> 19 attributes, 321 concepts
+  N2 Binarity and evolutionary history: W6 Binarity; X2 Binary-evolution and merger signatures   -> 11 attributes, 40 concepts
+  N3 Observation and measurement: W2 Atmosphere and fit; W7 Observational   -> 5 attributes, 17 concepts

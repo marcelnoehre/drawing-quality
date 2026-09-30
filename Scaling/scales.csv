@@ -1,0 +1,27 @@
+context,scale,kind,chain,chain_step,n_scale_attrs,n_concepts,width,height,incomparable_pairs,drawable,description
+instruments,excitation,facet,,,13,21,13,5,154,True,How the sound is set going.
+instruments,capability,facet,,,5,13,4,6,24,True,What the instrument can play.
+instruments,practice,facet,,,7,46,16,8,695,True,"Where and how it is played, including posture and mobility."
+instruments,making,facet,,,7,17,6,6,73,True,"What it is made of, where it came from, whether it needs power."
+instruments,family-excitation,chain,hornbostel-sachs,1,19,27,15,6,260,True,Each family split by how it is excited.
+instruments,family-excitation-mechanism,chain,hornbostel-sachs,2,30,33,17,6,409,True,Those branches split again by the pitch mechanism they use.
+instruments,playing-mechanism,apposition,,,19,35,16,6,465,True,The mechanics of playing: how sound starts and how pitch is chosen.
+instruments,family-making,apposition,,,11,39,14,6,535,True,"Which families are built from which materials, which is where the woodwind and brass distinction actually lives."
+instruments,family-practice,apposition,,,11,107,35,9,4668,True,Which families populate which ensembles.
+instruments,capability-practice-making,apposition,,,19,319,81,12,44818,True,"The instrument as a musician meets it, setting aside how the sound is produced: what it can play, where it is played and what it is made of."
+instruments,instruments,full,,,42,576,138,14,153192,True,"The data themselves, the identity scale-measure (id, K)."
+olympics,structure,facet,,,6,28,8,7,190,True,How the contest is organised and how a winner is settled.
+olympics,demands,facet,,,6,35,12,6,369,True,What the discipline asks of the body.
+olympics,equipment,facet,equipment-medium,1,6,21,7,6,111,True,"What is carried, ridden or played with. Also the root of the equipment chain."
+olympics,venue,facet,,,6,18,7,5,88,True,Where it is contested and on what surface.
+olympics,format,facet,,,5,18,5,6,63,True,How play is bounded and scored.
+olympics,institution,facet,,,4,16,6,5,55,True,"Its standing: age, professionalism, audience, schools."
+olympics,origins,facet,,,5,12,4,5,25,True,"Where the modern form was codified, and whether women contest it."
+olympics,decision-structure,chain,typology,1,12,35,10,8,337,True,"How the result is settled, each way split by who contests it."
+olympics,decision-structure-format,chain,typology,2,18,64,15,11,1364,True,Those branches split again by how play is bounded.
+olympics,equipment-medium,chain,equipment-medium,2,15,53,18,7,1027,True,"Equipment split by the medium it is used in: a runner on ice, a boat on water and a ball on grass are different sports."
+olympics,structure-format,apposition,,,11,139,33,11,7201,True,The rules of the contest: how it is run and how it is decided.
+olympics,institution-origins,apposition,,,9,81,20,9,2134,True,Where the discipline came from and what standing it now has.
+olympics,venue-equipment,apposition,,,12,98,31,9,3877,True,What the ground you play on requires you to carry or ride.
+olympics,venue-equipment-demands,apposition,,,18,444,126,11,90466,True,"The physical side of competing: the surface underfoot, the gear in hand and the effort required."
+olympics,olympics,full,,,38,10463,,,,False,"The data themselves, the identity scale-measure (id, K)."

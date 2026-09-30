@@ -1,0 +1,39 @@
+Code,Group,Characteristic,Column_name_in_matrix,Definition_of_value_1
+A1,A_Competition_structure,Team events,A|A1_Team_events,The frame includes events in which two or more competitors share a single result.
+A2,A_Competition_structure,Individual events,A|A2_Individual_events,The frame includes events contested by single competitors.
+A3,A_Competition_structure,Head to head,A|A3_Head_to_head,Opponents compete at the same time in the same space and can directly affect each other's performance.
+A4,A_Competition_structure,Judged,A|A4_Judged,"The result depends on officials' assessment of execution, difficulty or style."
+A5,A_Competition_structure,Measured,A|A5_Measured,"The result is settled by time, distance, weight or an equivalent objective measurement."
+A6,A_Competition_structure,Physical contact,A|A6_Physical_contact,Deliberate bodily contact with an opponent is a normal part of play.
+B1,B_Equipment,Ball,B|B1_Ball,Play uses a ball.
+B2,B_Equipment,Handheld implement,B|B2_Handheld_implement,"A bat, racket, club, stick, bow, blade, rifle, oar, pole or ski pole is held and used."
+B3,B_Equipment,Net or goal,B|B3_Net_or_goal,A net or goal acts as a target or as a divider between sides.
+B4,B_Equipment,Vehicle board or runner,B|B4_Vehicle_board_or_runner,"Competitors ride a bike, boat, board, sled, pair of skis or pair of skates."
+B5,B_Equipment,Helmet or head protection,B|B5_Helmet_or_head_protection,"A helmet, mask or comparable head protection is standard competition equipment."
+B6,B_Equipment,Animal,B|B6_Animal,An animal takes part in the competition.
+C1,C_Venue,Grass or turf,C|C1_Grass_or_turf,Normally contested on natural grass or an equivalent turf surface.
+C2,C_Venue,Indoor venue,C|C2_Indoor_venue,The standard competition venue is indoors.
+C3,C_Venue,Ice or snow,C|C3_Ice_or_snow,Contested on ice or snow.
+C4,C_Venue,Water,C|C4_Water,Contested in or on water.
+C5,C_Venue,Outdoor venue,C|C5_Outdoor_venue,Normally contested in the open air.
+C6,C_Venue,Fixed marked area,C|C6_Fixed_marked_area,"Contested inside a pitch, court, rink, ring, arena or lane of standardised dimensions."
+D1,D_Physical_demands,Endurance,D|D1_Endurance,Sustained aerobic endurance is a principal physical demand.
+D2,D_Physical_demands,Explosive power,D|D2_Explosive_power,Short bursts of maximal power are a principal physical demand.
+D3,D_Physical_demands,Aim,D|D3_Aim,"Accuracy at a target, gate or hole is a central skill."
+D4,D_Physical_demands,Running,D|D4_Running,Sustained running is a main activity.
+D5,D_Physical_demands,Jumping,D|D5_Jumping,Jumping or aerial elements are a major scored or tactical component.
+D6,D_Physical_demands,Weight classes,D|D6_Weight_classes,Competitors are divided into weight categories in at least one event in the frame.
+E1,E_Format_and_scoring,Clock,E|E1_Clock,Play or a run is bounded by a fixed clock duration.
+E2,E_Format_and_scoring,Fixed attempts,E|E2_Fixed_attempts,"Contested over a predetermined number of rounds, attempts, ends, holes, innings, sets, heats or runs."
+E3,E_Format_and_scoring,Points accumulate,E|E3_Points_accumulate,The winner is the side that accumulates more points or goals.
+E4,E_Format_and_scoring,Draw possible,E|E4_Draw_possible,A tie is a legitimate final result under standard rules.
+E5,E_Format_and_scoring,Turn taking,E|E5_Turn_taking,Competitors act in turn rather than simultaneously.
+F1,F_Institutional_profile,Olympic debut before 1950,F|F1_Olympic_debut_before_1950,The discipline was first contested at an Olympic Games before 1950.
+F2,F_Institutional_profile,Professional circuit,F|F2_Professional_circuit,"Supports full-time professional athletes through leagues, tours or prize circuits."
+F3,F_Institutional_profile,Major spectator sport,F|F3_Major_spectator_sport,Regularly draws mass television or stadium audiences outside the Olympics.
+F4,F_Institutional_profile,School sport,F|F4_School_sport,Commonly played in school physical education or school competition.
+G1,G_Origins_and_participation,British or Irish origin,G|G1_British_or_Irish_origin,The modern codified form originated in Britain or Ireland.
+G2,G_Origins_and_participation,American origin,G|G2_American_origin,The modern codified form originated in North or South America.
+G3,G_Origins_and_participation,Asian origin,G|G3_Asian_origin,The modern codified form originated in Asia.
+G4,G_Origins_and_participation,Codified before 1900,G|G4_Codified_before_1900,The modern rules of the discipline were codified before 1900.
+G5,G_Origins_and_participation,Women's event in the frame,G|G5_Women's_event_in_the_frame,At least one women's event in this discipline appears in the frame.

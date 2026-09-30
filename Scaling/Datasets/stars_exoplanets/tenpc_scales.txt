@@ -1,0 +1,108 @@
+# Scales for tenpc_stars.cxt  (456 objects, 35 attributes, 732 concepts)
+
+[S1 Physical nature]  (9 concepts)
+  hydrogen-burning star
+  brown dwarf
+  white dwarf
+  class unconfirmed (candidate)
+
+[S2 Temperature sequence (ordinal)]  (10 concepts)
+  SpT on OBAFGKMLTY sequence
+  SpT G or later
+  SpT K or later
+  SpT M or later
+  SpT M3.5 or later (fully convective)
+  SpT M7 or later (ultracool)
+  SpT L or later
+  SpT T or later
+  SpT Y
+
+[S3 Metallicity and activity]  (6 concepts)
+  subdwarf (sd/esd, metal-poor)
+  emission-line flag (e) in SpT
+  Gaia DR3 variable (Reyle+2022)
+
+[S4 White-dwarf spectral features]  (11 concepts)
+  WD spectral type known
+  WD hydrogen atmosphere (DA)
+  WD metal lines (Z)
+  WD carbon features (Q)
+  WD featureless (DC)
+  WD magnetic (P/H)
+
+[S5 Multiplicity (ordinal) and role]  (5 concepts)
+  member of multiple system
+  member of system with >=3 bodies
+  primary (brightest) of multiple system
+
+[S6 Companion types]  (7 concepts)
+  has hydrogen-burning companion
+  has brown-dwarf companion
+  has white-dwarf companion
+
+[S7 Planet hosting]  (9 concepts)
+  member of planet-hosting system
+  hosts confirmed planet
+  hosts >=2 confirmed planets
+  hosts transiting planet
+  hosts planet in conservative HZ
+
+[S8 Observational]  (4 concepts)
+  within 5 pc
+  G magnitude measured by Gaia
+
+[X1 Stellar/substellar boundary]  (12 concepts)
+  hydrogen-burning star
+  brown dwarf
+  SpT M7 or later (ultracool)
+  SpT L or later
+  SpT T or later
+  SpT Y
+
+[X2 Degenerate companions]  (10 concepts)
+  white dwarf
+  has white-dwarf companion
+  WD metal lines (Z)
+  WD magnetic (P/H)
+  member of multiple system
+
+Meta-groups (scales may recur):
+  M1 Intrinsic physics: S1 Physical nature; S2 Temperature sequence (ordinal); S3 Metallicity and activity; S4 White-dwarf spectral features; X1 Stellar/substellar boundary   -> 22 attributes, 49 concepts
+  M2 System architecture: S5 Multiplicity (ordinal) and role; S6 Companion types; S7 Planet hosting; X2 Degenerate companions   -> 14 attributes, 68 concepts
+  M3 Observation and selection: S8 Observational; S1 Physical nature; S3 Metallicity and activity   -> 9 attributes, 34 concepts
+
+
+# Scales for tenpc_exoplanets.cxt  (85 objects, 16 attributes, 371 concepts)
+
+[P1 Mass regime (ordinal)]  (6 concepts)
+  mass > 2.04 Earth (above Terran regime)
+  mass > 0.414 Jupiter (Jovian regime)
+  only minimum mass (m sin i) known
+
+[P2 Orbit and irradiation (ordinal)]  (4 concepts)
+  ultra-short period (P < 1 d)
+  instellation above HZ outer edge
+  instellation above HZ inner edge
+
+[P3 Detection and knowledge status]  (11 concepts)
+  discovered by radial velocity
+  transits its host
+  only minimum mass (m sin i) known
+  in NASA Exoplanet Archive composite (2026)
+  flagged controversial in NASA archive
+
+[P4 Architecture]  (4 concepts)
+  in multi-planet system
+  host in multiple-star system
+
+[P5 Host star]  (10 concepts)
+  host SpT M
+  host fully convective (M3.5 or later)
+  host SpT has emission-line flag (e)
+  host within 5 pc
+
+Meta-groups (scales may recur):
+  Q1 Planet intrinsic: P1 Mass regime (ordinal); P2 Orbit and irradiation (ordinal)   -> 6 attributes, 17 concepts
+  Q2 Epistemic / observational: P3 Detection and knowledge status; P1 Mass regime (ordinal)   -> 7 attributes, 20 concepts
+  Q3 System and host: P4 Architecture; P5 Host star   -> 6 attributes, 25 concepts
+

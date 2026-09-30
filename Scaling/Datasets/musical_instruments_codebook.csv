@@ -1,0 +1,43 @@
+Code,Group,Characteristic,Column_name_in_matrix,Definition_of_value_1
+C01,G1_Sound_production_family,Chordophone,G1|C01_Chordophone,The sound-producing vibration comes from one or more stretched strings.
+C06,G1_Sound_production_family,Aerophone,G1|C06_Aerophone,"The sound-producing vibration is that of air itself, either an enclosed air column or a free reed."
+C19,G1_Sound_production_family,Membranophone,G1|C19_Membranophone,The sound-producing vibration is that of a stretched membrane.
+C20,G1_Sound_production_family,Idiophone,G1|C20_Idiophone,The body of the instrument itself vibrates to produce the sound.
+C02,G2_Excitation_method,Bowed,G2|C02_Bowed,The strings are normally set in motion with a bow.
+C03,G2_Excitation_method,Plucked,G2|C03_Plucked,"The strings are normally set in motion by plucking or strumming, by fingers, plectrum or an internal quill mechanism."
+C04,G2_Excitation_method,Hammered strings,G2|C04_Hammered_strings,The strings are normally set in motion by hammers or beaters.
+C07,G2_Excitation_method,Single reed,G2|C07_Single_reed,Sound is excited by one or more beating single reeds under the player's control.
+C08,G2_Excitation_method,Double reed,G2|C08_Double_reed,Sound is excited by a double reed.
+C09,G2_Excitation_method,Free reed,G2|C09_Free_reed,"Sound is produced by free reeds vibrating in a frame, with no associated air column."
+C10,G2_Excitation_method,Lip excited,G2|C10_Lip_excited,Sound is excited by the player's buzzing lips.
+C11,G2_Excitation_method,Edge or fipple blown,G2|C11_Edge_or_fipple_blown,"Sound is excited by an air stream directed against a sharp edge or through a fipple, with no reed and no lip buzzing."
+C12,G2_Excitation_method,Mouth blown,G2|C12_Mouth_blown,"The player supplies air directly with the mouth, into or across the instrument or a blowpipe."
+C13,G2_Excitation_method,Bellows or bag,G2|C13_Bellows_or_bag,"Air is supplied by bellows, a blower or an air-reservoir bag rather than by the mouth alone."
+C21,G2_Excitation_method,Struck with implement,G2|C21_Struck_with_implement,"Normally sounded by striking with sticks, mallets or beaters."
+C22,G2_Excitation_method,Struck with hands,G2|C22_Struck_with_hands,Normally sounded by striking with the bare hands or fingers.
+C23,G2_Excitation_method,Shaken or clashed,G2|C23_Shaken_or_clashed,"Normally sounded by shaking, or by clashing two parts of the instrument together."
+C05,G3_Pitch_control_mechanism,Frets,G3|C05_Frets,The fingerboard carries frets or comparable fixed stopping points.
+C14,G3_Pitch_control_mechanism,Valves,G3|C14_Valves,Pitch is changed with piston or rotary valves.
+C15,G3_Pitch_control_mechanism,Slide,G3|C15_Slide,Pitch is changed with a movable slide.
+C16,G3_Pitch_control_mechanism,Finger holes,G3|C16_Finger_holes,The instrument has tone holes closed by the fingers directly or by keys.
+C17,G3_Pitch_control_mechanism,Keyboard,G3|C17_Keyboard,The instrument is played from a piano-style keyboard of keys.
+C18,G3_Pitch_control_mechanism,Pedals,G3|C18_Pedals,One or more foot pedals are part of normal playing technique.
+C24,G4_Pitch_and_tonal_capability,Definite pitch,G4|C24_Definite_pitch,Produces a clearly recognisable musical pitch rather than an indefinite-pitched sound.
+C25,G4_Pitch_and_tonal_capability,Fully chromatic,G4|C25_Fully_chromatic,All twelve semitones are available throughout the instrument's normal range in ordinary playing.
+C26,G4_Pitch_and_tonal_capability,Three or more simultaneous pitches,G4|C26_Three_or_more_simultaneous_pitches,A single player can sound at least three different pitches at the same moment.
+C27,G4_Pitch_and_tonal_capability,Continuously variable pitch,G4|C27_Continuously_variable_pitch,Pitch can be varied smoothly across a wide span rather than only in fixed steps.
+C28,G4_Pitch_and_tonal_capability,Sustaining,G4|C28_Sustaining,A note can be held at steady volume for as long as the player continues the exciting action.
+C29,G5_Electrification,Requires electricity,G5|C29_Requires_electricity,The instrument cannot produce its normal sound without electrical power.
+C30,G5_Electrification,Electrical sound,G5|C30_Electrical_sound,The sound reaching the listener is generated or transduced electrically rather than radiated acoustically by the instrument itself.
+C31,G6_Musical_practice_and_convention,Symphony orchestra,G6|C31_Symphony_orchestra,A regular member of the standard symphony orchestra.
+C32,G6_Musical_practice_and_convention,Concert or marching band,G6|C32_Concert_or_marching_band,A regular member of the standard Western wind band.
+C33,G6_Musical_practice_and_convention,Jazz,G6|C33_Jazz,Commonly used in jazz ensembles.
+C34,G6_Musical_practice_and_convention,Rock and pop,G6|C34_Rock_and_pop,Commonly used in rock and popular-music bands.
+C35,G6_Musical_practice_and_convention,Transposing,G6|C35_Transposing,"Music is conventionally written at a pitch other than it sounds, including octave transpositions."
+C36,G7_Ergonomics_and_mobility,Played seated,G7|C36_Played_seated,The instrument's design or size normally requires or strongly favours playing while seated.
+C37,G7_Ergonomics_and_mobility,Marching or processional,G7|C37_Marching_or_processional,Commonly played while marching or moving in procession.
+C40,G8_Construction_and_materials,Wooden body,G8|C40_Wooden_body,"The body or main resonating structure is made primarily of wood, bamboo or cane."
+C41,G8_Construction_and_materials,Metal body,G8|C41_Metal_body,The body or main sounding structure is made primarily of metal.
+C42,G8_Construction_and_materials,Resonator,G8|C42_Resonator,"Has a hollow soundbox, shell, soundboard or tuned resonator that amplifies a separately vibrating element (0 for aerophones)."
+C38,G9_Origin_and_history,Non European origin,G9|C38_Non_European_origin,The instrument in its recognised form developed in a tradition outside Europe.
+C39,G9_Origin_and_history,Post 1900,G9|C39_Post_1900,The instrument came into existence after 1900.

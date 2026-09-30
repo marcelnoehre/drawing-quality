@@ -1,0 +1,16 @@
+context,scale,filename,kind,chain,chain_step,attributes,concepts,width,height,incomparable_pairs,drawable,description,note
+olympics,structure,contexts/olympics/structure.cxt,facet,,,6,28,8,7,190,True,How the contest is organised and how a winner is settled.,
+olympics,demands,contexts/olympics/demands.cxt,facet,,,6,35,12,6,369,True,What the discipline asks of the body.,
+olympics,equipment,contexts/olympics/equipment.cxt,facet,equipment-medium,1,6,21,7,6,111,True,"What is carried, ridden or played with. Also the root of the equipment chain.",
+olympics,venue,contexts/olympics/venue.cxt,facet,,,6,18,7,5,88,True,Where it is contested and on what surface.,"Ice or snow stands in for the winter programme, which is not an attribute"
+olympics,format,contexts/olympics/format.cxt,facet,,,5,18,5,6,63,True,How play is bounded and scored.,
+olympics,institution,contexts/olympics/institution.cxt,facet,,,4,16,6,5,55,True,"Its standing: age, professionalism, audience, schools.",
+olympics,origins,contexts/olympics/origins.cxt,facet,,,5,12,4,5,25,True,"Where the modern form was codified, and whether women contest it.",
+olympics,decision-structure,contexts/olympics/decision-structure.cxt,chain,typology,1,12,35,10,8,337,True,"How the result is settled, each way split by who contests it.",
+olympics,decision-structure-format,contexts/olympics/decision-structure-format.cxt,chain,typology,2,18,64,15,11,1364,True,Those branches split again by how play is bounded.,
+olympics,equipment-medium,contexts/olympics/equipment-medium.cxt,chain,equipment-medium,2,15,53,18,7,1027,True,"Equipment split by the medium it is used in: a runner on ice, a boat on water and a ball on grass are different sports.",
+olympics,structure-format,contexts/olympics/structure-format.cxt,apposition,,,11,139,33,11,7201,True,The rules of the contest: how it is run and how it is decided.,
+olympics,institution-origins,contexts/olympics/institution-origins.cxt,apposition,,,9,81,20,9,2134,True,Where the discipline came from and what standing it now has.,
+olympics,venue-equipment,contexts/olympics/venue-equipment.cxt,apposition,,,12,98,31,9,3877,True,What the ground you play on requires you to carry or ride.,
+olympics,venue-equipment-demands,contexts/olympics/venue-equipment-demands.cxt,apposition,,,18,444,126,11,90466,True,"The physical side of competing: the surface underfoot, the gear in hand and the effort required.",
+olympics,olympics,contexts/olympics/olympics.cxt,full,,,38,10463,,,,False,"The data themselves, the identity scale-measure (id, K).","motivation only, far outside the drawable band; never feed it to a layout run"

@@ -1,0 +1,66 @@
+# Applies to this directory only, which is Scaling/ inside the drawing-quality
+# clone. Nothing outside it is affected, so the rest of the repository keeps its
+# own rules.
+#
+# Tracked, and why:
+#
+#   contexts/**        the contexts, the scales derived from them, their
+#                      manifests, nesting matrices, groupings and READMEs. These
+#                      are inputs, not outputs: a scale encodes a judgement about
+#                      which distinctions matter and cannot be regenerated from
+#                      anything but its groupings file.
+#   Datasets/**        the raw material the contexts are built from.
+#   *.py, tests/**     the code, including the small .cxt files the regression
+#                      tests pin.
+#   *.csv              the results: scales, drawings, consistency, strata,
+#                      sensitivity.
+#   graphml/           the drawings themselves. Regenerable in principle, but
+#                      hours of compute: freese alone takes 464 s at 319 concepts.
+#   drawings/          their PDF renders.
+#   figures/           the gate figures.
+#   pipeline.md        how the pipeline works and what it found.
+#   README.md          layout and setup.
+#
+# Ignored: the local environment, the separately cloned paper repository, run
+# logs, the private working notes, and the reference papers.
+
+# A separate clone with its own remote. Never commit it into this one.
+paper/
+
+# Private working notes, not part of the shared repository.
+CLAUDE.md
+TODO.md
+HANDOVER.md
+writing/
+
+# Local Python environment. Recreate it from requirements.txt instead.
+.venv/
+__pycache__/
+*.pyc
+
+# Run logs and scratch directories.
+logs/
+*.log
+.profile-scratch/
+.dimdraw-sensitivity/
+.mapping-check.json
+# dim-flux writes this into the working directory and removes it again.
+input.cxt
+
+# Reference papers kept locally for reading; not ours to redistribute. Only at
+# this level, so figures/*.pdf still tracks.
+/*.pdf
+
+# SSH public key left in the working directory.
+key.pub
+
+# LaTeX build products
+*.aux
+*.out
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+*.brf
+*.lbl

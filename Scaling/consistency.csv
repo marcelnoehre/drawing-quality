@@ -1,0 +1,35 @@
+context,scale_a,scale_b,algorithm,size_ratio,nested_shared,n_shared,tau_x,p_value,rank_drift,thin,n_strata,n_strata_compared,frac_strata_strong,frac_strata_inverted,strata_bimodality,strata_sign_agreement,tau_z,tau_p,tau_p_is_bound,n_null_extreme,null_mean,null_sd,n_permutations,null_free_positions,status
+instruments,capability,capability-practice-making,aeschlimann_schmid,24.538,13,13,0.42945293637534193,0.06110395994539922,0.16666666666666666,False,6,3,0.333,0.0,0.444,0.667,1.0432339320740538,0.16241879060469766,False,324,0.19340190858834364,0.22626854872109572,2000,10,ok
+instruments,capability,capability-practice-making,fdp,24.538,13,,,,,,,,,,,,,,,,,,,,not drawn: capability-practice-making
+instruments,capability,instruments,aeschlimann_schmid,44.308,13,13,0.29235267310234303,0.19794681312982954,0.11904761904761904,False,6,3,0.333,0.0,0.444,0.667,1.1086906498351075,0.32283858070964516,False,645,-0.0062124943034247895,0.26929528759909055,2000,10,ok
+instruments,capability,instruments,fdp,44.308,13,,,,,,,,,,,,,,,,,,,,not drawn: instruments
+instruments,capability-practice-making,instruments,aeschlimann_schmid,1.806,319,319,-0.07846337149229131,0.03805101937557907,0.11232311320754718,False,12,10,0.1,0.1,0.209,0.7,-1.7108085057402898,0.050474762618690654,False,100,-0.011015418665958182,0.03942460690370925,2000,317,ok
+instruments,capability-practice-making,instruments,fdp,1.806,319,,,,,,,,,,,,,,,,,,,,"not drawn: capability-practice-making, instruments"
+instruments,excitation,instruments,aeschlimann_schmid,27.429,21,21,-0.2774125011054422,0.08374448592817937,0.29545454545454547,False,5,2,0.5,0.5,0.403,1.0,-1.5757124118615489,0.1329335332333833,False,265,0.005217301775176035,0.1793663620042943,2000,18,ok
+instruments,excitation,instruments,fdp,27.429,21,,,,,,,,,,,,,,,,,,,,not drawn: instruments
+instruments,excitation,playing-mechanism,aeschlimann_schmid,1.667,21,21,0.2686600413566971,0.09977895800186357,0.2590909090909091,False,5,2,0.5,0.0,0.323,1.0,1.6357569418838949,0.10144927536231885,False,202,0.007044863306686723,0.1599352393691872,2000,18,ok
+instruments,excitation,playing-mechanism,fdp,1.667,21,21,0.3619047619047619,0.02214871327753429,0.5636363636363636,False,5,2,0.0,0.0,0.244,1.0,1.82706848863281,0.047476261869065464,False,94,0.02714761904761905,0.18322090547773645,2000,18,ok
+instruments,family-excitation,family-excitation-mechanism,aeschlimann_schmid,1.222,27,27,-0.46444170833179166,0.0008217347339593707,0.23626373626373626,False,6,3,0.333,0.333,0.644,1.0,-2.7679030535435265,0.001999000499750125,False,3,-0.06919891178075988,0.14279502891007465,2000,24,ok
+instruments,family-excitation,family-excitation-mechanism,fdp,1.222,27,,,,,,,,,,,,,,,,,,,,not drawn: family-excitation-mechanism
+instruments,family-excitation,instruments,aeschlimann_schmid,21.333,27,27,-0.2737854484095116,0.04723487940037761,0.2554945054945055,False,6,3,0.0,0.0,0.269,1.0,-1.7958573532868454,0.06996501749125437,False,139,-0.009703532682050795,0.14705060802525777,2000,24,ok
+instruments,family-excitation,instruments,fdp,21.333,27,,,,,,,,,,,,,,,,,,,,not drawn: instruments
+instruments,family-excitation-mechanism,instruments,aeschlimann_schmid,17.455,33,33,-0.22180381040559757,0.07191529562497205,0.22977941176470587,False,6,3,0.0,0.0,0.197,1.0,-1.6065676771812116,0.1054472763618191,False,210,-0.008677118031212084,0.13265964167057373,2000,30,ok
+instruments,family-excitation-mechanism,instruments,fdp,17.455,33,,,,,,,,,,,,,,,,,,,,"not drawn: family-excitation-mechanism, instruments"
+instruments,family-making,instruments,aeschlimann_schmid,14.769,39,39,-0.593177956828731,1.542712542960697e-07,0.2868421052631579,False,6,4,0.75,0.75,0.58,1.0,-4.783093515933983,0.0004997501249375312,True,0,0.002280241822497512,0.1244922761111759,2000,37,ok
+instruments,family-making,instruments,fdp,14.769,39,,,,,,,,,,,,,,,,,,,,"not drawn: family-making, instruments"
+instruments,family-practice,instruments,aeschlimann_schmid,5.383,107,107,-0.2775142309261452,2.9326345839351186e-05,0.1906009783368274,False,9,7,0.0,0.0,0.291,0.857,-3.9725190988877954,0.0009995002498750624,False,1,0.0009865085185114773,0.07010683460845532,2000,105,ok
+instruments,family-practice,instruments,fdp,5.383,107,,,,,,,,,,,,,,,,,,,,not drawn: instruments
+instruments,making,capability-practice-making,aeschlimann_schmid,18.765,17,17,0.7286167394050019,7.583709203284189e-05,0.2708333333333333,False,6,4,0.75,0.0,0.683,1.0,3.139069487596413,0.0009995002498750624,False,1,0.0027227257104081646,0.23124496496903324,2000,15,ok
+instruments,making,capability-practice-making,fdp,18.765,17,,,,,,,,,,,,,,,,,,,,"not drawn: making, capability-practice-making"
+instruments,making,family-making,aeschlimann_schmid,2.294,17,17,0.817423891369599,1.1452830560391823e-05,0.19444444444444445,False,6,4,0.75,0.0,0.8,1.0,3.386109206397384,0.0004997501249375312,True,0,0.002109732138677727,0.24078200363134963,2000,15,ok
+instruments,making,family-making,fdp,2.294,17,,,,,,,,,,,,,,,,,,,,"not drawn: making, family-making"
+instruments,making,instruments,aeschlimann_schmid,33.882,17,17,-0.5388602512436507,0.0035211389973418177,0.2986111111111111,False,6,4,0.75,0.75,0.65,1.0,-2.3952298022278593,0.0079960019990005,False,15,-0.004318580013538401,0.2231692636476561,2000,15,ok
+instruments,making,instruments,fdp,33.882,17,,,,,,,,,,,,,,,,,,,,"not drawn: making, instruments"
+instruments,playing-mechanism,instruments,aeschlimann_schmid,16.457,35,35,-0.24811070657843934,0.04013333359236649,0.3431372549019608,False,6,4,0.25,0.25,0.343,1.0,-1.8396128047818885,0.050474762618690654,False,100,-0.015129584128231082,0.12664682581279998,2000,33,ok
+instruments,playing-mechanism,instruments,fdp,16.457,35,,,,,,,,,,,,,,,,,,,,not drawn: instruments
+instruments,practice,capability-practice-making,aeschlimann_schmid,6.935,46,46,-0.31596697373488086,0.0025220559624811118,0.16824196597353497,False,8,6,0.333,0.333,0.389,1.0,-2.2959141903305134,0.012993503248375811,False,25,-0.07798770372630166,0.10365338173824362,2000,44,ok
+instruments,practice,capability-practice-making,fdp,6.935,46,,,,,,,,,,,,,,,,,,,,not drawn: capability-practice-making
+instruments,practice,family-practice,aeschlimann_schmid,2.326,46,46,0.11116743307512006,0.2911809332391059,0.05860113421550094,False,8,6,0.0,0.0,0.219,0.667,1.0660749559918967,0.3173413293353323,False,634,-0.0088628486396241,0.1125908464879617,2000,44,ok
+instruments,practice,family-practice,fdp,2.326,46,46,-0.646740837476548,1.2554327293414756e-09,0.10869565217391304,False,8,6,0.833,0.833,0.709,1.0,-5.53282889904795,0.0004997501249375312,True,0,-0.05105089919936544,0.10766462313332781,2000,44,ok
+instruments,practice,instruments,aeschlimann_schmid,12.522,46,46,-0.15370737645452273,0.14100853304368108,0.17296786389413987,False,8,6,0.0,0.0,0.223,0.667,-1.3058945060073563,0.1714142928535732,False,342,-0.006473559699968544,0.1127455671780924,2000,44,ok
+instruments,practice,instruments,fdp,12.522,46,,,,,,,,,,,,,,,,,,,,not drawn: instruments
