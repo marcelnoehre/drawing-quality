@@ -64,6 +64,6 @@ def context_to_file(context, name='test'):
 if __name__ == '__main__':
     # generates 10 random contexts per attribute count M using the dirichlet approach and saves them as cxt
     output_dir = Path(__file__).parent
-    for M in range(5, 30, 5):
+    for M in range(5, 11):
         for i in range(10):
             context_to_file(dirichlet_approach(M=M), name=str(output_dir / f'random{M}_{i}'))
