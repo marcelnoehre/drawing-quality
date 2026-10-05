@@ -10,7 +10,7 @@ import networkx as nx
 
 NODE_SIZE: float = 50.0
 LINE_WIDTH: float = 1.0
-MARGIN: float = 1.0
+PADDING: float = 0.02
 DPI: float = 150.0
 
 PositionMap = Dict[Hashable, Tuple[float, float]]
@@ -43,12 +43,15 @@ def draw_graph(
 
     for node in graph.nodes:
         x, y = positions[node]
-        ax.scatter(x, y, facecolor='white', edgecolor='black', linewidth=LINE_WIDTH, s=NODE_SIZE, zorder=10)
+        ax.scatter(x, y, facecolor='white', edgecolor='black', linewidth=LINE_WIDTH, s=NODE_SIZE, zorder=10, clip_on=False)
 
     xs = [x for x, _ in positions.values()]
     ys = [y for _, y in positions.values()]
-    ax.set_xlim(min(xs) - MARGIN, max(xs) + MARGIN)
-    ax.set_ylim(min(ys) - MARGIN, max(ys) + MARGIN)
+    # the coordinate scale differs between algorithms, so the padding is
+    # relative to the drawing's extent (1 for a drawing without extent)
+    padding = PADDING * (max(max(xs) - min(xs), max(ys) - min(ys)) or 1.0)
+    ax.set_xlim(min(xs) - padding, max(xs) + padding)
+    ax.set_ylim(min(ys) - padding, max(ys) + padding)
     ax.set_aspect('equal', adjustable='box')
     ax.axis('off')
 
