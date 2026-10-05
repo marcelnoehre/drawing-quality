@@ -6,11 +6,12 @@ Each (algorithm, context) drawing is independent and runs as its own process
 gets a fresh temporary working directory, since some algorithms write
 temporary files (e.g. dimflux's input.cxt) into the working directory. The
 pending contexts are taken from each algorithm's `generate.py --list`, so
-contexts that already have a .graphml are skipped, as are the (algorithm,
-dataset, context) combinations listed in unsupported_drawings.txt. A failing
-drawing does not stop the others; failures are listed at the end and appended
-to unsupported_drawings.txt, so later runs skip them until they are removed
-from it again.
+contexts that already have a .graphml are skipped, as are the (dataset,
+context) pairs listed in unsupported_drawings.txt. As soon as one algorithm
+fails on a context, that context is appended to unsupported_drawings.txt and
+its not yet started drawings with the other algorithms are skipped, so every
+context is drawn either by all algorithms or by none (later runs skip it until
+it is removed from the file again). Failures are listed at the end.
 
 Usage:
     python generate_all_drawings.py
@@ -49,26 +50,36 @@ def available_algorithms() -> list[str]:
     )
 
 
-def unsupported_drawings() -> set[tuple[str, str, str]]:
-    '''(algorithm, dataset, context file name) combinations listed in
-    UNSUPPORTED_DRAWINGS, one whitespace-separated triple per line; anything
-    after a # is a comment.'''
+def unsupported_contexts() -> set[tuple[str, str]]:
+    '''(dataset, context file name) pairs listed in UNSUPPORTED_DRAWINGS, one
+    whitespace-separated pair per line; anything after a # is a comment.'''
     unsupported = set()
     if not UNSUPPORTED_DRAWINGS.exists():
         return unsupported
     for line in UNSUPPORTED_DRAWINGS.read_text().splitlines():
         line = line.split('#', 1)[0].strip()
         if line:
-            algorithm, dataset, name = line.split()
-            unsupported.add((algorithm, dataset, name))
+            dataset, name = line.split()
+            unsupported.add((dataset, name))
     return unsupported
 
 
+# contexts on which some algorithm failed during this run
+failed_contexts: set[tuple[str, str]] = set()
+failed_contexts_lock = threading.Lock()
+
+
 def record_unsupported(task: tuple[str, str, str], reason: str) -> None:
+    '''Mark the task's context as failed for this run and append it to
+    UNSUPPORTED_DRAWINGS, unless another algorithm already failed on it.'''
     algorithm, dataset, cxt_path = task
-    with print_lock:
+    context = (dataset, Path(cxt_path).name)
+    with failed_contexts_lock:
+        if context in failed_contexts:
+            return
+        failed_contexts.add(context)
         with UNSUPPORTED_DRAWINGS.open('a') as f:
-            f.write(f'{algorithm} {dataset} {Path(cxt_path).name}  # {reason}\n')
+            f.write(f'{dataset} {context[1]}  # {algorithm}: {reason}\n')
 
 
 def log(tag: str, text: str) -> None:
@@ -96,13 +107,13 @@ def pending_tasks(algorithm: str) -> list[tuple[str, str, str]]:
         log(algorithm, result.stdout)
         log(algorithm, f'listing contexts failed with exit code {result.returncode}')
         return []
-    unsupported = unsupported_drawings()
+    unsupported = unsupported_contexts()
     tasks = []
     skipped = 0
     for line in result.stdout.splitlines():
         if '\t' in line:
             dataset, cxt_path = line.split('\t', 1)
-            if (algorithm, dataset, Path(cxt_path).name) in unsupported:
+            if (dataset, Path(cxt_path).name) in unsupported:
                 skipped += 1
             else:
                 tasks.append((algorithm, dataset, cxt_path))
@@ -113,15 +124,20 @@ def pending_tasks(algorithm: str) -> list[tuple[str, str, str]]:
     return tasks
 
 
-def run_task(task: tuple[str, str, str]) -> bool:
+def run_task(task: tuple[str, str, str]) -> str:
+    '''Draw one context with one algorithm; returns 'ok', 'failed', or
+    'skipped' if another algorithm already failed on the context.'''
     algorithm, dataset, cxt_path = task
+    with failed_contexts_lock:
+        if (dataset, Path(cxt_path).name) in failed_contexts:
+            return 'skipped'
     result = run_script(algorithm, ['--dataset', dataset, '--context', cxt_path])
     log(algorithm, result.stdout)
     if result.returncode != 0:
         log(algorithm, f'{Path(cxt_path).name} failed with exit code {result.returncode}')
         record_unsupported(task, f'exit code {result.returncode}')
-        return False
-    return True
+        return 'failed'
+    return 'ok'
 
 
 def main() -> None:
@@ -141,12 +157,13 @@ def main() -> None:
     with ThreadPoolExecutor(max_workers=args.jobs) as executor:
         tasks = [task for tasks in executor.map(pending_tasks, selected) for task in tasks]
         print(f'{len(tasks)} drawings to compute with {args.jobs} jobs', flush=True)
-        succeeded = list(executor.map(run_task, tasks))
+        outcomes = list(executor.map(run_task, tasks))
 
-    failed = [task for task, ok in zip(tasks, succeeded) if not ok]
-    print(f'\n{len(tasks) - len(failed)}/{len(tasks)} drawings finished')
+    failed = [task for task, outcome in zip(tasks, outcomes) if outcome == 'failed']
+    skipped = outcomes.count('skipped')
+    print(f'\n{outcomes.count("ok")}/{len(tasks)} drawings finished, {skipped} skipped')
     if failed:
-        print(f'failed (appended to {UNSUPPORTED_DRAWINGS.name}):')
+        print(f'failed (contexts appended to {UNSUPPORTED_DRAWINGS.name}):')
         for algorithm, dataset, cxt_path in failed:
             print(f'  {algorithm} {dataset} {Path(cxt_path).name}')
         sys.exit(1)
