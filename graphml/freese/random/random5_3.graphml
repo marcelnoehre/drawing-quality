@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="y" for="node" attr.name="y" attr.type="double" />
+  <key id="x" for="node" attr.name="x" attr.type="double" />
+  <graph edgedefault="directed">
+    <node id="0">
+      <data key="x">0.1723693207664966</data>
+      <data key="y">10.0</data>
+    </node>
+    <node id="1">
+      <data key="x">1.0413861511290767</data>
+      <data key="y">8.0</data>
+    </node>
+    <node id="2">
+      <data key="x">1.8623903129459336</data>
+      <data key="y">6.0</data>
+    </node>
+    <node id="3">
+      <data key="x">2.128530309487976</data>
+      <data key="y">7.0</data>
+    </node>
+    <node id="4">
+      <data key="x">3.1324323731341757</data>
+      <data key="y">5.0</data>
+    </node>
+    <node id="5">
+      <data key="x">3.136485127327518</data>
+      <data key="y">3.0</data>
+    </node>
+    <node id="6">
+      <data key="x">-0.9367109683040004</data>
+      <data key="y">8.0</data>
+    </node>
+    <node id="7">
+      <data key="x">0.05410112546038634</data>
+      <data key="y">6.0</data>
+    </node>
+    <node id="8">
+      <data key="x">0.3655861551746642</data>
+      <data key="y">5.0</data>
+    </node>
+    <node id="9">
+      <data key="x">1.439964050142898</data>
+      <data key="y">3.0</data>
+    </node>
+    <node id="10">
+      <data key="x">-2.063576548253522</data>
+      <data key="y">8.0</data>
+    </node>
+    <node id="11">
+      <data key="x">-1.232082287212041</data>
+      <data key="y">6.0</data>
+    </node>
+    <node id="12">
+      <data key="x">-0.03117335419701872</data>
+      <data key="y">4.0</data>
+    </node>
+    <node id="13">
+      <data key="x">-2.544873107249932</data>
+      <data key="y">6.0</data>
+    </node>
+    <node id="14">
+      <data key="x">-1.5416357913110663</data>
+      <data key="y">4.0</data>
+    </node>
+    <node id="15">
+      <data key="x">-0.7776909285451359</data>
+      <data key="y">2.0</data>
+    </node>
+    <node id="16">
+      <data key="x">-1.2752234874659651</data>
+      <data key="y">3.0</data>
+    </node>
+    <node id="17">
+      <data key="x">0.1723693207664966</data>
+      <data key="y">0.0</data>
+    </node>
+    <edge source="0" target="1" />
+    <edge source="0" target="3" />
+    <edge source="0" target="6" />
+    <edge source="0" target="10" />
+    <edge source="1" target="2" />
+    <edge source="1" target="4" />
+    <edge source="1" target="7" />
+    <edge source="1" target="11" />
+    <edge source="2" target="5" />
+    <edge source="2" target="12" />
+    <edge source="3" target="4" />
+    <edge source="3" target="8" />
+    <edge source="4" target="9" />
+    <edge source="4" target="5" />
+    <edge source="5" target="17" />
+    <edge source="6" target="7" />
+    <edge source="6" target="8" />
+    <edge source="6" target="13" />
+    <edge source="7" target="9" />
+    <edge source="7" target="14" />
+    <edge source="8" target="16" />
+    <edge source="8" target="9" />
+    <edge source="9" target="17" />
+    <edge source="10" target="11" />
+    <edge source="10" target="13" />
+    <edge source="11" target="12" />
+    <edge source="11" target="14" />
+    <edge source="12" target="15" />
+    <edge source="13" target="16" />
+    <edge source="13" target="14" />
+    <edge source="14" target="15" />
+    <edge source="15" target="17" />
+    <edge source="16" target="17" />
+  </graph>
+</graphml>
