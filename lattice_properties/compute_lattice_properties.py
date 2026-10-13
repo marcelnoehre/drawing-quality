@@ -96,11 +96,13 @@ def compute(task: tuple[str, str, Path], classpath: str, timeout: float) -> tupl
         ['java', '-cp', classpath, 'clojure.main', str(WORKER), str(cxt_path)],
         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
     )
+    timed_out = False
     try:
         stdout, stderr = process.communicate(timeout=timeout)
     except subprocess.TimeoutExpired:
         process.kill()
         stdout, stderr = process.communicate()
+        timed_out = True
         failures.append(f'timeout after {timeout:g}s')
     for line in stdout.splitlines():
         name, _, value = line.partition('\t')
@@ -108,10 +110,10 @@ def compute(task: tuple[str, str, Path], classpath: str, timeout: float) -> tupl
             continue
         if value.startswith('ERROR: '):
             failures.append(f'{name}: {value[len("ERROR: "):]}')
-        else:
+        elif value:
             row[name] = value
-    if process.returncode not in (0, -9) and not failures:
-        failures.append(f'exit code {process.returncode}: {stderr.strip().splitlines()[-1:] or ""}')
+    if process.returncode != 0 and not timed_out:
+        failures.append(f'exit code {process.returncode}: {" ".join(stderr.strip().splitlines()[-1:])}')
     missing = [name for name in METRICS if name not in row]
     if missing and not failures:
         failures.append(f'no value for {", ".join(missing)}')
