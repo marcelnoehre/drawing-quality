@@ -13,12 +13,16 @@ dependencies = [
     "networkx>=3.6.1",
     "numpy>=2.5.3",
     "odis-python==2026.9.1",
-    "requests>=2.34.2",
+    "pandas>=3.0.5",
     "scipy>=1.18.1",
     "shapely>=2.1.2",
 ]
 
 [dependency-groups]
+analysis = [
+    "ipykernel>=7.4.0",
+    "nbconvert>=7.17.2",
+]
 dev = [
     "pytest>=9.1.1",
 ]
