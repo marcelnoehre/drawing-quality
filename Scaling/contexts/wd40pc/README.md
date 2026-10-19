@@ -198,3 +198,94 @@ Stanek & Pinsonneault 2007, ApJ 671, 761 · Jewett et al. 2024, ApJ 974, 12 ·
 Camisassa et al. 2019, A&A 625, A87 · Gianninas, Bergeron & Ruiz 2011, ApJ 743, 138
 · Bergeron et al. 2022, ApJ 934, 36 · Holberg et al. 2016, MNRAS 462, 2295 ·
 Hollands et al. 2018, MNRAS 480, 3942.
+
+# Scales of this context
+
+Seventeen scale-measures, built by `../build_scales.py` and verified by
+`../verify_scale.py`. The groupings, with the reason for each and the candidates
+rejected, are in `groupings.md` beside this file, fixed before any drawing. The
+machine-readable summaries are `manifest.csv` and `nesting.csv`.
+
+| Scale | Kind | One sentence | Attributes | Concepts | Width | Height | Drawn |
+|---|---|---|---|---|---|---|---|
+| `wd40pc_atmosphere` | facet | what its atmosphere is made of | 2 | 4 | 2 | 3 | no |
+| `wd40pc_mass` | facet | how heavy it is | 3 | 5 | 2 | 4 | no |
+| `wd40pc_temperature` | facet | how hot it is | 3 | 4 | 1 | 4 | no |
+| `wd40pc_age` | facet | how long it has been cooling | 3 | 4 | 1 | 4 | no |
+| `wd40pc_knowledge` | facet | how it is seen: whether a fit exists, which reference volume it is in | 3 | 6 | 2 | 4 | no |
+| `wd40pc_binarity` | facet | the company it keeps | 6 | 13 | 5 | 6 | yes |
+| `wd40pc_spectral` | facet | what its spectrum shows | 8 | 30 | 12 | 5 | yes |
+| `wd40pc_cooling` | apposition | where it is on its cooling track: how hot it still is and how long it has been cooling | 6 | 14 | 4 | 7 | yes |
+| `wd40pc_mass_binarity` | apposition | whether its mass points to a binary past: low-mass and massive white dwarfs against their company | 9 | 23 | 9 | 7 | yes |
+| `wd40pc_parameters` | apposition | its fitted physical parameters: how heavy, how hot, how old | 9 | 46 | 12 | 9 | yes |
+| `wd40pc_appearance` | apposition | what its spectrum shows and what its atmosphere is made of | 10 | 47 | 19 | 6 | yes |
+| `wd40pc_spectral_knowledge` | apposition | how completely each spectral class is characterised, and how much of it lies in the nearest volumes | 11 | 83 | 25 | 7 | yes |
+| `wd40pc_appearance_temperature` | apposition | why it looks the way it does: its spectrum against how hot it is | 13 | 97 | 30 | 8 | yes |
+| `wd40pc_parameters_binarity` | apposition | how mass, temperature and age relate to the company it keeps | 15 | 112 | 28 | 9 | yes |
+| `wd40pc_appearance_parameters` | apposition | everything about the white dwarf itself, setting aside its company and how it is catalogued | 19 | 319 | 74 | 11 | yes |
+| `wd40pc_physical` | apposition | everything about the white dwarf and its company, setting aside how it is catalogued | 25 | 534 | 123 | 12 | yes |
+| `wd40pc` | full | the data themselves, the identity scale-measure | 28 | 728 | 154 | 13 | yes |
+
+## Why these scales
+
+**The groups are the README's own**: spectral features, atmosphere, mass,
+temperature, cooling age, binarity, and the observational attributes, which become
+*knowledge* together with whether a Gaia fit exists. Facts about how an object is
+seen are kept apart from facts about the object, as in the two 10 pc contexts, and
+distance is knowledge in all three. IR-faint stays with the atmosphere, being a
+property of it; "peculiar, warm or uncertain type" mixes a physical fact with a
+knowledge fact in one attribute and stays with the spectral features, since it
+cannot be split.
+
+**The thresholds make several groups too small or too linear to draw alone.**
+Mass, atmosphere and knowledge have at most 6 concepts. Temperature and cooling age
+are ordinal bands, so their lattices are chains of width 1 with nothing to lay
+out. They are drawn only in combination: `cooling` (temperature with age),
+`parameters` (mass, temperature and age), and the broader views.
+
+**Two appositions follow links the sections above already make.**
+`appearance_temperature` is spectral evolution: below 5000 K hydrogen lines vanish,
+so what the spectrum shows depends on how hot the white dwarf is.
+`mass_binarity` pairs mass with company, because a white dwarf under 0.45 solar
+masses implies a binary past and massive ones are often merger products.
+
+**No refinement chain.** The bands and the companion types are hierarchies already
+built into the attributes, and spectral evolution is a dependency, not a parent and
+child.
+
+## Nesting
+
+61 nested pairs, of which 35 have both scales drawn. `physical` (534) is the
+mid-range root, and two ladders run into it: `spectral` (30) through `appearance`
+(47), `appearance_temperature` (97) and `appearance_parameters` (319); and
+`binarity` (13) through `mass_binarity` (23) and `parameters_binarity` (112).
+
+## Two things to know when reading results
+
+- **No drawable scale has two equivalent attributes**, so fdp is expected to draw
+  all of them, and no object shares a name with an attribute.
+- **The instability strip and the typical-mass band have no node**, as explained
+  under *What the thresholds cannot express* above: each would need a negation, and
+  scales never use one.
+
+## What is computed from these scales
+
+Of the 17 scales above, **12 are drawable** -- between 12 and 1000 concepts, with
+width at least 3 -- from 13 to 728 concepts; the others are recorded and never
+drawn. Of 61 nested pairs, **35 are usable**: both scales drawable, and sharing at
+least 8 concepts. From these, `../../run_harness.py` computes:
+
+- **a drawing of every drawable scale by each of the eight algorithms**, under a
+  30-minute budget per drawing; one that does not happen is recorded as a failure,
+  with its reason, and counted against the algorithm;
+- **the quality of every drawing**, on the 13 metrics of the drawing-quality
+  analysis;
+- **the consistency of every usable pair**: whether each algorithm keeps the
+  left-to-right order of the coarser scale's concepts in its drawing of the finer
+  one, as Kendall tau against a permutation null;
+- **this context's ranking of the algorithms**, which enters the overall ranking
+  with the same weight as every other context.
+
+The definitions are in `../README.md`, *Drawable and usable*; the results in
+`../../drawings.csv`, `quality.csv`, `consistency.csv` and `ranking.csv`.
+

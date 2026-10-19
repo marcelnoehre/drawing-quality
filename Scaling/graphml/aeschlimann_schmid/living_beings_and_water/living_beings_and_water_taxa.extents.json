@@ -1,0 +1,63 @@
+{
+"algorithm": "aeschlimann_schmid",
+"extents": {
+"0": [
+"Bean",
+"Bream",
+"Dog",
+"Frog",
+"Leech",
+"Maize",
+"Reed",
+"Spike - weed"
+],
+"1": [
+"Bream",
+"Dog",
+"Frog",
+"Leech"
+],
+"10": [
+"Reed"
+],
+"11": [],
+"2": [
+"Bean",
+"Maize",
+"Reed",
+"Spike - weed"
+],
+"3": [
+"Dog",
+"Frog"
+],
+"4": [
+"Dog"
+],
+"5": [
+"Bean",
+"Maize",
+"Reed"
+],
+"6": [
+"Bream",
+"Frog",
+"Leech",
+"Reed",
+"Spike - weed"
+],
+"7": [
+"Bream",
+"Frog",
+"Leech"
+],
+"8": [
+"Frog"
+],
+"9": [
+"Reed",
+"Spike - weed"
+]
+},
+"source_sha256": "1288a59f34e71ae90e53aeaa3df6619b3a6049e12a007ddc60e18627be340ce9"
+}

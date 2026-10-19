@@ -1,0 +1,3873 @@
+{
+"algorithm": "sugiyama",
+"extents": {
+"0": [
+"3x3 basketball",
+"Alpine skiing",
+"Archery",
+"Artistic gymnastics",
+"Artistic swimming",
+"Athletics",
+"BMX freestyle",
+"BMX racing",
+"Badminton",
+"Baseball",
+"Basketball",
+"Beach volleyball",
+"Biathlon",
+"Bobsleigh",
+"Boxing",
+"Breaking",
+"Canoe slalom",
+"Canoe sprint",
+"Cricket",
+"Cross-country skiing",
+"Curling",
+"Diving",
+"Dressage",
+"Eventing",
+"Fencing",
+"Field hockey",
+"Figure skating",
+"Flag football",
+"Football",
+"Freestyle skiing",
+"Freestyle wrestling",
+"Golf",
+"Greco-Roman wrestling",
+"Handball",
+"Ice hockey",
+"Judo",
+"Jumping",
+"Lacrosse sixes",
+"Luge",
+"Marathon swimming",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Rhythmic gymnastics",
+"Road cycling",
+"Rowing",
+"Rugby sevens",
+"Sailing",
+"Shooting",
+"Short track speed skating",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding",
+"Softball",
+"Speed skating",
+"Sport climbing",
+"Squash",
+"Surfing",
+"Swimming",
+"Table tennis",
+"Taekwondo",
+"Tennis",
+"Track cycling",
+"Trampoline",
+"Triathlon",
+"Volleyball",
+"Water polo",
+"Weightlifting"
+],
+"1": [
+"3x3 basketball",
+"Artistic gymnastics",
+"Athletics",
+"BMX freestyle",
+"BMX racing",
+"Badminton",
+"Basketball",
+"Beach volleyball",
+"Breaking",
+"Diving",
+"Eventing",
+"Figure skating",
+"Freestyle skiing",
+"Handball",
+"Jumping",
+"Nordic combined",
+"Rhythmic gymnastics",
+"Skateboarding",
+"Ski jumping",
+"Snowboarding",
+"Taekwondo",
+"Trampoline",
+"Volleyball"
+],
+"10": [
+"Artistic swimming",
+"Athletics",
+"Badminton",
+"Basketball",
+"Biathlon",
+"Boxing",
+"Canoe sprint",
+"Cricket",
+"Cross-country skiing",
+"Eventing",
+"Field hockey",
+"Football",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Lacrosse sixes",
+"Marathon swimming",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Rowing",
+"Rugby sevens",
+"Sailing",
+"Short track speed skating",
+"Ski mountaineering",
+"Speed skating",
+"Sport climbing",
+"Squash",
+"Swimming",
+"Tennis",
+"Track cycling",
+"Triathlon",
+"Water polo"
+],
+"100": [
+"Diving"
+],
+"101": [
+"Artistic swimming",
+"Swimming",
+"Water polo"
+],
+"102": [
+"Swimming"
+],
+"103": [
+"Curling",
+"Figure skating",
+"Ice hockey",
+"Short track speed skating",
+"Speed skating"
+],
+"104": [
+"Archery",
+"Baseball",
+"Cricket",
+"Eventing",
+"Field hockey",
+"Flag football",
+"Football",
+"Golf",
+"Jumping",
+"Lacrosse sixes",
+"Rugby sevens",
+"Softball",
+"Tennis"
+],
+"105": [
+"Archery",
+"Baseball",
+"Cricket",
+"Golf",
+"Jumping",
+"Softball",
+"Tennis"
+],
+"106": [
+"Cricket",
+"Eventing",
+"Field hockey",
+"Football",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"107": [
+"Field hockey",
+"Flag football",
+"Football",
+"Jumping",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"108": [
+"Jumping",
+"Tennis"
+],
+"109": [
+"Alpine skiing",
+"BMX freestyle",
+"BMX racing",
+"Baseball",
+"Bobsleigh",
+"Canoe slalom",
+"Cricket",
+"Dressage",
+"Eventing",
+"Fencing",
+"Freestyle skiing",
+"Ice hockey",
+"Jumping",
+"Lacrosse sixes",
+"Luge",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Short track speed skating",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding",
+"Softball",
+"Taekwondo",
+"Track cycling",
+"Triathlon"
+],
+"11": [
+"Athletics",
+"Badminton",
+"Basketball",
+"Eventing",
+"Handball",
+"Nordic combined"
+],
+"110": [
+"BMX freestyle",
+"BMX racing",
+"Eventing",
+"Freestyle skiing",
+"Jumping",
+"Nordic combined",
+"Skateboarding",
+"Ski jumping",
+"Snowboarding",
+"Taekwondo"
+],
+"111": [
+"Baseball",
+"Canoe slalom",
+"Cricket",
+"Fencing",
+"Jumping",
+"Modern pentathlon",
+"Softball"
+],
+"112": [
+"Alpine skiing",
+"BMX freestyle",
+"BMX racing",
+"Baseball",
+"Bobsleigh",
+"Canoe slalom",
+"Fencing",
+"Freestyle skiing",
+"Ice hockey",
+"Luge",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Short track speed skating",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Snowboarding",
+"Softball",
+"Taekwondo",
+"Track cycling"
+],
+"113": [
+"BMX freestyle",
+"BMX racing",
+"Freestyle skiing",
+"Nordic combined",
+"Skateboarding",
+"Ski jumping",
+"Snowboarding",
+"Taekwondo"
+],
+"114": [
+"Cricket",
+"Eventing",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Short track speed skating",
+"Ski mountaineering",
+"Track cycling",
+"Triathlon"
+],
+"115": [
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Short track speed skating",
+"Track cycling"
+],
+"116": [
+"Dressage",
+"Fencing",
+"Ice hockey",
+"Jumping",
+"Lacrosse sixes",
+"Short track speed skating",
+"Taekwondo",
+"Track cycling"
+],
+"117": [
+"Jumping",
+"Taekwondo"
+],
+"118": [
+"Fencing",
+"Jumping"
+],
+"119": [
+"Lacrosse sixes",
+"Short track speed skating",
+"Track cycling"
+],
+"12": [
+"Athletics",
+"Basketball",
+"Cricket",
+"Field hockey",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Rugby sevens",
+"Tennis",
+"Triathlon"
+],
+"120": [
+"Alpine skiing",
+"BMX freestyle",
+"BMX racing",
+"Baseball",
+"Bobsleigh",
+"Canoe slalom",
+"Cricket",
+"Dressage",
+"Eventing",
+"Freestyle skiing",
+"Jumping",
+"Lacrosse sixes",
+"Luge",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding",
+"Softball",
+"Triathlon"
+],
+"121": [
+"BMX freestyle",
+"BMX racing",
+"Eventing",
+"Freestyle skiing",
+"Jumping",
+"Nordic combined",
+"Skateboarding",
+"Ski jumping",
+"Snowboarding"
+],
+"122": [
+"Baseball",
+"Cricket",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Softball",
+"Triathlon"
+],
+"123": [
+"Baseball",
+"Canoe slalom",
+"Cricket",
+"Jumping",
+"Modern pentathlon",
+"Softball"
+],
+"124": [
+"Alpine skiing",
+"BMX freestyle",
+"BMX racing",
+"Baseball",
+"Bobsleigh",
+"Canoe slalom",
+"Freestyle skiing",
+"Luge",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Snowboarding",
+"Softball"
+],
+"125": [
+"Cricket",
+"Eventing",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Ski mountaineering",
+"Triathlon"
+],
+"126": [
+"Eventing",
+"Nordic combined"
+],
+"127": [
+"Cricket",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Triathlon"
+],
+"128": [
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined"
+],
+"129": [
+"Dressage",
+"Jumping",
+"Lacrosse sixes"
+],
+"13": [
+"Badminton",
+"Basketball",
+"Biathlon",
+"Cricket",
+"Modern pentathlon",
+"Squash",
+"Tennis"
+],
+"130": [
+"Canoe slalom",
+"Modern pentathlon",
+"Triathlon"
+],
+"131": [
+"Modern pentathlon",
+"Triathlon"
+],
+"132": [
+"Fencing",
+"Ice hockey",
+"Short track speed skating",
+"Taekwondo",
+"Track cycling"
+],
+"133": [
+"Taekwondo"
+],
+"134": [
+"Baseball",
+"Cricket",
+"Eventing",
+"Jumping",
+"Lacrosse sixes",
+"Softball"
+],
+"135": [
+"Baseball",
+"Cricket",
+"Jumping",
+"Softball"
+],
+"136": [
+"Cricket",
+"Eventing",
+"Lacrosse sixes"
+],
+"137": [
+"Jumping",
+"Lacrosse sixes"
+],
+"138": [
+"Dressage",
+"Eventing",
+"Jumping",
+"Modern pentathlon"
+],
+"139": [
+"Jumping",
+"Modern pentathlon"
+],
+"14": [
+"Basketball",
+"Cricket",
+"Modern pentathlon",
+"Tennis"
+],
+"140": [
+"Eventing",
+"Modern pentathlon"
+],
+"141": [
+"Dressage",
+"Jumping"
+],
+"142": [
+"Eventing",
+"Jumping"
+],
+"143": [
+"Eventing"
+],
+"144": [
+"Jumping"
+],
+"145": [
+"Alpine skiing",
+"BMX freestyle",
+"BMX racing",
+"Biathlon",
+"Bobsleigh",
+"Canoe slalom",
+"Canoe sprint",
+"Cross-country skiing",
+"Figure skating",
+"Freestyle skiing",
+"Ice hockey",
+"Luge",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Rowing",
+"Sailing",
+"Short track speed skating",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding",
+"Speed skating",
+"Surfing",
+"Track cycling",
+"Triathlon"
+],
+"146": [
+"Alpine skiing",
+"BMX freestyle",
+"BMX racing",
+"Bobsleigh",
+"Canoe slalom",
+"Canoe sprint",
+"Cross-country skiing",
+"Figure skating",
+"Freestyle skiing",
+"Ice hockey",
+"Luge",
+"Mountain biking",
+"Nordic combined",
+"Rowing",
+"Short track speed skating",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Snowboarding",
+"Speed skating",
+"Surfing",
+"Track cycling"
+],
+"147": [
+"BMX freestyle",
+"BMX racing",
+"Figure skating",
+"Freestyle skiing",
+"Nordic combined",
+"Skateboarding",
+"Ski jumping",
+"Snowboarding"
+],
+"148": [
+"Biathlon",
+"Canoe sprint",
+"Cross-country skiing",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Rowing",
+"Sailing",
+"Short track speed skating",
+"Ski mountaineering",
+"Speed skating",
+"Track cycling",
+"Triathlon"
+],
+"149": [
+"Canoe sprint",
+"Cross-country skiing",
+"Mountain biking",
+"Nordic combined",
+"Rowing",
+"Short track speed skating",
+"Speed skating",
+"Track cycling"
+],
+"15": [
+"Athletics",
+"Badminton",
+"Boxing",
+"Canoe sprint",
+"Cross-country skiing",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Rowing",
+"Rugby sevens",
+"Short track speed skating",
+"Speed skating",
+"Sport climbing",
+"Squash",
+"Swimming",
+"Tennis",
+"Track cycling"
+],
+"150": [
+"Canoe sprint",
+"Figure skating",
+"Ice hockey",
+"Rowing",
+"Short track speed skating",
+"Speed skating",
+"Track cycling"
+],
+"151": [
+"Canoe sprint",
+"Rowing",
+"Short track speed skating",
+"Speed skating",
+"Track cycling"
+],
+"152": [
+"Alpine skiing",
+"BMX freestyle",
+"BMX racing",
+"Biathlon",
+"Bobsleigh",
+"Canoe slalom",
+"Canoe sprint",
+"Cross-country skiing",
+"Freestyle skiing",
+"Luge",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Rowing",
+"Sailing",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding",
+"Surfing",
+"Triathlon"
+],
+"153": [
+"Alpine skiing",
+"BMX freestyle",
+"BMX racing",
+"Bobsleigh",
+"Canoe slalom",
+"Canoe sprint",
+"Cross-country skiing",
+"Freestyle skiing",
+"Luge",
+"Mountain biking",
+"Nordic combined",
+"Rowing",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Snowboarding",
+"Surfing"
+],
+"154": [
+"Biathlon",
+"Canoe sprint",
+"Cross-country skiing",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Rowing",
+"Sailing",
+"Ski mountaineering",
+"Triathlon"
+],
+"155": [
+"Canoe sprint",
+"Cross-country skiing",
+"Mountain biking",
+"Nordic combined",
+"Rowing"
+],
+"156": [
+"Canoe slalom",
+"Canoe sprint",
+"Rowing",
+"Sailing",
+"Surfing",
+"Triathlon"
+],
+"157": [
+"Canoe slalom",
+"Canoe sprint",
+"Rowing",
+"Surfing"
+],
+"158": [
+"Canoe sprint",
+"Rowing",
+"Sailing",
+"Triathlon"
+],
+"159": [
+"Alpine skiing",
+"Biathlon",
+"Bobsleigh",
+"Cross-country skiing",
+"Figure skating",
+"Freestyle skiing",
+"Ice hockey",
+"Luge",
+"Nordic combined",
+"Short track speed skating",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding",
+"Speed skating"
+],
+"16": [
+"Athletics",
+"Badminton",
+"Handball",
+"Nordic combined"
+],
+"160": [
+"Alpine skiing",
+"Bobsleigh",
+"Cross-country skiing",
+"Figure skating",
+"Freestyle skiing",
+"Ice hockey",
+"Luge",
+"Nordic combined",
+"Short track speed skating",
+"Skeleton",
+"Ski jumping",
+"Snowboarding",
+"Speed skating"
+],
+"161": [
+"Figure skating",
+"Freestyle skiing",
+"Nordic combined",
+"Ski jumping",
+"Snowboarding"
+],
+"162": [
+"Biathlon",
+"Cross-country skiing",
+"Nordic combined",
+"Short track speed skating",
+"Ski mountaineering",
+"Speed skating"
+],
+"163": [
+"Cross-country skiing",
+"Nordic combined",
+"Short track speed skating",
+"Speed skating"
+],
+"164": [
+"Alpine skiing",
+"Biathlon",
+"Bobsleigh",
+"Cross-country skiing",
+"Freestyle skiing",
+"Luge",
+"Nordic combined",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding"
+],
+"165": [
+"Alpine skiing",
+"Bobsleigh",
+"Cross-country skiing",
+"Freestyle skiing",
+"Luge",
+"Nordic combined",
+"Skeleton",
+"Ski jumping",
+"Snowboarding"
+],
+"166": [
+"Figure skating",
+"Ice hockey",
+"Short track speed skating",
+"Speed skating",
+"Track cycling"
+],
+"167": [
+"Short track speed skating",
+"Speed skating",
+"Track cycling"
+],
+"168": [
+"Figure skating",
+"Ice hockey",
+"Short track speed skating",
+"Speed skating"
+],
+"169": [
+"Figure skating"
+],
+"17": [
+"Athletics",
+"Handball",
+"Modern pentathlon",
+"Rugby sevens",
+"Tennis"
+],
+"170": [
+"Short track speed skating",
+"Speed skating"
+],
+"171": [
+"Alpine skiing",
+"BMX freestyle",
+"BMX racing",
+"Bobsleigh",
+"Canoe slalom",
+"Freestyle skiing",
+"Ice hockey",
+"Luge",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Short track speed skating",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding",
+"Track cycling",
+"Triathlon"
+],
+"172": [
+"Alpine skiing",
+"BMX freestyle",
+"BMX racing",
+"Bobsleigh",
+"Canoe slalom",
+"Freestyle skiing",
+"Ice hockey",
+"Luge",
+"Mountain biking",
+"Nordic combined",
+"Short track speed skating",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Snowboarding",
+"Track cycling"
+],
+"173": [
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Short track speed skating",
+"Ski mountaineering",
+"Track cycling",
+"Triathlon"
+],
+"174": [
+"Mountain biking",
+"Nordic combined",
+"Short track speed skating",
+"Track cycling"
+],
+"175": [
+"Alpine skiing",
+"BMX freestyle",
+"BMX racing",
+"Bobsleigh",
+"Canoe slalom",
+"Freestyle skiing",
+"Luge",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding",
+"Triathlon"
+],
+"176": [
+"Alpine skiing",
+"BMX freestyle",
+"BMX racing",
+"Bobsleigh",
+"Canoe slalom",
+"Freestyle skiing",
+"Luge",
+"Mountain biking",
+"Nordic combined",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Snowboarding"
+],
+"177": [
+"BMX freestyle",
+"BMX racing",
+"Freestyle skiing",
+"Nordic combined",
+"Skateboarding",
+"Ski jumping",
+"Snowboarding"
+],
+"178": [
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Ski mountaineering",
+"Triathlon"
+],
+"179": [
+"Mountain biking",
+"Nordic combined"
+],
+"18": [
+"3x3 basketball",
+"Artistic swimming",
+"Athletics",
+"Badminton",
+"Basketball",
+"Beach volleyball",
+"Boxing",
+"Canoe sprint",
+"Curling",
+"Diving",
+"Dressage",
+"Fencing",
+"Field hockey",
+"Figure skating",
+"Flag football",
+"Football",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Ice hockey",
+"Judo",
+"Jumping",
+"Lacrosse sixes",
+"Rowing",
+"Rugby sevens",
+"Short track speed skating",
+"Speed skating",
+"Squash",
+"Swimming",
+"Table tennis",
+"Taekwondo",
+"Tennis",
+"Track cycling",
+"Volleyball",
+"Water polo"
+],
+"180": [
+"Canoe slalom",
+"Triathlon"
+],
+"181": [
+"Triathlon"
+],
+"182": [
+"Alpine skiing",
+"Bobsleigh",
+"Freestyle skiing",
+"Ice hockey",
+"Luge",
+"Nordic combined",
+"Short track speed skating",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding"
+],
+"183": [
+"Alpine skiing",
+"Bobsleigh",
+"Freestyle skiing",
+"Ice hockey",
+"Luge",
+"Nordic combined",
+"Short track speed skating",
+"Skeleton",
+"Ski jumping",
+"Snowboarding"
+],
+"184": [
+"Nordic combined",
+"Short track speed skating",
+"Ski mountaineering"
+],
+"185": [
+"Nordic combined",
+"Short track speed skating"
+],
+"186": [
+"Alpine skiing",
+"Bobsleigh",
+"Freestyle skiing",
+"Luge",
+"Nordic combined",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding"
+],
+"187": [
+"Alpine skiing",
+"Bobsleigh",
+"Freestyle skiing",
+"Luge",
+"Nordic combined",
+"Skeleton",
+"Ski jumping",
+"Snowboarding"
+],
+"188": [
+"Freestyle skiing",
+"Nordic combined",
+"Ski jumping",
+"Snowboarding"
+],
+"189": [
+"Ice hockey",
+"Short track speed skating",
+"Track cycling"
+],
+"19": [
+"3x3 basketball",
+"Athletics",
+"Badminton",
+"Basketball",
+"Beach volleyball",
+"Diving",
+"Figure skating",
+"Handball",
+"Jumping",
+"Taekwondo",
+"Volleyball"
+],
+"190": [
+"Short track speed skating",
+"Track cycling"
+],
+"191": [
+"Ice hockey",
+"Short track speed skating"
+],
+"192": [
+"Short track speed skating"
+],
+"193": [
+"3x3 basketball",
+"Badminton",
+"Basketball",
+"Beach volleyball",
+"Field hockey",
+"Flag football",
+"Football",
+"Handball",
+"Ice hockey",
+"Lacrosse sixes",
+"Rugby sevens",
+"Table tennis",
+"Tennis",
+"Volleyball",
+"Water polo"
+],
+"194": [
+"3x3 basketball",
+"Badminton",
+"Basketball",
+"Beach volleyball",
+"Handball",
+"Volleyball"
+],
+"195": [
+"3x3 basketball",
+"Badminton",
+"Basketball",
+"Table tennis",
+"Tennis"
+],
+"196": [
+"3x3 basketball",
+"Badminton",
+"Basketball"
+],
+"197": [
+"3x3 basketball",
+"Badminton",
+"Beach volleyball",
+"Flag football",
+"Handball",
+"Ice hockey",
+"Rugby sevens",
+"Table tennis",
+"Tennis",
+"Volleyball"
+],
+"198": [
+"3x3 basketball",
+"Badminton",
+"Beach volleyball",
+"Handball",
+"Volleyball"
+],
+"199": [
+"3x3 basketball",
+"Badminton",
+"Table tennis",
+"Tennis"
+],
+"2": [
+"3x3 basketball",
+"Athletics",
+"Baseball",
+"Basketball",
+"Cricket",
+"Field hockey",
+"Flag football",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Rugby sevens",
+"Softball",
+"Tennis",
+"Triathlon"
+],
+"20": [
+"3x3 basketball",
+"Athletics",
+"Basketball",
+"Field hockey",
+"Flag football",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"200": [
+"3x3 basketball",
+"Badminton"
+],
+"201": [
+"Badminton",
+"Basketball",
+"Field hockey",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis",
+"Water polo"
+],
+"202": [
+"Badminton",
+"Basketball",
+"Tennis"
+],
+"203": [
+"Badminton",
+"Handball",
+"Rugby sevens",
+"Tennis"
+],
+"204": [
+"Badminton",
+"Basketball",
+"Handball",
+"Ice hockey",
+"Table tennis",
+"Volleyball",
+"Water polo"
+],
+"205": [
+"Badminton",
+"Basketball",
+"Handball",
+"Volleyball"
+],
+"206": [
+"Badminton",
+"Basketball",
+"Table tennis"
+],
+"207": [
+"Badminton",
+"Handball",
+"Ice hockey",
+"Table tennis",
+"Volleyball"
+],
+"208": [
+"Badminton",
+"Handball",
+"Volleyball"
+],
+"209": [
+"Badminton",
+"Basketball",
+"Handball",
+"Water polo"
+],
+"21": [
+"3x3 basketball",
+"Athletics",
+"Basketball",
+"Handball"
+],
+"210": [
+"Badminton",
+"Basketball",
+"Handball"
+],
+"211": [
+"Badminton",
+"Basketball"
+],
+"212": [
+"Badminton",
+"Handball"
+],
+"213": [
+"Alpine skiing",
+"Archery",
+"Athletics",
+"Badminton",
+"Baseball",
+"Biathlon",
+"Canoe slalom",
+"Canoe sprint",
+"Cricket",
+"Cross-country skiing",
+"Curling",
+"Fencing",
+"Field hockey",
+"Freestyle skiing",
+"Golf",
+"Ice hockey",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Nordic combined",
+"Rhythmic gymnastics",
+"Rowing",
+"Shooting",
+"Ski mountaineering",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis",
+"Weightlifting"
+],
+"214": [
+"Archery",
+"Badminton",
+"Baseball",
+"Biathlon",
+"Canoe slalom",
+"Cricket",
+"Curling",
+"Fencing",
+"Golf",
+"Modern pentathlon",
+"Shooting",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"215": [
+"Alpine skiing",
+"Athletics",
+"Badminton",
+"Baseball",
+"Canoe slalom",
+"Canoe sprint",
+"Cross-country skiing",
+"Fencing",
+"Freestyle skiing",
+"Ice hockey",
+"Modern pentathlon",
+"Nordic combined",
+"Rhythmic gymnastics",
+"Rowing",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis",
+"Weightlifting"
+],
+"216": [
+"Rowing",
+"Weightlifting"
+],
+"217": [
+"Athletics",
+"Badminton",
+"Freestyle skiing",
+"Nordic combined",
+"Rhythmic gymnastics"
+],
+"218": [
+"Badminton",
+"Baseball",
+"Canoe slalom",
+"Fencing",
+"Modern pentathlon",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"219": [
+"Athletics",
+"Badminton",
+"Biathlon",
+"Canoe sprint",
+"Cricket",
+"Cross-country skiing",
+"Field hockey",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Nordic combined",
+"Rowing",
+"Ski mountaineering",
+"Squash",
+"Tennis"
+],
+"22": [
+"3x3 basketball",
+"Badminton",
+"Basketball",
+"Curling",
+"Fencing",
+"Jumping",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"220": [
+"Badminton",
+"Biathlon",
+"Cricket",
+"Modern pentathlon",
+"Squash",
+"Tennis"
+],
+"221": [
+"Athletics",
+"Badminton",
+"Canoe sprint",
+"Cross-country skiing",
+"Modern pentathlon",
+"Nordic combined",
+"Rowing",
+"Squash",
+"Tennis"
+],
+"222": [
+"Athletics",
+"Badminton",
+"Nordic combined"
+],
+"223": [
+"Badminton",
+"Modern pentathlon",
+"Squash",
+"Tennis"
+],
+"224": [
+"Athletics",
+"Badminton",
+"Canoe sprint",
+"Curling",
+"Fencing",
+"Field hockey",
+"Ice hockey",
+"Lacrosse sixes",
+"Rowing",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"225": [
+"Badminton",
+"Curling",
+"Fencing",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"226": [
+"Athletics",
+"Badminton",
+"Canoe sprint",
+"Fencing",
+"Ice hockey",
+"Rowing",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"227": [
+"Badminton",
+"Fencing",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"228": [
+"Athletics",
+"Badminton",
+"Canoe sprint",
+"Field hockey",
+"Lacrosse sixes",
+"Rowing",
+"Squash",
+"Tennis"
+],
+"229": [
+"Athletics",
+"Badminton",
+"Canoe sprint",
+"Rowing",
+"Squash",
+"Tennis"
+],
+"23": [
+"3x3 basketball",
+"Badminton",
+"Basketball",
+"Jumping"
+],
+"230": [
+"Athletics",
+"Badminton"
+],
+"231": [
+"Badminton",
+"Squash",
+"Tennis"
+],
+"232": [
+"Alpine skiing",
+"Archery",
+"Athletics",
+"Baseball",
+"Biathlon",
+"Canoe slalom",
+"Canoe sprint",
+"Cricket",
+"Cross-country skiing",
+"Field hockey",
+"Freestyle skiing",
+"Golf",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Nordic combined",
+"Rowing",
+"Shooting",
+"Ski mountaineering",
+"Softball",
+"Tennis"
+],
+"233": [
+"Athletics",
+"Baseball",
+"Cricket",
+"Field hockey",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Softball",
+"Tennis"
+],
+"234": [
+"Archery",
+"Baseball",
+"Biathlon",
+"Canoe slalom",
+"Cricket",
+"Golf",
+"Modern pentathlon",
+"Shooting",
+"Softball",
+"Tennis"
+],
+"235": [
+"Baseball",
+"Cricket",
+"Modern pentathlon",
+"Softball",
+"Tennis"
+],
+"236": [
+"Alpine skiing",
+"Athletics",
+"Baseball",
+"Canoe slalom",
+"Canoe sprint",
+"Cross-country skiing",
+"Freestyle skiing",
+"Modern pentathlon",
+"Nordic combined",
+"Rowing",
+"Softball",
+"Tennis"
+],
+"237": [
+"Athletics",
+"Freestyle skiing",
+"Nordic combined"
+],
+"238": [
+"Athletics",
+"Baseball",
+"Modern pentathlon",
+"Softball",
+"Tennis"
+],
+"239": [
+"Baseball",
+"Canoe slalom",
+"Modern pentathlon",
+"Softball",
+"Tennis"
+],
+"24": [
+"3x3 basketball",
+"Athletics",
+"Badminton",
+"Beach volleyball",
+"Boxing",
+"Canoe sprint",
+"Diving",
+"Fencing",
+"Figure skating",
+"Flag football",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Ice hockey",
+"Judo",
+"Rowing",
+"Rugby sevens",
+"Short track speed skating",
+"Speed skating",
+"Squash",
+"Swimming",
+"Table tennis",
+"Taekwondo",
+"Tennis",
+"Track cycling",
+"Volleyball"
+],
+"240": [
+"Baseball",
+"Modern pentathlon",
+"Softball",
+"Tennis"
+],
+"241": [
+"Athletics",
+"Biathlon",
+"Canoe sprint",
+"Cricket",
+"Cross-country skiing",
+"Field hockey",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Nordic combined",
+"Rowing",
+"Ski mountaineering",
+"Tennis"
+],
+"242": [
+"Athletics",
+"Cricket",
+"Field hockey",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Tennis"
+],
+"243": [
+"Biathlon",
+"Cricket",
+"Modern pentathlon",
+"Tennis"
+],
+"244": [
+"Cricket",
+"Modern pentathlon",
+"Tennis"
+],
+"245": [
+"Athletics",
+"Canoe sprint",
+"Cross-country skiing",
+"Modern pentathlon",
+"Nordic combined",
+"Rowing",
+"Tennis"
+],
+"246": [
+"Athletics",
+"Nordic combined"
+],
+"247": [
+"Athletics",
+"Modern pentathlon",
+"Tennis"
+],
+"248": [
+"Modern pentathlon",
+"Tennis"
+],
+"249": [
+"Athletics",
+"Canoe sprint",
+"Field hockey",
+"Lacrosse sixes",
+"Rowing",
+"Tennis"
+],
+"25": [
+"Boxing",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Judo",
+"Rowing",
+"Taekwondo"
+],
+"250": [
+"Athletics",
+"Field hockey",
+"Lacrosse sixes",
+"Tennis"
+],
+"251": [
+"Athletics",
+"Canoe sprint",
+"Rowing",
+"Tennis"
+],
+"252": [
+"Athletics",
+"Tennis"
+],
+"253": [
+"Athletics"
+],
+"254": [
+"Canoe slalom",
+"Canoe sprint",
+"Modern pentathlon",
+"Rowing"
+],
+"255": [
+"Canoe sprint",
+"Modern pentathlon",
+"Rowing"
+],
+"256": [
+"Alpine skiing",
+"Biathlon",
+"Cross-country skiing",
+"Curling",
+"Freestyle skiing",
+"Ice hockey",
+"Nordic combined",
+"Ski mountaineering"
+],
+"257": [
+"Biathlon",
+"Curling"
+],
+"258": [
+"Badminton",
+"Curling",
+"Fencing",
+"Ice hockey",
+"Rhythmic gymnastics",
+"Shooting",
+"Squash",
+"Table tennis",
+"Weightlifting"
+],
+"259": [
+"Badminton",
+"Curling",
+"Fencing",
+"Shooting",
+"Squash",
+"Table tennis"
+],
+"26": [
+"3x3 basketball",
+"Athletics",
+"Badminton",
+"Beach volleyball",
+"Diving",
+"Figure skating",
+"Handball",
+"Taekwondo",
+"Volleyball"
+],
+"260": [
+"Badminton",
+"Fencing",
+"Ice hockey",
+"Rhythmic gymnastics",
+"Squash",
+"Table tennis",
+"Weightlifting"
+],
+"261": [
+"Weightlifting"
+],
+"262": [
+"Badminton",
+"Rhythmic gymnastics"
+],
+"263": [
+"Badminton",
+"Curling",
+"Fencing",
+"Ice hockey",
+"Squash",
+"Table tennis"
+],
+"264": [
+"Badminton",
+"Curling",
+"Fencing",
+"Squash",
+"Table tennis"
+],
+"265": [
+"Badminton",
+"Fencing",
+"Ice hockey",
+"Squash",
+"Table tennis"
+],
+"266": [
+"Badminton",
+"Fencing",
+"Squash",
+"Table tennis"
+],
+"267": [
+"Badminton",
+"Squash"
+],
+"268": [
+"Shooting"
+],
+"269": [
+"Curling",
+"Ice hockey"
+],
+"27": [
+"3x3 basketball",
+"Athletics",
+"Flag football",
+"Handball",
+"Rugby sevens",
+"Tennis"
+],
+"270": [
+"Curling"
+],
+"271": [
+"Archery",
+"Baseball",
+"Cricket",
+"Field hockey",
+"Golf",
+"Lacrosse sixes",
+"Softball",
+"Tennis"
+],
+"272": [
+"Archery",
+"Baseball",
+"Cricket",
+"Golf",
+"Softball",
+"Tennis"
+],
+"273": [
+"Alpine skiing",
+"Baseball",
+"Canoe slalom",
+"Cricket",
+"Fencing",
+"Freestyle skiing",
+"Ice hockey",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Nordic combined",
+"Ski mountaineering",
+"Softball"
+],
+"274": [
+"Baseball",
+"Canoe slalom",
+"Cricket",
+"Fencing",
+"Modern pentathlon",
+"Softball"
+],
+"275": [
+"Alpine skiing",
+"Baseball",
+"Canoe slalom",
+"Fencing",
+"Freestyle skiing",
+"Ice hockey",
+"Modern pentathlon",
+"Nordic combined",
+"Softball"
+],
+"276": [
+"Baseball",
+"Canoe slalom",
+"Fencing",
+"Modern pentathlon",
+"Softball"
+],
+"277": [
+"Fencing",
+"Ice hockey",
+"Lacrosse sixes"
+],
+"278": [
+"Alpine skiing",
+"Baseball",
+"Canoe slalom",
+"Cricket",
+"Freestyle skiing",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Nordic combined",
+"Ski mountaineering",
+"Softball"
+],
+"279": [
+"Baseball",
+"Cricket",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Softball"
+],
+"28": [
+"3x3 basketball",
+"Athletics",
+"Handball"
+],
+"280": [
+"Baseball",
+"Canoe slalom",
+"Cricket",
+"Modern pentathlon",
+"Softball"
+],
+"281": [
+"Baseball",
+"Cricket",
+"Modern pentathlon",
+"Softball"
+],
+"282": [
+"Alpine skiing",
+"Baseball",
+"Canoe slalom",
+"Freestyle skiing",
+"Modern pentathlon",
+"Nordic combined",
+"Softball"
+],
+"283": [
+"Baseball",
+"Canoe slalom",
+"Modern pentathlon",
+"Softball"
+],
+"284": [
+"Baseball",
+"Modern pentathlon",
+"Softball"
+],
+"285": [
+"Cricket",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Nordic combined",
+"Ski mountaineering"
+],
+"286": [
+"Cricket",
+"Lacrosse sixes",
+"Modern pentathlon"
+],
+"287": [
+"Cricket",
+"Modern pentathlon"
+],
+"288": [
+"Modern pentathlon",
+"Nordic combined"
+],
+"289": [
+"Canoe slalom",
+"Modern pentathlon"
+],
+"29": [
+"3x3 basketball",
+"Badminton",
+"Fencing",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"290": [
+"Fencing",
+"Ice hockey"
+],
+"291": [
+"Fencing"
+],
+"292": [
+"Modern pentathlon"
+],
+"293": [
+"Alpine skiing",
+"Biathlon",
+"Canoe slalom",
+"Canoe sprint",
+"Cross-country skiing",
+"Freestyle skiing",
+"Ice hockey",
+"Nordic combined",
+"Rowing",
+"Ski mountaineering"
+],
+"294": [
+"Alpine skiing",
+"Canoe slalom",
+"Canoe sprint",
+"Cross-country skiing",
+"Freestyle skiing",
+"Ice hockey",
+"Nordic combined",
+"Rowing"
+],
+"295": [
+"Canoe sprint",
+"Ice hockey",
+"Rowing"
+],
+"296": [
+"Alpine skiing",
+"Biathlon",
+"Canoe slalom",
+"Canoe sprint",
+"Cross-country skiing",
+"Freestyle skiing",
+"Nordic combined",
+"Rowing",
+"Ski mountaineering"
+],
+"297": [
+"Biathlon",
+"Canoe slalom"
+],
+"298": [
+"Alpine skiing",
+"Canoe slalom",
+"Canoe sprint",
+"Cross-country skiing",
+"Freestyle skiing",
+"Nordic combined",
+"Rowing"
+],
+"299": [
+"Biathlon",
+"Canoe sprint",
+"Cross-country skiing",
+"Nordic combined",
+"Rowing",
+"Ski mountaineering"
+],
+"3": [
+"3x3 basketball",
+"Archery",
+"Badminton",
+"Baseball",
+"Basketball",
+"Biathlon",
+"Canoe slalom",
+"Cricket",
+"Curling",
+"Fencing",
+"Golf",
+"Jumping",
+"Modern pentathlon",
+"Shooting",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"30": [
+"Artistic swimming",
+"Athletics",
+"Badminton",
+"Basketball",
+"Boxing",
+"Canoe sprint",
+"Field hockey",
+"Football",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Lacrosse sixes",
+"Rowing",
+"Rugby sevens",
+"Short track speed skating",
+"Speed skating",
+"Squash",
+"Swimming",
+"Tennis",
+"Track cycling",
+"Water polo"
+],
+"300": [
+"Canoe sprint",
+"Cross-country skiing",
+"Nordic combined",
+"Rowing"
+],
+"301": [
+"Canoe slalom",
+"Canoe sprint",
+"Rowing"
+],
+"302": [
+"Canoe sprint",
+"Rowing"
+],
+"303": [
+"Rowing"
+],
+"304": [
+"Alpine skiing",
+"Biathlon",
+"Cross-country skiing",
+"Freestyle skiing",
+"Ice hockey",
+"Nordic combined",
+"Ski mountaineering"
+],
+"305": [
+"Alpine skiing",
+"Cross-country skiing",
+"Freestyle skiing",
+"Ice hockey",
+"Nordic combined"
+],
+"306": [
+"Alpine skiing",
+"Biathlon",
+"Cross-country skiing",
+"Freestyle skiing",
+"Nordic combined",
+"Ski mountaineering"
+],
+"307": [
+"Alpine skiing",
+"Cross-country skiing",
+"Freestyle skiing",
+"Nordic combined"
+],
+"308": [
+"Biathlon",
+"Cross-country skiing",
+"Nordic combined",
+"Ski mountaineering"
+],
+"309": [
+"Biathlon"
+],
+"31": [
+"Athletics",
+"Badminton",
+"Basketball",
+"Handball"
+],
+"310": [
+"Cross-country skiing",
+"Nordic combined"
+],
+"311": [
+"Alpine skiing",
+"Canoe slalom",
+"Freestyle skiing",
+"Ice hockey",
+"Nordic combined",
+"Ski mountaineering"
+],
+"312": [
+"Alpine skiing",
+"Canoe slalom",
+"Freestyle skiing",
+"Ice hockey",
+"Nordic combined"
+],
+"313": [
+"Alpine skiing",
+"Canoe slalom",
+"Freestyle skiing",
+"Nordic combined",
+"Ski mountaineering"
+],
+"314": [
+"Alpine skiing",
+"Canoe slalom",
+"Freestyle skiing",
+"Nordic combined"
+],
+"315": [
+"Canoe slalom"
+],
+"316": [
+"Alpine skiing",
+"Freestyle skiing",
+"Ice hockey",
+"Nordic combined",
+"Ski mountaineering"
+],
+"317": [
+"Alpine skiing",
+"Freestyle skiing",
+"Ice hockey",
+"Nordic combined"
+],
+"318": [
+"Alpine skiing",
+"Freestyle skiing",
+"Nordic combined",
+"Ski mountaineering"
+],
+"319": [
+"Alpine skiing",
+"Freestyle skiing",
+"Nordic combined"
+],
+"32": [
+"Athletics",
+"Basketball",
+"Field hockey",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"320": [
+"Freestyle skiing",
+"Nordic combined"
+],
+"321": [
+"Nordic combined",
+"Ski mountaineering"
+],
+"322": [
+"Nordic combined"
+],
+"323": [
+"Badminton",
+"Field hockey",
+"Ice hockey",
+"Lacrosse sixes",
+"Table tennis",
+"Tennis"
+],
+"324": [
+"Badminton",
+"Ice hockey",
+"Table tennis",
+"Tennis"
+],
+"325": [
+"Badminton",
+"Table tennis",
+"Tennis"
+],
+"326": [
+"Badminton",
+"Field hockey",
+"Lacrosse sixes",
+"Tennis"
+],
+"327": [
+"Badminton",
+"Tennis"
+],
+"328": [
+"Badminton",
+"Ice hockey",
+"Table tennis"
+],
+"329": [
+"Badminton",
+"Table tennis"
+],
+"33": [
+"Athletics",
+"Basketball",
+"Handball"
+],
+"330": [
+"Badminton"
+],
+"331": [
+"Ice hockey",
+"Lacrosse sixes"
+],
+"332": [
+"Ice hockey"
+],
+"333": [
+"3x3 basketball",
+"Baseball",
+"Basketball",
+"Beach volleyball",
+"Cricket",
+"Field hockey",
+"Flag football",
+"Football",
+"Golf",
+"Handball",
+"Lacrosse sixes",
+"Rhythmic gymnastics",
+"Rugby sevens",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis",
+"Volleyball",
+"Water polo"
+],
+"334": [
+"3x3 basketball",
+"Basketball",
+"Beach volleyball",
+"Handball",
+"Rhythmic gymnastics",
+"Volleyball"
+],
+"335": [
+"3x3 basketball",
+"Baseball",
+"Basketball",
+"Cricket",
+"Field hockey",
+"Flag football",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Rugby sevens",
+"Softball",
+"Tennis"
+],
+"336": [
+"3x3 basketball",
+"Baseball",
+"Basketball",
+"Cricket",
+"Golf",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"337": [
+"3x3 basketball",
+"Baseball",
+"Basketball",
+"Cricket",
+"Softball",
+"Tennis"
+],
+"338": [
+"3x3 basketball",
+"Baseball",
+"Beach volleyball",
+"Flag football",
+"Handball",
+"Rhythmic gymnastics",
+"Rugby sevens",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis",
+"Volleyball"
+],
+"339": [
+"3x3 basketball",
+"Beach volleyball",
+"Handball",
+"Rhythmic gymnastics",
+"Volleyball"
+],
+"34": [
+"Badminton",
+"Basketball",
+"Squash",
+"Tennis"
+],
+"340": [
+"3x3 basketball",
+"Baseball",
+"Flag football",
+"Handball",
+"Rugby sevens",
+"Softball",
+"Tennis"
+],
+"341": [
+"3x3 basketball",
+"Baseball",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"342": [
+"Basketball",
+"Cricket",
+"Field hockey",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Rugby sevens",
+"Squash",
+"Tennis",
+"Water polo"
+],
+"343": [
+"Basketball",
+"Cricket",
+"Field hockey",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"344": [
+"Basketball",
+"Cricket",
+"Squash",
+"Tennis"
+],
+"345": [
+"Basketball",
+"Cricket",
+"Tennis"
+],
+"346": [
+"3x3 basketball",
+"Basketball",
+"Beach volleyball",
+"Field hockey",
+"Flag football",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Rugby sevens",
+"Squash",
+"Table tennis",
+"Tennis",
+"Volleyball",
+"Water polo"
+],
+"347": [
+"3x3 basketball",
+"Basketball",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"348": [
+"3x3 basketball",
+"Beach volleyball",
+"Flag football",
+"Handball",
+"Rugby sevens",
+"Squash",
+"Table tennis",
+"Tennis",
+"Volleyball"
+],
+"349": [
+"3x3 basketball",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"35": [
+"Athletics",
+"Badminton",
+"Boxing",
+"Canoe sprint",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Rowing",
+"Rugby sevens",
+"Short track speed skating",
+"Speed skating",
+"Squash",
+"Swimming",
+"Tennis",
+"Track cycling"
+],
+"350": [
+"Basketball",
+"Field hockey",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Rugby sevens",
+"Squash",
+"Tennis",
+"Water polo"
+],
+"351": [
+"Basketball",
+"Squash",
+"Tennis"
+],
+"352": [
+"Handball",
+"Rugby sevens",
+"Squash",
+"Tennis"
+],
+"353": [
+"3x3 basketball",
+"Baseball",
+"Beach volleyball",
+"Cricket",
+"Field hockey",
+"Flag football",
+"Football",
+"Golf",
+"Lacrosse sixes",
+"Rugby sevens",
+"Softball",
+"Tennis"
+],
+"354": [
+"3x3 basketball",
+"Baseball",
+"Cricket",
+"Field hockey",
+"Flag football",
+"Football",
+"Lacrosse sixes",
+"Rugby sevens",
+"Softball",
+"Tennis"
+],
+"355": [
+"3x3 basketball",
+"Baseball",
+"Cricket",
+"Golf",
+"Softball",
+"Tennis"
+],
+"356": [
+"3x3 basketball",
+"Baseball",
+"Cricket",
+"Softball",
+"Tennis"
+],
+"357": [
+"3x3 basketball",
+"Baseball",
+"Beach volleyball",
+"Flag football",
+"Rugby sevens",
+"Softball",
+"Tennis"
+],
+"358": [
+"3x3 basketball",
+"Baseball",
+"Flag football",
+"Rugby sevens",
+"Softball",
+"Tennis"
+],
+"359": [
+"3x3 basketball",
+"Baseball",
+"Softball",
+"Tennis"
+],
+"36": [
+"Boxing",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Rowing"
+],
+"360": [
+"Basketball",
+"Handball",
+"Rhythmic gymnastics",
+"Squash",
+"Table tennis",
+"Volleyball",
+"Water polo"
+],
+"361": [
+"Basketball",
+"Handball",
+"Rhythmic gymnastics",
+"Volleyball"
+],
+"362": [
+"Handball",
+"Rhythmic gymnastics",
+"Squash",
+"Table tennis",
+"Volleyball"
+],
+"363": [
+"Handball",
+"Rhythmic gymnastics",
+"Volleyball"
+],
+"364": [
+"Basketball",
+"Handball",
+"Squash",
+"Table tennis",
+"Volleyball",
+"Water polo"
+],
+"365": [
+"Basketball",
+"Squash",
+"Table tennis"
+],
+"366": [
+"Handball",
+"Squash",
+"Table tennis",
+"Volleyball"
+],
+"367": [
+"Basketball",
+"Handball",
+"Squash",
+"Water polo"
+],
+"368": [
+"Basketball",
+"Squash"
+],
+"369": [
+"Handball",
+"Squash"
+],
+"37": [
+"Athletics",
+"Badminton",
+"Handball"
+],
+"370": [
+"Baseball",
+"Cricket",
+"Field hockey",
+"Flag football",
+"Football",
+"Golf",
+"Lacrosse sixes",
+"Rugby sevens",
+"Softball",
+"Tennis"
+],
+"371": [
+"Baseball",
+"Cricket",
+"Field hockey",
+"Flag football",
+"Football",
+"Lacrosse sixes",
+"Rugby sevens",
+"Softball",
+"Tennis"
+],
+"372": [
+"Baseball",
+"Flag football",
+"Rugby sevens",
+"Softball",
+"Tennis"
+],
+"373": [
+"Cricket",
+"Field hockey",
+"Football",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"374": [
+"3x3 basketball",
+"Basketball",
+"Beach volleyball",
+"Field hockey",
+"Flag football",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Rugby sevens",
+"Table tennis",
+"Tennis",
+"Volleyball",
+"Water polo"
+],
+"375": [
+"3x3 basketball",
+"Basketball",
+"Beach volleyball",
+"Handball",
+"Volleyball"
+],
+"376": [
+"3x3 basketball",
+"Basketball",
+"Field hockey",
+"Flag football",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"377": [
+"3x3 basketball",
+"Basketball",
+"Handball"
+],
+"378": [
+"3x3 basketball",
+"Basketball",
+"Table tennis",
+"Tennis"
+],
+"379": [
+"3x3 basketball",
+"Basketball",
+"Tennis"
+],
+"38": [
+"Athletics",
+"Handball",
+"Rugby sevens",
+"Tennis"
+],
+"380": [
+"3x3 basketball",
+"Basketball"
+],
+"381": [
+"3x3 basketball",
+"Beach volleyball",
+"Flag football",
+"Handball",
+"Rugby sevens",
+"Table tennis",
+"Tennis",
+"Volleyball"
+],
+"382": [
+"3x3 basketball",
+"Beach volleyball",
+"Handball",
+"Volleyball"
+],
+"383": [
+"3x3 basketball",
+"Flag football",
+"Handball",
+"Rugby sevens",
+"Tennis"
+],
+"384": [
+"3x3 basketball",
+"Handball"
+],
+"385": [
+"3x3 basketball",
+"Table tennis",
+"Tennis"
+],
+"386": [
+"Basketball",
+"Field hockey",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis",
+"Water polo"
+],
+"387": [
+"Basketball",
+"Field hockey",
+"Football",
+"Handball",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"388": [
+"Basketball",
+"Tennis"
+],
+"389": [
+"Handball",
+"Rugby sevens",
+"Tennis"
+],
+"39": [
+"Athletics",
+"Handball"
+],
+"390": [
+"3x3 basketball",
+"Beach volleyball",
+"Field hockey",
+"Flag football",
+"Football",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"391": [
+"3x3 basketball",
+"Field hockey",
+"Flag football",
+"Football",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"392": [
+"3x3 basketball",
+"Beach volleyball",
+"Flag football",
+"Rugby sevens",
+"Tennis"
+],
+"393": [
+"3x3 basketball",
+"Beach volleyball"
+],
+"394": [
+"3x3 basketball",
+"Flag football",
+"Rugby sevens",
+"Tennis"
+],
+"395": [
+"3x3 basketball",
+"Tennis"
+],
+"396": [
+"3x3 basketball"
+],
+"397": [
+"Basketball",
+"Handball",
+"Table tennis",
+"Volleyball",
+"Water polo"
+],
+"398": [
+"Basketball",
+"Handball",
+"Volleyball"
+],
+"399": [
+"Basketball",
+"Table tennis"
+],
+"4": [
+"3x3 basketball",
+"Baseball",
+"Basketball",
+"Cricket",
+"Modern pentathlon",
+"Softball",
+"Tennis"
+],
+"40": [
+"3x3 basketball",
+"Alpine skiing",
+"Archery",
+"Athletics",
+"BMX freestyle",
+"BMX racing",
+"Baseball",
+"Beach volleyball",
+"Biathlon",
+"Bobsleigh",
+"Canoe slalom",
+"Canoe sprint",
+"Cricket",
+"Cross-country skiing",
+"Dressage",
+"Eventing",
+"Field hockey",
+"Flag football",
+"Football",
+"Freestyle skiing",
+"Golf",
+"Jumping",
+"Lacrosse sixes",
+"Luge",
+"Marathon swimming",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Rowing",
+"Rugby sevens",
+"Sailing",
+"Shooting",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding",
+"Softball",
+"Surfing",
+"Tennis",
+"Triathlon"
+],
+"400": [
+"Handball",
+"Table tennis",
+"Volleyball"
+],
+"401": [
+"Handball",
+"Volleyball"
+],
+"402": [
+"Basketball",
+"Handball",
+"Water polo"
+],
+"403": [
+"Basketball",
+"Handball"
+],
+"404": [
+"Basketball"
+],
+"405": [
+"Handball"
+],
+"406": [
+"Water polo"
+],
+"407": [
+"Field hockey",
+"Flag football",
+"Football",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"408": [
+"Flag football",
+"Rugby sevens",
+"Tennis"
+],
+"409": [
+"Field hockey",
+"Football",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"41": [
+"3x3 basketball",
+"Athletics",
+"BMX freestyle",
+"BMX racing",
+"Beach volleyball",
+"Eventing",
+"Freestyle skiing",
+"Jumping",
+"Nordic combined",
+"Skateboarding",
+"Ski jumping",
+"Snowboarding"
+],
+"410": [
+"Rugby sevens",
+"Tennis"
+],
+"411": [
+"Baseball",
+"Cricket",
+"Field hockey",
+"Golf",
+"Lacrosse sixes",
+"Rhythmic gymnastics",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"412": [
+"Baseball",
+"Cricket",
+"Golf",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"413": [
+"Baseball",
+"Rhythmic gymnastics",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"414": [
+"Baseball",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"415": [
+"Cricket",
+"Field hockey",
+"Lacrosse sixes",
+"Squash",
+"Tennis"
+],
+"416": [
+"Cricket",
+"Squash",
+"Tennis"
+],
+"417": [
+"Field hockey",
+"Lacrosse sixes",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"418": [
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"419": [
+"Field hockey",
+"Lacrosse sixes",
+"Squash",
+"Tennis"
+],
+"42": [
+"3x3 basketball",
+"Athletics",
+"Baseball",
+"Cricket",
+"Field hockey",
+"Flag football",
+"Football",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Rugby sevens",
+"Softball",
+"Tennis",
+"Triathlon"
+],
+"420": [
+"Squash",
+"Tennis"
+],
+"421": [
+"Rhythmic gymnastics",
+"Squash",
+"Table tennis"
+],
+"422": [
+"Rhythmic gymnastics"
+],
+"423": [
+"Squash",
+"Table tennis"
+],
+"424": [
+"Squash"
+],
+"425": [
+"Baseball",
+"Cricket",
+"Field hockey",
+"Golf",
+"Lacrosse sixes",
+"Softball",
+"Tennis"
+],
+"426": [
+"Baseball",
+"Cricket",
+"Field hockey",
+"Lacrosse sixes",
+"Softball",
+"Tennis"
+],
+"427": [
+"Baseball",
+"Cricket",
+"Golf",
+"Softball",
+"Tennis"
+],
+"428": [
+"Baseball",
+"Cricket",
+"Softball",
+"Tennis"
+],
+"429": [
+"Baseball",
+"Softball",
+"Tennis"
+],
+"43": [
+"3x3 basketball",
+"Archery",
+"Baseball",
+"Biathlon",
+"Canoe slalom",
+"Cricket",
+"Golf",
+"Jumping",
+"Modern pentathlon",
+"Shooting",
+"Softball",
+"Tennis"
+],
+"430": [
+"Cricket",
+"Field hockey",
+"Lacrosse sixes",
+"Tennis"
+],
+"431": [
+"Cricket",
+"Tennis"
+],
+"432": [
+"Baseball",
+"Cricket",
+"Lacrosse sixes",
+"Softball"
+],
+"433": [
+"Baseball",
+"Cricket",
+"Softball"
+],
+"434": [
+"Baseball",
+"Softball"
+],
+"435": [
+"Cricket",
+"Lacrosse sixes"
+],
+"436": [
+"Cricket"
+],
+"437": [
+"Field hockey",
+"Lacrosse sixes",
+"Table tennis",
+"Tennis"
+],
+"438": [
+"Table tennis",
+"Tennis"
+],
+"439": [
+"Table tennis"
+],
+"44": [
+"3x3 basketball",
+"Baseball",
+"Cricket",
+"Modern pentathlon",
+"Softball",
+"Tennis"
+],
+"440": [
+"Field hockey",
+"Lacrosse sixes",
+"Tennis"
+],
+"441": [
+"Tennis"
+],
+"442": [
+"Lacrosse sixes"
+],
+"443": [],
+"45": [
+"3x3 basketball",
+"Alpine skiing",
+"Athletics",
+"BMX freestyle",
+"BMX racing",
+"Baseball",
+"Beach volleyball",
+"Bobsleigh",
+"Canoe slalom",
+"Canoe sprint",
+"Cross-country skiing",
+"Flag football",
+"Freestyle skiing",
+"Luge",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Rowing",
+"Rugby sevens",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Snowboarding",
+"Softball",
+"Surfing",
+"Tennis"
+],
+"46": [
+"3x3 basketball",
+"Athletics",
+"BMX freestyle",
+"BMX racing",
+"Beach volleyball",
+"Freestyle skiing",
+"Nordic combined",
+"Skateboarding",
+"Ski jumping",
+"Snowboarding"
+],
+"47": [
+"3x3 basketball",
+"Athletics",
+"Baseball",
+"Flag football",
+"Modern pentathlon",
+"Rugby sevens",
+"Softball",
+"Tennis"
+],
+"48": [
+"3x3 basketball",
+"Baseball",
+"Canoe slalom",
+"Modern pentathlon",
+"Softball",
+"Tennis"
+],
+"49": [
+"3x3 basketball",
+"Baseball",
+"Modern pentathlon",
+"Softball",
+"Tennis"
+],
+"5": [
+"3x3 basketball",
+"Alpine skiing",
+"Artistic gymnastics",
+"Athletics",
+"BMX freestyle",
+"BMX racing",
+"Badminton",
+"Baseball",
+"Beach volleyball",
+"Bobsleigh",
+"Boxing",
+"Breaking",
+"Canoe slalom",
+"Canoe sprint",
+"Cross-country skiing",
+"Diving",
+"Fencing",
+"Figure skating",
+"Flag football",
+"Freestyle skiing",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Ice hockey",
+"Judo",
+"Luge",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Rhythmic gymnastics",
+"Rowing",
+"Rugby sevens",
+"Short track speed skating",
+"Skateboarding",
+"Skeleton",
+"Ski jumping",
+"Snowboarding",
+"Softball",
+"Speed skating",
+"Sport climbing",
+"Squash",
+"Surfing",
+"Swimming",
+"Table tennis",
+"Taekwondo",
+"Tennis",
+"Track cycling",
+"Trampoline",
+"Volleyball",
+"Weightlifting"
+],
+"50": [
+"Athletics",
+"Biathlon",
+"Canoe sprint",
+"Cricket",
+"Cross-country skiing",
+"Eventing",
+"Field hockey",
+"Football",
+"Lacrosse sixes",
+"Marathon swimming",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Road cycling",
+"Rowing",
+"Rugby sevens",
+"Sailing",
+"Ski mountaineering",
+"Tennis",
+"Triathlon"
+],
+"51": [
+"Athletics",
+"Eventing",
+"Nordic combined"
+],
+"52": [
+"Athletics",
+"Cricket",
+"Field hockey",
+"Football",
+"Lacrosse sixes",
+"Modern pentathlon",
+"Rugby sevens",
+"Tennis",
+"Triathlon"
+],
+"53": [
+"Athletics",
+"Canoe sprint",
+"Cross-country skiing",
+"Modern pentathlon",
+"Mountain biking",
+"Nordic combined",
+"Rowing",
+"Rugby sevens",
+"Tennis"
+],
+"54": [
+"Athletics",
+"Modern pentathlon",
+"Rugby sevens",
+"Tennis"
+],
+"55": [
+"3x3 basketball",
+"Athletics",
+"Beach volleyball",
+"Canoe sprint",
+"Dressage",
+"Field hockey",
+"Flag football",
+"Football",
+"Jumping",
+"Lacrosse sixes",
+"Rowing",
+"Rugby sevens",
+"Tennis"
+],
+"56": [
+"3x3 basketball",
+"Athletics",
+"Beach volleyball",
+"Jumping"
+],
+"57": [
+"3x3 basketball",
+"Athletics",
+"Field hockey",
+"Flag football",
+"Football",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"58": [
+"3x3 basketball",
+"Jumping",
+"Tennis"
+],
+"59": [
+"3x3 basketball",
+"Jumping"
+],
+"6": [
+"Boxing",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Judo",
+"Rowing",
+"Taekwondo",
+"Weightlifting"
+],
+"60": [
+"3x3 basketball",
+"Athletics",
+"Beach volleyball",
+"Canoe sprint",
+"Flag football",
+"Rowing",
+"Rugby sevens",
+"Tennis"
+],
+"61": [
+"3x3 basketball",
+"Athletics",
+"Beach volleyball"
+],
+"62": [
+"3x3 basketball",
+"Athletics",
+"Flag football",
+"Rugby sevens",
+"Tennis"
+],
+"63": [
+"3x3 basketball",
+"Athletics"
+],
+"64": [
+"Athletics",
+"Canoe sprint",
+"Field hockey",
+"Football",
+"Lacrosse sixes",
+"Rowing",
+"Rugby sevens",
+"Tennis"
+],
+"65": [
+"Athletics",
+"Field hockey",
+"Football",
+"Lacrosse sixes",
+"Rugby sevens",
+"Tennis"
+],
+"66": [
+"Athletics",
+"Canoe sprint",
+"Rowing",
+"Rugby sevens",
+"Tennis"
+],
+"67": [
+"Athletics",
+"Rugby sevens",
+"Tennis"
+],
+"68": [
+"Artistic swimming",
+"Canoe slalom",
+"Canoe sprint",
+"Diving",
+"Marathon swimming",
+"Modern pentathlon",
+"Rowing",
+"Sailing",
+"Surfing",
+"Swimming",
+"Triathlon",
+"Water polo"
+],
+"69": [
+"Canoe slalom",
+"Canoe sprint",
+"Diving",
+"Modern pentathlon",
+"Rowing",
+"Surfing",
+"Swimming"
+],
+"7": [
+"3x3 basketball",
+"Artistic gymnastics",
+"Athletics",
+"BMX freestyle",
+"BMX racing",
+"Badminton",
+"Beach volleyball",
+"Breaking",
+"Diving",
+"Figure skating",
+"Freestyle skiing",
+"Handball",
+"Nordic combined",
+"Rhythmic gymnastics",
+"Skateboarding",
+"Ski jumping",
+"Snowboarding",
+"Taekwondo",
+"Trampoline",
+"Volleyball"
+],
+"70": [
+"Artistic swimming",
+"Canoe sprint",
+"Marathon swimming",
+"Modern pentathlon",
+"Rowing",
+"Sailing",
+"Swimming",
+"Triathlon",
+"Water polo"
+],
+"71": [
+"Canoe sprint",
+"Modern pentathlon",
+"Rowing",
+"Swimming"
+],
+"72": [
+"Artistic swimming",
+"Canoe sprint",
+"Diving",
+"Rowing",
+"Swimming",
+"Water polo"
+],
+"73": [
+"Canoe sprint",
+"Diving",
+"Rowing",
+"Swimming"
+],
+"74": [
+"Artistic swimming",
+"Canoe sprint",
+"Rowing",
+"Swimming",
+"Water polo"
+],
+"75": [
+"Canoe sprint",
+"Rowing",
+"Swimming"
+],
+"76": [
+"Canoe slalom",
+"Canoe sprint",
+"Marathon swimming",
+"Modern pentathlon",
+"Rowing",
+"Sailing",
+"Surfing",
+"Triathlon"
+],
+"77": [
+"Canoe slalom",
+"Canoe sprint",
+"Modern pentathlon",
+"Rowing",
+"Surfing"
+],
+"78": [
+"Canoe sprint",
+"Marathon swimming",
+"Modern pentathlon",
+"Rowing",
+"Sailing",
+"Triathlon"
+],
+"79": [
+"Alpine skiing",
+"Biathlon",
+"Bobsleigh",
+"Cross-country skiing",
+"Curling",
+"Figure skating",
+"Freestyle skiing",
+"Ice hockey",
+"Luge",
+"Nordic combined",
+"Short track speed skating",
+"Skeleton",
+"Ski jumping",
+"Ski mountaineering",
+"Snowboarding",
+"Speed skating"
+],
+"8": [
+"3x3 basketball",
+"Athletics",
+"Baseball",
+"Flag football",
+"Handball",
+"Modern pentathlon",
+"Rugby sevens",
+"Softball",
+"Tennis"
+],
+"80": [
+"Artistic gymnastics",
+"Artistic swimming",
+"Badminton",
+"Basketball",
+"Boxing",
+"Breaking",
+"Curling",
+"Diving",
+"Fencing",
+"Figure skating",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Ice hockey",
+"Judo",
+"Rhythmic gymnastics",
+"Shooting",
+"Short track speed skating",
+"Speed skating",
+"Sport climbing",
+"Squash",
+"Swimming",
+"Table tennis",
+"Taekwondo",
+"Track cycling",
+"Trampoline",
+"Volleyball",
+"Water polo",
+"Weightlifting"
+],
+"81": [
+"Artistic gymnastics",
+"Badminton",
+"Basketball",
+"Breaking",
+"Diving",
+"Figure skating",
+"Handball",
+"Rhythmic gymnastics",
+"Taekwondo",
+"Trampoline",
+"Volleyball"
+],
+"82": [
+"Badminton",
+"Basketball",
+"Curling",
+"Fencing",
+"Shooting",
+"Squash",
+"Table tennis"
+],
+"83": [
+"Artistic gymnastics",
+"Badminton",
+"Boxing",
+"Breaking",
+"Diving",
+"Fencing",
+"Figure skating",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Ice hockey",
+"Judo",
+"Rhythmic gymnastics",
+"Short track speed skating",
+"Speed skating",
+"Sport climbing",
+"Squash",
+"Swimming",
+"Table tennis",
+"Taekwondo",
+"Track cycling",
+"Trampoline",
+"Volleyball",
+"Weightlifting"
+],
+"84": [
+"Boxing",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Judo",
+"Taekwondo",
+"Weightlifting"
+],
+"85": [
+"Artistic gymnastics",
+"Badminton",
+"Breaking",
+"Diving",
+"Figure skating",
+"Handball",
+"Rhythmic gymnastics",
+"Taekwondo",
+"Trampoline",
+"Volleyball"
+],
+"86": [
+"Artistic swimming",
+"Badminton",
+"Basketball",
+"Boxing",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Short track speed skating",
+"Speed skating",
+"Sport climbing",
+"Squash",
+"Swimming",
+"Track cycling",
+"Water polo"
+],
+"87": [
+"Badminton",
+"Boxing",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Short track speed skating",
+"Speed skating",
+"Sport climbing",
+"Squash",
+"Swimming",
+"Track cycling"
+],
+"88": [
+"Artistic swimming",
+"Badminton",
+"Basketball",
+"Boxing",
+"Curling",
+"Diving",
+"Fencing",
+"Figure skating",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Ice hockey",
+"Judo",
+"Short track speed skating",
+"Speed skating",
+"Squash",
+"Swimming",
+"Table tennis",
+"Taekwondo",
+"Track cycling",
+"Volleyball",
+"Water polo"
+],
+"89": [
+"Badminton",
+"Basketball",
+"Diving",
+"Figure skating",
+"Handball",
+"Taekwondo",
+"Volleyball"
+],
+"9": [
+"3x3 basketball",
+"Badminton",
+"Baseball",
+"Canoe slalom",
+"Fencing",
+"Modern pentathlon",
+"Softball",
+"Squash",
+"Table tennis",
+"Tennis"
+],
+"90": [
+"Badminton",
+"Basketball",
+"Curling",
+"Fencing",
+"Squash",
+"Table tennis"
+],
+"91": [
+"Badminton",
+"Boxing",
+"Diving",
+"Fencing",
+"Figure skating",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Ice hockey",
+"Judo",
+"Short track speed skating",
+"Speed skating",
+"Squash",
+"Swimming",
+"Table tennis",
+"Taekwondo",
+"Track cycling",
+"Volleyball"
+],
+"92": [
+"Boxing",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Judo",
+"Taekwondo"
+],
+"93": [
+"Badminton",
+"Diving",
+"Figure skating",
+"Handball",
+"Taekwondo",
+"Volleyball"
+],
+"94": [
+"Artistic swimming",
+"Badminton",
+"Basketball",
+"Boxing",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Short track speed skating",
+"Speed skating",
+"Squash",
+"Swimming",
+"Track cycling",
+"Water polo"
+],
+"95": [
+"Badminton",
+"Basketball",
+"Squash"
+],
+"96": [
+"Badminton",
+"Boxing",
+"Freestyle wrestling",
+"Greco-Roman wrestling",
+"Handball",
+"Short track speed skating",
+"Speed skating",
+"Squash",
+"Swimming",
+"Track cycling"
+],
+"97": [
+"Boxing",
+"Freestyle wrestling",
+"Greco-Roman wrestling"
+],
+"98": [
+"Artistic swimming",
+"Diving",
+"Swimming",
+"Water polo"
+],
+"99": [
+"Diving",
+"Swimming"
+]
+},
+"source_sha256": "0864486de306a58580a51fcdd0b088b3f8c0e0d74caa9c9c02d1cc363553fd46"
+}

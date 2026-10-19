@@ -1,23 +1,19 @@
 """How long does each algorithm take, and does it give the same drawing twice?
 
-Two questions the harness cannot be built without.
+*Determinism.* Consistency is a Kendall correlation between two drawings of the
+same concepts in two scales. It means little until it is known how much an
+algorithm moves things when simply run again on the *same* input; an algorithm
+that is deterministic moves nothing. Each algorithm is run three times on the same
+context and the coordinates are compared exactly.
 
-*Determinism.* RQ4 reads a Kendall correlation between two drawings of the same
-concept in two scales. A raw correlation means nothing until we know how much an
-algorithm moves things when it is simply run again on the *same* input. That
-rerun variance is the noise floor, and an algorithm that is deterministic has none.
-Each algorithm is therefore run three times on the same context and the
-coordinates are compared exactly.
+*Timing.* Each algorithm is timed over a ladder of lattice sizes.
 
-*Timing.* `DRAWABLE_MAX` in `contexts/build_scales.py` is provisional. The real
-ceiling is where the algorithms stop being practical, which is a measurement, not
-a guess. Each algorithm is timed over a ladder of lattice sizes.
-
-    python profile_algorithms.py                    # the full ladder, writes profile.csv
+    python profile_algorithms.py                    # the full ladder, writes algorithm_timing.csv
     python profile_algorithms.py --runs 1           # timing only, no determinism check
     python profile_algorithms.py --algorithm fdp
 
-Output: `profile.csv`, one row per (algorithm, scale, run).
+Output: `algorithm_timing.csv`, one row per (algorithm, scale, run). (`profile.csv`
+is the ranking's profile of failures, a different file.)
 """
 
 from __future__ import annotations
@@ -30,16 +26,16 @@ import time
 from pathlib import Path
 from xml.etree.ElementTree import parse as parse_xml
 
-from check_node_mapping import ALGORITHMS, HERE, load_generator
+from node_extents import ALGORITHMS, HERE, load_generator
 
 GRAPHML_NS = "{http://graphml.graphdrawing.org/xmlns}"
 
 # A ladder across the range we actually intend to draw. The sizes are the concept
 # counts recorded in the manifests.
 LADDER = [
-    ("instruments", "practice", 46),
-    ("olympics", "structure-format", 139),
-    ("instruments", "capability-practice-making", 319),
+    ("instruments", "instruments_practice", 46),
+    ("olympics", "olympics_structure_format", 139),
+    ("instruments", "instruments_capability_practice_making", 319),
     ("instruments", "instruments", 576),
 ]
 
@@ -77,7 +73,7 @@ def main() -> int:
     parser.add_argument("--runs", type=int, default=3)
     parser.add_argument("--timeout-note", type=float, default=120.0,
                         help="runtime above which a size is called impractical")
-    parser.add_argument("--out", type=Path, default=HERE / "profile.csv")
+    parser.add_argument("--out", type=Path, default=HERE / "algorithm_timing.csv")
     args = parser.parse_args()
 
     algorithms = [args.algorithm] if args.algorithm else list(ALGORITHMS)

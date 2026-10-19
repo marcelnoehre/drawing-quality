@@ -188,20 +188,20 @@ own, so none had to be merged.
 
 | Scale | Kind | One sentence | Attributes | Concepts | Width | Height | Drawable |
 |---|---|---|---|---|---|---|---|
-| `origins` | facet | where the modern form was codified, and whether women contest it | 5 | 12 | 4 | 5 | yes |
-| `institution` | facet | its standing: age, professionalism, audience, schools | 4 | 16 | 6 | 5 | yes |
-| `venue` | facet | where it is contested and on what surface | 6 | 18 | 7 | 5 | yes |
-| `format` | facet | how play is bounded and scored | 5 | 18 | 5 | 6 | yes |
-| `equipment` | facet | what is carried, ridden or played with | 6 | 21 | 7 | 6 | yes |
-| `structure` | facet | how the contest is organised and how a winner is settled | 6 | 28 | 8 | 7 | yes |
-| `demands` | facet | what the discipline asks of the body | 6 | 35 | 12 | 6 | yes |
-| `decision-structure` | chain, step 1 | how the result is settled, each way split by who contests it | 12 | 35 | 10 | 8 | yes |
-| `equipment-medium` | chain, step 2 | equipment split by the medium it is used in | 15 | 53 | 18 | 7 | yes |
-| `decision-structure-format` | chain, step 2 | those branches split again by how play is bounded | 18 | 64 | 15 | 11 | yes |
-| `institution-origins` | apposition | where the discipline came from and what standing it has now | 9 | 81 | 20 | 9 | yes |
-| `venue-equipment` | apposition | what the ground you play on requires you to carry or ride | 12 | 98 | 31 | 9 | yes |
-| `structure-format` | apposition | the rules of the contest: how it is run and how it is decided | 11 | 139 | 33 | 11 | yes |
-| `venue-equipment-demands` | apposition | the physical side of competing: the surface underfoot, the gear in hand and the effort required | 18 | 444 | 126 | 11 | yes |
+| `olympics_origins` | facet | where the modern form was codified, and whether women contest it | 5 | 12 | 4 | 5 | yes |
+| `olympics_institution` | facet | its standing: age, professionalism, audience, schools | 4 | 16 | 6 | 5 | yes |
+| `olympics_venue` | facet | where it is contested and on what surface | 6 | 18 | 7 | 5 | yes |
+| `olympics_format` | facet | how play is bounded and scored | 5 | 18 | 5 | 6 | yes |
+| `olympics_equipment` | facet | what is carried, ridden or played with | 6 | 21 | 7 | 6 | yes |
+| `olympics_structure` | facet | how the contest is organised and how a winner is settled | 6 | 28 | 8 | 7 | yes |
+| `olympics_demands` | facet | what the discipline asks of the body | 6 | 35 | 12 | 6 | yes |
+| `olympics_decision_structure` | chain, step 1 | how the result is settled, each way split by who contests it | 12 | 35 | 10 | 8 | yes |
+| `olympics_equipment_medium` | chain, step 2 | equipment split by the medium it is used in | 15 | 53 | 18 | 7 | yes |
+| `olympics_decision_structure_format` | chain, step 2 | those branches split again by how play is bounded | 18 | 64 | 15 | 11 | yes |
+| `olympics_institution_origins` | apposition | where the discipline came from and what standing it has now | 9 | 81 | 20 | 9 | yes |
+| `olympics_venue_equipment` | apposition | what the ground you play on requires you to carry or ride | 12 | 98 | 31 | 9 | yes |
+| `olympics_structure_format` | apposition | the rules of the contest: how it is run and how it is decided | 11 | 139 | 33 | 11 | yes |
+| `olympics_venue_equipment_demands` | apposition | the physical side of competing: the surface underfoot, the gear in hand and the effort required | 18 | 444 | 126 | 11 | yes |
 | `olympics` | full | the data themselves | 38 | 10463 | – | – | **no** |
 
 ## The full lattice: motivation, not material
@@ -217,7 +217,7 @@ Dilworth matching would need some 55 million pair comparisons, and it is not dra
 so it does not need them. Enumerating its extents, which is what nesting requires,
 takes under half a second.
 
-`venue-equipment-demands` at 444 concepts is the drawable root that replaces it:
+`olympics_venue_equipment_demands` at 444 concepts is the drawable root that replaces it:
 the largest view of this data that a layout algorithm can still take, and the one
 where the algorithms are most stressed.
 
@@ -231,30 +231,30 @@ both sides drawable.
 
 | Coarser | Finer | Concepts | Shared | Ratio |
 |---|---|---|---|---|
-| `decision-structure` | `decision-structure-format` | 35 → 64 | 35 | 1.83 |
-| `equipment-medium` | `venue-equipment` | 53 → 98 | 53 | 1.85 |
-| `decision-structure-format` | `structure-format` | 64 → 139 | 64 | 2.17 |
-| `equipment` | `equipment-medium` | 21 → 53 | 21 | 2.52 |
-| `decision-structure` | `structure-format` | 35 → 139 | 35 | 3.97 |
-| `venue-equipment` | `venue-equipment-demands` | 98 → 444 | 98 | 4.53 |
-| `equipment` | `venue-equipment` | 21 → 98 | 21 | 4.67 |
-| `structure` | `structure-format` | 28 → 139 | 28 | 4.96 |
-| `institution` | `institution-origins` | 16 → 81 | 16 | 5.06 |
-| `venue` | `venue-equipment` | 18 → 98 | 18 | 5.44 |
-| `origins` | `institution-origins` | 12 → 81 | 12 | 6.75 |
-| `format` | `structure-format` | 18 → 139 | 18 | 7.72 |
-| `equipment-medium` | `venue-equipment-demands` | 53 → 444 | 53 | 8.38 |
-| `demands` | `venue-equipment-demands` | 35 → 444 | 35 | 12.69 |
-| `equipment` | `venue-equipment-demands` | 21 → 444 | 21 | 21.14 |
-| `venue` | `venue-equipment-demands` | 18 → 444 | 18 | 24.67 |
+| `olympics_decision_structure` | `olympics_decision_structure_format` | 35 → 64 | 35 | 1.83 |
+| `olympics_equipment_medium` | `olympics_venue_equipment` | 53 → 98 | 53 | 1.85 |
+| `olympics_decision_structure_format` | `olympics_structure_format` | 64 → 139 | 64 | 2.17 |
+| `olympics_equipment` | `olympics_equipment_medium` | 21 → 53 | 21 | 2.52 |
+| `olympics_decision_structure` | `olympics_structure_format` | 35 → 139 | 35 | 3.97 |
+| `olympics_venue_equipment` | `olympics_venue_equipment_demands` | 98 → 444 | 98 | 4.53 |
+| `olympics_equipment` | `olympics_venue_equipment` | 21 → 98 | 21 | 4.67 |
+| `olympics_structure` | `olympics_structure_format` | 28 → 139 | 28 | 4.96 |
+| `olympics_institution` | `olympics_institution_origins` | 16 → 81 | 16 | 5.06 |
+| `olympics_venue` | `olympics_venue_equipment` | 18 → 98 | 18 | 5.44 |
+| `olympics_origins` | `olympics_institution_origins` | 12 → 81 | 12 | 6.75 |
+| `olympics_format` | `olympics_structure_format` | 18 → 139 | 18 | 7.72 |
+| `olympics_equipment_medium` | `olympics_venue_equipment_demands` | 53 → 444 | 53 | 8.38 |
+| `olympics_demands` | `olympics_venue_equipment_demands` | 35 → 444 | 35 | 12.69 |
+| `olympics_equipment` | `olympics_venue_equipment_demands` | 21 → 444 | 21 | 21.14 |
+| `olympics_venue` | `olympics_venue_equipment_demands` | 18 → 444 | 18 | 24.67 |
 
 Because the levels nest, the shared concepts are exactly the coarser view's, so
 each overlap equals its concept count. None falls below the floor of eight.
 
-Two of those pairs are worth noticing in advance. `equipment-medium` nests inside
-`venue-equipment` although one is a chain step and the other an apposition: the
+Two of those pairs are worth noticing in advance. `olympics_equipment_medium` nests inside
+`olympics_venue_equipment` although one is a chain step and the other an apposition: the
 conjunctions of the chain are intersections the apposition already has. And the
-typology chain reaches `structure-format` from two directions, at ratios 2.17 and
+typology chain reaches `olympics_structure_format` from two directions, at ratios 2.17 and
 3.97, which gives the same coarse view two different refinement routes.
 
 ## What each scale keeps and drops
@@ -262,12 +262,12 @@ typology chain reaches `structure-format` from two directions, at ratios 2.17 an
 The seven facets are the codebook's groups, so each facet scale drops every
 attribute outside its own group; all 38 appear somewhere.
 
-- **`decision-structure`** keeps only Judged, Measured and Points accumulate as
+- **`olympics_decision_structure`** keeps only Judged, Measured and Points accumulate as
   plain attributes. Individual events, Team events, Head to head and Physical
   contact appear only inside conjunctions, never alone.
-- **`decision-structure-format`** adds six three-way conjunctions. Clock, Fixed
+- **`olympics_decision_structure_format`** adds six three-way conjunctions. Clock, Fixed
   attempts, Draw possible and Turn taking likewise appear only inside them.
-- **`equipment-medium`** keeps the six equipment attributes and adds nine
+- **`olympics_equipment_medium`** keeps the six equipment attributes and adds nine
   conjunctions with a venue attribute; the venue attributes never appear alone.
 - The four appositions keep their components' attributes unchanged.
 
@@ -277,3 +277,25 @@ attribute outside its own group; all 38 appear somewhere.
 but it is very nearly the same split: sixteen disciplines against fifty-four. It
 will dominate the venue scale and everything appositioned with it. That is
 expected, and worth saying when the diagrams are read.
+
+## What is computed from these scales
+
+Of the 15 scales above, **14 are drawable** -- between 12 and 1000 concepts, with
+width at least 3 -- from 12 to 444 concepts; the others are recorded and never
+drawn. Of 30 nested pairs, **16 are usable**: both scales drawable, and sharing at
+least 8 concepts. From these, `../../run_harness.py` computes:
+
+- **a drawing of every drawable scale by each of the eight algorithms**, under a
+  30-minute budget per drawing; one that does not happen is recorded as a failure,
+  with its reason, and counted against the algorithm;
+- **the quality of every drawing**, on the 13 metrics of the drawing-quality
+  analysis;
+- **the consistency of every usable pair**: whether each algorithm keeps the
+  left-to-right order of the coarser scale's concepts in its drawing of the finer
+  one, as Kendall tau against a permutation null;
+- **this context's ranking of the algorithms**, which enters the overall ranking
+  with the same weight as every other context.
+
+The definitions are in `../README.md`, *Drawable and usable*; the results in
+`../../drawings.csv`, `quality.csv`, `consistency.csv` and `ranking.csv`.
+

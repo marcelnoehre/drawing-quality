@@ -1,0 +1,3142 @@
+{
+"algorithm": "dimflux",
+"extents": {
+"0": [
+"Accordion",
+"Alto saxophone",
+"Banjo",
+"Bass clarinet",
+"Bass drum",
+"Bassoon",
+"Bongos",
+"Cajon",
+"Castanets",
+"Celesta",
+"Cello",
+"Clarinet",
+"Classical guitar",
+"Concert flute",
+"Concert harp",
+"Congas",
+"Crash cymbals",
+"Diatonic harmonica",
+"Didgeridoo",
+"Djembe",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"English horn",
+"Erhu",
+"Euphonium",
+"Flugelhorn",
+"French horn",
+"Glockenspiel",
+"Hammond organ",
+"Harmonium",
+"Harpsichord",
+"Highland bagpipes",
+"Kalimba",
+"Mandolin",
+"Maracas",
+"Marimba",
+"Oboe",
+"Panpipes",
+"Piano",
+"Piccolo",
+"Pipe organ",
+"Recorder",
+"Shakuhachi",
+"Sitar",
+"Snare drum",
+"Sousaphone",
+"Steelpan",
+"Synthesizer",
+"Taiko",
+"Tam-tam",
+"Tambourine",
+"Theremin",
+"Timpani",
+"Triangle",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Ukulele",
+"Vibraphone",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"1": [
+"Accordion",
+"Alto saxophone",
+"Banjo",
+"Bass clarinet",
+"Bassoon",
+"Celesta",
+"Cello",
+"Clarinet",
+"Classical guitar",
+"Concert flute",
+"Concert harp",
+"Diatonic harmonica",
+"Didgeridoo",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"English horn",
+"Erhu",
+"Euphonium",
+"Flugelhorn",
+"French horn",
+"Glockenspiel",
+"Hammond organ",
+"Harmonium",
+"Harpsichord",
+"Highland bagpipes",
+"Kalimba",
+"Mandolin",
+"Marimba",
+"Oboe",
+"Panpipes",
+"Piano",
+"Piccolo",
+"Pipe organ",
+"Recorder",
+"Shakuhachi",
+"Sitar",
+"Sousaphone",
+"Steelpan",
+"Synthesizer",
+"Theremin",
+"Timpani",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Ukulele",
+"Vibraphone",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"10": [
+"Banjo",
+"Bass drum",
+"Bongos",
+"Cajon",
+"Castanets",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Congas",
+"Djembe",
+"Double bass",
+"Erhu",
+"Harpsichord",
+"Kalimba",
+"Mandolin",
+"Maracas",
+"Marimba",
+"Piano",
+"Sitar",
+"Snare drum",
+"Taiko",
+"Ukulele",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"100": [
+"Alto saxophone",
+"Concert flute",
+"Diatonic harmonica",
+"Euphonium",
+"Glockenspiel",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"101": [
+"Alto saxophone",
+"Clarinet",
+"Concert flute",
+"Euphonium",
+"Piccolo",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"102": [
+"Alto saxophone",
+"Clarinet",
+"Concert flute",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Vibraphone"
+],
+"103": [
+"Alto saxophone",
+"Bass drum",
+"Clarinet",
+"Concert flute",
+"Snare drum",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"104": [
+"Alto saxophone",
+"Concert flute",
+"Flugelhorn",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Vibraphone"
+],
+"105": [
+"Alto saxophone",
+"Concert flute",
+"Euphonium",
+"French horn",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"106": [
+"Alto saxophone",
+"Concert flute",
+"Crash cymbals",
+"Euphonium",
+"Glockenspiel",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"107": [
+"Concert flute",
+"French horn",
+"Glockenspiel",
+"Timpani",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells"
+],
+"108": [
+"Alto saxophone",
+"Bass clarinet",
+"Clarinet",
+"French horn",
+"Glockenspiel",
+"Piccolo",
+"Trumpet",
+"Xylophone"
+],
+"109": [
+"Bass drum",
+"Clarinet",
+"Concert flute",
+"Double bass",
+"Snare drum",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"11": [
+"Accordion",
+"Banjo",
+"Bass clarinet",
+"Bassoon",
+"Bongos",
+"Cajon",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Didgeridoo",
+"Djembe",
+"Double bass",
+"Erhu",
+"Hammond organ",
+"Harmonium",
+"Harpsichord",
+"Kalimba",
+"Mandolin",
+"Piano",
+"Pipe organ",
+"Shakuhachi",
+"Sitar",
+"Synthesizer",
+"Ukulele"
+],
+"110": [
+"Banjo",
+"Bass drum",
+"Bongos",
+"Congas",
+"Double bass",
+"Piano",
+"Snare drum",
+"Vibraphone"
+],
+"111": [
+"Alto saxophone",
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Piano",
+"Synthesizer",
+"Trombone",
+"Trumpet"
+],
+"112": [
+"Banjo",
+"Didgeridoo",
+"Erhu",
+"Kalimba",
+"Marimba",
+"Shakuhachi",
+"Sitar",
+"Ukulele"
+],
+"113": [
+"Banjo",
+"Bongos",
+"Cajon",
+"Djembe",
+"Erhu",
+"Kalimba",
+"Sitar",
+"Ukulele"
+],
+"114": [
+"Cello",
+"Double bass",
+"Erhu",
+"Shakuhachi",
+"Sitar",
+"Viola",
+"Violin"
+],
+"115": [
+"Celesta",
+"Cello",
+"Concert harp",
+"Double bass",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"116": [
+"Accordion",
+"Diatonic harmonica",
+"Hammond organ",
+"Harmonium",
+"Highland bagpipes",
+"Pipe organ",
+"Synthesizer"
+],
+"117": [
+"Alto saxophone",
+"Concert flute",
+"Diatonic harmonica",
+"Euphonium",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"118": [
+"Alto saxophone",
+"Clarinet",
+"Concert flute",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"119": [
+"Bass drum",
+"Clarinet",
+"Concert flute",
+"Snare drum",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"12": [
+"Alto saxophone",
+"Bass clarinet",
+"Bass drum",
+"Bassoon",
+"Clarinet",
+"Concert flute",
+"Crash cymbals",
+"Euphonium",
+"French horn",
+"Glockenspiel",
+"Marimba",
+"Oboe",
+"Piccolo",
+"Snare drum",
+"Sousaphone",
+"Tambourine",
+"Timpani",
+"Triangle",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Vibraphone",
+"Xylophone"
+],
+"120": [
+"Alto saxophone",
+"Concert flute",
+"Flugelhorn",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"121": [
+"Alto saxophone",
+"Concert flute",
+"Euphonium",
+"Glockenspiel",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"122": [
+"Alto saxophone",
+"Concert flute",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Vibraphone"
+],
+"123": [
+"Concert flute",
+"French horn",
+"Glockenspiel",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells"
+],
+"124": [
+"Bass clarinet",
+"Bassoon",
+"Clarinet",
+"Marimba",
+"Oboe",
+"Piccolo",
+"Xylophone"
+],
+"125": [
+"Bass clarinet",
+"Clarinet",
+"French horn",
+"Glockenspiel",
+"Piccolo",
+"Trumpet",
+"Xylophone"
+],
+"126": [
+"Bass clarinet",
+"Celesta",
+"Clarinet",
+"Double bass",
+"English horn",
+"Piccolo",
+"Xylophone"
+],
+"127": [
+"Bass clarinet",
+"Clarinet",
+"Double bass",
+"English horn",
+"French horn",
+"Piccolo",
+"Trumpet"
+],
+"128": [
+"Alto saxophone",
+"Clarinet",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"Flugelhorn",
+"Trumpet"
+],
+"129": [
+"Banjo",
+"Bass drum",
+"Bongos",
+"Congas",
+"Double bass",
+"Piano",
+"Snare drum"
+],
+"13": [
+"Accordion",
+"Banjo",
+"Bass clarinet",
+"Bassoon",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Didgeridoo",
+"Double bass",
+"Erhu",
+"Hammond organ",
+"Harmonium",
+"Harpsichord",
+"Kalimba",
+"Mandolin",
+"Piano",
+"Pipe organ",
+"Shakuhachi",
+"Sitar",
+"Synthesizer",
+"Ukulele"
+],
+"130": [
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Steelpan",
+"Synthesizer",
+"Theremin",
+"Vibraphone"
+],
+"131": [
+"Diatonic harmonica",
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Piano",
+"Synthesizer",
+"Ukulele"
+],
+"132": [
+"Bass drum",
+"Electric bass guitar",
+"Electric guitar",
+"Piano",
+"Snare drum",
+"Tambourine",
+"Ukulele"
+],
+"133": [
+"Banjo",
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Piano",
+"Synthesizer",
+"Vibraphone"
+],
+"134": [
+"Banjo",
+"Didgeridoo",
+"Erhu",
+"Kalimba",
+"Shakuhachi",
+"Sitar",
+"Ukulele"
+],
+"135": [
+"Banjo",
+"Erhu",
+"Marimba",
+"Shakuhachi",
+"Sitar",
+"Steelpan",
+"Ukulele"
+],
+"136": [
+"Banjo",
+"Erhu",
+"Kalimba",
+"Marimba",
+"Sitar",
+"Steelpan",
+"Ukulele"
+],
+"137": [
+"Cello",
+"Double bass",
+"Erhu",
+"Sitar",
+"Viola",
+"Violin"
+],
+"138": [
+"Cello",
+"Double bass",
+"Erhu",
+"Shakuhachi",
+"Viola",
+"Violin"
+],
+"139": [
+"Alto saxophone",
+"Diatonic harmonica",
+"Hammond organ",
+"Synthesizer",
+"Trombone",
+"Trumpet"
+],
+"14": [
+"Accordion",
+"Banjo",
+"Bass clarinet",
+"Bassoon",
+"Bongos",
+"Cajon",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Didgeridoo",
+"Djembe",
+"Double bass",
+"Erhu",
+"Harmonium",
+"Harpsichord",
+"Kalimba",
+"Mandolin",
+"Piano",
+"Shakuhachi",
+"Sitar",
+"Ukulele"
+],
+"140": [
+"Bass clarinet",
+"Bassoon",
+"Celesta",
+"Cello",
+"Concert harp",
+"Double bass"
+],
+"141": [
+"Alto saxophone",
+"Bass drum",
+"Diatonic harmonica",
+"Snare drum",
+"Trombone",
+"Trumpet"
+],
+"142": [
+"Clarinet",
+"Concert flute",
+"Glockenspiel",
+"Piccolo",
+"Trombone",
+"Trumpet"
+],
+"143": [
+"Alto saxophone",
+"Clarinet",
+"Concert flute",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"144": [
+"Bass drum",
+"Clarinet",
+"Concert flute",
+"Snare drum",
+"Trombone",
+"Trumpet"
+],
+"145": [
+"Alto saxophone",
+"Concert flute",
+"Euphonium",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"146": [
+"Alto saxophone",
+"Concert flute",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"147": [
+"Bass clarinet",
+"Bassoon",
+"Clarinet",
+"Oboe",
+"Piccolo",
+"Xylophone"
+],
+"148": [
+"Alto saxophone",
+"Bass clarinet",
+"Clarinet",
+"French horn",
+"Piccolo",
+"Trumpet"
+],
+"149": [
+"Clarinet",
+"Concert flute",
+"Double bass",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"15": [
+"Bass clarinet",
+"Bassoon",
+"Celesta",
+"Cello",
+"Clarinet",
+"Concert flute",
+"Concert harp",
+"Double bass",
+"English horn",
+"French horn",
+"Glockenspiel",
+"Oboe",
+"Piccolo",
+"Timpani",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"150": [
+"Banjo",
+"Clarinet",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"Piano"
+],
+"151": [
+"Banjo",
+"Bongos",
+"Double bass",
+"Hammond organ",
+"Piano",
+"Synthesizer"
+],
+"152": [
+"Alto saxophone",
+"Bass drum",
+"Snare drum",
+"Tambourine",
+"Trombone",
+"Trumpet"
+],
+"153": [
+"Bass drum",
+"Marimba",
+"Snare drum",
+"Timpani",
+"Vibraphone",
+"Xylophone"
+],
+"154": [
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Piano",
+"Synthesizer",
+"Ukulele"
+],
+"155": [
+"Banjo",
+"Erhu",
+"Marimba",
+"Shakuhachi",
+"Sitar",
+"Ukulele"
+],
+"156": [
+"Banjo",
+"Erhu",
+"Marimba",
+"Sitar",
+"Steelpan",
+"Ukulele"
+],
+"157": [
+"Banjo",
+"Erhu",
+"Kalimba",
+"Marimba",
+"Sitar",
+"Ukulele"
+],
+"158": [
+"Cello",
+"Double bass",
+"Erhu",
+"Viola",
+"Violin"
+],
+"159": [
+"Cello",
+"Double bass",
+"Trombone",
+"Viola",
+"Violin"
+],
+"16": [
+"Accordion",
+"Banjo",
+"Celesta",
+"Classical guitar",
+"Concert harp",
+"Diatonic harmonica",
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Harmonium",
+"Harpsichord",
+"Highland bagpipes",
+"Mandolin",
+"Marimba",
+"Piano",
+"Pipe organ",
+"Sitar",
+"Synthesizer",
+"Ukulele",
+"Vibraphone",
+"Xylophone"
+],
+"160": [
+"Accordion",
+"Hammond organ",
+"Harmonium",
+"Pipe organ",
+"Synthesizer"
+],
+"161": [
+"Alto saxophone",
+"Hammond organ",
+"Synthesizer",
+"Trombone",
+"Trumpet"
+],
+"162": [
+"Cello",
+"Double bass",
+"Erhu",
+"Shakuhachi",
+"Sitar"
+],
+"163": [
+"Clarinet",
+"Concert flute",
+"Piccolo",
+"Trombone",
+"Trumpet"
+],
+"164": [
+"Clarinet",
+"Concert flute",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"165": [
+"Alto saxophone",
+"Concert flute",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"166": [
+"Concert flute",
+"French horn",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"167": [
+"Concert flute",
+"Crash cymbals",
+"Glockenspiel",
+"Trombone",
+"Trumpet"
+],
+"168": [
+"Bass clarinet",
+"Bassoon",
+"Clarinet",
+"Oboe",
+"Piccolo"
+],
+"169": [
+"Bass clarinet",
+"Clarinet",
+"French horn",
+"Piccolo",
+"Trumpet"
+],
+"17": [
+"Bass clarinet",
+"Bassoon",
+"Celesta",
+"Cello",
+"Clarinet",
+"Concert flute",
+"Concert harp",
+"Double bass",
+"English horn",
+"French horn",
+"Glockenspiel",
+"Oboe",
+"Piccolo",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"170": [
+"Alto saxophone",
+"Clarinet",
+"Glockenspiel",
+"Piccolo",
+"Trumpet"
+],
+"171": [
+"Bass drum",
+"Castanets",
+"Clarinet",
+"Piccolo",
+"Snare drum"
+],
+"172": [
+"Bass clarinet",
+"Clarinet",
+"Double bass",
+"English horn",
+"Piccolo"
+],
+"173": [
+"Alto saxophone",
+"Clarinet",
+"Double bass",
+"Flugelhorn",
+"Trumpet"
+],
+"174": [
+"Banjo",
+"Double bass",
+"Hammond organ",
+"Piano",
+"Synthesizer"
+],
+"175": [
+"Alto saxophone",
+"Flugelhorn",
+"French horn",
+"Glockenspiel",
+"Trumpet"
+],
+"176": [
+"Alto saxophone",
+"Bass drum",
+"Snare drum",
+"Trombone",
+"Trumpet"
+],
+"177": [
+"Bass drum",
+"Snare drum",
+"Tambourine",
+"Trombone",
+"Trumpet"
+],
+"178": [
+"Bass drum",
+"Castanets",
+"Djembe",
+"Maracas",
+"Snare drum"
+],
+"179": [
+"Celesta",
+"Classical guitar",
+"Electric bass guitar",
+"Electric guitar",
+"Xylophone"
+],
+"18": [
+"Banjo",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Double bass",
+"Erhu",
+"Harpsichord",
+"Kalimba",
+"Mandolin",
+"Marimba",
+"Piano",
+"Sitar",
+"Steelpan",
+"Timpani",
+"Ukulele",
+"Vibraphone",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"180": [
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Piano",
+"Synthesizer"
+],
+"181": [
+"Bass drum",
+"Electric bass guitar",
+"Electric guitar",
+"Piano",
+"Snare drum"
+],
+"182": [
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Synthesizer",
+"Vibraphone"
+],
+"183": [
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Synthesizer",
+"Theremin"
+],
+"184": [
+"Banjo",
+"Erhu",
+"Shakuhachi",
+"Sitar",
+"Ukulele"
+],
+"185": [
+"Banjo",
+"Erhu",
+"Marimba",
+"Sitar",
+"Ukulele"
+],
+"186": [
+"Banjo",
+"Erhu",
+"Kalimba",
+"Sitar",
+"Ukulele"
+],
+"187": [
+"Cello",
+"Double bass",
+"Viola",
+"Violin"
+],
+"188": [
+"Accordion",
+"Clarinet",
+"Highland bagpipes",
+"Piccolo"
+],
+"189": [
+"Cello",
+"Double bass",
+"Erhu",
+"Sitar"
+],
+"19": [
+"Accordion",
+"Banjo",
+"Bass clarinet",
+"Bassoon",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Double bass",
+"Erhu",
+"Hammond organ",
+"Harmonium",
+"Harpsichord",
+"Mandolin",
+"Piano",
+"Pipe organ",
+"Shakuhachi",
+"Sitar",
+"Synthesizer",
+"Ukulele"
+],
+"190": [
+"Cello",
+"Double bass",
+"Erhu",
+"Shakuhachi"
+],
+"191": [
+"Bass clarinet",
+"Bassoon",
+"Cello",
+"Double bass"
+],
+"192": [
+"Celesta",
+"Cello",
+"Concert harp",
+"Double bass"
+],
+"193": [
+"Alto saxophone",
+"Diatonic harmonica",
+"Trombone",
+"Trumpet"
+],
+"194": [
+"Clarinet",
+"Concert flute",
+"Trombone",
+"Trumpet"
+],
+"195": [
+"Concert flute",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"196": [
+"Concert flute",
+"Glockenspiel",
+"Trombone",
+"Trumpet"
+],
+"197": [
+"Bass clarinet",
+"Clarinet",
+"Piccolo",
+"Xylophone"
+],
+"198": [
+"Alto saxophone",
+"Clarinet",
+"Piccolo",
+"Trumpet"
+],
+"199": [
+"Clarinet",
+"Glockenspiel",
+"Piccolo",
+"Trumpet"
+],
+"2": [
+"Accordion",
+"Alto saxophone",
+"Banjo",
+"Bass clarinet",
+"Bassoon",
+"Celesta",
+"Cello",
+"Clarinet",
+"Classical guitar",
+"Concert flute",
+"Concert harp",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"English horn",
+"Erhu",
+"Euphonium",
+"Flugelhorn",
+"French horn",
+"Glockenspiel",
+"Hammond organ",
+"Harmonium",
+"Harpsichord",
+"Mandolin",
+"Marimba",
+"Oboe",
+"Piano",
+"Piccolo",
+"Pipe organ",
+"Recorder",
+"Shakuhachi",
+"Sitar",
+"Sousaphone",
+"Steelpan",
+"Synthesizer",
+"Theremin",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Ukulele",
+"Vibraphone",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"20": [
+"Alto saxophone",
+"Banjo",
+"Bass drum",
+"Bongos",
+"Clarinet",
+"Concert flute",
+"Congas",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"Flugelhorn",
+"Hammond organ",
+"Piano",
+"Snare drum",
+"Sousaphone",
+"Synthesizer",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Vibraphone"
+],
+"200": [
+"Bass drum",
+"Clarinet",
+"Piccolo",
+"Snare drum"
+],
+"201": [
+"Bass drum",
+"Clarinet",
+"Double bass",
+"Snare drum"
+],
+"202": [
+"Bass clarinet",
+"Celesta",
+"Classical guitar",
+"Double bass"
+],
+"203": [
+"Celesta",
+"Classical guitar",
+"Double bass",
+"Xylophone"
+],
+"204": [
+"Clarinet",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar"
+],
+"205": [
+"Banjo",
+"Bongos",
+"Double bass",
+"Piano"
+],
+"206": [
+"Banjo",
+"Double bass",
+"Piano",
+"Vibraphone"
+],
+"207": [
+"Alto saxophone",
+"Flugelhorn",
+"French horn",
+"Trumpet"
+],
+"208": [
+"Alto saxophone",
+"French horn",
+"Glockenspiel",
+"Trumpet"
+],
+"209": [
+"Bass drum",
+"Snare drum",
+"Trombone",
+"Trumpet"
+],
+"21": [
+"Accordion",
+"Banjo",
+"Bass clarinet",
+"Bassoon",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Didgeridoo",
+"Double bass",
+"Erhu",
+"Harmonium",
+"Harpsichord",
+"Kalimba",
+"Mandolin",
+"Piano",
+"Shakuhachi",
+"Sitar",
+"Ukulele"
+],
+"210": [
+"Bass drum",
+"Snare drum",
+"Timpani",
+"Xylophone"
+],
+"211": [
+"Marimba",
+"Timpani",
+"Vibraphone",
+"Xylophone"
+],
+"212": [
+"Bass drum",
+"Marimba",
+"Snare drum",
+"Xylophone"
+],
+"213": [
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Synthesizer"
+],
+"214": [
+"Alto saxophone",
+"Electric bass guitar",
+"Electric guitar",
+"Trumpet"
+],
+"215": [
+"Electric bass guitar",
+"Electric guitar",
+"Piano",
+"Ukulele"
+],
+"216": [
+"Banjo",
+"Electric bass guitar",
+"Electric guitar",
+"Piano"
+],
+"217": [
+"Hammond organ",
+"Piano",
+"Synthesizer",
+"Ukulele"
+],
+"218": [
+"Bass drum",
+"Piano",
+"Snare drum",
+"Ukulele"
+],
+"219": [
+"Banjo",
+"Erhu",
+"Sitar",
+"Ukulele"
+],
+"22": [
+"Alto saxophone",
+"Bass clarinet",
+"Bassoon",
+"Clarinet",
+"Concert flute",
+"Euphonium",
+"French horn",
+"Glockenspiel",
+"Marimba",
+"Oboe",
+"Piccolo",
+"Sousaphone",
+"Timpani",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Vibraphone",
+"Xylophone"
+],
+"220": [
+"Banjo",
+"Marimba",
+"Sitar",
+"Ukulele"
+],
+"221": [
+"Banjo",
+"Hammond organ",
+"Piano",
+"Synthesizer"
+],
+"222": [
+"Erhu",
+"Shakuhachi",
+"Sitar"
+],
+"223": [
+"Didgeridoo",
+"Erhu",
+"Shakuhachi"
+],
+"224": [
+"Hammond organ",
+"Piano",
+"Synthesizer"
+],
+"225": [
+"Bass drum",
+"Piano",
+"Snare drum"
+],
+"226": [
+"Diatonic harmonica",
+"Hammond organ",
+"Synthesizer"
+],
+"227": [
+"Hammond organ",
+"Synthesizer",
+"Theremin"
+],
+"228": [
+"Accordion",
+"Harmonium",
+"Highland bagpipes"
+],
+"229": [
+"Accordion",
+"Diatonic harmonica",
+"Highland bagpipes"
+],
+"23": [
+"Bass clarinet",
+"Bass drum",
+"Bassoon",
+"Clarinet",
+"Concert flute",
+"Crash cymbals",
+"French horn",
+"Glockenspiel",
+"Oboe",
+"Piccolo",
+"Snare drum",
+"Tambourine",
+"Timpani",
+"Triangle",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Xylophone"
+],
+"230": [
+"Accordion",
+"Clarinet",
+"Piccolo"
+],
+"231": [
+"Cello",
+"Double bass",
+"Erhu"
+],
+"232": [
+"Concert flute",
+"Trombone",
+"Trumpet"
+],
+"233": [
+"Bass clarinet",
+"Clarinet",
+"Piccolo"
+],
+"234": [
+"Clarinet",
+"Piccolo",
+"Trumpet"
+],
+"235": [
+"Alto saxophone",
+"Clarinet",
+"Trumpet"
+],
+"236": [
+"Bass drum",
+"Clarinet",
+"Snare drum"
+],
+"237": [
+"Bass clarinet",
+"Celesta",
+"Double bass"
+],
+"238": [
+"Celesta",
+"Double bass",
+"Xylophone"
+],
+"239": [
+"Double bass",
+"Hammond organ",
+"Synthesizer"
+],
+"24": [
+"Accordion",
+"Banjo",
+"Celesta",
+"Classical guitar",
+"Concert harp",
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Harmonium",
+"Harpsichord",
+"Mandolin",
+"Marimba",
+"Piano",
+"Pipe organ",
+"Sitar",
+"Synthesizer",
+"Ukulele",
+"Vibraphone",
+"Xylophone"
+],
+"240": [
+"Clarinet",
+"Double bass",
+"Trumpet"
+],
+"241": [
+"Bass drum",
+"Double bass",
+"Snare drum"
+],
+"242": [
+"Celesta",
+"Classical guitar",
+"Double bass"
+],
+"243": [
+"Banjo",
+"Double bass",
+"Piano"
+],
+"244": [
+"Alto saxophone",
+"Flugelhorn",
+"Trumpet"
+],
+"245": [
+"Alto saxophone",
+"French horn",
+"Trumpet"
+],
+"246": [
+"Alto saxophone",
+"Trombone",
+"Trumpet"
+],
+"247": [
+"Alto saxophone",
+"Glockenspiel",
+"Trumpet"
+],
+"248": [
+"French horn",
+"Glockenspiel",
+"Trumpet"
+],
+"249": [
+"Celesta",
+"Concert harp",
+"Xylophone"
+],
+"25": [
+"Accordion",
+"Bass clarinet",
+"Bassoon",
+"Cello",
+"Clarinet",
+"Didgeridoo",
+"Double bass",
+"English horn",
+"Erhu",
+"Harmonium",
+"Highland bagpipes",
+"Oboe",
+"Panpipes",
+"Piccolo",
+"Recorder",
+"Shakuhachi",
+"Viola",
+"Violin"
+],
+"250": [
+"Steelpan",
+"Timpani",
+"Vibraphone"
+],
+"251": [
+"Bass drum",
+"Snare drum",
+"Tambourine"
+],
+"252": [
+"Bass drum",
+"Castanets",
+"Snare drum"
+],
+"253": [
+"Bass drum",
+"Snare drum",
+"Xylophone"
+],
+"254": [
+"Bass drum",
+"Snare drum",
+"Vibraphone"
+],
+"255": [
+"Crash cymbals",
+"Djembe",
+"Maracas"
+],
+"256": [
+"Celesta",
+"Classical guitar",
+"Xylophone"
+],
+"257": [
+"Crash cymbals",
+"Steelpan",
+"Tam-tam"
+],
+"258": [
+"Marimba",
+"Vibraphone",
+"Xylophone"
+],
+"259": [
+"Electric bass guitar",
+"Electric guitar",
+"Piano"
+],
+"26": [
+"Banjo",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Double bass",
+"Erhu",
+"Harpsichord",
+"Mandolin",
+"Marimba",
+"Piano",
+"Sitar",
+"Steelpan",
+"Ukulele",
+"Vibraphone",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"260": [
+"Banjo",
+"Sitar",
+"Ukulele"
+],
+"261": [
+"Banjo",
+"Piano",
+"Vibraphone"
+],
+"262": [
+"Banjo",
+"Bongos",
+"Congas"
+],
+"263": [
+"Erhu",
+"Sitar"
+],
+"264": [
+"Erhu",
+"Shakuhachi"
+],
+"265": [
+"Celesta",
+"Xylophone"
+],
+"266": [
+"Hammond organ",
+"Synthesizer"
+],
+"267": [
+"Accordion",
+"Harmonium"
+],
+"268": [
+"Accordion",
+"Highland bagpipes"
+],
+"269": [
+"Accordion",
+"Djembe"
+],
+"27": [
+"Accordion",
+"Alto saxophone",
+"Bass drum",
+"Castanets",
+"Clarinet",
+"Concert flute",
+"Crash cymbals",
+"Diatonic harmonica",
+"Djembe",
+"Euphonium",
+"Glockenspiel",
+"Highland bagpipes",
+"Maracas",
+"Piccolo",
+"Snare drum",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"270": [
+"Cello",
+"Double bass"
+],
+"271": [
+"Diatonic harmonica",
+"Vibraphone"
+],
+"272": [
+"Clarinet",
+"Piccolo"
+],
+"273": [
+"Bass clarinet",
+"Bassoon"
+],
+"274": [
+"Clarinet",
+"Trumpet"
+],
+"275": [
+"Celesta",
+"Double bass"
+],
+"276": [
+"Clarinet",
+"Double bass"
+],
+"277": [
+"Bass clarinet",
+"Double bass"
+],
+"278": [
+"Double bass",
+"Trombone"
+],
+"279": [
+"Alto saxophone",
+"Trumpet"
+],
+"28": [
+"Alto saxophone",
+"Concert flute",
+"Crash cymbals",
+"Diatonic harmonica",
+"Euphonium",
+"Flugelhorn",
+"French horn",
+"Glockenspiel",
+"Sousaphone",
+"Steelpan",
+"Tam-tam",
+"Timpani",
+"Triangle",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Vibraphone"
+],
+"280": [
+"French horn",
+"Trumpet"
+],
+"281": [
+"Trombone",
+"Trumpet"
+],
+"282": [
+"Glockenspiel",
+"Trumpet"
+],
+"283": [
+"Celesta",
+"Concert harp"
+],
+"284": [
+"Timpani",
+"Xylophone"
+],
+"285": [
+"Timpani",
+"Vibraphone"
+],
+"286": [
+"Bass drum",
+"Snare drum"
+],
+"287": [
+"Djembe",
+"Maracas"
+],
+"288": [
+"Celesta",
+"Classical guitar"
+],
+"289": [
+"Crash cymbals",
+"Tam-tam"
+],
+"29": [
+"Alto saxophone",
+"Bass clarinet",
+"Bassoon",
+"Clarinet",
+"Concert flute",
+"Euphonium",
+"French horn",
+"Glockenspiel",
+"Marimba",
+"Oboe",
+"Piccolo",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Vibraphone",
+"Xylophone"
+],
+"290": [
+"Crash cymbals",
+"Marimba"
+],
+"291": [
+"Marimba",
+"Xylophone"
+],
+"292": [
+"Steelpan",
+"Vibraphone"
+],
+"293": [
+"Electric bass guitar",
+"Electric guitar"
+],
+"294": [
+"Piano",
+"Ukulele"
+],
+"295": [
+"Banjo",
+"Piano"
+],
+"296": [
+"Banjo",
+"Bongos"
+],
+"297": [
+"Sitar"
+],
+"298": [
+"Erhu"
+],
+"299": [
+"Piano"
+],
+"3": [
+"Accordion",
+"Banjo",
+"Bass clarinet",
+"Bass drum",
+"Bassoon",
+"Bongos",
+"Cajon",
+"Castanets",
+"Celesta",
+"Cello",
+"Clarinet",
+"Classical guitar",
+"Concert harp",
+"Congas",
+"Didgeridoo",
+"Djembe",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"English horn",
+"Erhu",
+"Harmonium",
+"Harpsichord",
+"Highland bagpipes",
+"Kalimba",
+"Mandolin",
+"Maracas",
+"Marimba",
+"Oboe",
+"Panpipes",
+"Piano",
+"Piccolo",
+"Recorder",
+"Shakuhachi",
+"Sitar",
+"Snare drum",
+"Taiko",
+"Tambourine",
+"Ukulele",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"30": [
+"Bass clarinet",
+"Bass drum",
+"Bassoon",
+"Castanets",
+"Celesta",
+"Cello",
+"Clarinet",
+"Concert harp",
+"Double bass",
+"English horn",
+"Oboe",
+"Piccolo",
+"Snare drum",
+"Tambourine",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"300": [
+"Celesta"
+],
+"301": [
+"Accordion"
+],
+"302": [
+"Diatonic harmonica"
+],
+"303": [
+"Clarinet"
+],
+"304": [
+"Double bass"
+],
+"305": [
+"Bass clarinet"
+],
+"306": [
+"Trumpet"
+],
+"307": [
+"Trombone"
+],
+"308": [
+"Timpani"
+],
+"309": [
+"Djembe"
+],
+"31": [
+"Banjo",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Double bass",
+"Erhu",
+"Harpsichord",
+"Kalimba",
+"Mandolin",
+"Marimba",
+"Piano",
+"Sitar",
+"Ukulele",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"310": [
+"Crash cymbals"
+],
+"311": [
+"Xylophone"
+],
+"312": [
+"Marimba"
+],
+"313": [
+"Vibraphone"
+],
+"314": [
+"Steelpan"
+],
+"315": [
+"Theremin"
+],
+"316": [
+"Ukulele"
+],
+"317": [
+"Banjo"
+],
+"318": [],
+"32": [
+"Accordion",
+"Banjo",
+"Bass clarinet",
+"Bassoon",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Double bass",
+"Erhu",
+"Harmonium",
+"Harpsichord",
+"Mandolin",
+"Piano",
+"Shakuhachi",
+"Sitar",
+"Ukulele"
+],
+"33": [
+"Banjo",
+"Bongos",
+"Cajon",
+"Congas",
+"Crash cymbals",
+"Didgeridoo",
+"Djembe",
+"Erhu",
+"Kalimba",
+"Maracas",
+"Marimba",
+"Shakuhachi",
+"Sitar",
+"Steelpan",
+"Taiko",
+"Tam-tam",
+"Ukulele"
+],
+"34": [
+"Banjo",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Double bass",
+"Erhu",
+"Harpsichord",
+"Mandolin",
+"Marimba",
+"Piano",
+"Sitar",
+"Ukulele",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"35": [
+"Banjo",
+"Bongos",
+"Cajon",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Djembe",
+"Double bass",
+"Erhu",
+"Harpsichord",
+"Kalimba",
+"Mandolin",
+"Piano",
+"Sitar",
+"Ukulele"
+],
+"36": [
+"Alto saxophone",
+"Banjo",
+"Clarinet",
+"Concert flute",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"Flugelhorn",
+"Hammond organ",
+"Piano",
+"Sousaphone",
+"Synthesizer",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Vibraphone"
+],
+"37": [
+"Accordion",
+"Banjo",
+"Celesta",
+"Classical guitar",
+"Concert harp",
+"Electric bass guitar",
+"Electric guitar",
+"Harmonium",
+"Harpsichord",
+"Highland bagpipes",
+"Mandolin",
+"Marimba",
+"Piano",
+"Sitar",
+"Ukulele",
+"Xylophone"
+],
+"38": [
+"Accordion",
+"Bass clarinet",
+"Bassoon",
+"Cello",
+"Clarinet",
+"Double bass",
+"English horn",
+"Erhu",
+"Harmonium",
+"Oboe",
+"Piccolo",
+"Recorder",
+"Shakuhachi",
+"Viola",
+"Violin"
+],
+"39": [
+"Bass clarinet",
+"Bassoon",
+"Cello",
+"Clarinet",
+"Concert flute",
+"Double bass",
+"English horn",
+"French horn",
+"Oboe",
+"Piccolo",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Viola",
+"Violin"
+],
+"4": [
+"Accordion",
+"Alto saxophone",
+"Bass clarinet",
+"Bassoon",
+"Cello",
+"Clarinet",
+"Concert flute",
+"Diatonic harmonica",
+"Didgeridoo",
+"Double bass",
+"English horn",
+"Erhu",
+"Euphonium",
+"Flugelhorn",
+"French horn",
+"Hammond organ",
+"Harmonium",
+"Highland bagpipes",
+"Oboe",
+"Panpipes",
+"Piccolo",
+"Pipe organ",
+"Recorder",
+"Shakuhachi",
+"Sousaphone",
+"Synthesizer",
+"Theremin",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Viola",
+"Violin"
+],
+"40": [
+"Alto saxophone",
+"Concert flute",
+"Diatonic harmonica",
+"Euphonium",
+"Flugelhorn",
+"French horn",
+"Glockenspiel",
+"Sousaphone",
+"Steelpan",
+"Timpani",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Vibraphone"
+],
+"41": [
+"Alto saxophone",
+"Bass clarinet",
+"Celesta",
+"Clarinet",
+"Classical guitar",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"English horn",
+"Flugelhorn",
+"French horn",
+"Glockenspiel",
+"Piccolo",
+"Trumpet",
+"Xylophone"
+],
+"42": [
+"Accordion",
+"Banjo",
+"Celesta",
+"Classical guitar",
+"Concert harp",
+"Electric bass guitar",
+"Electric guitar",
+"Harmonium",
+"Harpsichord",
+"Mandolin",
+"Marimba",
+"Piano",
+"Sitar",
+"Ukulele",
+"Xylophone"
+],
+"43": [
+"Bass clarinet",
+"Bassoon",
+"Clarinet",
+"Concert flute",
+"French horn",
+"Glockenspiel",
+"Oboe",
+"Piccolo",
+"Timpani",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Xylophone"
+],
+"44": [
+"Alto saxophone",
+"Concert flute",
+"Crash cymbals",
+"Euphonium",
+"French horn",
+"Glockenspiel",
+"Sousaphone",
+"Timpani",
+"Triangle",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Vibraphone"
+],
+"45": [
+"Accordion",
+"Banjo",
+"Celesta",
+"Classical guitar",
+"Concert harp",
+"Hammond organ",
+"Harmonium",
+"Harpsichord",
+"Mandolin",
+"Piano",
+"Pipe organ",
+"Sitar",
+"Synthesizer",
+"Ukulele"
+],
+"46": [
+"Banjo",
+"Bongos",
+"Cajon",
+"Congas",
+"Didgeridoo",
+"Djembe",
+"Erhu",
+"Kalimba",
+"Maracas",
+"Marimba",
+"Shakuhachi",
+"Sitar",
+"Taiko",
+"Ukulele"
+],
+"47": [
+"Bass clarinet",
+"Bassoon",
+"Celesta",
+"Cello",
+"Clarinet",
+"Concert harp",
+"Double bass",
+"English horn",
+"Oboe",
+"Piccolo",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"48": [
+"Banjo",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Double bass",
+"Erhu",
+"Harpsichord",
+"Kalimba",
+"Mandolin",
+"Piano",
+"Sitar",
+"Ukulele"
+],
+"49": [
+"Alto saxophone",
+"Bass clarinet",
+"Bassoon",
+"Clarinet",
+"Concert flute",
+"Euphonium",
+"French horn",
+"Oboe",
+"Piccolo",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"5": [
+"Accordion",
+"Banjo",
+"Bass clarinet",
+"Bassoon",
+"Celesta",
+"Cello",
+"Clarinet",
+"Classical guitar",
+"Concert harp",
+"Didgeridoo",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"English horn",
+"Erhu",
+"Harmonium",
+"Harpsichord",
+"Highland bagpipes",
+"Kalimba",
+"Mandolin",
+"Marimba",
+"Oboe",
+"Panpipes",
+"Piano",
+"Piccolo",
+"Recorder",
+"Shakuhachi",
+"Sitar",
+"Ukulele",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"50": [
+"Bass clarinet",
+"Bassoon",
+"Clarinet",
+"Concert flute",
+"French horn",
+"Glockenspiel",
+"Oboe",
+"Piccolo",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Xylophone"
+],
+"51": [
+"Alto saxophone",
+"Concert flute",
+"Euphonium",
+"Flugelhorn",
+"French horn",
+"Glockenspiel",
+"Sousaphone",
+"Steelpan",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Vibraphone"
+],
+"52": [
+"Alto saxophone",
+"Bass drum",
+"Diatonic harmonica",
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Piano",
+"Snare drum",
+"Synthesizer",
+"Tambourine",
+"Trombone",
+"Trumpet",
+"Ukulele"
+],
+"53": [
+"Banjo",
+"Bongos",
+"Cajon",
+"Congas",
+"Djembe",
+"Erhu",
+"Kalimba",
+"Maracas",
+"Marimba",
+"Sitar",
+"Steelpan",
+"Taiko",
+"Ukulele"
+],
+"54": [
+"Accordion",
+"Alto saxophone",
+"Clarinet",
+"Concert flute",
+"Diatonic harmonica",
+"Euphonium",
+"Glockenspiel",
+"Highland bagpipes",
+"Piccolo",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"55": [
+"Accordion",
+"Bass clarinet",
+"Bassoon",
+"Cello",
+"Didgeridoo",
+"Double bass",
+"Erhu",
+"Hammond organ",
+"Harmonium",
+"Pipe organ",
+"Shakuhachi",
+"Synthesizer"
+],
+"56": [
+"Banjo",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Double bass",
+"Erhu",
+"Harpsichord",
+"Mandolin",
+"Piano",
+"Sitar",
+"Ukulele"
+],
+"57": [
+"Alto saxophone",
+"Bass drum",
+"Clarinet",
+"Concert flute",
+"Crash cymbals",
+"Euphonium",
+"Glockenspiel",
+"Piccolo",
+"Snare drum",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"58": [
+"Alto saxophone",
+"Concert flute",
+"Euphonium",
+"French horn",
+"Glockenspiel",
+"Sousaphone",
+"Timpani",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Vibraphone"
+],
+"59": [
+"Banjo",
+"Celesta",
+"Classical guitar",
+"Concert harp",
+"Harpsichord",
+"Mandolin",
+"Marimba",
+"Piano",
+"Sitar",
+"Ukulele",
+"Vibraphone",
+"Xylophone"
+],
+"6": [
+"Banjo",
+"Bass drum",
+"Bongos",
+"Cajon",
+"Castanets",
+"Celesta",
+"Cello",
+"Classical guitar",
+"Concert harp",
+"Congas",
+"Djembe",
+"Double bass",
+"Erhu",
+"Harpsichord",
+"Kalimba",
+"Mandolin",
+"Maracas",
+"Marimba",
+"Piano",
+"Sitar",
+"Snare drum",
+"Steelpan",
+"Taiko",
+"Timpani",
+"Ukulele",
+"Vibraphone",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"60": [
+"Banjo",
+"Bongos",
+"Cajon",
+"Congas",
+"Djembe",
+"Erhu",
+"Kalimba",
+"Maracas",
+"Marimba",
+"Sitar",
+"Taiko",
+"Ukulele"
+],
+"61": [
+"Bass drum",
+"Castanets",
+"Celesta",
+"Cello",
+"Concert harp",
+"Double bass",
+"Snare drum",
+"Timpani",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"62": [
+"Accordion",
+"Alto saxophone",
+"Clarinet",
+"Concert flute",
+"Diatonic harmonica",
+"Euphonium",
+"Highland bagpipes",
+"Piccolo",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"63": [
+"Accordion",
+"Bass clarinet",
+"Bassoon",
+"Cello",
+"Double bass",
+"Erhu",
+"Hammond organ",
+"Harmonium",
+"Pipe organ",
+"Shakuhachi",
+"Synthesizer"
+],
+"64": [
+"Alto saxophone",
+"Concert flute",
+"Euphonium",
+"French horn",
+"Glockenspiel",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Vibraphone"
+],
+"65": [
+"Concert flute",
+"Crash cymbals",
+"French horn",
+"Glockenspiel",
+"Tam-tam",
+"Timpani",
+"Triangle",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells"
+],
+"66": [
+"Alto saxophone",
+"Clarinet",
+"Concert flute",
+"Double bass",
+"Flugelhorn",
+"Hammond organ",
+"Sousaphone",
+"Synthesizer",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"67": [
+"Accordion",
+"Banjo",
+"Celesta",
+"Classical guitar",
+"Concert harp",
+"Harmonium",
+"Harpsichord",
+"Mandolin",
+"Piano",
+"Sitar",
+"Ukulele"
+],
+"68": [
+"Banjo",
+"Celesta",
+"Classical guitar",
+"Concert harp",
+"Harpsichord",
+"Mandolin",
+"Marimba",
+"Piano",
+"Sitar",
+"Ukulele",
+"Xylophone"
+],
+"69": [
+"Bass clarinet",
+"Bassoon",
+"Cello",
+"Clarinet",
+"Double bass",
+"English horn",
+"Oboe",
+"Piccolo",
+"Viola",
+"Violin"
+],
+"7": [
+"Accordion",
+"Alto saxophone",
+"Bass clarinet",
+"Bassoon",
+"Cello",
+"Clarinet",
+"Concert flute",
+"Double bass",
+"English horn",
+"Erhu",
+"Euphonium",
+"Flugelhorn",
+"French horn",
+"Hammond organ",
+"Harmonium",
+"Oboe",
+"Piccolo",
+"Pipe organ",
+"Recorder",
+"Shakuhachi",
+"Sousaphone",
+"Synthesizer",
+"Theremin",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Viola",
+"Violin"
+],
+"70": [
+"Bass drum",
+"Castanets",
+"Celesta",
+"Cello",
+"Concert harp",
+"Double bass",
+"Snare drum",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"71": [
+"Accordion",
+"Alto saxophone",
+"Clarinet",
+"Concert flute",
+"Euphonium",
+"Glockenspiel",
+"Piccolo",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"72": [
+"Alto saxophone",
+"Concert flute",
+"Diatonic harmonica",
+"Euphonium",
+"Flugelhorn",
+"French horn",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"73": [
+"Bass clarinet",
+"Bassoon",
+"Clarinet",
+"Concert flute",
+"French horn",
+"Oboe",
+"Piccolo",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"74": [
+"Bass drum",
+"Castanets",
+"Clarinet",
+"Concert flute",
+"Crash cymbals",
+"Glockenspiel",
+"Piccolo",
+"Snare drum",
+"Trombone",
+"Trumpet"
+],
+"75": [
+"Alto saxophone",
+"Bass drum",
+"Clarinet",
+"Concert flute",
+"Snare drum",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Vibraphone"
+],
+"76": [
+"Concert flute",
+"Crash cymbals",
+"French horn",
+"Glockenspiel",
+"Timpani",
+"Triangle",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells"
+],
+"77": [
+"Bass clarinet",
+"Bass drum",
+"Bassoon",
+"Clarinet",
+"Marimba",
+"Oboe",
+"Piccolo",
+"Snare drum",
+"Tambourine",
+"Xylophone"
+],
+"78": [
+"Bass clarinet",
+"Celesta",
+"Clarinet",
+"Double bass",
+"English horn",
+"French horn",
+"Glockenspiel",
+"Piccolo",
+"Trumpet",
+"Xylophone"
+],
+"79": [
+"Bass clarinet",
+"Celesta",
+"Clarinet",
+"Classical guitar",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"English horn",
+"Piccolo",
+"Xylophone"
+],
+"8": [
+"Bass clarinet",
+"Bass drum",
+"Bassoon",
+"Castanets",
+"Celesta",
+"Cello",
+"Clarinet",
+"Concert flute",
+"Concert harp",
+"Crash cymbals",
+"Double bass",
+"English horn",
+"French horn",
+"Glockenspiel",
+"Oboe",
+"Piccolo",
+"Snare drum",
+"Tam-tam",
+"Tambourine",
+"Timpani",
+"Triangle",
+"Trombone",
+"Trumpet",
+"Tuba",
+"Tubular bells",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"80": [
+"Banjo",
+"Bass drum",
+"Bongos",
+"Clarinet",
+"Congas",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"Piano",
+"Snare drum"
+],
+"81": [
+"Alto saxophone",
+"Bass drum",
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Piano",
+"Snare drum",
+"Synthesizer",
+"Trombone",
+"Trumpet"
+],
+"82": [
+"Alto saxophone",
+"Diatonic harmonica",
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Piano",
+"Synthesizer",
+"Trombone",
+"Trumpet",
+"Ukulele"
+],
+"83": [
+"Banjo",
+"Bongos",
+"Cajon",
+"Didgeridoo",
+"Djembe",
+"Erhu",
+"Kalimba",
+"Shakuhachi",
+"Sitar",
+"Ukulele"
+],
+"84": [
+"Cello",
+"Double bass",
+"Erhu",
+"Shakuhachi",
+"Sitar",
+"Theremin",
+"Trombone",
+"Viola",
+"Violin"
+],
+"85": [
+"Accordion",
+"Alto saxophone",
+"Clarinet",
+"Concert flute",
+"Euphonium",
+"Piccolo",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"86": [
+"Accordion",
+"Bass drum",
+"Castanets",
+"Clarinet",
+"Djembe",
+"Highland bagpipes",
+"Maracas",
+"Piccolo",
+"Snare drum"
+],
+"87": [
+"Accordion",
+"Bass clarinet",
+"Bassoon",
+"Cello",
+"Didgeridoo",
+"Double bass",
+"Erhu",
+"Harmonium",
+"Shakuhachi"
+],
+"88": [
+"Alto saxophone",
+"Concert flute",
+"Crash cymbals",
+"Diatonic harmonica",
+"Euphonium",
+"Glockenspiel",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"89": [
+"Alto saxophone",
+"Clarinet",
+"Concert flute",
+"Euphonium",
+"Glockenspiel",
+"Piccolo",
+"Sousaphone",
+"Trombone",
+"Trumpet"
+],
+"9": [
+"Accordion",
+"Banjo",
+"Bass clarinet",
+"Bassoon",
+"Celesta",
+"Cello",
+"Clarinet",
+"Classical guitar",
+"Concert harp",
+"Double bass",
+"Electric bass guitar",
+"Electric guitar",
+"English horn",
+"Erhu",
+"Harmonium",
+"Harpsichord",
+"Mandolin",
+"Marimba",
+"Oboe",
+"Piano",
+"Piccolo",
+"Recorder",
+"Shakuhachi",
+"Sitar",
+"Ukulele",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"90": [
+"Bass drum",
+"Clarinet",
+"Concert flute",
+"Crash cymbals",
+"Glockenspiel",
+"Piccolo",
+"Snare drum",
+"Trombone",
+"Trumpet"
+],
+"91": [
+"Alto saxophone",
+"Concert flute",
+"Euphonium",
+"Flugelhorn",
+"French horn",
+"Sousaphone",
+"Trombone",
+"Trumpet",
+"Tuba"
+],
+"92": [
+"Bass clarinet",
+"Bass drum",
+"Bassoon",
+"Clarinet",
+"Oboe",
+"Piccolo",
+"Snare drum",
+"Tambourine",
+"Xylophone"
+],
+"93": [
+"Alto saxophone",
+"Bass clarinet",
+"Clarinet",
+"Double bass",
+"English horn",
+"Flugelhorn",
+"French horn",
+"Piccolo",
+"Trumpet"
+],
+"94": [
+"Banjo",
+"Celesta",
+"Classical guitar",
+"Concert harp",
+"Harpsichord",
+"Mandolin",
+"Piano",
+"Sitar",
+"Ukulele"
+],
+"95": [
+"Alto saxophone",
+"Electric bass guitar",
+"Electric guitar",
+"Hammond organ",
+"Piano",
+"Synthesizer",
+"Trombone",
+"Trumpet",
+"Ukulele"
+],
+"96": [
+"Banjo",
+"Didgeridoo",
+"Erhu",
+"Kalimba",
+"Marimba",
+"Shakuhachi",
+"Sitar",
+"Steelpan",
+"Ukulele"
+],
+"97": [
+"Cello",
+"Double bass",
+"Erhu",
+"Shakuhachi",
+"Theremin",
+"Trombone",
+"Viola",
+"Violin"
+],
+"98": [
+"Celesta",
+"Cello",
+"Concert harp",
+"Double bass",
+"Timpani",
+"Viola",
+"Violin",
+"Xylophone"
+],
+"99": [
+"Accordion",
+"Bass clarinet",
+"Bassoon",
+"Cello",
+"Double bass",
+"Erhu",
+"Harmonium",
+"Shakuhachi"
+]
+},
+"source_sha256": "8fc5040d6e393c564e7f58d3cbf973d47572d3df8cd5676491c05fbef480dd22"
+}

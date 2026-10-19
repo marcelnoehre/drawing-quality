@@ -1,0 +1,15 @@
+context,scale,short_name,filename,kind,chain,chain_step,attributes,concepts,width,height,incomparable_pairs,drawable,description,note
+tenpc_stars,tenpc_stars_nature,nature,contexts/tenpc_stars/tenpc_stars_nature.cxt,facet,classification,1,4,8,4,4,11,False,What kind of object it is. Also the root of the classification chain.,"below the drawable minimum of 12 concepts; recorded, never drawn"
+tenpc_stars,tenpc_stars_nature_spectral,nature_spectral,contexts/tenpc_stars/tenpc_stars_nature_spectral.cxt,chain,classification,2,13,26,5,12,136,True,Each kind of object placed on the temperature sequence.,
+tenpc_stars,tenpc_stars_nature_spectral_wd,nature_spectral_wd,contexts/tenpc_stars/tenpc_stars_nature_spectral_wd.cxt,chain,classification,3,19,35,9,12,365,True,And the white dwarfs split into their own spectral classes.,"low-ratio transition from tenpc_stars_nature_spectral: 26 to 35 concepts, ratio 1.35"
+tenpc_stars,tenpc_stars_spectral,spectral,contexts/tenpc_stars/tenpc_stars_spectral.cxt,facet,,,9,10,1,10,0,False,Where it sits on the temperature sequence.,a pure chain (width 1): every type contains the next; never a drawing test
+tenpc_stars,tenpc_stars_wd,wd,contexts/tenpc_stars/tenpc_stars_wd.cxt,facet,,,6,11,5,5,22,False,The white-dwarf spectral classes.,"below the drawable minimum of 12 concepts; recorded, never drawn"
+tenpc_stars,tenpc_stars_planets,planets,contexts/tenpc_stars/tenpc_stars_planets.cxt,facet,,,5,9,3,6,6,False,Its planets.,"below the drawable minimum of 12 concepts; recorded, never drawn"
+tenpc_stars,tenpc_stars_company,company,contexts/tenpc_stars/tenpc_stars_company.cxt,facet,,,6,20,6,7,81,True,"The system it belongs to: how many bodies, its role, its companions.",
+tenpc_stars,tenpc_stars_knowledge,knowledge,contexts/tenpc_stars/tenpc_stars_knowledge.cxt,facet,,,5,14,5,5,44,True,What the catalogue records about how it is seen.,
+tenpc_stars,tenpc_stars_spectral_planets,spectral_planets,contexts/tenpc_stars/tenpc_stars_spectral_planets.cxt,apposition,,,14,36,7,11,252,True,Which kinds of stars host planets.,
+tenpc_stars,tenpc_stars_spectral_knowledge,spectral_knowledge,contexts/tenpc_stars/tenpc_stars_spectral_knowledge.cxt,apposition,,,14,57,10,12,896,True,How completely each kind of object is catalogued.,
+tenpc_stars,tenpc_stars_company_planets,company_planets,contexts/tenpc_stars/tenpc_stars_company_planets.cxt,apposition,,,11,60,16,9,1184,True,The system an object lives in: its companions and its planets.,
+tenpc_stars,tenpc_stars_spectral_company,spectral_company,contexts/tenpc_stars/tenpc_stars_spectral_company.cxt,apposition,,,15,109,16,14,3862,True,"Which kinds of objects come in company, and with what: multiplicity along the temperature sequence.",
+tenpc_stars,tenpc_stars_physical,physical,contexts/tenpc_stars/tenpc_stars_physical.cxt,apposition,,,30,311,54,15,38928,True,"Everything about the object and its system, setting aside how it is catalogued.",
+tenpc_stars,tenpc_stars,tenpc_stars,contexts/tenpc_stars/tenpc_stars.cxt,full,,,35,732,130,16,233771,True,"The data themselves, the identity scale-measure (id, K).",

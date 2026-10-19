@@ -1,0 +1,18 @@
+context,scale,short_name,filename,kind,chain,chain_step,attributes,concepts,width,height,incomparable_pairs,drawable,description,note
+wd40pc,wd40pc_atmosphere,atmosphere,contexts/wd40pc/wd40pc_atmosphere.cxt,facet,,,2,4,2,3,1,False,What its atmosphere is made of.,"below the drawable minimum of 12 concepts; recorded, never drawn"
+wd40pc,wd40pc_mass,mass,contexts/wd40pc/wd40pc_mass.cxt,facet,,,3,5,2,4,2,False,How heavy it is.,"below the drawable minimum of 12 concepts; recorded, never drawn"
+wd40pc,wd40pc_temperature,temperature,contexts/wd40pc/wd40pc_temperature.cxt,facet,,,3,4,1,4,0,False,How hot it is.,a pure chain (width 1): every band contains the next; never a drawing test
+wd40pc,wd40pc_age,age,contexts/wd40pc/wd40pc_age.cxt,facet,,,3,4,1,4,0,False,How long it has been cooling.,a pure chain (width 1): every band contains the next; never a drawing test
+wd40pc,wd40pc_knowledge,knowledge,contexts/wd40pc/wd40pc_knowledge.cxt,facet,,,3,6,2,4,3,False,"How it is seen: whether a fit exists, which reference volume it is in.","below the drawable minimum of 12 concepts; recorded, never drawn"
+wd40pc,wd40pc_binarity,binarity,contexts/wd40pc/wd40pc_binarity.cxt,facet,,,6,13,5,6,28,True,The company it keeps.,
+wd40pc,wd40pc_spectral,spectral,contexts/wd40pc/wd40pc_spectral.cxt,facet,,,8,30,12,5,308,True,What its spectrum shows.,
+wd40pc,wd40pc_cooling,cooling,contexts/wd40pc/wd40pc_cooling.cxt,apposition,,,6,14,4,7,27,True,Where it is on its cooling track: how hot it still is and how long it has been cooling.,
+wd40pc,wd40pc_mass_binarity,mass_binarity,contexts/wd40pc/wd40pc_mass_binarity.cxt,apposition,,,9,23,9,7,145,True,Whether its mass points to a binary past: low-mass and massive white dwarfs against their company.,
+wd40pc,wd40pc_parameters,parameters,contexts/wd40pc/wd40pc_parameters.cxt,apposition,,,9,46,12,9,620,True,"Its fitted physical parameters: how heavy, how hot, how old.",
+wd40pc,wd40pc_appearance,appearance,contexts/wd40pc/wd40pc_appearance.cxt,apposition,,,10,47,19,6,839,True,What its spectrum shows and what its atmosphere is made of.,
+wd40pc,wd40pc_spectral_knowledge,spectral_knowledge,contexts/wd40pc/wd40pc_spectral_knowledge.cxt,apposition,,,11,83,25,7,2703,True,"How completely each spectral class is characterised, and how much of it lies in the nearest volumes.",
+wd40pc,wd40pc_appearance_temperature,appearance_temperature,contexts/wd40pc/wd40pc_appearance_temperature.cxt,apposition,,,13,97,30,8,3798,True,Why it looks the way it does: its spectrum against how hot it is.,
+wd40pc,wd40pc_parameters_binarity,parameters_binarity,contexts/wd40pc/wd40pc_parameters_binarity.cxt,apposition,,,15,112,28,9,4814,True,"How mass, temperature and age relate to the company it keeps.",
+wd40pc,wd40pc_appearance_parameters,appearance_parameters,contexts/wd40pc/wd40pc_appearance_parameters.cxt,apposition,,,19,319,74,11,44008,True,"Everything about the white dwarf itself, setting aside its company and how it is catalogued.",
+wd40pc,wd40pc_physical,physical,contexts/wd40pc/wd40pc_physical.cxt,apposition,,,25,534,123,12,129074,True,"Everything about the white dwarf and its company, setting aside how it is catalogued.",
+wd40pc,wd40pc,wd40pc,contexts/wd40pc/wd40pc.cxt,full,,,28,728,154,13,242069,True,"The data themselves, the identity scale-measure (id, K).",

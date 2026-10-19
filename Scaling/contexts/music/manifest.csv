@@ -1,0 +1,8 @@
+context,scale,short_name,filename,kind,chain,chain_step,attributes,concepts,width,height,incomparable_pairs,drawable,description,note
+music,music_motion,motion,contexts/music/music_motion.cxt,facet,,,4,12,4,5,24,True,How the piece moves: its tempo and rhythm.,
+music,music_form,form,contexts/music/music_form.cxt,facet,,,4,5,2,4,1,False,"How it is built: proportion, craft, clarity of texture.","below the drawable minimum of 12 concepts; recorded, never drawn"
+music,music_character,character,contexts/music/music_character.cxt,facet,,,3,6,2,4,3,False,What it expresses.,"below the drawable minimum of 12 concepts; recorded, never drawn"
+music,music_form_character,form_character,contexts/music/music_form_character.cxt,apposition,,,7,27,7,7,162,True,How it is built against what it expresses.,
+music,music_motion_character,motion_character,contexts/music/music_motion_character.cxt,apposition,,,7,42,11,8,512,True,Its temperament: how it moves and what it expresses.,
+music,music_motion_form,motion_form,contexts/music/music_motion_form.cxt,apposition,,,8,53,15,8,862,True,How it moves against how it is built.,
+music,music,music,contexts/music/music.cxt,full,,,11,163,41,10,10233,True,"The data themselves, the identity scale-measure (id, K).",

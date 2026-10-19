@@ -44,7 +44,7 @@ Run in this order from inside `pipeline/`; the last step reproduces the top-leve
 |---|---|
 | `tenpc_v1.csv` | The complete 10 pc sample **v1** (540 entries, 339 systems), key columns only: running numbers, system name, catalogue class, object name, spectral type, SIMBAD name, common name, Gaia G, estimated G, distance. Transcribed from K. Jardine's supplement file (gruze.org/10pc_supplement), which copies these columns from the catalogue. |
 | `tenpc_v2_head.psv` | Catalogue class, name and spectral type of the first 343 rows of the **v2** catalogue (gruze.org/10pc/The10pcSample_v2.csv). Only used as a cross-check (the download was truncated at row 343). One row (2MASS J00345157+0523050) was accidentally omitted during transcription; the cross-check reports it and it is present in the reconstructed list. |
-| `PSCompPars_2026.csv` | NASA Exoplanet Archive "Planetary Systems Composite Parameters" table (default columns, 6324 planets), obtained from a GitHub mirror (github.com/tatidurao/pscomppars_exoplanetas) because the archive itself was not reachable from my environment. See Section 8. |
+| `PSCompPars_2026.csv` | NASA Exoplanet Archive "Planetary Systems Composite Parameters" table (default columns, 6324 planets), obtained from a GitHub mirror (github.com/tatidurao/pscomppars_exoplanetas) because the archive itself was not reachable when the data were collected. See Section 8. |
 | `pscomppars.csv` | An older copy of the same table from the same mirror (5926 planets). Only used to record whether a planet was listed there; it does not feed any attribute. |
 | `oec.xml.gz` | Open Exoplanet Catalogue, full XML (github.com/OpenExoplanetCatalogue/oec_gzip). |
 
@@ -96,7 +96,7 @@ v1 table and the explicit change list in the v2 paper (Reylé et al. 2022, Sect.
 - CWISEP J181006.00−101001.1 (metal-poor brown dwarf, new system)
 - 41 Ara Bb: the unseen companion of GJ 666 B found from its Gaia DR3 astrometric orbit
   (0.17–0.73 solar masses; class "LM?"). The name "41 Ara Bb", and renaming "41 Ara B" to
-  "41 Ara Ba", are my labels.
+  "41 Ara Ba", are labels introduced here, not catalogue names.
 - 8 planets: GJ 411 c (= HD 95735 c), LTT 1445 A c, GJ 393 b (= BD+01 2447 b),
   GJ 514 b (= BD+11 2576 b), GJ 367 b (host CD−45 5378), HD 260655 b and c, Wolf 1069 b
 
@@ -104,7 +104,7 @@ v1 table and the explicit change list in the v2 paper (Reylé et al. 2022, Sect.
 - "Lalande 21185 b" renamed "HD 95735 b" (v2 naming).
 - GJ 1230 C and GJ 867 C changed from "LM?" to "LM": the v2 paper states that their Gaia DR3
   orbital solutions confirm their low-mass-star nature.
-- Spectral types of the two added brown dwarfs are not in the rows I had, so I assigned:
+- Spectral types of the two added brown dwarfs are not in the source rows, so these were assigned:
   "Y?" for CWISEP J2256+4002 (the v2 paper calls it a Y dwarf) and "esdT0" for CWISE J1810−1010
   (discovery classification, Schneider et al. 2020). Note that later work gives esdT3 and reports
   no methane in its spectrum (Burgasser et al. 2024; Lodieu et al. 2022). Distances of these two

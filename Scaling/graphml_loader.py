@@ -1,82 +1,57 @@
 """Read a drawing back as {extent: (x, y)}, with the node identification checked.
 
-The generators write `<node id="0">` and nothing else, so a drawing on its own
-does not say which concept a node is. The id is an index into the concept list the
-generator used, and that list is reproducible: six of the seven algorithms number
-concepts in the order `odis` enumerates them, which is the lectic order, and
-`redraw` sorts its nodes explicitly before numbering. `check_node_mapping.py`
-verifies both claims against the generators themselves.
+The generators write `<node id="0">` and nothing else, so a drawing on its own does
+not say which concept a node is. `node_extents.py` records that while the drawing
+is being written, from the generator's own data, and saves it beside the drawing
+as `<name>.extents.json`. This module reads that table and never rebuilds the
+numbering, which would depend on reproducing each generator's internal order.
 
-Reproducible is not the same as safe, though. If anything in the stack ever
-changed the enumeration, every mapping here would still produce plausible
-coordinates and plausible correlations, with no error anywhere. That is the one
-silent failure mode in this pipeline, so this module refuses to guess: the extent
-sequence taken from `odis` is checked against an independent enumeration before it
-is used, and a mismatch raises rather than returns.
+A recorded table can still be wrong -- a stale file from another context, or a
+generator whose internals changed -- and a wrong table produces plausible
+coordinates and plausible correlations with no error anywhere. So every load
+checks it, and any failure raises rather than returns:
+
+  0. the drawing was made from exactly this .cxt (its sha256 is recorded);
+  1. the ids in the table are exactly the node ids in the drawing;
+  2. its extents are exactly the extents of the lattice of the given .cxt;
+  3. every drawn edge joins a concept to one of its lower covers.
+
+The third check catches most tables that name the right concepts but the wrong
+nodes, since a swap usually breaks an edge. **It cannot catch a swap of two
+concepts with the same upper and the same lower covers** -- the two middle
+elements of a diamond -- because the drawing's edges are then the same either way.
+21 such pairs exist, all in four instruments scales. The table is read from the
+generator's own objects rather than inferred, so there is no known way for it to
+swap them; the limit is in what can be checked afterwards, and it is stated here
+and in pipeline.md rather than assumed away.
 
     from graphml_loader import load_drawing
-    positions = load_drawing(cxt_path, graphml_path, 'fdp')   # {frozenset: (x, y)}
+    positions = load_drawing(cxt_path, graphml_path)   # {frozenset: (x, y)}
 """
 
 from __future__ import annotations
 
+import json
 from functools import lru_cache
 from pathlib import Path
 from xml.etree.ElementTree import parse as parse_xml
 
-import conceptflow as cf
 import odis
+
+from node_extents import sidecar, source_hash
 
 GRAPHML_NS = "{http://graphml.graphdrawing.org/xmlns}"
 
-# Numbered by position in the odis enumeration.
-LECTIC_ALGORITHMS = ("aeschlimann_schmid", "cole_ducrou_eklund", "fdp", "freese",
-                     "dimdraw", "sugiyama")
-# Numbered after an explicit sort, so independent of any enumeration order.
-SORTED_ALGORITHMS = ("redraw",)
-SUPPORTED = LECTIC_ALGORITHMS + SORTED_ALGORITHMS
+
+class NodeIdentificationError(RuntimeError):
+    """The recorded id -> extent table does not fit this drawing or this lattice."""
 
 
-class EnumerationOrderError(RuntimeError):
-    """The concept order is not the one the node ids were written against."""
-
-
-@lru_cache(maxsize=64)
-def extent_sequence(cxt_path: str) -> tuple[frozenset[str], ...]:
-    """The concept extents in the order the generators number them.
-
-    Taken from odis, then checked against ConceptFlow's NextClosure. The two are
-    independent implementations; if they ever disagree the node ids in every
-    drawing of this context mean something other than what we think, so this
-    raises instead of returning a plausible answer.
-    """
+@lru_cache(maxsize=128)
+def lattice_extents(cxt_path: str) -> frozenset[frozenset[str]]:
+    """Every extent of the lattice of a .cxt."""
     context = odis.FormalContext.from_file(cxt_path)
-    from_odis = tuple(frozenset(c.extent.to_frozenset()) for c in context.concepts())
-
-    checked = cf.io.read_cxt(cxt_path)
-    names = list(checked.objects)
-    independent = tuple(frozenset(names[i] for i in concept.extent)
-                        for concept in cf.algorithms.enumerate_concepts(checked, "nextclosure"))
-
-    if from_odis != independent:
-        where = next((i for i, (a, b) in enumerate(zip(from_odis, independent)) if a != b),
-                     min(len(from_odis), len(independent)))
-        raise EnumerationOrderError(
-            f"{Path(cxt_path).name}: the odis concept order no longer matches an "
-            f"independent NextClosure enumeration, first difference at position {where} "
-            f"({len(from_odis)} vs {len(independent)} concepts). Node ids in existing "
-            f"drawings of this context cannot be trusted; rerun check_node_mapping.py.")
-    return from_odis
-
-
-@lru_cache(maxsize=64)
-def sorted_extent_sequence(cxt_path: str) -> tuple[frozenset[str], ...]:
-    """The order redraw numbers its nodes in: extent size, then extent, then intent."""
-    context = odis.FormalContext.from_file(cxt_path)
-    concepts = [(tuple(sorted(c.extent.to_frozenset())), tuple(sorted(c.intent.to_frozenset())))
-                for c in context.concepts()]
-    concepts.sort(key=lambda c: (len(c[0]), c[0], c[1]))
-    return tuple(frozenset(extent) for extent, _ in concepts)
+    return frozenset(frozenset(c.extent.to_frozenset()) for c in context.concepts())
 
 
 def read_positions(graphml_path: Path) -> dict[str, tuple[float, float]]:
@@ -89,31 +64,73 @@ def read_positions(graphml_path: Path) -> dict[str, tuple[float, float]]:
     return positions
 
 
-def load_drawing(cxt_path: Path, graphml_path: Path,
-                 algorithm: str) -> dict[frozenset[str], tuple[float, float]]:
-    """One drawing as {extent: (x, y)}, keyed so two scales can be compared."""
-    if algorithm not in SUPPORTED:
-        raise KeyError(f"{algorithm}: no node identification is known for this algorithm")
+def read_edges(graphml_path: Path) -> list[tuple[str, str]]:
+    graph = parse_xml(graphml_path).getroot().find(f"{GRAPHML_NS}graph")
+    return [(e.get("source"), e.get("target")) for e in graph.findall(f"{GRAPHML_NS}edge")]
 
-    sequence = (sorted_extent_sequence(str(cxt_path)) if algorithm in SORTED_ALGORITHMS
-                else extent_sequence(str(cxt_path)))
+
+def read_sidecar(graphml_path: Path) -> dict:
+    path = sidecar(Path(graphml_path))
+    if not path.exists():
+        raise NodeIdentificationError(
+            f"{Path(graphml_path).name}: no {path.name} beside it, so which concept each "
+            f"node is was never recorded. Redraw it through run_harness.py.")
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def read_extents(graphml_path: Path) -> dict[str, frozenset[str]]:
+    """The recorded id -> extent table of a drawing."""
+    table = read_sidecar(graphml_path)["extents"]
+    return {node_id: frozenset(extent) for node_id, extent in table.items()}
+
+
+def check_source(cxt_path: Path, graphml_path: Path) -> None:
+    """Raise unless the drawing was made from exactly this .cxt."""
+    recorded = read_sidecar(graphml_path).get("source_sha256")
+    if recorded != source_hash(cxt_path):
+        raise NodeIdentificationError(
+            f"{Path(graphml_path).name}: drawn from "
+            f"{'an unrecorded file' if recorded is None else 'a different version of'} "
+            f"{Path(cxt_path).name}; redraw it through run_harness.py")
+
+
+def check_identification(cxt_path: Path, graphml_path: Path,
+                         table: dict[str, frozenset[str]]) -> None:
+    """Raise unless the table fits both the drawing and the lattice."""
+    name = Path(graphml_path).name
     positions = read_positions(graphml_path)
+    if set(table) != set(positions):
+        raise NodeIdentificationError(
+            f"{name}: the recorded table has {len(table)} ids, the drawing "
+            f"{len(positions)}, and they are not the same ids")
 
-    if len(positions) != len(sequence):
-        raise EnumerationOrderError(
-            f"{graphml_path.name}: {len(positions)} nodes drawn but {len(sequence)} "
-            f"concepts in {Path(cxt_path).name}; the drawing is of a different context")
+    extents = lattice_extents(str(cxt_path))
+    recorded = set(table.values())
+    if len(recorded) != len(table) or recorded != extents:
+        raise NodeIdentificationError(
+            f"{name}: the recorded extents are not the {len(extents)} extents of "
+            f"{Path(cxt_path).name}; the table belongs to a different context")
 
-    drawing = {}
-    for node_id, position in positions.items():
-        index = int(node_id)
-        if not 0 <= index < len(sequence):
-            raise EnumerationOrderError(
-                f"{graphml_path.name}: node id {node_id} is outside the concept list")
-        drawing[sequence[index]] = position
+    # Every edge must join a concept to a lower cover: strictly below it, with
+    # nothing in between. Checked per edge, which stays cheap at 576 concepts.
+    for source, target in read_edges(graphml_path):
+        a, b = table[source], table[target]
+        upper, lower = (a, b) if b < a else (b, a)
+        if not lower < upper or any(lower < c < upper for c in extents):
+            raise NodeIdentificationError(
+                f"{name}: edge {source}-{target} does not join a concept to a lower "
+                f"cover under the recorded table, so the table names the wrong nodes")
 
-    if len(drawing) != len(positions):
-        raise EnumerationOrderError(
-            f"{graphml_path.name}: two nodes mapped to the same extent, so the "
-            f"identification is wrong")
-    return drawing
+
+def load_drawing(cxt_path: Path, graphml_path: Path,
+                 algorithm: str | None = None) -> dict[frozenset[str], tuple[float, float]]:
+    """One drawing as {extent: (x, y)}, keyed so two scales can be compared.
+
+    `algorithm` is accepted for compatibility with older callers and ignored: the
+    recorded table makes the identification the same for every algorithm.
+    """
+    check_source(cxt_path, graphml_path)
+    table = read_extents(graphml_path)
+    check_identification(cxt_path, graphml_path, table)
+    positions = read_positions(graphml_path)
+    return {table[node_id]: position for node_id, position in positions.items()}

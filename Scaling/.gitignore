@@ -12,12 +12,13 @@
 #   Datasets/**        the raw material the contexts are built from.
 #   *.py, tests/**     the code, including the small .cxt files the regression
 #                      tests pin.
-#   *.csv              the results: scales, drawings, consistency, strata,
-#                      sensitivity.
+#   *.csv              the results: scales, drawings, quality, consistency,
+#                      strata, ranking, sensitivity, profile, the test across
+#                      contexts.
 #   graphml/           the drawings themselves. Regenerable in principle, but
 #                      hours of compute: freese alone takes 464 s at 319 concepts.
 #   drawings/          their PDF renders.
-#   figures/           the gate figures.
+#   figures/           the ladder figures and the column-order figure.
 #   pipeline.md        how the pipeline works and what it found.
 #   README.md          layout and setup.
 #
@@ -27,7 +28,9 @@
 # A separate clone with its own remote. Never commit it into this one.
 paper/
 
-# Private working notes, not part of the shared repository.
+# Private working notes, not part of the shared repository. notes/ holds the dated
+# development log: what was tried, found, decided and changed, and when.
+notes/
 CLAUDE.md
 TODO.md
 HANDOVER.md
@@ -43,6 +46,7 @@ logs/
 *.log
 .profile-scratch/
 .dimdraw-sensitivity/
+.column-order/
 .mapping-check.json
 # dim-flux writes this into the working directory and removes it again.
 input.cxt

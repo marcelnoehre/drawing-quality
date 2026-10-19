@@ -1,0 +1,318 @@
+{
+"algorithm": "aeschlimann_schmid",
+"extents": {
+"0": [
+"Asiatische Reistafel",
+"Blattsalat",
+"Blechkartoffeln",
+"Blumenkohl",
+"Bohnen",
+"Bowle",
+"Bratkartoffeln",
+"Broccoli",
+"Curry-Reis",
+"Desserts",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gans",
+"Gebackener Fisch",
+"Gebratener Fisch",
+"Gedünsteter Fisch",
+"Gegrillter Fisch",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Gurken/-salat",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kalbfleisch",
+"Kartoffelauflauf/-gratin",
+"Kartoffelsuppe",
+"Kohlrabi",
+"Kompott/marmelade",
+"Krustentiere/Schalentiere",
+"Kräuterquark/Dips",
+"Kuchen",
+"Käsegebäck",
+"Lammfleisch",
+"Milchreis",
+"Möhren",
+"Obstsalat",
+"Omlette",
+"Pasta Saucen auf Tomatenbasis",
+"Pilze",
+"Pizza",
+"Punch/Tee",
+"Püree",
+"Rindfleisch",
+"Risotto/Paella",
+"Rotkraut",
+"Rouladen",
+"Sauerbraten",
+"Sauerkraut",
+"Schweinefleisch",
+"Spinat",
+"Tomaten/-salat",
+"Weihnachtsgebäck",
+"Wild"
+],
+"1": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Gebratener Fisch",
+"Gedünsteter Fisch",
+"Gegrillter Fisch",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Kalbfleisch",
+"Kartoffelauflauf/-gratin",
+"Lammfleisch",
+"Omlette",
+"Pasta Saucen auf Tomatenbasis",
+"Pilze",
+"Pizza",
+"Rindfleisch",
+"Schweinefleisch",
+"Wild"
+],
+"10": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Rindfleisch"
+],
+"11": [
+"Eintoepfe",
+"Gemüsesuppe/Minestrone"
+],
+"12": [
+"Gemüsesuppe/Minestrone"
+],
+"13": [
+"Asiatische Reistafel",
+"Eintoepfe",
+"Helle Saucen",
+"Kartoffelsuppe",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Omlette"
+],
+"14": [
+"Eintoepfe",
+"Helle Saucen",
+"Lammfleisch",
+"Omlette"
+],
+"15": [
+"Eintoepfe",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"16": [
+"Bohnen",
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Kartoffelsuppe",
+"Lammfleisch",
+"Omlette",
+"Schweinefleisch"
+],
+"17": [
+"Eintoepfe",
+"Lammfleisch",
+"Omlette",
+"Schweinefleisch"
+],
+"18": [
+"Erbsen-/Bohnen-/Linsensuppe",
+"Kartoffelsuppe"
+],
+"19": [
+"Eintoepfe",
+"Kartoffelsuppe",
+"Lammfleisch",
+"Omlette"
+],
+"2": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gans",
+"Gebratener Fisch",
+"Gemüsesuppe/Minestrone",
+"Lammfleisch",
+"Omlette",
+"Pizza",
+"Rindfleisch"
+],
+"20": [
+"Eintoepfe",
+"Lammfleisch",
+"Omlette"
+],
+"21": [
+"Eintoepfe",
+"Lammfleisch"
+],
+"22": [
+"Kartoffelsuppe"
+],
+"23": [
+"Ente",
+"Gans",
+"Hackfleisch",
+"Lammfleisch",
+"Schweinefleisch",
+"Wild"
+],
+"24": [
+"Ente",
+"Lammfleisch",
+"Schweinefleisch",
+"Wild"
+],
+"25": [
+"Gans",
+"Lammfleisch"
+],
+"26": [
+"Wild"
+],
+"27": [
+"Lammfleisch",
+"Schweinefleisch"
+],
+"28": [
+"Lammfleisch"
+],
+"29": [
+"Blattsalat",
+"Eintoepfe",
+"Gebratener Fisch",
+"Gegrillter Fisch",
+"Gemüseauflauf/-gratin",
+"Helle Saucen",
+"Kartoffelauflauf/-gratin",
+"Kräuterquark/Dips",
+"Pasta Saucen auf Tomatenbasis",
+"Pizza",
+"Risotto/Paella",
+"Tomaten/-salat"
+],
+"3": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gebratener Fisch",
+"Gemüsesuppe/Minestrone",
+"Lammfleisch",
+"Omlette",
+"Pizza",
+"Rindfleisch"
+],
+"30": [
+"Eintoepfe",
+"Gebratener Fisch",
+"Gegrillter Fisch",
+"Helle Saucen",
+"Kartoffelauflauf/-gratin",
+"Pasta Saucen auf Tomatenbasis",
+"Pizza"
+],
+"31": [
+"Eintoepfe",
+"Gebratener Fisch",
+"Gemüseauflauf/-gratin",
+"Kräuterquark/Dips",
+"Pasta Saucen auf Tomatenbasis",
+"Pizza",
+"Tomaten/-salat"
+],
+"32": [
+"Eintoepfe",
+"Gebratener Fisch",
+"Pasta Saucen auf Tomatenbasis",
+"Pizza"
+],
+"33": [
+"Eintoepfe",
+"Gebratener Fisch",
+"Pizza"
+],
+"34": [
+"Eintoepfe",
+"Helle Saucen",
+"Kräuterquark/Dips"
+],
+"35": [
+"Eintoepfe",
+"Helle Saucen"
+],
+"36": [
+"Eintoepfe",
+"Kräuterquark/Dips"
+],
+"37": [
+"Eintoepfe"
+],
+"38": [],
+"4": [
+"Eintoepfe",
+"Gebratener Fisch",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Pasta Saucen auf Tomatenbasis",
+"Pizza",
+"Tomaten/-salat"
+],
+"5": [
+"Eintoepfe",
+"Gebratener Fisch",
+"Gemüsesuppe/Minestrone",
+"Lammfleisch",
+"Pasta Saucen auf Tomatenbasis",
+"Pizza"
+],
+"6": [
+"Eintoepfe",
+"Gebratener Fisch",
+"Gemüsesuppe/Minestrone",
+"Lammfleisch",
+"Pizza"
+],
+"7": [
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gemüsesuppe/Minestrone",
+"Kartoffelsuppe"
+],
+"8": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Rindfleisch",
+"Rotkraut",
+"Sauerbraten",
+"Sauerkraut",
+"Wild"
+],
+"9": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Rindfleisch",
+"Wild"
+]
+},
+"source_sha256": "65545d971aaf9523e931f602f8995943df7cab5d6924cc2f7b631e7074156e24"
+}

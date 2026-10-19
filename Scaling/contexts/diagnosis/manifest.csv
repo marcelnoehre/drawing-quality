@@ -1,0 +1,8 @@
+context,scale,short_name,filename,kind,chain,chain_step,attributes,concepts,width,height,incomparable_pairs,drawable,description,note
+diagnosis,diagnosis_lower,lower,contexts/diagnosis/diagnosis_lower.cxt,facet,,,6,19,7,5,96,True,"The lower urinary tract symptoms: urgency, pain on urination, burning.",
+diagnosis,diagnosis_upper,upper,contexts/diagnosis/diagnosis_upper.cxt,facet,,,7,18,7,5,84,True,"The signs of upper-tract, systemic illness: fever, nausea, back pain.",
+diagnosis,diagnosis_diagnosis,diagnosis,contexts/diagnosis/diagnosis_diagnosis.cxt,facet,,,4,10,4,4,20,False,What the patient was diagnosed with.,"below the drawable minimum of 12 concepts; recorded, never drawn"
+diagnosis,diagnosis_lower_diagnosis,lower_diagnosis,contexts/diagnosis/diagnosis_lower_diagnosis.cxt,apposition,,,10,38,12,7,474,True,Which lower-tract symptoms go with which diagnosis.,
+diagnosis,diagnosis_upper_diagnosis,upper_diagnosis,contexts/diagnosis/diagnosis_upper_diagnosis.cxt,apposition,,,11,36,10,7,400,True,Which upper-tract and systemic signs go with which diagnosis.,
+diagnosis,diagnosis_symptoms,symptoms,contexts/diagnosis/diagnosis_symptoms.cxt,apposition,,,13,78,21,8,2297,True,"The patient's whole presentation, before any diagnosis.",
+diagnosis,diagnosis,diagnosis,contexts/diagnosis/diagnosis.cxt,full,,,17,88,22,9,2949,True,"The data themselves, the identity scale-measure (id, K).","shallow step from symptoms (78 to 88 concepts, ratio 1.13): the diagnoses are nearly determined by the symptoms"

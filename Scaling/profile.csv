@@ -1,0 +1,89 @@
+context,algorithm,complete,scales,drawn,failed_declined,failed_timeout,failed_error,failed_nonterminating,failed_invalid,largest_drawn,smallest_failed,pairs_usable,pairs_measured,coverage,median_abs_tau,median_tau,failures
+diagnosis,aeschlimann_schmid,True,6,6,0,0,0,0,0,88,,9,9,1.0,0.339,-0.042,
+diagnosis,cole_ducrou_eklund,True,6,6,0,0,0,0,0,88,,9,9,1.0,0.54,0.54,
+diagnosis,dimdraw,True,6,6,0,0,0,0,0,88,,9,9,1.0,0.561,0.024,
+diagnosis,dimflux,True,6,6,0,0,0,0,0,88,,9,9,1.0,0.556,-0.228,
+diagnosis,fdp,True,6,6,0,0,0,0,0,88,,9,9,1.0,0.556,0.556,
+diagnosis,freese,True,6,6,0,0,0,0,0,88,,9,9,1.0,0.63,-0.444,
+diagnosis,redraw,True,6,4,0,2,0,0,0,38,78,9,2,0.222,0.703,-0.703,diagnosis timeout; diagnosis_symptoms timeout
+diagnosis,sugiyama,True,6,6,0,0,0,0,0,88,,9,9,1.0,0.69,0.69,
+instruments,aeschlimann_schmid,True,11,11,0,0,0,0,0,576,,17,17,1.0,0.278,-0.222,
+instruments,cole_ducrou_eklund,True,11,8,3,0,0,0,0,46,107,17,3,0.176,0.522,-0.331,instruments declined; instruments_capability_practice_making declined; instruments_family_practice declined
+instruments,dimdraw,True,11,11,0,0,0,0,0,576,,17,17,1.0,0.327,0.243,
+instruments,dimflux,True,11,11,0,0,0,0,0,576,,17,17,1.0,0.25,0.111,
+instruments,fdp,True,11,6,0,0,0,5,0,107,17,17,2,0.118,0.466,-0.19,instruments nonterminating; instruments_capability_practice_making nonterminating; instruments_family_excitation_mechanism nonterminating; instruments_family_making nonterminating; instruments_making nonterminating
+instruments,freese,True,11,9,0,1,0,0,1,107,319,17,4,0.235,0.317,0.171,instruments timeout; instruments_capability_practice_making invalid
+instruments,redraw,True,11,8,0,3,0,0,0,46,107,17,3,0.176,0.487,-0.487,instruments timeout; instruments_capability_practice_making timeout; instruments_family_practice timeout
+instruments,sugiyama,True,11,11,0,0,0,0,0,576,,17,17,1.0,0.315,0.289,
+living_beings_and_water,aeschlimann_schmid,True,2,2,0,0,0,0,0,19,,1,1,1.0,0.602,-0.602,
+living_beings_and_water,cole_ducrou_eklund,True,2,2,0,0,0,0,0,19,,1,1,1.0,0.73,-0.73,
+living_beings_and_water,dimdraw,True,2,2,0,0,0,0,0,19,,1,1,1.0,0.938,-0.938,
+living_beings_and_water,dimflux,True,2,2,0,0,0,0,0,19,,1,1,1.0,0.909,-0.909,
+living_beings_and_water,fdp,True,2,2,0,0,0,0,0,19,,1,1,1.0,0.84,0.84,
+living_beings_and_water,freese,True,2,2,0,0,0,0,0,19,,1,1,1.0,0.908,-0.908,
+living_beings_and_water,redraw,True,2,2,0,0,0,0,0,19,,1,1,1.0,0.697,-0.697,
+living_beings_and_water,sugiyama,True,2,2,0,0,0,0,0,19,,1,1,1.0,0.779,0.779,
+music,aeschlimann_schmid,True,5,5,0,0,0,0,0,163,,6,6,1.0,0.52,0.175,
+music,cole_ducrou_eklund,True,5,4,1,0,0,0,0,53,163,6,2,0.333,0.824,-0.824,music declined
+music,dimdraw,True,5,5,0,0,0,0,0,163,,6,6,1.0,0.612,-0.296,
+music,dimflux,True,5,5,0,0,0,0,0,163,,6,6,1.0,0.641,-0.364,
+music,fdp,True,5,2,0,0,0,3,0,42,27,6,1,0.167,0.658,-0.658,music nonterminating; music_form_character nonterminating; music_motion_form nonterminating
+music,freese,True,5,5,0,0,0,0,0,163,,6,6,1.0,0.37,-0.37,
+music,redraw,True,5,3,0,2,0,0,0,42,53,6,1,0.167,0.182,0.182,music timeout; music_motion_form timeout
+music,sugiyama,True,5,5,0,0,0,0,0,163,,6,6,1.0,0.741,-0.144,
+olympic_disciplines,aeschlimann_schmid,True,8,8,0,0,0,0,0,529,,14,14,1.0,0.325,0.293,
+olympic_disciplines,cole_ducrou_eklund,True,8,7,1,0,0,0,0,122,529,14,7,0.5,0.458,0.458,olympic_disciplines declined
+olympic_disciplines,dimdraw,True,8,8,0,0,0,0,0,529,,14,14,1.0,0.459,0.047,
+olympic_disciplines,dimflux,True,8,8,0,0,0,0,0,529,,14,14,1.0,0.505,-0.022,
+olympic_disciplines,fdp,True,8,8,0,0,0,0,0,529,,14,14,1.0,0.451,0.376,
+olympic_disciplines,freese,True,8,7,0,1,0,0,0,122,529,14,7,0.5,0.185,-0.037,olympic_disciplines timeout
+olympic_disciplines,redraw,True,8,4,0,4,0,0,0,57,103,14,1,0.071,0.309,0.309,olympic_disciplines timeout; olympic_disciplines_competitors_standing timeout; olympic_disciplines_discipline_competitors timeout; olympic_disciplines_sport_standing timeout
+olympic_disciplines,sugiyama,True,8,8,0,0,0,0,0,529,,14,14,1.0,0.262,0.207,
+olympics,aeschlimann_schmid,True,14,14,0,0,0,0,0,444,,16,16,1.0,0.27,0.044,
+olympics,cole_ducrou_eklund,True,14,13,1,0,0,0,0,139,444,16,11,0.688,0.51,-0.219,olympics_venue_equipment_demands declined
+olympics,dimdraw,True,14,14,0,0,0,0,0,444,,16,16,1.0,0.469,0.048,
+olympics,dimflux,True,14,14,0,0,0,0,0,444,,16,16,1.0,0.483,0.072,
+olympics,fdp,True,14,12,0,0,0,2,0,444,35,16,13,0.812,0.567,-0.251,olympics_decision_structure nonterminating; olympics_decision_structure_format nonterminating
+olympics,freese,True,14,13,0,1,0,0,0,139,444,16,11,0.688,0.75,0.494,olympics_venue_equipment_demands timeout
+olympics,redraw,True,14,10,0,4,0,0,0,64,81,16,2,0.125,0.65,-0.65,olympics_institution_origins timeout; olympics_structure_format timeout; olympics_venue_equipment timeout; olympics_venue_equipment_demands timeout
+olympics,sugiyama,True,14,14,0,0,0,0,0,444,,16,16,1.0,0.686,-0.263,
+seasoning_planner,aeschlimann_schmid,True,8,8,0,0,0,0,0,532,,17,17,1.0,0.178,0.041,
+seasoning_planner,cole_ducrou_eklund,True,8,4,4,0,0,0,0,84,219,17,1,0.059,0.569,-0.569,seasoning_planner declined; seasoning_planner_seasonings declined; seasoning_planner_spices declined; seasoning_planner_spices_dish declined
+seasoning_planner,dimdraw,True,8,8,0,0,0,0,0,532,,17,17,1.0,0.238,0.029,
+seasoning_planner,dimflux,True,8,8,0,0,0,0,0,532,,17,17,1.0,0.259,0.059,
+seasoning_planner,fdp,True,8,8,0,0,0,0,0,532,,17,17,1.0,0.455,0.139,
+seasoning_planner,freese,True,8,4,0,2,0,0,2,84,219,17,1,0.059,0.105,0.105,seasoning_planner timeout; seasoning_planner_seasonings timeout; seasoning_planner_spices invalid; seasoning_planner_spices_dish invalid
+seasoning_planner,redraw,True,8,2,0,6,0,0,0,39,80,17,0,0.0,,,seasoning_planner timeout; seasoning_planner_herbs_dish timeout; seasoning_planner_seasonings timeout; seasoning_planner_seeds timeout; seasoning_planner_spices timeout; seasoning_planner_spices_dish timeout
+seasoning_planner,sugiyama,True,8,8,0,0,0,0,0,532,,17,17,1.0,0.301,0.075,
+tenpc_exoplanets,aeschlimann_schmid,True,7,7,0,0,0,0,0,371,,10,10,1.0,0.243,-0.175,
+tenpc_exoplanets,cole_ducrou_eklund,True,7,6,1,0,0,0,0,79,371,10,4,0.4,0.571,-0.458,tenpc_exoplanets declined
+tenpc_exoplanets,dimdraw,True,7,7,0,0,0,0,0,371,,10,10,1.0,0.411,-0.223,
+tenpc_exoplanets,dimflux,True,7,7,0,0,0,0,0,371,,10,10,1.0,0.431,-0.25,
+tenpc_exoplanets,fdp,True,7,7,0,0,0,0,0,371,,10,10,1.0,0.689,0.689,
+tenpc_exoplanets,freese,True,7,6,0,1,0,0,0,79,371,10,4,0.4,0.387,-0.331,tenpc_exoplanets timeout
+tenpc_exoplanets,redraw,True,7,4,0,3,0,0,0,34,73,10,0,0.0,,,tenpc_exoplanets timeout; tenpc_exoplanets_planet_host_system timeout; tenpc_exoplanets_planet_knowledge timeout
+tenpc_exoplanets,sugiyama,True,7,7,0,0,0,0,0,371,,10,10,1.0,0.47,0.186,
+tenpc_stars,aeschlimann_schmid,True,10,10,0,0,0,0,0,732,,19,19,1.0,0.364,-0.058,
+tenpc_stars,cole_ducrou_eklund,True,10,8,2,0,0,0,0,109,311,19,4,0.211,0.46,-0.078,tenpc_stars declined; tenpc_stars_physical declined
+tenpc_stars,dimdraw,True,10,10,0,0,0,0,0,732,,19,19,1.0,0.481,0.097,
+tenpc_stars,dimflux,True,10,9,0,1,0,0,0,311,732,19,10,0.526,0.588,-0.037,tenpc_stars timeout
+tenpc_stars,fdp,True,10,9,0,1,0,0,0,732,311,19,12,0.632,0.413,-0.063,tenpc_stars_physical timeout
+tenpc_stars,freese,True,10,8,0,1,0,0,1,109,311,19,4,0.211,0.209,0.182,tenpc_stars timeout; tenpc_stars_physical invalid
+tenpc_stars,redraw,True,10,7,0,3,0,0,0,60,109,19,3,0.158,0.084,-0.084,tenpc_stars timeout; tenpc_stars_physical timeout; tenpc_stars_spectral_company timeout
+tenpc_stars,sugiyama,True,10,10,0,0,0,0,0,732,,19,19,1.0,0.378,-0.092,
+wd40pc,aeschlimann_schmid,True,12,12,0,0,0,0,0,728,,35,35,1.0,0.275,-0.008,
+wd40pc,cole_ducrou_eklund,True,12,9,3,0,0,0,0,112,319,35,10,0.286,0.192,0.09,wd40pc declined; wd40pc_appearance_parameters declined; wd40pc_physical declined
+wd40pc,dimdraw,True,12,12,0,0,0,0,0,728,,35,35,1.0,0.49,-0.07,
+wd40pc,dimflux,True,12,11,0,1,0,0,0,534,728,35,24,0.686,0.488,0.003,wd40pc timeout
+wd40pc,fdp,True,12,12,0,0,0,0,0,728,,35,35,1.0,0.458,0.233,
+wd40pc,freese,True,12,9,0,2,0,0,1,112,319,35,10,0.286,0.545,-0.3,wd40pc timeout; wd40pc_appearance_parameters invalid; wd40pc_physical timeout
+wd40pc,redraw,True,12,6,0,6,0,0,0,47,83,35,3,0.086,0.333,-0.333,wd40pc timeout; wd40pc_appearance_parameters timeout; wd40pc_appearance_temperature timeout; wd40pc_parameters_binarity timeout; wd40pc_physical timeout; wd40pc_spectral_knowledge timeout
+wd40pc,sugiyama,True,12,12,0,0,0,0,0,728,,35,35,1.0,0.566,0.302,
+zoo,aeschlimann_schmid,True,8,8,0,0,0,0,0,781,,7,7,1.0,0.313,0.006,
+zoo,cole_ducrou_eklund,True,8,2,5,1,0,0,0,56,132,7,1,0.143,0.31,-0.31,zoo_anatomy declined; zoo_anatomy_physiology declined; zoo_class_anatomy timeout; zoo_class_ecology declined; zoo_ecology declined; zoo_physiology_ecology declined
+zoo,dimdraw,True,8,8,0,0,0,0,0,781,,7,7,1.0,0.457,-0.457,
+zoo,dimflux,True,8,8,0,0,0,0,0,781,,7,7,1.0,0.294,-0.052,
+zoo,fdp,True,8,6,0,0,0,2,0,781,56,7,5,0.714,0.599,0.599,zoo_class_anatomy nonterminating; zoo_class_physiology nonterminating
+zoo,freese,True,8,5,0,2,0,0,1,152,268,7,2,0.286,0.794,0.138,zoo_anatomy_physiology timeout; zoo_class_ecology invalid; zoo_physiology_ecology timeout
+zoo,redraw,True,8,2,0,6,0,0,0,56,132,7,1,0.143,0.601,0.601,zoo_anatomy timeout; zoo_anatomy_physiology timeout; zoo_class_anatomy timeout; zoo_class_ecology timeout; zoo_ecology timeout; zoo_physiology_ecology timeout
+zoo,sugiyama,True,8,8,0,0,0,0,0,781,,7,7,1.0,0.309,0.074,

@@ -1,0 +1,95 @@
+{
+"algorithm": "dimflux",
+"extents": {
+"0": [
+"Bean",
+"Bream",
+"Dog",
+"Frog",
+"Leech",
+"Maize",
+"Reed",
+"Spike - weed"
+],
+"1": [
+"Bream",
+"Frog",
+"Leech",
+"Reed",
+"Spike - weed"
+],
+"10": [
+"Dog",
+"Frog"
+],
+"11": [
+"Frog",
+"Reed"
+],
+"12": [
+"Reed",
+"Spike - weed"
+],
+"13": [
+"Maize",
+"Reed"
+],
+"14": [
+"Frog"
+],
+"15": [
+"Dog"
+],
+"16": [
+"Reed"
+],
+"17": [
+"Bean"
+],
+"18": [],
+"2": [
+"Bean",
+"Dog",
+"Frog",
+"Maize",
+"Reed"
+],
+"3": [
+"Bream",
+"Dog",
+"Frog",
+"Leech"
+],
+"4": [
+"Bean",
+"Maize",
+"Reed",
+"Spike - weed"
+],
+"5": [
+"Bream",
+"Frog",
+"Leech"
+],
+"6": [
+"Bream",
+"Dog",
+"Frog"
+],
+"7": [
+"Maize",
+"Reed",
+"Spike - weed"
+],
+"8": [
+"Bean",
+"Maize",
+"Reed"
+],
+"9": [
+"Bream",
+"Frog"
+]
+},
+"source_sha256": "3fc3dde99c2731b52c7c0cc59f3ffeb8e8146925db7df9b3b9520fa444120f7e"
+}

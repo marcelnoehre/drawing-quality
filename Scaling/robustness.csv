@@ -1,0 +1,94 @@
+measure,variant,test,n_cases,algorithm,mean_rank,chi2_F,p_F_F,cd_nemenyi,control,p_holm,significant
+combined,all contexts,mean-rank post hoc (Holm),11,dimdraw,1.0,54.758,1.4379774004501418e-16,3.166,dimdraw,,
+combined,all contexts,mean-rank post hoc (Holm),11,dimflux,2.455,54.758,1.4379774004501418e-16,3.166,dimdraw,0.16373435432459216,False
+combined,all contexts,mean-rank post hoc (Holm),11,sugiyama,4.0,54.758,1.4379774004501418e-16,3.166,dimdraw,0.0081504001830408,True
+combined,all contexts,mean-rank post hoc (Holm),11,fdp,4.909,54.758,1.4379774004501418e-16,3.166,dimdraw,0.0007283022446546793,True
+combined,all contexts,mean-rank post hoc (Holm),11,freese,4.909,54.758,1.4379774004501418e-16,3.166,dimdraw,0.0007283022446546793,True
+combined,all contexts,mean-rank post hoc (Holm),11,aeschlimann_schmid,5.364,54.758,1.4379774004501418e-16,3.166,dimdraw,0.00014712992018091933,True
+combined,all contexts,mean-rank post hoc (Holm),11,cole_ducrou_eklund,5.545,54.758,1.4379774004501418e-16,3.166,dimdraw,8.096239962136725e-05,True
+combined,all contexts,mean-rank post hoc (Holm),11,redraw,7.818,54.758,1.4379774004501418e-16,3.166,dimdraw,4.668497060935878e-10,True
+combined,without living_beings_and_water,mean-rank post hoc (Holm),10,dimdraw,1.0,50.933,1.438961898852039e-15,3.32,dimdraw,,
+combined,without living_beings_and_water,mean-rank post hoc (Holm),10,dimflux,2.5,50.933,1.438961898852039e-15,3.32,dimdraw,0.17090352023079747,False
+combined,without living_beings_and_water,mean-rank post hoc (Holm),10,sugiyama,4.0,50.933,1.438961898852039e-15,3.32,dimdraw,0.01233979864108832,True
+combined,without living_beings_and_water,mean-rank post hoc (Holm),10,fdp,4.6,50.933,1.438961898852039e-15,3.32,dimdraw,0.003045002841339202,True
+combined,without living_beings_and_water,mean-rank post hoc (Holm),10,freese,4.9,50.933,1.438961898852039e-15,3.32,dimdraw,0.0014823088588583409,True
+combined,without living_beings_and_water,mean-rank post hoc (Holm),10,aeschlimann_schmid,5.3,50.933,1.438961898852039e-15,3.32,dimdraw,0.00043302761993942743,True
+combined,without living_beings_and_water,mean-rank post hoc (Holm),10,cole_ducrou_eklund,5.8,50.933,1.438961898852039e-15,3.32,dimdraw,7.062803458568982e-05,True
+combined,without living_beings_and_water,mean-rank post hoc (Holm),10,redraw,7.9,50.933,1.438961898852039e-15,3.32,dimdraw,2.099583578490332e-09,True
+combined,astronomy as one case,mean-rank post hoc (Holm),9,dimdraw,1.0,47.074,1.3663633574440448e-14,3.5,dimdraw,,
+combined,astronomy as one case,mean-rank post hoc (Holm),9,dimflux,2.222,47.074,1.3663633574440448e-14,3.5,dimdraw,0.289838717607508,False
+combined,astronomy as one case,mean-rank post hoc (Holm),9,sugiyama,4.0,47.074,1.3663633574440448e-14,3.5,dimdraw,0.018749536918869752,True
+combined,astronomy as one case,mean-rank post hoc (Holm),9,freese,4.556,47.074,1.3663633574440448e-14,3.5,dimdraw,0.0062266887772281,True
+combined,astronomy as one case,mean-rank post hoc (Holm),9,fdp,5.333,47.074,1.3663633574440448e-14,3.5,dimdraw,0.0006995463701683711,True
+combined,astronomy as one case,mean-rank post hoc (Holm),9,aeschlimann_schmid,5.444,47.074,1.3663633574440448e-14,3.5,dimdraw,0.0005930006933112338,True
+combined,astronomy as one case,mean-rank post hoc (Holm),9,cole_ducrou_eklund,5.667,47.074,1.3663633574440448e-14,3.5,dimdraw,0.00031872768956470285,True
+combined,astronomy as one case,mean-rank post hoc (Holm),9,redraw,7.778,47.074,1.3663633574440448e-14,3.5,dimdraw,3.055579617822834e-08,True
+combined,all contexts,Wilcoxon (Holm),11,aeschlimann_schmid,5.364,,,,dimdraw,0.0068359375,True
+combined,all contexts,Wilcoxon (Holm),11,cole_ducrou_eklund,5.545,,,,dimdraw,0.0068359375,True
+combined,all contexts,Wilcoxon (Holm),11,fdp,4.909,,,,dimdraw,0.0068359375,True
+combined,all contexts,Wilcoxon (Holm),11,freese,4.909,,,,dimdraw,0.0068359375,True
+combined,all contexts,Wilcoxon (Holm),11,sugiyama,4.0,,,,dimdraw,0.0068359375,True
+combined,all contexts,Wilcoxon (Holm),11,redraw,7.818,,,,dimdraw,0.0068359375,True
+combined,all contexts,Wilcoxon (Holm),11,dimflux,2.455,,,,dimdraw,0.0068359375,True
+quality,all contexts,mean-rank post hoc (Holm),11,dimdraw,1.182,49.364,2.2401372096829436e-13,3.166,dimdraw,,
+quality,all contexts,mean-rank post hoc (Holm),11,dimflux,2.636,49.364,2.2401372096829436e-13,3.166,dimdraw,0.16373435432459216,False
+quality,all contexts,mean-rank post hoc (Holm),11,sugiyama,4.0,49.364,2.2401372096829436e-13,3.166,dimdraw,0.01394295491149598,True
+quality,all contexts,mean-rank post hoc (Holm),11,fdp,4.818,49.364,2.2401372096829436e-13,3.166,dimdraw,0.0014955446807256132,True
+quality,all contexts,mean-rank post hoc (Holm),11,freese,4.909,49.364,2.2401372096829436e-13,3.166,dimdraw,0.0014356195992164744,True
+quality,all contexts,mean-rank post hoc (Holm),11,cole_ducrou_eklund,5.273,49.364,2.2401372096829436e-13,3.166,dimdraw,0.0004487587839209431,True
+quality,all contexts,mean-rank post hoc (Holm),11,aeschlimann_schmid,5.455,49.364,2.2401372096829436e-13,3.166,dimdraw,0.0002579049308537041,True
+quality,all contexts,mean-rank post hoc (Holm),11,redraw,7.727,49.364,2.2401372096829436e-13,3.166,dimdraw,2.579873642009915e-09,True
+quality,without living_beings_and_water,mean-rank post hoc (Holm),10,dimdraw,1.0,51.667,4.328779934235922e-16,3.32,dimdraw,,
+quality,without living_beings_and_water,mean-rank post hoc (Holm),10,dimflux,2.4,51.667,4.328779934235922e-16,3.32,dimdraw,0.20124262095772394,False
+quality,without living_beings_and_water,mean-rank post hoc (Holm),10,sugiyama,4.2,51.667,4.328779934235922e-16,3.32,dimdraw,0.006974009784282764,True
+quality,without living_beings_and_water,mean-rank post hoc (Holm),10,fdp,4.5,51.667,4.328779934235922e-16,3.32,dimdraw,0.004194223923634646,True
+quality,without living_beings_and_water,mean-rank post hoc (Holm),10,freese,4.7,51.667,4.328779934235922e-16,3.32,dimdraw,0.002924615803567463,True
+quality,without living_beings_and_water,mean-rank post hoc (Holm),10,aeschlimann_schmid,5.6,51.667,4.328779934235922e-16,3.32,dimdraw,0.00013392611712705535,True
+quality,without living_beings_and_water,mean-rank post hoc (Holm),10,cole_ducrou_eklund,5.7,51.667,4.328779934235922e-16,3.32,dimdraw,0.0001069659665713322,True
+quality,without living_beings_and_water,mean-rank post hoc (Holm),10,redraw,7.9,51.667,4.328779934235922e-16,3.32,dimdraw,2.099583578490332e-09,True
+quality,astronomy as one case,mean-rank post hoc (Holm),9,dimdraw,1.222,40.889,9.558952645662577e-11,3.5,dimdraw,,
+quality,astronomy as one case,mean-rank post hoc (Holm),9,dimflux,2.444,40.889,9.558952645662577e-11,3.5,dimdraw,0.289838717607508,False
+quality,astronomy as one case,mean-rank post hoc (Holm),9,sugiyama,4.111,40.889,9.558952645662577e-11,3.5,dimdraw,0.02470917003574392,True
+quality,astronomy as one case,mean-rank post hoc (Holm),9,freese,4.556,40.889,9.558952645662577e-11,3.5,dimdraw,0.011677251368335884,True
+quality,astronomy as one case,mean-rank post hoc (Holm),9,fdp,5.222,40.889,9.558952645662577e-11,3.5,dimdraw,0.002128022020556997,True
+quality,astronomy as one case,mean-rank post hoc (Holm),9,cole_ducrou_eklund,5.333,40.889,9.558952645662577e-11,3.5,dimdraw,0.001851968728793545,True
+quality,astronomy as one case,mean-rank post hoc (Holm),9,aeschlimann_schmid,5.444,40.889,9.558952645662577e-11,3.5,dimdraw,0.001533785207019087,True
+quality,astronomy as one case,mean-rank post hoc (Holm),9,redraw,7.667,40.889,9.558952645662577e-11,3.5,dimdraw,1.673471251916743e-07,True
+quality,all contexts,Wilcoxon (Holm),11,aeschlimann_schmid,5.455,,,,dimdraw,0.0068359375,True
+quality,all contexts,Wilcoxon (Holm),11,fdp,4.818,,,,dimdraw,0.0068359375,True
+quality,all contexts,Wilcoxon (Holm),11,freese,4.909,,,,dimdraw,0.0068359375,True
+quality,all contexts,Wilcoxon (Holm),11,redraw,7.727,,,,dimdraw,0.0068359375,True
+quality,all contexts,Wilcoxon (Holm),11,dimflux,2.636,,,,dimdraw,0.0068359375,True
+quality,all contexts,Wilcoxon (Holm),11,cole_ducrou_eklund,5.273,,,,dimdraw,0.0068359375,True
+quality,all contexts,Wilcoxon (Holm),11,sugiyama,4.0,,,,dimdraw,0.0068359375,True
+consistency,all contexts,mean-rank post hoc (Holm),11,dimdraw,2.636,36.939,4.951252831370252e-08,3.166,dimdraw,,
+consistency,all contexts,mean-rank post hoc (Holm),11,sugiyama,2.727,36.939,4.951252831370252e-08,3.166,dimdraw,1.0,False
+consistency,all contexts,mean-rank post hoc (Holm),11,dimflux,3.091,36.939,4.951252831370252e-08,3.166,dimdraw,1.0,False
+consistency,all contexts,mean-rank post hoc (Holm),11,fdp,4.091,36.939,4.951252831370252e-08,3.166,dimdraw,0.49120306297377647,False
+consistency,all contexts,mean-rank post hoc (Holm),11,aeschlimann_schmid,4.727,36.939,4.951252831370252e-08,3.166,dimdraw,0.18118494400129107,False
+consistency,all contexts,mean-rank post hoc (Holm),11,cole_ducrou_eklund,5.545,36.939,4.951252831370252e-08,3.166,dimdraw,0.026743852602410124,True
+consistency,all contexts,mean-rank post hoc (Holm),11,freese,5.727,36.939,4.951252831370252e-08,3.166,dimdraw,0.018499116545447686,True
+consistency,all contexts,mean-rank post hoc (Holm),11,redraw,7.455,36.939,4.951252831370252e-08,3.166,dimdraw,2.7775142161543748e-05,True
+consistency,without living_beings_and_water,mean-rank post hoc (Holm),10,sugiyama,2.5,35.0,1.2057560270056292e-07,3.32,sugiyama,,
+consistency,without living_beings_and_water,mean-rank post hoc (Holm),10,dimdraw,2.8,35.0,1.2057560270056292e-07,3.32,sugiyama,1.0,False
+consistency,without living_beings_and_water,mean-rank post hoc (Holm),10,dimflux,3.2,35.0,1.2057560270056292e-07,3.32,sugiyama,1.0,False
+consistency,without living_beings_and_water,mean-rank post hoc (Holm),10,fdp,4.1,35.0,1.2057560270056292e-07,3.32,sugiyama,0.432381104448046,False
+consistency,without living_beings_and_water,mean-rank post hoc (Holm),10,aeschlimann_schmid,4.4,35.0,1.2057560270056292e-07,3.32,sugiyama,0.3313497006352249,False
+consistency,without living_beings_and_water,mean-rank post hoc (Holm),10,cole_ducrou_eklund,5.5,35.0,1.2057560270056292e-07,3.32,sugiyama,0.0308494966027208,True
+consistency,without living_beings_and_water,mean-rank post hoc (Holm),10,freese,6.0,35.0,1.2057560270056292e-07,3.32,sugiyama,0.008388447847269291,True
+consistency,without living_beings_and_water,mean-rank post hoc (Holm),10,redraw,7.5,35.0,1.2057560270056292e-07,3.32,sugiyama,3.50723236947331e-05,True
+consistency,astronomy as one case,mean-rank post hoc (Holm),9,sugiyama,2.556,29.407,5.3826364464855525e-06,3.5,sugiyama,,
+consistency,astronomy as one case,mean-rank post hoc (Holm),9,dimdraw,2.667,29.407,5.3826364464855525e-06,3.5,sugiyama,1.0,False
+consistency,astronomy as one case,mean-rank post hoc (Holm),9,dimflux,3.0,29.407,5.3826364464855525e-06,3.5,sugiyama,1.0,False
+consistency,astronomy as one case,mean-rank post hoc (Holm),9,fdp,4.444,29.407,5.3826364464855525e-06,3.5,sugiyama,0.3056281756137019,False
+consistency,astronomy as one case,mean-rank post hoc (Holm),9,aeschlimann_schmid,5.111,29.407,5.3826364464855525e-06,3.5,sugiyama,0.10754204741363227,False
+consistency,astronomy as one case,mean-rank post hoc (Holm),9,cole_ducrou_eklund,5.333,29.407,5.3826364464855525e-06,3.5,sugiyama,0.08072389047184171,False
+consistency,astronomy as one case,mean-rank post hoc (Holm),9,freese,5.556,29.407,5.3826364464855525e-06,3.5,sugiyama,0.05624861075660925,False
+consistency,astronomy as one case,mean-rank post hoc (Holm),9,redraw,7.333,29.407,5.3826364464855525e-06,3.5,sugiyama,0.0002455879252215995,True
+consistency,all contexts,Wilcoxon (Holm),11,redraw,7.455,,,,dimdraw,0.0068359375,True
+consistency,all contexts,Wilcoxon (Holm),11,cole_ducrou_eklund,5.545,,,,dimdraw,0.029296875,True
+consistency,all contexts,Wilcoxon (Holm),11,freese,5.727,,,,dimdraw,0.048828125,True
+consistency,all contexts,Wilcoxon (Holm),11,aeschlimann_schmid,4.727,,,,dimdraw,0.09765625,False
+consistency,all contexts,Wilcoxon (Holm),11,fdp,4.091,,,,dimdraw,0.1259765625,False
+consistency,all contexts,Wilcoxon (Holm),11,dimflux,3.091,,,,dimdraw,0.73046875,False
+consistency,all contexts,Wilcoxon (Holm),11,sugiyama,2.727,,,,dimdraw,0.8310546875,False

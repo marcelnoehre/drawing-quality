@@ -1,0 +1,25 @@
+measure,algorithm,friedman_mean_rank,n_contexts,k_algorithms,chi2_F,p_chi2_F,F_F,p_F_F,q_alpha,cd_nemenyi,approximation_ok,control,z_vs_control,p_vs_control,p_holm,significant_holm,corpus,corpus_complete
+combined,dimdraw,1.0,11,8,54.757576,0.0,24.618529,0.0,3.030878,3.165649,True,dimdraw,,,,,all 11 contexts,True
+combined,dimflux,2.455,11,8,54.757576,0.0,24.618529,0.0,3.030878,3.165649,True,dimdraw,1.392621,0.163734,0.163734,False,all 11 contexts,True
+combined,sugiyama,4.0,11,8,54.757576,0.0,24.618529,0.0,3.030878,3.165649,True,dimdraw,2.872281,0.004075,0.00815,True,all 11 contexts,True
+combined,fdp,4.909,11,8,54.757576,0.0,24.618529,0.0,3.030878,3.165649,True,dimdraw,3.74267,0.000182,0.000728,True,all 11 contexts,True
+combined,freese,4.909,11,8,54.757576,0.0,24.618529,0.0,3.030878,3.165649,True,dimdraw,3.74267,0.000182,0.000728,True,all 11 contexts,True
+combined,aeschlimann_schmid,5.364,11,8,54.757576,0.0,24.618529,0.0,3.030878,3.165649,True,dimdraw,4.177864,2.9e-05,0.000147,True,all 11 contexts,True
+combined,cole_ducrou_eklund,5.545,11,8,54.757576,0.0,24.618529,0.0,3.030878,3.165649,True,dimdraw,4.351941,1.3e-05,8.1e-05,True,all 11 contexts,True
+combined,redraw,7.818,11,8,54.757576,0.0,24.618529,0.0,3.030878,3.165649,True,dimdraw,6.527912,0.0,0.0,True,all 11 contexts,True
+quality,dimdraw,1.182,11,8,49.363636,0.0,17.861842,0.0,3.030878,3.165649,True,dimdraw,,,,,all 11 contexts,True
+quality,dimflux,2.636,11,8,49.363636,0.0,17.861842,0.0,3.030878,3.165649,True,dimdraw,1.392621,0.163734,0.163734,False,all 11 contexts,True
+quality,sugiyama,4.0,11,8,49.363636,0.0,17.861842,0.0,3.030878,3.165649,True,dimdraw,2.698204,0.006971,0.013943,True,all 11 contexts,True
+quality,fdp,4.818,11,8,49.363636,0.0,17.861842,0.0,3.030878,3.165649,True,dimdraw,3.481553,0.000499,0.001496,True,all 11 contexts,True
+quality,freese,4.909,11,8,49.363636,0.0,17.861842,0.0,3.030878,3.165649,True,dimdraw,3.568592,0.000359,0.001436,True,all 11 contexts,True
+quality,cole_ducrou_eklund,5.273,11,8,49.363636,0.0,17.861842,0.0,3.030878,3.165649,True,dimdraw,3.916747,9e-05,0.000449,True,all 11 contexts,True
+quality,aeschlimann_schmid,5.455,11,8,49.363636,0.0,17.861842,0.0,3.030878,3.165649,True,dimdraw,4.090825,4.3e-05,0.000258,True,all 11 contexts,True
+quality,redraw,7.727,11,8,49.363636,0.0,17.861842,0.0,3.030878,3.165649,True,dimdraw,6.266796,0.0,0.0,True,all 11 contexts,True
+consistency,dimdraw,2.636,11,8,36.939394,5e-06,9.220877,0.0,3.030878,3.165649,True,dimdraw,,,,,all 11 contexts,True
+consistency,sugiyama,2.727,11,8,36.939394,5e-06,9.220877,0.0,3.030878,3.165649,True,dimdraw,0.087039,0.930641,1.0,False,all 11 contexts,True
+consistency,dimflux,3.091,11,8,36.939394,5e-06,9.220877,0.0,3.030878,3.165649,True,dimdraw,0.435194,0.663422,1.0,False,all 11 contexts,True
+consistency,fdp,4.091,11,8,36.939394,5e-06,9.220877,0.0,3.030878,3.165649,True,dimdraw,1.392621,0.163734,0.491203,False,all 11 contexts,True
+consistency,aeschlimann_schmid,4.727,11,8,36.939394,5e-06,9.220877,0.0,3.030878,3.165649,True,dimdraw,2.001893,0.045296,0.181185,False,all 11 contexts,True
+consistency,cole_ducrou_eklund,5.545,11,8,36.939394,5e-06,9.220877,0.0,3.030878,3.165649,True,dimdraw,2.785242,0.005349,0.026744,True,all 11 contexts,True
+consistency,freese,5.727,11,8,36.939394,5e-06,9.220877,0.0,3.030878,3.165649,True,dimdraw,2.95932,0.003083,0.018499,True,all 11 contexts,True
+consistency,redraw,7.455,11,8,36.939394,5e-06,9.220877,0.0,3.030878,3.165649,True,dimdraw,4.613058,4e-06,2.8e-05,True,all 11 contexts,True

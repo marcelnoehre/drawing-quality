@@ -193,22 +193,22 @@ machine-readable summaries are `manifest.csv` and `nesting.csv`.
 These are not one cumulative chain. Each is a view answering a single question,
 plus one refinement chain where the hierarchy is real and four appositions where
 the combined view is one somebody would ask for. The largest of those,
-`capability-practice-making`, is the mid-range root: at 319 concepts it is the
+`instruments_capability_practice_making`, is the mid-range root: at 319 concepts it is the
 biggest view below the full lattice, and it is defined by one idea rather than a
 list, everything about the instrument except how its sound is produced.
 
 | Scale | Kind | One sentence | Attributes | Concepts | Width | Height |
 |---|---|---|---|---|---|---|
-| `excitation` | facet | how the sound is set going | 13 | 21 | 13 | 5 |
-| `capability` | facet | what the instrument can play | 5 | 13 | 4 | 6 |
-| `practice` | facet | where and how it is played, including posture and mobility | 7 | 46 | 16 | 8 |
-| `making` | facet | what it is made of, where it came from, whether it needs power | 7 | 17 | 6 | 6 |
-| `family-excitation` | chain, step 1 | each family split by how it is excited | 19 | 27 | 15 | 6 |
-| `family-excitation-mechanism` | chain, step 2 | those branches split again by the pitch mechanism they use | 30 | 33 | 17 | 6 |
-| `playing-mechanism` | apposition | the mechanics of playing: how sound starts and how pitch is chosen | 19 | 35 | 16 | 6 |
-| `family-making` | apposition | which families are built from which materials | 11 | 39 | 14 | 6 |
-| `family-practice` | apposition | which families populate which ensembles | 11 | 107 | 35 | 9 |
-| `capability-practice-making` | apposition | the instrument as a musician meets it, setting aside how the sound is produced | 19 | 319 | 81 | 12 |
+| `instruments_excitation` | facet | how the sound is set going | 13 | 21 | 13 | 5 |
+| `instruments_capability` | facet | what the instrument can play | 5 | 13 | 4 | 6 |
+| `instruments_practice` | facet | where and how it is played, including posture and mobility | 7 | 46 | 16 | 8 |
+| `instruments_making` | facet | what it is made of, where it came from, whether it needs power | 7 | 17 | 6 | 6 |
+| `instruments_family_excitation` | chain, step 1 | each family split by how it is excited | 19 | 27 | 15 | 6 |
+| `instruments_family_excitation_mechanism` | chain, step 2 | those branches split again by the pitch mechanism they use | 30 | 33 | 17 | 6 |
+| `instruments_playing_mechanism` | apposition | the mechanics of playing: how sound starts and how pitch is chosen | 19 | 35 | 16 | 6 |
+| `instruments_family_making` | apposition | which families are built from which materials | 11 | 39 | 14 | 6 |
+| `instruments_family_practice` | apposition | which families populate which ensembles | 11 | 107 | 35 | 9 |
+| `instruments_capability_practice_making` | apposition | the instrument as a musician meets it, setting aside how the sound is produced | 19 | 319 | 81 | 12 |
 | `instruments` | full | the data themselves, the identity scale-measure | 42 | 576 | 138 | 14 |
 
 Width is the largest antichain, by Dilworth's theorem the number of concepts
@@ -222,20 +222,20 @@ a view on its own, so each facet scale drops every attribute outside its group.
 Nothing is dropped from the data as a whole: all 42 attributes appear in at least
 one scale.
 
-- **`excitation`** keeps the 13 excitation-method attributes.
-- **`capability`** keeps definite pitch, fully chromatic, three or more
+- **`instruments_excitation`** keeps the 13 excitation-method attributes.
+- **`instruments_capability`** keeps definite pitch, fully chromatic, three or more
   simultaneous pitches, continuously variable pitch, sustaining.
-- **`practice`** keeps the four ensemble attributes, transposing, played seated
+- **`instruments_practice`** keeps the four ensemble attributes, transposing, played seated
   and marching or processional.
-- **`making`** keeps wooden body, metal body, resonator, non European origin,
+- **`instruments_making`** keeps wooden body, metal body, resonator, non European origin,
   post 1900, requires electricity, electrical sound.
-- **`family-excitation`** keeps the four families and adds fifteen conjunctions,
+- **`instruments_family_excitation`** keeps the four families and adds fifteen conjunctions,
   one per family-and-excitation pair that occurs.
-- **`family-excitation-mechanism`** adds eleven further conjunctions of three
+- **`instruments_family_excitation_mechanism`** adds eleven further conjunctions of three
   attributes. All six pitch-control attributes appear, but only inside a branch:
   `Frets` only as `Chordophone ∧ Plucked ∧ Frets`, never alone.
-- **`playing-mechanism`** keeps excitation and pitch control as plain attributes.
-- **`family-making`** and **`family-practice`** keep the four families plus the
+- **`instruments_playing_mechanism`** keeps excitation and pitch control as plain attributes.
+- **`instruments_family_making`** and **`instruments_family_practice`** keep the four families plus the
   seven attributes of the other facet.
 
 The exact conjunctions are listed in `groupings.md`.
@@ -260,19 +260,41 @@ from real relationships:
 
 | Coarser | Finer | Concepts | Shared | Ratio |
 |---|---|---|---|---|
-| `family-excitation` | `family-excitation-mechanism` | 27 → 33 | 27 | 1.22 |
-| `excitation` | `playing-mechanism` | 21 → 35 | 21 | 1.67 |
-| `making` | `family-making` | 17 → 39 | 17 | 2.29 |
-| `practice` | `family-practice` | 46 → 107 | 46 | 2.33 |
-| `practice` | `capability-practice-making` | 46 → 319 | 46 | 6.94 |
-| `making` | `capability-practice-making` | 17 → 319 | 17 | 18.77 |
-| `capability` | `capability-practice-making` | 13 → 319 | 13 | 24.54 |
+| `instruments_family_excitation` | `instruments_family_excitation_mechanism` | 27 → 33 | 27 | 1.22 |
+| `instruments_excitation` | `instruments_playing_mechanism` | 21 → 35 | 21 | 1.67 |
+| `instruments_making` | `instruments_family_making` | 17 → 39 | 17 | 2.29 |
+| `instruments_practice` | `instruments_family_practice` | 46 → 107 | 46 | 2.33 |
+| `instruments_practice` | `instruments_capability_practice_making` | 46 → 319 | 46 | 6.94 |
+| `instruments_making` | `instruments_capability_practice_making` | 17 → 319 | 17 | 18.77 |
+| `instruments_capability` | `instruments_capability_practice_making` | 13 → 319 | 13 | 24.54 |
 
 Because the levels nest, the shared concepts are exactly the coarser view's, so
 each overlap equals its concept count. None falls below the floor of eight.
 
-One nesting that might be expected does **not** hold: raw `excitation` is not
-nested under `family-excitation`. "Struck with implement" spans the membranophone
+One nesting that might be expected does **not** hold: raw `instruments_excitation` is not
+nested under `instruments_family_excitation`. "Struck with implement" spans the membranophone
 and idiophone branches, so its extent is a union of two conjunction extents, and a
 union need not be an extent. `groupings.md` records this as provenance for why the
 chain starts at family.
+
+## What is computed from these scales
+
+Of the 11 scales above, **11 are drawable** -- between 12 and 1000 concepts, with
+width at least 3 -- from 13 to 576 concepts; the others are recorded and never
+drawn. Of 17 nested pairs, **17 are usable**: both scales drawable, and sharing at
+least 8 concepts. From these, `../../run_harness.py` computes:
+
+- **a drawing of every drawable scale by each of the eight algorithms**, under a
+  30-minute budget per drawing; one that does not happen is recorded as a failure,
+  with its reason, and counted against the algorithm;
+- **the quality of every drawing**, on the 13 metrics of the drawing-quality
+  analysis;
+- **the consistency of every usable pair**: whether each algorithm keeps the
+  left-to-right order of the coarser scale's concepts in its drawing of the finer
+  one, as Kendall tau against a permutation null;
+- **this context's ranking of the algorithms**, which enters the overall ranking
+  with the same weight as every other context.
+
+The definitions are in `../README.md`, *Drawable and usable*; the results in
+`../../drawings.csv`, `quality.csv`, `consistency.csv` and `ranking.csv`.
+

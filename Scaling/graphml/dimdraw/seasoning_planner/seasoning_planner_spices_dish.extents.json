@@ -1,0 +1,2138 @@
+{
+"algorithm": "dimdraw",
+"extents": {
+"0": [
+"Asiatische Reistafel",
+"Blattsalat",
+"Blechkartoffeln",
+"Blumenkohl",
+"Bohnen",
+"Bowle",
+"Bratkartoffeln",
+"Broccoli",
+"Curry-Reis",
+"Desserts",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gans",
+"Gebackener Fisch",
+"Gebratener Fisch",
+"Gedünsteter Fisch",
+"Gegrillter Fisch",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Gurken/-salat",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kalbfleisch",
+"Kartoffelauflauf/-gratin",
+"Kartoffelsuppe",
+"Kohlrabi",
+"Kompott/marmelade",
+"Krustentiere/Schalentiere",
+"Kräuterquark/Dips",
+"Kuchen",
+"Käsegebäck",
+"Lammfleisch",
+"Milchreis",
+"Möhren",
+"Obstsalat",
+"Omlette",
+"Pasta Saucen auf Tomatenbasis",
+"Pilze",
+"Pizza",
+"Punch/Tee",
+"Püree",
+"Rindfleisch",
+"Risotto/Paella",
+"Rotkraut",
+"Rouladen",
+"Sauerbraten",
+"Sauerkraut",
+"Schweinefleisch",
+"Spinat",
+"Tomaten/-salat",
+"Weihnachtsgebäck",
+"Wild"
+],
+"1": [
+"Kräuterquark/Dips",
+"Omlette",
+"Pilze",
+"Pizza"
+],
+"10": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kuchen",
+"Risotto/Paella"
+],
+"100": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Gedünsteter Fisch",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Spinat"
+],
+"101": [
+"Dunkle Saucen",
+"Helle Saucen"
+],
+"102": [
+"Eintoepfe",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Spinat"
+],
+"103": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone"
+],
+"104": [
+"Eintoepfe",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone"
+],
+"105": [
+"Asiatische Reistafel",
+"Eintoepfe",
+"Ente",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Krustentiere/Schalentiere",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"106": [
+"Eintoepfe",
+"Krustentiere/Schalentiere"
+],
+"107": [
+"Krustentiere/Schalentiere"
+],
+"108": [
+"Asiatische Reistafel",
+"Eintoepfe",
+"Ente",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kräuterquark/Dips"
+],
+"109": [
+"Asiatische Reistafel",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Hähnchen/Pute"
+],
+"11": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Kompott/marmelade",
+"Lammfleisch",
+"Rotkraut",
+"Sauerbraten",
+"Schweinefleisch",
+"Weihnachtsgebäck",
+"Wild"
+],
+"110": [
+"Asiatische Reistafel",
+"Eintoepfe",
+"Ente",
+"Gemüsesuppe/Minestrone",
+"Hähnchen/Pute",
+"Kräuterquark/Dips"
+],
+"111": [
+"Asiatische Reistafel",
+"Gemüsesuppe/Minestrone",
+"Hähnchen/Pute"
+],
+"112": [
+"Eintoepfe",
+"Ente",
+"Gemüsesuppe/Minestrone",
+"Hähnchen/Pute",
+"Kräuterquark/Dips"
+],
+"113": [
+"Gemüsesuppe/Minestrone",
+"Hähnchen/Pute"
+],
+"114": [
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen"
+],
+"115": [
+"Gemüsesuppe/Minestrone",
+"Helle Saucen"
+],
+"116": [
+"Eintoepfe",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Schweinefleisch",
+"Tomaten/-salat"
+],
+"117": [
+"Eintoepfe",
+"Kräuterquark/Dips",
+"Tomaten/-salat"
+],
+"118": [
+"Eintoepfe",
+"Tomaten/-salat"
+],
+"119": [
+"Eintoepfe",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Schweinefleisch"
+],
+"12": [
+"Lammfleisch",
+"Sauerbraten",
+"Schweinefleisch",
+"Wild"
+],
+"120": [
+"Eintoepfe",
+"Hähnchen/Pute",
+"Kräuterquark/Dips"
+],
+"121": [
+"Bowle",
+"Ente",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kompott/marmelade",
+"Kuchen",
+"Lammfleisch",
+"Möhren",
+"Punch/Tee",
+"Schweinefleisch",
+"Spinat",
+"Weihnachtsgebäck"
+],
+"122": [
+"Bowle",
+"Kompott/marmelade",
+"Kuchen",
+"Lammfleisch",
+"Punch/Tee",
+"Weihnachtsgebäck"
+],
+"123": [
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kuchen"
+],
+"124": [
+"Kompott/marmelade",
+"Lammfleisch",
+"Schweinefleisch",
+"Weihnachtsgebäck"
+],
+"125": [
+"Kompott/marmelade",
+"Lammfleisch",
+"Weihnachtsgebäck"
+],
+"126": [
+"Ente",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Möhren",
+"Schweinefleisch",
+"Spinat"
+],
+"127": [
+"Bowle",
+"Ente",
+"Kompott/marmelade",
+"Kuchen",
+"Punch/Tee",
+"Schweinefleisch",
+"Weihnachtsgebäck"
+],
+"128": [
+"Kompott/marmelade",
+"Schweinefleisch",
+"Weihnachtsgebäck"
+],
+"129": [
+"Helle Saucen",
+"Möhren",
+"Spinat"
+],
+"13": [
+"Gemüsesuppe/Minestrone",
+"Rotkraut"
+],
+"130": [
+"Möhren",
+"Spinat"
+],
+"131": [
+"Ente",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Lammfleisch",
+"Schweinefleisch",
+"Spinat"
+],
+"132": [
+"Ente",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Schweinefleisch",
+"Spinat"
+],
+"133": [
+"Helle Saucen",
+"Spinat"
+],
+"134": [
+"Spinat"
+],
+"135": [
+"Asiatische Reistafel",
+"Blumenkohl",
+"Curry-Reis",
+"Ente",
+"Gebackener Fisch",
+"Gebratener Fisch",
+"Gedünsteter Fisch",
+"Gegrillter Fisch",
+"Gemüseauflauf/-gratin",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kalbfleisch",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Möhren",
+"Rindfleisch",
+"Risotto/Paella",
+"Schweinefleisch"
+],
+"136": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Risotto/Paella"
+],
+"137": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Risotto/Paella"
+],
+"138": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Lammfleisch",
+"Schweinefleisch"
+],
+"139": [
+"Asiatische Reistafel",
+"Blumenkohl",
+"Ente",
+"Gebackener Fisch",
+"Gebratener Fisch",
+"Gedünsteter Fisch",
+"Gegrillter Fisch",
+"Gemüseauflauf/-gratin",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kalbfleisch",
+"Kräuterquark/Dips",
+"Möhren",
+"Risotto/Paella",
+"Schweinefleisch"
+],
+"14": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Kohlrabi",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Pilze",
+"Rindfleisch",
+"Rotkraut",
+"Rouladen",
+"Sauerbraten",
+"Tomaten/-salat",
+"Wild"
+],
+"140": [
+"Blumenkohl",
+"Gedünsteter Fisch",
+"Gemüseauflauf/-gratin",
+"Helle Saucen",
+"Möhren"
+],
+"141": [
+"Blumenkohl",
+"Gemüseauflauf/-gratin",
+"Möhren"
+],
+"142": [
+"Asiatische Reistafel",
+"Blumenkohl",
+"Curry-Reis",
+"Ente",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Möhren"
+],
+"143": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Helle Saucen",
+"Hähnchen/Pute"
+],
+"144": [
+"Asiatische Reistafel",
+"Blumenkohl",
+"Ente",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Möhren"
+],
+"145": [
+"Blumenkohl",
+"Helle Saucen",
+"Möhren"
+],
+"146": [
+"Blumenkohl",
+"Möhren"
+],
+"147": [
+"Asiatische Reistafel",
+"Ente",
+"Gebackener Fisch",
+"Gebratener Fisch",
+"Gedünsteter Fisch",
+"Gegrillter Fisch",
+"Gemüseauflauf/-gratin",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kalbfleisch",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Rindfleisch",
+"Risotto/Paella",
+"Schweinefleisch"
+],
+"148": [
+"Hackfleisch",
+"Kalbfleisch",
+"Lammfleisch",
+"Rindfleisch",
+"Schweinefleisch"
+],
+"149": [
+"Asiatische Reistafel",
+"Lammfleisch",
+"Schweinefleisch"
+],
+"15": [
+"Lammfleisch",
+"Rindfleisch",
+"Rouladen",
+"Sauerbraten",
+"Wild"
+],
+"150": [
+"Asiatische Reistafel",
+"Ente",
+"Gebackener Fisch",
+"Gebratener Fisch",
+"Gedünsteter Fisch",
+"Gegrillter Fisch",
+"Gemüseauflauf/-gratin",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kalbfleisch",
+"Kräuterquark/Dips",
+"Risotto/Paella",
+"Schweinefleisch"
+],
+"151": [
+"Gebackener Fisch",
+"Gebratener Fisch",
+"Gedünsteter Fisch",
+"Gegrillter Fisch"
+],
+"152": [
+"Hackfleisch",
+"Kalbfleisch",
+"Schweinefleisch"
+],
+"153": [
+"Asiatische Reistafel",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Risotto/Paella"
+],
+"154": [
+"Asiatische Reistafel",
+"Risotto/Paella"
+],
+"155": [
+"Asiatische Reistafel",
+"Ente",
+"Gebratener Fisch",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Schweinefleisch"
+],
+"156": [
+"Asiatische Reistafel",
+"Schweinefleisch"
+],
+"157": [
+"Ente",
+"Gemüseauflauf/-gratin",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Rindfleisch",
+"Risotto/Paella",
+"Schweinefleisch"
+],
+"158": [
+"Hackfleisch",
+"Rindfleisch",
+"Schweinefleisch"
+],
+"159": [
+"Ente",
+"Gemüseauflauf/-gratin",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Risotto/Paella",
+"Schweinefleisch"
+],
+"16": [
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Kohlrabi",
+"Rotkraut",
+"Tomaten/-salat"
+],
+"160": [
+"Hähnchen/Pute",
+"Risotto/Paella"
+],
+"161": [
+"Risotto/Paella"
+],
+"162": [
+"Ente",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Schweinefleisch"
+],
+"163": [
+"Ente",
+"Kalbfleisch",
+"Schweinefleisch"
+],
+"164": [
+"Kalbfleisch",
+"Schweinefleisch"
+],
+"165": [
+"Gedünsteter Fisch",
+"Gemüseauflauf/-gratin",
+"Helle Saucen"
+],
+"166": [
+"Gemüseauflauf/-gratin"
+],
+"167": [
+"Asiatische Reistafel",
+"Ente",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"168": [
+"Asiatische Reistafel",
+"Ente",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kräuterquark/Dips"
+],
+"169": [
+"Asiatische Reistafel",
+"Helle Saucen",
+"Hähnchen/Pute"
+],
+"17": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Kohlrabi",
+"Rotkraut",
+"Sauerbraten",
+"Wild"
+],
+"170": [
+"Asiatische Reistafel",
+"Ente",
+"Hähnchen/Pute",
+"Kräuterquark/Dips"
+],
+"171": [
+"Asiatische Reistafel",
+"Hähnchen/Pute"
+],
+"172": [
+"Ente",
+"Hähnchen/Pute",
+"Kräuterquark/Dips"
+],
+"173": [
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Schweinefleisch"
+],
+"174": [
+"Hähnchen/Pute",
+"Kräuterquark/Dips"
+],
+"175": [
+"Ente",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Lammfleisch",
+"Möhren",
+"Schweinefleisch"
+],
+"176": [
+"Ente",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Möhren",
+"Schweinefleisch"
+],
+"177": [
+"Ente",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Lammfleisch",
+"Möhren"
+],
+"178": [
+"Ente",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Möhren"
+],
+"179": [
+"Helle Saucen",
+"Möhren"
+],
+"18": [
+"Eintoepfe",
+"Kohlrabi",
+"Rotkraut"
+],
+"180": [
+"Möhren"
+],
+"181": [
+"Ente",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Lammfleisch",
+"Schweinefleisch"
+],
+"182": [
+"Hackfleisch",
+"Lammfleisch",
+"Schweinefleisch"
+],
+"183": [
+"Lammfleisch",
+"Schweinefleisch"
+],
+"184": [
+"Ente",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Schweinefleisch"
+],
+"185": [
+"Ente",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Schweinefleisch"
+],
+"186": [
+"Ente",
+"Schweinefleisch"
+],
+"187": [
+"Ente",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Lammfleisch"
+],
+"188": [
+"Ente",
+"Helle Saucen",
+"Hähnchen/Pute"
+],
+"189": [
+"Helle Saucen",
+"Hähnchen/Pute"
+],
+"19": [
+"Dunkle Saucen",
+"Lammfleisch",
+"Rotkraut",
+"Sauerbraten",
+"Wild"
+],
+"190": [
+"Ente",
+"Hähnchen/Pute"
+],
+"191": [
+"Ente"
+],
+"192": [
+"Helle Saucen"
+],
+"193": [
+"Hackfleisch",
+"Hähnchen/Pute",
+"Schweinefleisch"
+],
+"194": [
+"Hackfleisch",
+"Schweinefleisch"
+],
+"195": [
+"Schweinefleisch"
+],
+"196": [
+"Hähnchen/Pute"
+],
+"197": [
+"Asiatische Reistafel",
+"Blechkartoffeln",
+"Blumenkohl",
+"Bohnen",
+"Bratkartoffeln",
+"Curry-Reis",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gebratener Fisch",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Hackfleisch",
+"Kartoffelauflauf/-gratin",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Pasta Saucen auf Tomatenbasis",
+"Pilze",
+"Pizza",
+"Rindfleisch"
+],
+"198": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Lammfleisch"
+],
+"199": [
+"Asiatische Reistafel",
+"Blechkartoffeln",
+"Blumenkohl",
+"Bohnen",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gebratener Fisch",
+"Gemüsesuppe/Minestrone",
+"Hackfleisch",
+"Kartoffelauflauf/-gratin",
+"Kräuterquark/Dips",
+"Pilze"
+],
+"2": [
+"Bowle",
+"Desserts",
+"Kompott/marmelade",
+"Kuchen",
+"Käsegebäck",
+"Obstsalat",
+"Punch/Tee",
+"Weihnachtsgebäck"
+],
+"20": [
+"Lammfleisch",
+"Sauerbraten",
+"Wild"
+],
+"200": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Kartoffelauflauf/-gratin"
+],
+"201": [
+"Blumenkohl",
+"Bohnen",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone"
+],
+"202": [
+"Blumenkohl",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Kartoffelauflauf/-gratin"
+],
+"203": [
+"Blechkartoffeln",
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Kartoffelauflauf/-gratin",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"204": [
+"Blechkartoffeln",
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Kartoffelauflauf/-gratin",
+"Kräuterquark/Dips"
+],
+"205": [
+"Blechkartoffeln",
+"Kartoffelauflauf/-gratin"
+],
+"206": [
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Kartoffelauflauf/-gratin"
+],
+"207": [
+"Kartoffelauflauf/-gratin"
+],
+"208": [
+"Asiatische Reistafel",
+"Blumenkohl",
+"Curry-Reis",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"209": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Gemüsesuppe/Minestrone",
+"Lammfleisch"
+],
+"21": [
+"Dunkle Saucen",
+"Rotkraut",
+"Sauerbraten",
+"Wild"
+],
+"210": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Gemüsesuppe/Minestrone"
+],
+"211": [
+"Asiatische Reistafel",
+"Blumenkohl",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Kräuterquark/Dips"
+],
+"212": [
+"Blumenkohl",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone"
+],
+"213": [
+"Asiatische Reistafel",
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gebratener Fisch",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Hackfleisch",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Pasta Saucen auf Tomatenbasis",
+"Pilze",
+"Pizza",
+"Rindfleisch"
+],
+"214": [
+"Gulasch",
+"Hackfleisch",
+"Lammfleisch",
+"Rindfleisch"
+],
+"215": [
+"Asiatische Reistafel",
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Lammfleisch"
+],
+"216": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Pilze",
+"Rindfleisch"
+],
+"217": [
+"Asiatische Reistafel",
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gebratener Fisch",
+"Gemüsesuppe/Minestrone",
+"Hackfleisch",
+"Kräuterquark/Dips",
+"Pilze"
+],
+"218": [
+"Asiatische Reistafel",
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gebratener Fisch",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Hackfleisch",
+"Kräuterquark/Dips",
+"Pasta Saucen auf Tomatenbasis",
+"Pizza"
+],
+"219": [
+"Asiatische Reistafel",
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gebratener Fisch",
+"Gemüsesuppe/Minestrone",
+"Hackfleisch",
+"Kräuterquark/Dips"
+],
+"22": [
+"Asiatische Reistafel",
+"Blattsalat",
+"Blechkartoffeln",
+"Blumenkohl",
+"Bohnen",
+"Bratkartoffeln",
+"Broccoli",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gans",
+"Gebackener Fisch",
+"Gebratener Fisch",
+"Gedünsteter Fisch",
+"Gegrillter Fisch",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Gurken/-salat",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kalbfleisch",
+"Kartoffelauflauf/-gratin",
+"Kartoffelsuppe",
+"Kohlrabi",
+"Kräuterquark/Dips",
+"Möhren",
+"Omlette",
+"Pilze",
+"Risotto/Paella",
+"Sauerkraut",
+"Schweinefleisch",
+"Spinat",
+"Tomaten/-salat"
+],
+"220": [
+"Asiatische Reistafel",
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone"
+],
+"221": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Hackfleisch",
+"Kräuterquark/Dips",
+"Pasta Saucen auf Tomatenbasis",
+"Pilze",
+"Pizza",
+"Rindfleisch"
+],
+"222": [
+"Kräuterquark/Dips",
+"Pilze",
+"Pizza"
+],
+"223": [
+"Gulasch",
+"Hackfleisch",
+"Rindfleisch"
+],
+"224": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Kräuterquark/Dips",
+"Pilze",
+"Rindfleisch"
+],
+"225": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Hackfleisch",
+"Kräuterquark/Dips",
+"Pilze"
+],
+"226": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Kräuterquark/Dips",
+"Pilze"
+],
+"227": [
+"Kräuterquark/Dips",
+"Pilze"
+],
+"228": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Hackfleisch",
+"Kräuterquark/Dips",
+"Pasta Saucen auf Tomatenbasis",
+"Pizza"
+],
+"229": [
+"Kräuterquark/Dips",
+"Pizza"
+],
+"23": [
+"Kräuterquark/Dips",
+"Omlette",
+"Pilze"
+],
+"230": [
+"Dunkle Saucen",
+"Pasta Saucen auf Tomatenbasis"
+],
+"231": [
+"Gulasch",
+"Hackfleisch"
+],
+"232": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Hackfleisch",
+"Kräuterquark/Dips"
+],
+"233": [
+"Blechkartoffeln",
+"Bratkartoffeln"
+],
+"234": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Kräuterquark/Dips"
+],
+"235": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone"
+],
+"236": [
+"Dunkle Saucen",
+"Eintoepfe"
+],
+"237": [
+"Blechkartoffeln",
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"238": [
+"Gulasch",
+"Lammfleisch"
+],
+"239": [
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Lammfleisch"
+],
+"24": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Kartoffelauflauf/-gratin",
+"Kartoffelsuppe"
+],
+"240": [
+"Dunkle Saucen",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"241": [
+"Dunkle Saucen",
+"Lammfleisch"
+],
+"242": [
+"Blechkartoffeln",
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Kräuterquark/Dips"
+],
+"243": [
+"Gulasch"
+],
+"244": [
+"Blechkartoffeln",
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Kräuterquark/Dips"
+],
+"245": [
+"Blechkartoffeln"
+],
+"246": [
+"Dunkle Saucen",
+"Kräuterquark/Dips"
+],
+"247": [
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone"
+],
+"248": [
+"Dunkle Saucen"
+],
+"249": [
+"Asiatische Reistafel",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"25": [
+"Blattsalat",
+"Blumenkohl",
+"Bohnen",
+"Broccoli",
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Gurken/-salat",
+"Kohlrabi",
+"Möhren",
+"Sauerkraut",
+"Spinat",
+"Tomaten/-salat"
+],
+"250": [
+"Asiatische Reistafel",
+"Gemüsesuppe/Minestrone",
+"Lammfleisch"
+],
+"251": [
+"Eintoepfe",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"252": [
+"Asiatische Reistafel",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Kräuterquark/Dips"
+],
+"253": [
+"Asiatische Reistafel",
+"Gemüsesuppe/Minestrone"
+],
+"254": [
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Kräuterquark/Dips"
+],
+"255": [
+"Eintoepfe",
+"Gemüsesuppe/Minestrone"
+],
+"256": [
+"Gemüsesuppe/Minestrone",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"257": [
+"Gemüsesuppe/Minestrone",
+"Lammfleisch"
+],
+"258": [
+"Gemüsesuppe/Minestrone",
+"Kräuterquark/Dips"
+],
+"259": [
+"Gemüsesuppe/Minestrone"
+],
+"26": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Kohlrabi",
+"Sauerkraut"
+],
+"260": [
+"Eintoepfe",
+"Hackfleisch",
+"Kräuterquark/Dips"
+],
+"261": [
+"Eintoepfe",
+"Kräuterquark/Dips"
+],
+"262": [
+"Eintoepfe"
+],
+"263": [
+"Asiatische Reistafel",
+"Blumenkohl",
+"Curry-Reis",
+"Gebratener Fisch",
+"Hackfleisch",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Rindfleisch"
+],
+"264": [
+"Asiatische Reistafel",
+"Blumenkohl",
+"Gebratener Fisch",
+"Hackfleisch",
+"Kräuterquark/Dips"
+],
+"265": [
+"Asiatische Reistafel",
+"Blumenkohl",
+"Curry-Reis",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"266": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Lammfleisch"
+],
+"267": [
+"Asiatische Reistafel",
+"Curry-Reis"
+],
+"268": [
+"Asiatische Reistafel",
+"Blumenkohl",
+"Kräuterquark/Dips"
+],
+"269": [
+"Blumenkohl"
+],
+"27": [
+"Eintoepfe",
+"Kohlrabi",
+"Sauerkraut"
+],
+"270": [
+"Asiatische Reistafel",
+"Gebratener Fisch",
+"Hackfleisch",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Rindfleisch"
+],
+"271": [
+"Hackfleisch",
+"Lammfleisch",
+"Rindfleisch"
+],
+"272": [
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Rindfleisch"
+],
+"273": [
+"Lammfleisch",
+"Rindfleisch"
+],
+"274": [
+"Asiatische Reistafel",
+"Gebratener Fisch",
+"Hackfleisch",
+"Kräuterquark/Dips"
+],
+"275": [
+"Gebratener Fisch"
+],
+"276": [
+"Hackfleisch",
+"Kräuterquark/Dips",
+"Rindfleisch"
+],
+"277": [
+"Hackfleisch",
+"Rindfleisch"
+],
+"278": [
+"Kräuterquark/Dips",
+"Rindfleisch"
+],
+"279": [
+"Rindfleisch"
+],
+"28": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Kohlrabi",
+"Kräuterquark/Dips",
+"Pilze",
+"Tomaten/-salat"
+],
+"280": [
+"Asiatische Reistafel",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"281": [
+"Asiatische Reistafel",
+"Lammfleisch"
+],
+"282": [
+"Asiatische Reistafel",
+"Kräuterquark/Dips"
+],
+"283": [
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"284": [
+"Hackfleisch",
+"Kräuterquark/Dips"
+],
+"285": [
+"Kräuterquark/Dips"
+],
+"286": [
+"Hackfleisch",
+"Lammfleisch"
+],
+"287": [
+"Lammfleisch"
+],
+"288": [
+"Hackfleisch"
+],
+"289": [
+"Asiatische Reistafel",
+"Bowle",
+"Desserts",
+"Gedünsteter Fisch",
+"Kompott/marmelade",
+"Kuchen",
+"Milchreis",
+"Obstsalat",
+"Punch/Tee",
+"Weihnachtsgebäck"
+],
+"29": [
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Kohlrabi",
+"Tomaten/-salat"
+],
+"290": [
+"Bowle",
+"Desserts",
+"Kompott/marmelade",
+"Kuchen",
+"Milchreis",
+"Obstsalat",
+"Punch/Tee",
+"Weihnachtsgebäck"
+],
+"291": [
+"Bowle",
+"Desserts",
+"Kompott/marmelade",
+"Kuchen",
+"Obstsalat",
+"Punch/Tee",
+"Weihnachtsgebäck"
+],
+"292": [
+"Asiatische Reistafel",
+"Kuchen"
+],
+"293": [
+"Asiatische Reistafel",
+"Kompott/marmelade",
+"Weihnachtsgebäck"
+],
+"294": [
+"Bowle",
+"Desserts",
+"Kompott/marmelade",
+"Kuchen",
+"Punch/Tee",
+"Weihnachtsgebäck"
+],
+"295": [
+"Asiatische Reistafel",
+"Milchreis"
+],
+"296": [
+"Milchreis"
+],
+"297": [
+"Bowle",
+"Kompott/marmelade",
+"Kuchen",
+"Punch/Tee",
+"Weihnachtsgebäck"
+],
+"298": [
+"Kuchen"
+],
+"299": [
+"Kompott/marmelade",
+"Weihnachtsgebäck"
+],
+"3": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Milchreis",
+"Risotto/Paella"
+],
+"30": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Kohlrabi"
+],
+"300": [
+"Asiatische Reistafel",
+"Gedünsteter Fisch"
+],
+"301": [
+"Gedünsteter Fisch"
+],
+"302": [
+"Asiatische Reistafel"
+],
+"303": [],
+"31": [
+"Eintoepfe",
+"Kohlrabi"
+],
+"32": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Käsegebäck",
+"Pasta Saucen auf Tomatenbasis",
+"Pilze",
+"Pizza",
+"Rindfleisch",
+"Risotto/Paella",
+"Rouladen",
+"Schweinefleisch"
+],
+"33": [
+"Gulasch",
+"Hackfleisch",
+"Rindfleisch",
+"Rouladen",
+"Schweinefleisch"
+],
+"34": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Kräuterquark/Dips",
+"Pilze",
+"Rindfleisch",
+"Rouladen"
+],
+"35": [
+"Rindfleisch",
+"Rouladen"
+],
+"36": [
+"Bowle",
+"Desserts",
+"Ente",
+"Kalbfleisch",
+"Kompott/marmelade",
+"Kuchen",
+"Punch/Tee",
+"Rotkraut",
+"Sauerbraten",
+"Schweinefleisch",
+"Weihnachtsgebäck",
+"Wild"
+],
+"37": [
+"Kalbfleisch",
+"Sauerbraten",
+"Schweinefleisch",
+"Wild"
+],
+"38": [
+"Kompott/marmelade",
+"Rotkraut",
+"Sauerbraten",
+"Schweinefleisch",
+"Weihnachtsgebäck",
+"Wild"
+],
+"39": [
+"Sauerbraten",
+"Schweinefleisch",
+"Wild"
+],
+"4": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Kartoffelauflauf/-gratin",
+"Kartoffelsuppe",
+"Püree"
+],
+"40": [
+"Rotkraut",
+"Sauerbraten",
+"Wild"
+],
+"41": [
+"Sauerbraten",
+"Wild"
+],
+"42": [
+"Rotkraut"
+],
+"43": [
+"Blumenkohl",
+"Broccoli",
+"Dunkle Saucen",
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gedünsteter Fisch",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Kartoffelauflauf/-gratin",
+"Kartoffelsuppe",
+"Möhren",
+"Püree",
+"Spinat"
+],
+"44": [
+"Kartoffelauflauf/-gratin",
+"Kartoffelsuppe",
+"Püree"
+],
+"45": [
+"Blumenkohl",
+"Broccoli",
+"Dunkle Saucen",
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gedünsteter Fisch",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Kartoffelauflauf/-gratin",
+"Kartoffelsuppe",
+"Möhren",
+"Spinat"
+],
+"46": [
+"Kartoffelauflauf/-gratin",
+"Kartoffelsuppe"
+],
+"47": [
+"Blumenkohl",
+"Broccoli",
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Möhren",
+"Spinat"
+],
+"48": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe"
+],
+"49": [
+"Blechkartoffeln",
+"Broccoli",
+"Dunkle Saucen",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Kartoffelauflauf/-gratin",
+"Kohlrabi",
+"Kräuterquark/Dips",
+"Käsegebäck",
+"Lammfleisch",
+"Sauerkraut"
+],
+"5": [
+"Gulasch",
+"Hackfleisch",
+"Kalbfleisch",
+"Lammfleisch",
+"Rindfleisch",
+"Rouladen",
+"Sauerbraten",
+"Schweinefleisch",
+"Wild"
+],
+"50": [
+"Dunkle Saucen",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Kohlrabi",
+"Kräuterquark/Dips",
+"Lammfleisch"
+],
+"51": [
+"Blechkartoffeln",
+"Broccoli",
+"Dunkle Saucen",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gemüsesuppe/Minestrone",
+"Kartoffelauflauf/-gratin",
+"Kohlrabi",
+"Kräuterquark/Dips",
+"Sauerkraut"
+],
+"52": [
+"Broccoli",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gemüsesuppe/Minestrone",
+"Kohlrabi",
+"Sauerkraut"
+],
+"53": [
+"Dunkle Saucen",
+"Kohlrabi",
+"Sauerkraut"
+],
+"54": [
+"Kohlrabi",
+"Sauerkraut"
+],
+"55": [
+"Dunkle Saucen",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Kohlrabi",
+"Kräuterquark/Dips"
+],
+"56": [
+"Erbsen-/Bohnen-/Linsensuppe",
+"Kohlrabi"
+],
+"57": [
+"Dunkle Saucen",
+"Kohlrabi"
+],
+"58": [
+"Kohlrabi"
+],
+"59": [
+"Blechkartoffeln",
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Kräuterquark/Dips",
+"Käsegebäck"
+],
+"6": [
+"Blattsalat",
+"Blumenkohl",
+"Bohnen",
+"Broccoli",
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Gurken/-salat",
+"Kohlrabi",
+"Möhren",
+"Rotkraut",
+"Sauerkraut",
+"Spinat",
+"Tomaten/-salat"
+],
+"60": [
+"Käsegebäck"
+],
+"61": [
+"Broccoli",
+"Dunkle Saucen",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gemüsesuppe/Minestrone",
+"Kartoffelauflauf/-gratin"
+],
+"62": [
+"Broccoli",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Gemüsesuppe/Minestrone"
+],
+"63": [
+"Dunkle Saucen",
+"Erbsen-/Bohnen-/Linsensuppe"
+],
+"64": [
+"Asiatische Reistafel",
+"Blumenkohl",
+"Curry-Reis",
+"Eintoepfe",
+"Ente",
+"Gans",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Krustentiere/Schalentiere",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Milchreis",
+"Möhren"
+],
+"65": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Milchreis"
+],
+"66": [
+"Lammfleisch",
+"Milchreis"
+],
+"67": [
+"Asiatische Reistafel",
+"Curry-Reis",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Hähnchen/Pute"
+],
+"68": [
+"Asiatische Reistafel",
+"Blumenkohl",
+"Eintoepfe",
+"Ente",
+"Gans",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Möhren"
+],
+"69": [
+"Ente",
+"Gans",
+"Hähnchen/Pute"
+],
+"7": [
+"Bowle",
+"Desserts",
+"Kompott/marmelade",
+"Kuchen",
+"Lammfleisch",
+"Milchreis",
+"Obstsalat",
+"Punch/Tee",
+"Weihnachtsgebäck"
+],
+"70": [
+"Blumenkohl",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Möhren"
+],
+"71": [
+"Blumenkohl",
+"Eintoepfe",
+"Gemüsesuppe/Minestrone",
+"Möhren"
+],
+"72": [
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Schweinefleisch",
+"Tomaten/-salat"
+],
+"73": [
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Kräuterquark/Dips",
+"Tomaten/-salat"
+],
+"74": [
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe",
+"Tomaten/-salat"
+],
+"75": [
+"Eintoepfe",
+"Erbsen-/Bohnen-/Linsensuppe"
+],
+"76": [
+"Erbsen-/Bohnen-/Linsensuppe",
+"Kräuterquark/Dips"
+],
+"77": [
+"Erbsen-/Bohnen-/Linsensuppe"
+],
+"78": [
+"Asiatische Reistafel",
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Gebackener Fisch",
+"Gebratener Fisch",
+"Gedünsteter Fisch",
+"Gegrillter Fisch",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kalbfleisch",
+"Krustentiere/Schalentiere",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Pasta Saucen auf Tomatenbasis",
+"Pilze",
+"Pizza",
+"Rindfleisch",
+"Risotto/Paella",
+"Schweinefleisch",
+"Spinat",
+"Tomaten/-salat"
+],
+"79": [
+"Dunkle Saucen",
+"Helle Saucen",
+"Pasta Saucen auf Tomatenbasis"
+],
+"8": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Kohlrabi",
+"Krustentiere/Schalentiere",
+"Rotkraut",
+"Sauerbraten",
+"Sauerkraut",
+"Wild"
+],
+"80": [
+"Gebackener Fisch",
+"Gebratener Fisch",
+"Gedünsteter Fisch",
+"Gegrillter Fisch",
+"Krustentiere/Schalentiere"
+],
+"81": [
+"Gulasch",
+"Hackfleisch",
+"Kalbfleisch",
+"Lammfleisch",
+"Rindfleisch",
+"Schweinefleisch"
+],
+"82": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Krustentiere/Schalentiere"
+],
+"83": [
+"Asiatische Reistafel",
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Lammfleisch",
+"Schweinefleisch"
+],
+"84": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Kräuterquark/Dips",
+"Lammfleisch",
+"Pilze",
+"Rindfleisch",
+"Tomaten/-salat"
+],
+"85": [
+"Asiatische Reistafel",
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Gebackener Fisch",
+"Gebratener Fisch",
+"Gedünsteter Fisch",
+"Gegrillter Fisch",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Hackfleisch",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Kalbfleisch",
+"Kräuterquark/Dips",
+"Pilze",
+"Risotto/Paella",
+"Schweinefleisch",
+"Spinat",
+"Tomaten/-salat"
+],
+"86": [
+"Eintoepfe",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Spinat",
+"Tomaten/-salat"
+],
+"87": [
+"Asiatische Reistafel",
+"Gemüsesuppe/Minestrone",
+"Helle Saucen",
+"Hähnchen/Pute",
+"Risotto/Paella"
+],
+"88": [
+"Dunkle Saucen",
+"Eintoepfe",
+"Kräuterquark/Dips",
+"Pilze",
+"Tomaten/-salat"
+],
+"89": [
+"Asiatische Reistafel",
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Gebratener Fisch",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Pasta Saucen auf Tomatenbasis",
+"Pizza",
+"Schweinefleisch"
+],
+"9": [
+"Eintoepfe",
+"Kohlrabi",
+"Rotkraut",
+"Sauerkraut"
+],
+"90": [
+"Asiatische Reistafel",
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Gebratener Fisch",
+"Gemüsesuppe/Minestrone",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Schweinefleisch"
+],
+"91": [
+"Asiatische Reistafel",
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Schweinefleisch"
+],
+"92": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Pasta Saucen auf Tomatenbasis",
+"Pilze",
+"Pizza",
+"Rindfleisch",
+"Risotto/Paella",
+"Schweinefleisch"
+],
+"93": [
+"Gulasch",
+"Hackfleisch",
+"Rindfleisch",
+"Schweinefleisch"
+],
+"94": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Gemüseauflauf/-gratin",
+"Gemüsesuppe/Minestrone",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Pilze",
+"Risotto/Paella",
+"Schweinefleisch"
+],
+"95": [
+"Gemüsesuppe/Minestrone",
+"Hähnchen/Pute",
+"Risotto/Paella"
+],
+"96": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Gemüsesuppe/Minestrone",
+"Gulasch",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Pasta Saucen auf Tomatenbasis",
+"Pizza",
+"Schweinefleisch"
+],
+"97": [
+"Gulasch",
+"Hackfleisch",
+"Schweinefleisch"
+],
+"98": [
+"Blechkartoffeln",
+"Bratkartoffeln",
+"Dunkle Saucen",
+"Eintoepfe",
+"Ente",
+"Gemüsesuppe/Minestrone",
+"Hackfleisch",
+"Hähnchen/Pute",
+"Kräuterquark/Dips",
+"Schweinefleisch"
+],
+"99": [
+"Dunkle Saucen",
+"Gemüsesuppe/Minestrone",
+"Schweinefleisch"
+]
+},
+"source_sha256": "53ff92f7c5643e8ed57c588976874b228ee3f160119f32c48afe7e5a3bd45079"
+}

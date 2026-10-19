@@ -1,8 +1,9 @@
 """Where does DimDraw's time actually go: the published examples, or our contexts?
 
-The algorithm's author reports about a second; we measured 600 s without
-completion at 46 concepts. This times the same odis call on the lattices the
-DimDraw and ReDraw papers use, alongside ours, and records what distinguishes them.
+DimDraw finishes in about a second on the examples it is usually shown on, and
+uses any budget on some of the scales here. This times the same odis call on the
+lattices the DimDraw and ReDraw papers use, alongside the scales of this corpus,
+and records what distinguishes them.
 """
 import sys, time
 from pathlib import Path

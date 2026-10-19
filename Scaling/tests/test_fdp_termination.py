@@ -17,12 +17,11 @@ about clarification and not about cost.
 This matters to us because our scales are legitimately unclarified: a scale's
 attributes are the conjunctions we chose, and two of them having the same extent is
 a fact about the data. `Requires electricity` and `Electrical sound` hold of exactly
-the same instruments. Eleven of the 39 contexts and scales here contain such a
-pair, four of them imported unchanged from his collection.
+the same instruments. Such pairs are ordinary in real data.
 
-We do not clarify them to make fdp work: the attribute set is the view we chose, and
-a defect reproduced on a three-concept fixture belongs in his code, not in our
-inputs. See pipeline.md, *Decided: we do not clarify the scales*.
+The contexts are not clarified to make fdp work: the attribute set is the chosen
+view, and a defect reproduced on a three-concept fixture belongs in the generator,
+not in the inputs. See pipeline.md, *Drawing* and *Defects*.
 
 `run_harness.py` therefore skips fdp on an unclarified context with that reason
 recorded, rather than hanging the sweep. If this test starts failing, fdp has been

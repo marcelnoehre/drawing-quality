@@ -1,20 +1,17 @@
 """Does dimdraw's budget change its scores, or has the anytime search converged?
 
-The confound this settles is ours, not his. RQ1 asks whether drawing quality
-improves as a lattice gets smaller. dimdraw's search is bounded by a wall-clock
-budget, and a larger lattice gets less search per concept, so its quality could
-fall with size for two reasons at once, genuine difficulty and a truncated search,
-which cannot be separated after the fact. Every other algorithm's size trend is
-clean; dimdraw's is not.
+dimdraw's search is bounded by a wall-clock budget, and a larger lattice gets less
+search per concept, so a drawing of a large lattice could be worse for two reasons
+at once: genuine difficulty and a truncated search, which cannot be told apart
+after the fact.
 
 The test: draw the same scales twice, once with the 60 second budget its generator
-uses and once with ten times that, and score both. If the scores move, the
-confound is real and dimdraw's size trend has to be reported separately, split by
-whether the budget was consumed. If they do not move, the anytime search had
-already converged and the trend is clean after all, which is the better outcome.
+uses and once with ten times that, and score both. If the scores move, dimdraw's
+large drawings are truncated by its budget. If they do not, the anytime search had
+already converged.
 
     python dimdraw_sensitivity.py                       # the default three scales
-    python dimdraw_sensitivity.py --budgets 60 600 --scales practice
+    python dimdraw_sensitivity.py --budgets 60 600 --scales instruments_practice
 
 Writes `dimdraw_sensitivity.csv`.
 """
@@ -34,13 +31,13 @@ REPO_ROOT = HERE.parent
 sys.path.insert(0, str(REPO_ROOT))
 sys.path.insert(0, str(HERE))
 
-from check_node_mapping import load_generator  # noqa: E402
+from node_extents import load_generator  # noqa: E402
 from lattice_metrics import evaluate_all, load_layout  # noqa: E402
 
 # Mid-size scales: past the roughly thirty concepts where dimdraw stops finishing,
 # but small enough that two runs each are affordable.
-DEFAULT_SCALES = [("instruments", "playing-mechanism"), ("instruments", "practice"),
-                  ("instruments", "family-making")]
+DEFAULT_SCALES = [("instruments", "instruments_playing_mechanism"), ("instruments", "instruments_practice"),
+                  ("instruments", "instruments_family_making")]
 
 
 def draw_with_budget(context: str, scale: str, budget_s: float,

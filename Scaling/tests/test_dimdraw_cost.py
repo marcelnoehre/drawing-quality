@@ -10,7 +10,7 @@ budget given to them.
 and 285 incomparable pairs, and it comes from DimDraw's own data set rather than
 from ours, so it cannot be dismissed as an artefact of how we build scales. If
 this test ever stops failing to finish, either odis got faster or the explanation
-was wrong, and either way the timing claims in `pipeline.md` need revisiting.
+was wrong, and either way the cost model in `pipeline.md` needs revisiting.
 
     python tests/test_dimdraw_cost.py        # standalone
     pytest tests/test_dimdraw_cost.py        # or under pytest

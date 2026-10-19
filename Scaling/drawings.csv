@@ -1,23 +1,729 @@
-context,scale,algorithm,concepts,seed,status,runtime_s,budget_s,completed_within_budget,note,n_nodes,drawn_width,visual_chain_linearity,node_edge_conflict,crossing_angle,edge_edge_conflict,edge_crossing,edge_length_uniformity,layer_consistency,slope_harmony,slope_standard,slope_verticality,nested_suitability,node_node_conflict,vertical_axis_balance,node_node_conflict_min,node_edge_conflict_min,edge_edge_conflict_min,crossing_angle_min
-instruments,capability,aeschlimann_schmid,13,none,cached,,,,,13,4,0.7831283780286115,0.9997136830598657,0.590334470601733,1.0,1.0,1.0,1.0,0.7909313590834385,0.7914327114175048,0.7999999999999999,0.795905667756079,1.0,0.0,1.0,0.9996277879778254,1.0,0.590334470601733
-instruments,capability,fdp,13,none,cached,,60.0,,,13,4,0.8330014102668475,1.0,0.9096703308913897,1.0,1.0,0.9948682510714736,0.9858929640074802,0.596491173031651,0.7992959733549333,0.8976909712535934,0.9247975835183513,1.0,0.3887561504229485,1.0,1.0,1.0,0.9039331432521696
-instruments,capability-practice-making,aeschlimann_schmid,319,none,cached,,,,,319,81,0.8710712831934793,0.0483673005075757,0.32444037139206006,0.49873578384923306,0.9723488572025524,0.49619945695581497,0.9136718278803719,0.7202915624095927,0.3833392405417547,0.0688836104513064,0.0,0.4030054123946241,0.2743954269229922,0.0,0.0,0.0,0.0
-instruments,capability-practice-making,fdp,319,none,skipped,,,,fdp does not terminate on a context with equivalent attributes (Requires electricity == Electrical sound); see pipeline.md,,,,,,,,,,,,,,,,,,,
-instruments,excitation,aeschlimann_schmid,21,none,cached,,,,,21,13,0.5711748517754945,0.3562861956246791,0.43932455883085275,0.7781698218222833,0.9838709677419355,0.7236685300531235,0.8330593401643959,0.5278792476456604,0.5432892753605676,0.24615384615384617,0.0,0.822732441027023,0.357758602490736,0.6863841226141445,0.0,1.6098909627615399e-07,0.07203415214330233
-instruments,excitation,fdp,21,none,cached,,60.0,,,21,13,0.6408697330608933,0.2989336394105361,0.6134783997819632,0.8814855835172969,0.935483870967742,0.5883452648817464,0.49782455238186024,0.39109813834929985,0.5645875077319886,0.059065373624360235,0.0999903327430981,0.6002301192358412,0.40447180477008976,0.37136151074336077,0.0999903327430981,0.20978053064483282,0.14465724978457317
-instruments,family-excitation,aeschlimann_schmid,27,none,cached,,,,,27,15,0.6220686239858186,0.41032782744026874,0.46733978425313816,0.8958935107432362,0.9351145038167938,0.7984104398091699,0.8677964822856756,0.5262504333710292,0.6142214458094313,0.24615384615384617,0.0,0.8245161620701899,0.11843737951048347,0.0,0.0,0.10918169196563421,0.02766169913332528
-instruments,family-excitation,fdp,27,none,cached,,60.0,,,27,15,0.8886079220153005,0.15473856662339056,0.16003306782310034,0.44619992731091895,0.9580152671755725,0.3784901706361245,0.4324537179389418,0.6599698059993491,0.8563101375595455,0.993268723334486,0.0,0.20346876508755452,0.010107368158974568,0.0,0.0,0.0,0.0002809731851811659
-instruments,family-excitation-mechanism,aeschlimann_schmid,33,none,cached,,,,,33,17,0.6822150585124102,0.45559027092789933,0.5443361181338233,0.930786570735241,0.975669099756691,0.7728210006686164,0.937693298969072,0.5746763417843173,0.6222106271733073,0.198019801980198,0.07466880014376731,0.880080883347107,0.15477573239240094,0.7505827781822219,0.07466880014376731,0.09320850354048305,0.10765318400407575
-instruments,family-excitation-mechanism,fdp,33,none,skipped,,,,fdp does not terminate on a context with equivalent attributes (Chordophone ∧ Hammered strings == Chordophone ∧ Hammered strings ∧ Keyboard); see pipeline.md,,,,,,,,,,,,,,,,,,,
-instruments,family-making,aeschlimann_schmid,39,none,cached,,,,,39,14,0.7850192597699543,0.3398049349848521,0.4149087860018156,0.8538461003711248,0.9463500439753738,0.7860489367008936,0.9588846237269671,0.6301934686565642,0.5715308653007796,0.21951219512195122,0.0,0.8779725499188492,0.7244950458472649,0.7470494950882236,0.0,0.10918169196563421,0.035331445776268455
-instruments,family-making,fdp,39,none,skipped,,,,fdp does not terminate on a context with equivalent attributes (Requires electricity == Electrical sound); see pipeline.md,,,,,,,,,,,,,,,,,,,
-instruments,family-practice,aeschlimann_schmid,107,none,cached,,,,,107,35,0.7779936476080418,0.09648946410739866,0.3770004570685801,0.6442658702018133,0.9396170839469808,0.528456212134824,0.8798074611273626,0.6463491939712398,0.41010545043148816,0.09072164948453608,0.0,0.5105421964910234,0.47758940852414106,0.4739481235495969,0.0,1.6098909627615399e-07,0.004878216952021508
-instruments,family-practice,fdp,107,none,cached,,60.0,,,107,35,0.9171104261976631,0.14047540532661557,0.771021666327208,0.49582320480597847,0.964321345432087,0.45027129479299033,0.6888450521499476,0.7673677266966321,0.9411368123966473,0.9782203709535469,0.0,0.48115022624275927,0.8857467606274152,0.0,0.0,0.0,0.0
-instruments,instruments,aeschlimann_schmid,576,none,cached,,,,,576,138,0.8506362096255335,0.010397053823207615,0.1752788445110628,0.31290960453878974,0.9625990538920806,0.3873437018858978,0.8344174108685904,0.8030770067022732,0.24152969694701898,0.03277807630306287,0.0,0.21117433250153192,0.6854024617069658,0.0,0.0,0.0,0.0
-instruments,instruments,fdp,576,none,skipped,,,,fdp does not terminate on a context with equivalent attributes (Requires electricity == Electrical sound); see pipeline.md,,,,,,,,,,,,,,,,,,,
-instruments,making,aeschlimann_schmid,17,none,cached,,,,,17,6,0.7614321910449264,0.6608206766898681,0.619867207770136,0.8199695262421586,0.9534883720930233,0.791700755314776,0.9603150016449172,0.5230680481261994,0.8185317644206429,0.6,0.0,0.9934834373185296,1.0,0.990768202867917,0.0,0.0,0.07916684832113063
-instruments,making,fdp,17,none,skipped,,,,fdp does not terminate on a context with equivalent attributes (Requires electricity == Electrical sound); see pipeline.md,,,,,,,,,,,,,,,,,,,
-instruments,playing-mechanism,aeschlimann_schmid,35,none,cached,,,,,35,16,0.7222357508123881,0.39665983182762393,0.5485180604804305,0.8835450783936516,0.9320175438596491,0.7315077603157446,0.7875265982380538,0.565277052655698,0.6150004412628527,0.24615384615384617,0.0,0.8649878565646091,0.37316879233140976,0.7823403155658472,0.0,0.0,0.09033447060173394
-instruments,playing-mechanism,fdp,35,none,cached,,60.0,,,35,16,0.7254736615347672,0.2785982396591638,0.5382898701409802,0.8763007892094644,0.9802631578947368,0.4652368913944408,0.41818643053973814,0.44461729628655444,0.5604136845172447,0.025946487307786623,0.04612702181148021,0.562092772078608,0.816771456728315,0.34249567601564956,0.04612702181148021,0.11938700938036395,0.07317587340807297
-instruments,practice,aeschlimann_schmid,46,none,cached,,,,,46,16,0.8146715294678973,0.33072417598356496,0.4533255921090279,0.7938244521527819,0.9381541389153187,0.7201558956023955,0.9442230700728689,0.579849710311845,0.5936935528905591,0.16551724137931037,0.0,0.830530409879624,0.2972650126675424,0.7540690494118168,0.0,1.6098909627615399e-07,0.052207561303326266
-instruments,practice,fdp,46,none,cached,,60.0,,,46,16,0.8732268610816113,0.3279149574662797,0.743434645887169,0.6699964643495825,0.9662226450999049,0.638765163777326,0.7256202730146677,0.7524863930626984,0.954930638128766,0.9782203709535471,0.0,0.8316004112069614,0.8547008547008547,0.41269270618278875,0.0,0.0001708256968973032,0.0
+context,scale,algorithm,concepts,wall_budget_s,internal_budget_s,source_sha256,status,runtime_s,note,used_internal_budget
+diagnosis,diagnosis,aeschlimann_schmid,88,900,,3be2d614c76d54e10f391f6dfd56794f0624d881b57fd3368376ac76a499f154,cached,0.49,,
+diagnosis,diagnosis,cole_ducrou_eklund,88,900,,3be2d614c76d54e10f391f6dfd56794f0624d881b57fd3368376ac76a499f154,cached,158.988,,
+diagnosis,diagnosis,dimdraw,88,900,60.0,3be2d614c76d54e10f391f6dfd56794f0624d881b57fd3368376ac76a499f154,cached,60.474,used its whole internal budget: an anytime result,True
+diagnosis,diagnosis,dimflux,88,900,60.0,3be2d614c76d54e10f391f6dfd56794f0624d881b57fd3368376ac76a499f154,cached,127.797,,
+diagnosis,diagnosis,fdp,88,900,60.0,3be2d614c76d54e10f391f6dfd56794f0624d881b57fd3368376ac76a499f154,cached,1.533,,False
+diagnosis,diagnosis,freese,88,900,,3be2d614c76d54e10f391f6dfd56794f0624d881b57fd3368376ac76a499f154,cached,10.478,,
+diagnosis,diagnosis,redraw,88,1800,,3be2d614c76d54e10f391f6dfd56794f0624d881b57fd3368376ac76a499f154,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+diagnosis,diagnosis,sugiyama,88,900,,3be2d614c76d54e10f391f6dfd56794f0624d881b57fd3368376ac76a499f154,cached,0.286,,
+diagnosis,diagnosis_lower,aeschlimann_schmid,19,900,,3faef9350c2ed308d56dfa46dfb565336e8513ba894b7d46ff94d268ba97d590,cached,0.173,,
+diagnosis,diagnosis_lower,cole_ducrou_eklund,19,900,,3faef9350c2ed308d56dfa46dfb565336e8513ba894b7d46ff94d268ba97d590,cached,0.635,,
+diagnosis,diagnosis_lower,dimdraw,19,900,60.0,3faef9350c2ed308d56dfa46dfb565336e8513ba894b7d46ff94d268ba97d590,cached,0.238,,False
+diagnosis,diagnosis_lower,dimflux,19,900,60.0,3faef9350c2ed308d56dfa46dfb565336e8513ba894b7d46ff94d268ba97d590,cached,5.684,,
+diagnosis,diagnosis_lower,fdp,19,900,60.0,3faef9350c2ed308d56dfa46dfb565336e8513ba894b7d46ff94d268ba97d590,cached,3.85,,False
+diagnosis,diagnosis_lower,freese,19,900,,3faef9350c2ed308d56dfa46dfb565336e8513ba894b7d46ff94d268ba97d590,cached,0.933,,
+diagnosis,diagnosis_lower,redraw,19,900,,3faef9350c2ed308d56dfa46dfb565336e8513ba894b7d46ff94d268ba97d590,cached,58.301,,
+diagnosis,diagnosis_lower,sugiyama,19,900,,3faef9350c2ed308d56dfa46dfb565336e8513ba894b7d46ff94d268ba97d590,cached,0.147,,
+diagnosis,diagnosis_lower_diagnosis,aeschlimann_schmid,38,900,,55f4487c126a5a12b6b9387a8480ece740fafaf705cce4aa6e4bcf4f72d650f9,cached,0.301,,
+diagnosis,diagnosis_lower_diagnosis,cole_ducrou_eklund,38,900,,55f4487c126a5a12b6b9387a8480ece740fafaf705cce4aa6e4bcf4f72d650f9,cached,7.898,,
+diagnosis,diagnosis_lower_diagnosis,dimdraw,38,900,60.0,55f4487c126a5a12b6b9387a8480ece740fafaf705cce4aa6e4bcf4f72d650f9,cached,60.277,used its whole internal budget: an anytime result,True
+diagnosis,diagnosis_lower_diagnosis,dimflux,38,900,60.0,55f4487c126a5a12b6b9387a8480ece740fafaf705cce4aa6e4bcf4f72d650f9,cached,76.517,,
+diagnosis,diagnosis_lower_diagnosis,fdp,38,900,60.0,55f4487c126a5a12b6b9387a8480ece740fafaf705cce4aa6e4bcf4f72d650f9,cached,60.425,used its whole internal budget: an anytime result,True
+diagnosis,diagnosis_lower_diagnosis,freese,38,900,,55f4487c126a5a12b6b9387a8480ece740fafaf705cce4aa6e4bcf4f72d650f9,cached,2.698,,
+diagnosis,diagnosis_lower_diagnosis,redraw,38,900,,55f4487c126a5a12b6b9387a8480ece740fafaf705cce4aa6e4bcf4f72d650f9,cached,466.859,,
+diagnosis,diagnosis_lower_diagnosis,sugiyama,38,900,,55f4487c126a5a12b6b9387a8480ece740fafaf705cce4aa6e4bcf4f72d650f9,cached,0.23,,
+diagnosis,diagnosis_symptoms,aeschlimann_schmid,78,900,,ccd40f92999640d71c6b3d4b467dbe19bd73cff7da13c66e8eb0a8321af0e1eb,cached,0.404,,
+diagnosis,diagnosis_symptoms,cole_ducrou_eklund,78,900,,ccd40f92999640d71c6b3d4b467dbe19bd73cff7da13c66e8eb0a8321af0e1eb,cached,68.994,,
+diagnosis,diagnosis_symptoms,dimdraw,78,900,60.0,ccd40f92999640d71c6b3d4b467dbe19bd73cff7da13c66e8eb0a8321af0e1eb,cached,60.274,used its whole internal budget: an anytime result,True
+diagnosis,diagnosis_symptoms,dimflux,78,900,60.0,ccd40f92999640d71c6b3d4b467dbe19bd73cff7da13c66e8eb0a8321af0e1eb,cached,126.095,,
+diagnosis,diagnosis_symptoms,fdp,78,900,60.0,ccd40f92999640d71c6b3d4b467dbe19bd73cff7da13c66e8eb0a8321af0e1eb,cached,61.087,used its whole internal budget: an anytime result,True
+diagnosis,diagnosis_symptoms,freese,78,900,,ccd40f92999640d71c6b3d4b467dbe19bd73cff7da13c66e8eb0a8321af0e1eb,cached,10.25,,
+diagnosis,diagnosis_symptoms,redraw,78,1800,,ccd40f92999640d71c6b3d4b467dbe19bd73cff7da13c66e8eb0a8321af0e1eb,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+diagnosis,diagnosis_symptoms,sugiyama,78,900,,ccd40f92999640d71c6b3d4b467dbe19bd73cff7da13c66e8eb0a8321af0e1eb,cached,0.255,,
+diagnosis,diagnosis_upper,aeschlimann_schmid,18,900,,c35024b97d30b9cfe23a3fc7c719e1a25cf02f0105485e3d2d1911ed609b4925,cached,0.163,,
+diagnosis,diagnosis_upper,cole_ducrou_eklund,18,900,,c35024b97d30b9cfe23a3fc7c719e1a25cf02f0105485e3d2d1911ed609b4925,cached,0.653,,
+diagnosis,diagnosis_upper,dimdraw,18,900,60.0,c35024b97d30b9cfe23a3fc7c719e1a25cf02f0105485e3d2d1911ed609b4925,cached,0.259,,False
+diagnosis,diagnosis_upper,dimflux,18,900,60.0,c35024b97d30b9cfe23a3fc7c719e1a25cf02f0105485e3d2d1911ed609b4925,cached,3.571,,
+diagnosis,diagnosis_upper,fdp,18,900,60.0,c35024b97d30b9cfe23a3fc7c719e1a25cf02f0105485e3d2d1911ed609b4925,cached,7.389,,False
+diagnosis,diagnosis_upper,freese,18,900,,c35024b97d30b9cfe23a3fc7c719e1a25cf02f0105485e3d2d1911ed609b4925,cached,0.931,,
+diagnosis,diagnosis_upper,redraw,18,900,,c35024b97d30b9cfe23a3fc7c719e1a25cf02f0105485e3d2d1911ed609b4925,cached,50.232,,
+diagnosis,diagnosis_upper,sugiyama,18,900,,c35024b97d30b9cfe23a3fc7c719e1a25cf02f0105485e3d2d1911ed609b4925,cached,0.139,,
+diagnosis,diagnosis_upper_diagnosis,aeschlimann_schmid,36,900,,603c5ff7b4dc70a46a4319fef1e5271dc6b25f1c9f54f1c3114d6fd14cf60a37,cached,0.296,,
+diagnosis,diagnosis_upper_diagnosis,cole_ducrou_eklund,36,900,,603c5ff7b4dc70a46a4319fef1e5271dc6b25f1c9f54f1c3114d6fd14cf60a37,cached,3.954,,
+diagnosis,diagnosis_upper_diagnosis,dimdraw,36,900,60.0,603c5ff7b4dc70a46a4319fef1e5271dc6b25f1c9f54f1c3114d6fd14cf60a37,cached,60.179,used its whole internal budget: an anytime result,True
+diagnosis,diagnosis_upper_diagnosis,dimflux,36,900,60.0,603c5ff7b4dc70a46a4319fef1e5271dc6b25f1c9f54f1c3114d6fd14cf60a37,cached,82.107,,
+diagnosis,diagnosis_upper_diagnosis,fdp,36,900,60.0,603c5ff7b4dc70a46a4319fef1e5271dc6b25f1c9f54f1c3114d6fd14cf60a37,cached,52.917,,False
+diagnosis,diagnosis_upper_diagnosis,freese,36,900,,603c5ff7b4dc70a46a4319fef1e5271dc6b25f1c9f54f1c3114d6fd14cf60a37,cached,2.161,,
+diagnosis,diagnosis_upper_diagnosis,redraw,36,900,,603c5ff7b4dc70a46a4319fef1e5271dc6b25f1c9f54f1c3114d6fd14cf60a37,cached,347.701,,
+diagnosis,diagnosis_upper_diagnosis,sugiyama,36,900,,603c5ff7b4dc70a46a4319fef1e5271dc6b25f1c9f54f1c3114d6fd14cf60a37,cached,0.238,,
+instruments,instruments,aeschlimann_schmid,576,900,,e1a0022038a54878d2ca3d0310220ee4886f5dfdcdeecfa7ae278f41d6145320,cached,1.584,,
+instruments,instruments,cole_ducrou_eklund,576,900,,e1a0022038a54878d2ca3d0310220ee4886f5dfdcdeecfa7ae278f41d6145320,declined,744.244,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+instruments,instruments,dimdraw,576,900,60.0,e1a0022038a54878d2ca3d0310220ee4886f5dfdcdeecfa7ae278f41d6145320,cached,62.536,used its whole internal budget: an anytime result,True
+instruments,instruments,dimflux,576,900,60.0,e1a0022038a54878d2ca3d0310220ee4886f5dfdcdeecfa7ae278f41d6145320,cached,462.351,used its whole internal budget: an anytime result,
+instruments,instruments,fdp,576,1800,60.0,e1a0022038a54878d2ca3d0310220ee4886f5dfdcdeecfa7ae278f41d6145320,nonterminating,,fdp does not terminate on a context with equivalent attributes (Requires electricity == Electrical sound); not run. See tests/test_fdp_termination.py,
+instruments,instruments,freese,576,1800,,e1a0022038a54878d2ca3d0310220ee4886f5dfdcdeecfa7ae278f41d6145320,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+instruments,instruments,redraw,576,1800,,e1a0022038a54878d2ca3d0310220ee4886f5dfdcdeecfa7ae278f41d6145320,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+instruments,instruments,sugiyama,576,900,,e1a0022038a54878d2ca3d0310220ee4886f5dfdcdeecfa7ae278f41d6145320,cached,1.943,,
+instruments,instruments_capability,aeschlimann_schmid,13,900,,c243f6aef39b691bcb57747aecafe15e434edee433968ba8dda444d42da0ab20,cached,0.11,,
+instruments,instruments_capability,cole_ducrou_eklund,13,900,,c243f6aef39b691bcb57747aecafe15e434edee433968ba8dda444d42da0ab20,cached,0.614,,
+instruments,instruments_capability,dimdraw,13,900,60.0,c243f6aef39b691bcb57747aecafe15e434edee433968ba8dda444d42da0ab20,cached,0.148,,False
+instruments,instruments_capability,dimflux,13,900,60.0,c243f6aef39b691bcb57747aecafe15e434edee433968ba8dda444d42da0ab20,cached,1.765,,
+instruments,instruments_capability,fdp,13,900,60.0,c243f6aef39b691bcb57747aecafe15e434edee433968ba8dda444d42da0ab20,cached,0.701,,False
+instruments,instruments_capability,freese,13,900,,c243f6aef39b691bcb57747aecafe15e434edee433968ba8dda444d42da0ab20,cached,0.443,,
+instruments,instruments_capability,redraw,13,900,,c243f6aef39b691bcb57747aecafe15e434edee433968ba8dda444d42da0ab20,cached,23.989,,
+instruments,instruments_capability,sugiyama,13,900,,c243f6aef39b691bcb57747aecafe15e434edee433968ba8dda444d42da0ab20,cached,0.186,,
+instruments,instruments_capability_practice_making,aeschlimann_schmid,319,900,,8fc5040d6e393c564e7f58d3cbf973d47572d3df8cd5676491c05fbef480dd22,cached,1.064,,
+instruments,instruments_capability_practice_making,cole_ducrou_eklund,319,900,,8fc5040d6e393c564e7f58d3cbf973d47572d3df8cd5676491c05fbef480dd22,declined,395.647,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+instruments,instruments_capability_practice_making,dimdraw,319,900,60.0,8fc5040d6e393c564e7f58d3cbf973d47572d3df8cd5676491c05fbef480dd22,cached,61.377,used its whole internal budget: an anytime result,True
+instruments,instruments_capability_practice_making,dimflux,319,900,60.0,8fc5040d6e393c564e7f58d3cbf973d47572d3df8cd5676491c05fbef480dd22,cached,180.977,used its whole internal budget: an anytime result,
+instruments,instruments_capability_practice_making,fdp,319,1800,60.0,8fc5040d6e393c564e7f58d3cbf973d47572d3df8cd5676491c05fbef480dd22,nonterminating,,fdp does not terminate on a context with equivalent attributes (Requires electricity == Electrical sound); not run. See tests/test_fdp_termination.py,
+instruments,instruments_capability_practice_making,freese,319,900,,8fc5040d6e393c564e7f58d3cbf973d47572d3df8cd5676491c05fbef480dd22,invalid,727.884,output is not a usable drawing: diverged: coordinates up to 1.4e+84,
+instruments,instruments_capability_practice_making,redraw,319,1800,,8fc5040d6e393c564e7f58d3cbf973d47572d3df8cd5676491c05fbef480dd22,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+instruments,instruments_capability_practice_making,sugiyama,319,900,,8fc5040d6e393c564e7f58d3cbf973d47572d3df8cd5676491c05fbef480dd22,cached,1.703,,
+instruments,instruments_excitation,aeschlimann_schmid,21,900,,aff3335f6f97278c2d36ee921851d8809f340f2098925d3b32d76ceb6fcaf7e5,cached,0.12,,
+instruments,instruments_excitation,cole_ducrou_eklund,21,900,,aff3335f6f97278c2d36ee921851d8809f340f2098925d3b32d76ceb6fcaf7e5,cached,2.014,,
+instruments,instruments_excitation,dimdraw,21,900,60.0,aff3335f6f97278c2d36ee921851d8809f340f2098925d3b32d76ceb6fcaf7e5,cached,4.674,,False
+instruments,instruments_excitation,dimflux,21,900,60.0,aff3335f6f97278c2d36ee921851d8809f340f2098925d3b32d76ceb6fcaf7e5,cached,16.438,,
+instruments,instruments_excitation,fdp,21,900,60.0,aff3335f6f97278c2d36ee921851d8809f340f2098925d3b32d76ceb6fcaf7e5,cached,60.454,used its whole internal budget: an anytime result,True
+instruments,instruments_excitation,freese,21,900,,aff3335f6f97278c2d36ee921851d8809f340f2098925d3b32d76ceb6fcaf7e5,cached,0.475,,
+instruments,instruments_excitation,redraw,21,900,,aff3335f6f97278c2d36ee921851d8809f340f2098925d3b32d76ceb6fcaf7e5,cached,105.893,,
+instruments,instruments_excitation,sugiyama,21,900,,aff3335f6f97278c2d36ee921851d8809f340f2098925d3b32d76ceb6fcaf7e5,cached,0.156,,
+instruments,instruments_family_excitation,aeschlimann_schmid,27,900,,4711a580d6b617580f7e2efcf9d898dc82e38a14f064328e3893c4082892bf86,cached,0.232,,
+instruments,instruments_family_excitation,cole_ducrou_eklund,27,900,,4711a580d6b617580f7e2efcf9d898dc82e38a14f064328e3893c4082892bf86,cached,9.936,,
+instruments,instruments_family_excitation,dimdraw,27,900,60.0,4711a580d6b617580f7e2efcf9d898dc82e38a14f064328e3893c4082892bf86,cached,0.865,,False
+instruments,instruments_family_excitation,dimflux,27,900,60.0,4711a580d6b617580f7e2efcf9d898dc82e38a14f064328e3893c4082892bf86,cached,34.771,,
+instruments,instruments_family_excitation,fdp,27,900,60.0,4711a580d6b617580f7e2efcf9d898dc82e38a14f064328e3893c4082892bf86,cached,0.669,,False
+instruments,instruments_family_excitation,freese,27,900,,4711a580d6b617580f7e2efcf9d898dc82e38a14f064328e3893c4082892bf86,cached,1.301,,
+instruments,instruments_family_excitation,redraw,27,900,,4711a580d6b617580f7e2efcf9d898dc82e38a14f064328e3893c4082892bf86,cached,161.586,,
+instruments,instruments_family_excitation,sugiyama,27,900,,4711a580d6b617580f7e2efcf9d898dc82e38a14f064328e3893c4082892bf86,cached,0.219,,
+instruments,instruments_family_excitation_mechanism,aeschlimann_schmid,33,900,,e72901be4e74c622d2146835203823dae2ed7deaa3c59186fcd2a5b912bd4783,cached,0.236,,
+instruments,instruments_family_excitation_mechanism,cole_ducrou_eklund,33,900,,e72901be4e74c622d2146835203823dae2ed7deaa3c59186fcd2a5b912bd4783,cached,15.965,,
+instruments,instruments_family_excitation_mechanism,dimdraw,33,900,60.0,e72901be4e74c622d2146835203823dae2ed7deaa3c59186fcd2a5b912bd4783,cached,5.69,,False
+instruments,instruments_family_excitation_mechanism,dimflux,33,900,60.0,e72901be4e74c622d2146835203823dae2ed7deaa3c59186fcd2a5b912bd4783,cached,62.9,used its whole internal budget: an anytime result,
+instruments,instruments_family_excitation_mechanism,fdp,33,1800,60.0,e72901be4e74c622d2146835203823dae2ed7deaa3c59186fcd2a5b912bd4783,nonterminating,,fdp does not terminate on a context with equivalent attributes (Chordophone ∧ Hammered strings == Chordophone ∧ Hammered strings ∧ Keyboard); not run. See tests/test_fdp_termination.py,
+instruments,instruments_family_excitation_mechanism,freese,33,900,,e72901be4e74c622d2146835203823dae2ed7deaa3c59186fcd2a5b912bd4783,cached,1.369,,
+instruments,instruments_family_excitation_mechanism,redraw,33,900,,e72901be4e74c622d2146835203823dae2ed7deaa3c59186fcd2a5b912bd4783,cached,285.166,,
+instruments,instruments_family_excitation_mechanism,sugiyama,33,900,,e72901be4e74c622d2146835203823dae2ed7deaa3c59186fcd2a5b912bd4783,cached,0.277,,
+instruments,instruments_family_making,aeschlimann_schmid,39,900,,146a114b46c8da25dd99e6223afd831442b8d40838adc9c20497d6a541b35784,cached,0.179,,
+instruments,instruments_family_making,cole_ducrou_eklund,39,900,,146a114b46c8da25dd99e6223afd831442b8d40838adc9c20497d6a541b35784,cached,9.223,,
+instruments,instruments_family_making,dimdraw,39,900,60.0,146a114b46c8da25dd99e6223afd831442b8d40838adc9c20497d6a541b35784,cached,60.206,used its whole internal budget: an anytime result,True
+instruments,instruments_family_making,dimflux,39,900,60.0,146a114b46c8da25dd99e6223afd831442b8d40838adc9c20497d6a541b35784,cached,121.785,used its whole internal budget: an anytime result,
+instruments,instruments_family_making,fdp,39,1800,60.0,146a114b46c8da25dd99e6223afd831442b8d40838adc9c20497d6a541b35784,nonterminating,,fdp does not terminate on a context with equivalent attributes (Requires electricity == Electrical sound); not run. See tests/test_fdp_termination.py,
+instruments,instruments_family_making,freese,39,900,,146a114b46c8da25dd99e6223afd831442b8d40838adc9c20497d6a541b35784,cached,2.996,,
+instruments,instruments_family_making,redraw,39,900,,146a114b46c8da25dd99e6223afd831442b8d40838adc9c20497d6a541b35784,cached,470.632,,
+instruments,instruments_family_making,sugiyama,39,900,,146a114b46c8da25dd99e6223afd831442b8d40838adc9c20497d6a541b35784,cached,0.253,,
+instruments,instruments_family_practice,aeschlimann_schmid,107,900,,d48cb5b780553db83a69a08fb0efa1cf03edb3d692453254cdc917e2d9d8dbd6,cached,0.339,,
+instruments,instruments_family_practice,cole_ducrou_eklund,107,900,,d48cb5b780553db83a69a08fb0efa1cf03edb3d692453254cdc917e2d9d8dbd6,declined,424.574,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+instruments,instruments_family_practice,dimdraw,107,900,60.0,d48cb5b780553db83a69a08fb0efa1cf03edb3d692453254cdc917e2d9d8dbd6,cached,60.375,used its whole internal budget: an anytime result,True
+instruments,instruments_family_practice,dimflux,107,900,60.0,d48cb5b780553db83a69a08fb0efa1cf03edb3d692453254cdc917e2d9d8dbd6,cached,124.033,used its whole internal budget: an anytime result,
+instruments,instruments_family_practice,fdp,107,900,60.0,d48cb5b780553db83a69a08fb0efa1cf03edb3d692453254cdc917e2d9d8dbd6,cached,1.596,,False
+instruments,instruments_family_practice,freese,107,900,,d48cb5b780553db83a69a08fb0efa1cf03edb3d692453254cdc917e2d9d8dbd6,cached,22.145,,
+instruments,instruments_family_practice,redraw,107,1800,,d48cb5b780553db83a69a08fb0efa1cf03edb3d692453254cdc917e2d9d8dbd6,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+instruments,instruments_family_practice,sugiyama,107,900,,d48cb5b780553db83a69a08fb0efa1cf03edb3d692453254cdc917e2d9d8dbd6,cached,0.595,,
+instruments,instruments_making,aeschlimann_schmid,17,900,,2a3c53230a397b4da7bce5543ec364e1659aad20d747847c2e4d018ccd6188e0,cached,0.138,,
+instruments,instruments_making,cole_ducrou_eklund,17,900,,2a3c53230a397b4da7bce5543ec364e1659aad20d747847c2e4d018ccd6188e0,cached,0.798,,
+instruments,instruments_making,dimdraw,17,900,60.0,2a3c53230a397b4da7bce5543ec364e1659aad20d747847c2e4d018ccd6188e0,cached,0.252,,False
+instruments,instruments_making,dimflux,17,900,60.0,2a3c53230a397b4da7bce5543ec364e1659aad20d747847c2e4d018ccd6188e0,cached,8.83,,
+instruments,instruments_making,fdp,17,1800,60.0,2a3c53230a397b4da7bce5543ec364e1659aad20d747847c2e4d018ccd6188e0,nonterminating,,fdp does not terminate on a context with equivalent attributes (Requires electricity == Electrical sound); not run. See tests/test_fdp_termination.py,
+instruments,instruments_making,freese,17,900,,2a3c53230a397b4da7bce5543ec364e1659aad20d747847c2e4d018ccd6188e0,cached,0.468,,
+instruments,instruments_making,redraw,17,900,,2a3c53230a397b4da7bce5543ec364e1659aad20d747847c2e4d018ccd6188e0,cached,27.65,,
+instruments,instruments_making,sugiyama,17,900,,2a3c53230a397b4da7bce5543ec364e1659aad20d747847c2e4d018ccd6188e0,cached,0.199,,
+instruments,instruments_playing_mechanism,aeschlimann_schmid,35,900,,6ecd57b7b3aea56b65c444a2fe716154d13c9a13160310c9bca241311ff973ac,cached,0.252,,
+instruments,instruments_playing_mechanism,cole_ducrou_eklund,35,900,,6ecd57b7b3aea56b65c444a2fe716154d13c9a13160310c9bca241311ff973ac,cached,32.208,,
+instruments,instruments_playing_mechanism,dimdraw,35,900,60.0,6ecd57b7b3aea56b65c444a2fe716154d13c9a13160310c9bca241311ff973ac,cached,60.178,used its whole internal budget: an anytime result,True
+instruments,instruments_playing_mechanism,dimflux,35,900,60.0,6ecd57b7b3aea56b65c444a2fe716154d13c9a13160310c9bca241311ff973ac,cached,94.408,used its whole internal budget: an anytime result,
+instruments,instruments_playing_mechanism,fdp,35,900,60.0,6ecd57b7b3aea56b65c444a2fe716154d13c9a13160310c9bca241311ff973ac,cached,60.83,used its whole internal budget: an anytime result,True
+instruments,instruments_playing_mechanism,freese,35,900,,6ecd57b7b3aea56b65c444a2fe716154d13c9a13160310c9bca241311ff973ac,cached,2.276,,
+instruments,instruments_playing_mechanism,redraw,35,900,,6ecd57b7b3aea56b65c444a2fe716154d13c9a13160310c9bca241311ff973ac,cached,291.296,,
+instruments,instruments_playing_mechanism,sugiyama,35,900,,6ecd57b7b3aea56b65c444a2fe716154d13c9a13160310c9bca241311ff973ac,cached,0.241,,
+instruments,instruments_practice,aeschlimann_schmid,46,900,,3c47810756b41f2a0e4344fe1678124b6fb2e2f20c5026e25f1b5ee360c2a05c,cached,0.307,,
+instruments,instruments_practice,cole_ducrou_eklund,46,900,,3c47810756b41f2a0e4344fe1678124b6fb2e2f20c5026e25f1b5ee360c2a05c,cached,8.565,,
+instruments,instruments_practice,dimdraw,46,900,60.0,3c47810756b41f2a0e4344fe1678124b6fb2e2f20c5026e25f1b5ee360c2a05c,cached,60.258,used its whole internal budget: an anytime result,True
+instruments,instruments_practice,dimflux,46,900,60.0,3c47810756b41f2a0e4344fe1678124b6fb2e2f20c5026e25f1b5ee360c2a05c,cached,121.115,used its whole internal budget: an anytime result,
+instruments,instruments_practice,fdp,46,900,60.0,3c47810756b41f2a0e4344fe1678124b6fb2e2f20c5026e25f1b5ee360c2a05c,cached,0.431,,False
+instruments,instruments_practice,freese,46,900,,3c47810756b41f2a0e4344fe1678124b6fb2e2f20c5026e25f1b5ee360c2a05c,cached,3.154,,
+instruments,instruments_practice,redraw,46,900,,3c47810756b41f2a0e4344fe1678124b6fb2e2f20c5026e25f1b5ee360c2a05c,cached,883.824,,
+instruments,instruments_practice,sugiyama,46,900,,3c47810756b41f2a0e4344fe1678124b6fb2e2f20c5026e25f1b5ee360c2a05c,cached,0.191,,
+living_beings_and_water,living_beings_and_water,aeschlimann_schmid,19,900,,3fc3dde99c2731b52c7c0cc59f3ffeb8e8146925db7df9b3b9520fa444120f7e,cached,0.137,,
+living_beings_and_water,living_beings_and_water,cole_ducrou_eklund,19,900,,3fc3dde99c2731b52c7c0cc59f3ffeb8e8146925db7df9b3b9520fa444120f7e,cached,0.575,,
+living_beings_and_water,living_beings_and_water,dimdraw,19,900,60.0,3fc3dde99c2731b52c7c0cc59f3ffeb8e8146925db7df9b3b9520fa444120f7e,cached,0.213,,False
+living_beings_and_water,living_beings_and_water,dimflux,19,900,60.0,3fc3dde99c2731b52c7c0cc59f3ffeb8e8146925db7df9b3b9520fa444120f7e,cached,5.935,,
+living_beings_and_water,living_beings_and_water,fdp,19,900,60.0,3fc3dde99c2731b52c7c0cc59f3ffeb8e8146925db7df9b3b9520fa444120f7e,cached,1.08,,False
+living_beings_and_water,living_beings_and_water,freese,19,900,,3fc3dde99c2731b52c7c0cc59f3ffeb8e8146925db7df9b3b9520fa444120f7e,cached,0.692,,
+living_beings_and_water,living_beings_and_water,redraw,19,900,,3fc3dde99c2731b52c7c0cc59f3ffeb8e8146925db7df9b3b9520fa444120f7e,cached,40.2,,
+living_beings_and_water,living_beings_and_water,sugiyama,19,900,,3fc3dde99c2731b52c7c0cc59f3ffeb8e8146925db7df9b3b9520fa444120f7e,cached,0.134,,
+living_beings_and_water,living_beings_and_water_taxa,aeschlimann_schmid,12,900,,1288a59f34e71ae90e53aeaa3df6619b3a6049e12a007ddc60e18627be340ce9,cached,0.171,,
+living_beings_and_water,living_beings_and_water_taxa,cole_ducrou_eklund,12,900,,1288a59f34e71ae90e53aeaa3df6619b3a6049e12a007ddc60e18627be340ce9,cached,0.247,,
+living_beings_and_water,living_beings_and_water_taxa,dimdraw,12,900,60.0,1288a59f34e71ae90e53aeaa3df6619b3a6049e12a007ddc60e18627be340ce9,cached,0.163,,False
+living_beings_and_water,living_beings_and_water_taxa,dimflux,12,900,60.0,1288a59f34e71ae90e53aeaa3df6619b3a6049e12a007ddc60e18627be340ce9,cached,1.442,,
+living_beings_and_water,living_beings_and_water_taxa,fdp,12,900,60.0,1288a59f34e71ae90e53aeaa3df6619b3a6049e12a007ddc60e18627be340ce9,cached,0.679,,False
+living_beings_and_water,living_beings_and_water_taxa,freese,12,900,,1288a59f34e71ae90e53aeaa3df6619b3a6049e12a007ddc60e18627be340ce9,cached,0.268,,
+living_beings_and_water,living_beings_and_water_taxa,redraw,12,900,,1288a59f34e71ae90e53aeaa3df6619b3a6049e12a007ddc60e18627be340ce9,cached,6.207,,
+living_beings_and_water,living_beings_and_water_taxa,sugiyama,12,900,,1288a59f34e71ae90e53aeaa3df6619b3a6049e12a007ddc60e18627be340ce9,cached,0.099,,
+music,music,aeschlimann_schmid,163,900,,20fd215d35807c5165d242221d5d8e75b46b0e8ba8b26610459319377b3afb1c,cached,0.616,,
+music,music,cole_ducrou_eklund,163,900,,20fd215d35807c5165d242221d5d8e75b46b0e8ba8b26610459319377b3afb1c,declined,428.882,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+music,music,dimdraw,163,900,60.0,20fd215d35807c5165d242221d5d8e75b46b0e8ba8b26610459319377b3afb1c,cached,60.726,used its whole internal budget: an anytime result,True
+music,music,dimflux,163,900,60.0,20fd215d35807c5165d242221d5d8e75b46b0e8ba8b26610459319377b3afb1c,cached,163.103,,
+music,music,fdp,163,1800,60.0,20fd215d35807c5165d242221d5d8e75b46b0e8ba8b26610459319377b3afb1c,nonterminating,,fdp does not terminate on a context with equivalent attributes (well-rounded == well-balanced); not run. See tests/test_fdp_termination.py,
+music,music,freese,163,900,,20fd215d35807c5165d242221d5d8e75b46b0e8ba8b26610459319377b3afb1c,cached,48.113,,
+music,music,redraw,163,1800,,20fd215d35807c5165d242221d5d8e75b46b0e8ba8b26610459319377b3afb1c,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+music,music,sugiyama,163,900,,20fd215d35807c5165d242221d5d8e75b46b0e8ba8b26610459319377b3afb1c,cached,0.427,,
+music,music_form_character,aeschlimann_schmid,27,900,,9f5405de83f6b7bfabec615a45da970b5f7e24719d84b441d1aefdee662569fc,cached,0.161,,
+music,music_form_character,cole_ducrou_eklund,27,900,,9f5405de83f6b7bfabec615a45da970b5f7e24719d84b441d1aefdee662569fc,cached,1.987,,
+music,music_form_character,dimdraw,27,900,60.0,9f5405de83f6b7bfabec615a45da970b5f7e24719d84b441d1aefdee662569fc,cached,0.245,,False
+music,music_form_character,dimflux,27,900,60.0,9f5405de83f6b7bfabec615a45da970b5f7e24719d84b441d1aefdee662569fc,cached,58.162,,
+music,music_form_character,fdp,27,1800,60.0,9f5405de83f6b7bfabec615a45da970b5f7e24719d84b441d1aefdee662569fc,nonterminating,,fdp does not terminate on a context with equivalent attributes (well-rounded == well-balanced); not run. See tests/test_fdp_termination.py,
+music,music_form_character,freese,27,900,,9f5405de83f6b7bfabec615a45da970b5f7e24719d84b441d1aefdee662569fc,cached,1.014,,
+music,music_form_character,redraw,27,900,,9f5405de83f6b7bfabec615a45da970b5f7e24719d84b441d1aefdee662569fc,cached,275.708,,
+music,music_form_character,sugiyama,27,900,,9f5405de83f6b7bfabec615a45da970b5f7e24719d84b441d1aefdee662569fc,cached,0.154,,
+music,music_motion,aeschlimann_schmid,12,900,,dabd1573e73181e758fe7f10d44591a4002f31edb8526711eea9cb97ba940490,cached,0.18,,
+music,music_motion,cole_ducrou_eklund,12,900,,dabd1573e73181e758fe7f10d44591a4002f31edb8526711eea9cb97ba940490,cached,0.334,,
+music,music_motion,dimdraw,12,900,60.0,dabd1573e73181e758fe7f10d44591a4002f31edb8526711eea9cb97ba940490,cached,0.134,,False
+music,music_motion,dimflux,12,900,60.0,dabd1573e73181e758fe7f10d44591a4002f31edb8526711eea9cb97ba940490,cached,0.958,,
+music,music_motion,fdp,12,900,60.0,dabd1573e73181e758fe7f10d44591a4002f31edb8526711eea9cb97ba940490,cached,0.41,,False
+music,music_motion,freese,12,900,,dabd1573e73181e758fe7f10d44591a4002f31edb8526711eea9cb97ba940490,cached,0.289,,
+music,music_motion,redraw,12,900,,dabd1573e73181e758fe7f10d44591a4002f31edb8526711eea9cb97ba940490,cached,15.034,,
+music,music_motion,sugiyama,12,900,,dabd1573e73181e758fe7f10d44591a4002f31edb8526711eea9cb97ba940490,cached,0.167,,
+music,music_motion_character,aeschlimann_schmid,42,900,,d3cb7ea132ef963ab30a1a700fc226b87ccef1eedbb8f9cd16233fde2ce9ef62,cached,0.341,,
+music,music_motion_character,cole_ducrou_eklund,42,900,,d3cb7ea132ef963ab30a1a700fc226b87ccef1eedbb8f9cd16233fde2ce9ef62,cached,5.69,,
+music,music_motion_character,dimdraw,42,900,60.0,d3cb7ea132ef963ab30a1a700fc226b87ccef1eedbb8f9cd16233fde2ce9ef62,cached,60.213,used its whole internal budget: an anytime result,True
+music,music_motion_character,dimflux,42,900,60.0,d3cb7ea132ef963ab30a1a700fc226b87ccef1eedbb8f9cd16233fde2ce9ef62,cached,127.03,,
+music,music_motion_character,fdp,42,900,60.0,d3cb7ea132ef963ab30a1a700fc226b87ccef1eedbb8f9cd16233fde2ce9ef62,cached,0.526,,False
+music,music_motion_character,freese,42,900,,d3cb7ea132ef963ab30a1a700fc226b87ccef1eedbb8f9cd16233fde2ce9ef62,cached,3.327,,
+music,music_motion_character,redraw,42,900,,d3cb7ea132ef963ab30a1a700fc226b87ccef1eedbb8f9cd16233fde2ce9ef62,cached,777.492,,
+music,music_motion_character,sugiyama,42,900,,d3cb7ea132ef963ab30a1a700fc226b87ccef1eedbb8f9cd16233fde2ce9ef62,cached,0.175,,
+music,music_motion_form,aeschlimann_schmid,53,900,,b7559bab6d52b3138a5275e2513a96122f832f1fdcd3e2f79980b195b3e66f49,cached,0.344,,
+music,music_motion_form,cole_ducrou_eklund,53,900,,b7559bab6d52b3138a5275e2513a96122f832f1fdcd3e2f79980b195b3e66f49,cached,8.236,,
+music,music_motion_form,dimdraw,53,900,60.0,b7559bab6d52b3138a5275e2513a96122f832f1fdcd3e2f79980b195b3e66f49,cached,60.249,used its whole internal budget: an anytime result,True
+music,music_motion_form,dimflux,53,900,60.0,b7559bab6d52b3138a5275e2513a96122f832f1fdcd3e2f79980b195b3e66f49,cached,122.924,,
+music,music_motion_form,fdp,53,1800,60.0,b7559bab6d52b3138a5275e2513a96122f832f1fdcd3e2f79980b195b3e66f49,nonterminating,,fdp does not terminate on a context with equivalent attributes (well-rounded == well-balanced); not run. See tests/test_fdp_termination.py,
+music,music_motion_form,freese,53,900,,b7559bab6d52b3138a5275e2513a96122f832f1fdcd3e2f79980b195b3e66f49,cached,5.311,,
+music,music_motion_form,redraw,53,1800,,b7559bab6d52b3138a5275e2513a96122f832f1fdcd3e2f79980b195b3e66f49,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+music,music_motion_form,sugiyama,53,900,,b7559bab6d52b3138a5275e2513a96122f832f1fdcd3e2f79980b195b3e66f49,cached,0.205,,
+olympic_disciplines,olympic_disciplines,aeschlimann_schmid,529,900,,27768036bdc2b3e7620097ba50874366e190bef1ef935bd454906ce8b5ab6fa5,cached,1.731,,
+olympic_disciplines,olympic_disciplines,cole_ducrou_eklund,529,900,,27768036bdc2b3e7620097ba50874366e190bef1ef935bd454906ce8b5ab6fa5,declined,589.992,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+olympic_disciplines,olympic_disciplines,dimdraw,529,900,60.0,27768036bdc2b3e7620097ba50874366e190bef1ef935bd454906ce8b5ab6fa5,cached,62.374,used its whole internal budget: an anytime result,True
+olympic_disciplines,olympic_disciplines,dimflux,529,1800,60.0,27768036bdc2b3e7620097ba50874366e190bef1ef935bd454906ce8b5ab6fa5,cached,1329.978,,
+olympic_disciplines,olympic_disciplines,fdp,529,900,60.0,27768036bdc2b3e7620097ba50874366e190bef1ef935bd454906ce8b5ab6fa5,cached,77.041,used its whole internal budget: an anytime result,True
+olympic_disciplines,olympic_disciplines,freese,529,1800,,27768036bdc2b3e7620097ba50874366e190bef1ef935bd454906ce8b5ab6fa5,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+olympic_disciplines,olympic_disciplines,redraw,529,1800,,27768036bdc2b3e7620097ba50874366e190bef1ef935bd454906ce8b5ab6fa5,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+olympic_disciplines,olympic_disciplines,sugiyama,529,900,,27768036bdc2b3e7620097ba50874366e190bef1ef935bd454906ce8b5ab6fa5,cached,1.505,,
+olympic_disciplines,olympic_disciplines_competitors,aeschlimann_schmid,17,900,,1b38bb45b80cd717e3e3ed6d1c8bcca14ac4c3415e0847f9d2e55c44cbe919a3,cached,0.14,,
+olympic_disciplines,olympic_disciplines_competitors,cole_ducrou_eklund,17,900,,1b38bb45b80cd717e3e3ed6d1c8bcca14ac4c3415e0847f9d2e55c44cbe919a3,cached,0.49,,
+olympic_disciplines,olympic_disciplines_competitors,dimdraw,17,900,60.0,1b38bb45b80cd717e3e3ed6d1c8bcca14ac4c3415e0847f9d2e55c44cbe919a3,cached,0.208,,False
+olympic_disciplines,olympic_disciplines_competitors,dimflux,17,900,60.0,1b38bb45b80cd717e3e3ed6d1c8bcca14ac4c3415e0847f9d2e55c44cbe919a3,cached,6.357,,
+olympic_disciplines,olympic_disciplines_competitors,fdp,17,900,60.0,1b38bb45b80cd717e3e3ed6d1c8bcca14ac4c3415e0847f9d2e55c44cbe919a3,cached,1.506,,False
+olympic_disciplines,olympic_disciplines_competitors,freese,17,900,,1b38bb45b80cd717e3e3ed6d1c8bcca14ac4c3415e0847f9d2e55c44cbe919a3,cached,0.699,,
+olympic_disciplines,olympic_disciplines_competitors,redraw,17,900,,1b38bb45b80cd717e3e3ed6d1c8bcca14ac4c3415e0847f9d2e55c44cbe919a3,cached,36.624,,
+olympic_disciplines,olympic_disciplines_competitors,sugiyama,17,900,,1b38bb45b80cd717e3e3ed6d1c8bcca14ac4c3415e0847f9d2e55c44cbe919a3,cached,0.19,,
+olympic_disciplines,olympic_disciplines_competitors_standing,aeschlimann_schmid,113,900,,f18a04feab2349c1b75217aa0181bcb84159304de7056b58e471693d93c6eb97,cached,0.523,,
+olympic_disciplines,olympic_disciplines_competitors_standing,cole_ducrou_eklund,113,900,,f18a04feab2349c1b75217aa0181bcb84159304de7056b58e471693d93c6eb97,cached,123.546,,
+olympic_disciplines,olympic_disciplines_competitors_standing,dimdraw,113,900,60.0,f18a04feab2349c1b75217aa0181bcb84159304de7056b58e471693d93c6eb97,cached,60.496,used its whole internal budget: an anytime result,True
+olympic_disciplines,olympic_disciplines_competitors_standing,dimflux,113,900,60.0,f18a04feab2349c1b75217aa0181bcb84159304de7056b58e471693d93c6eb97,cached,142.846,,
+olympic_disciplines,olympic_disciplines_competitors_standing,fdp,113,900,60.0,f18a04feab2349c1b75217aa0181bcb84159304de7056b58e471693d93c6eb97,cached,60.577,used its whole internal budget: an anytime result,True
+olympic_disciplines,olympic_disciplines_competitors_standing,freese,113,900,,f18a04feab2349c1b75217aa0181bcb84159304de7056b58e471693d93c6eb97,cached,10.236,,
+olympic_disciplines,olympic_disciplines_competitors_standing,redraw,113,1800,,f18a04feab2349c1b75217aa0181bcb84159304de7056b58e471693d93c6eb97,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+olympic_disciplines,olympic_disciplines_competitors_standing,sugiyama,113,900,,f18a04feab2349c1b75217aa0181bcb84159304de7056b58e471693d93c6eb97,cached,0.355,,
+olympic_disciplines,olympic_disciplines_discipline,aeschlimann_schmid,25,900,,83c56435407d7f0c4ad2c27fe37c3350018b1c2a35b16d81c4b098f1a989e369,cached,0.236,,
+olympic_disciplines,olympic_disciplines_discipline,cole_ducrou_eklund,25,900,,83c56435407d7f0c4ad2c27fe37c3350018b1c2a35b16d81c4b098f1a989e369,cached,0.962,,
+olympic_disciplines,olympic_disciplines_discipline,dimdraw,25,900,60.0,83c56435407d7f0c4ad2c27fe37c3350018b1c2a35b16d81c4b098f1a989e369,cached,2.631,,False
+olympic_disciplines,olympic_disciplines_discipline,dimflux,25,900,60.0,83c56435407d7f0c4ad2c27fe37c3350018b1c2a35b16d81c4b098f1a989e369,cached,10.817,,
+olympic_disciplines,olympic_disciplines_discipline,fdp,25,900,60.0,83c56435407d7f0c4ad2c27fe37c3350018b1c2a35b16d81c4b098f1a989e369,cached,0.313,,False
+olympic_disciplines,olympic_disciplines_discipline,freese,25,900,,83c56435407d7f0c4ad2c27fe37c3350018b1c2a35b16d81c4b098f1a989e369,cached,1.106,,
+olympic_disciplines,olympic_disciplines_discipline,redraw,25,900,,83c56435407d7f0c4ad2c27fe37c3350018b1c2a35b16d81c4b098f1a989e369,cached,153.653,,
+olympic_disciplines,olympic_disciplines_discipline,sugiyama,25,900,,83c56435407d7f0c4ad2c27fe37c3350018b1c2a35b16d81c4b098f1a989e369,cached,0.219,,
+olympic_disciplines,olympic_disciplines_discipline_competitors,aeschlimann_schmid,122,900,,c2fd2ce5cc57ba5fdd93486f19eb6754572170d36a8c8f9c4a7eec28198fee1a,cached,0.588,,
+olympic_disciplines,olympic_disciplines_discipline_competitors,cole_ducrou_eklund,122,900,,c2fd2ce5cc57ba5fdd93486f19eb6754572170d36a8c8f9c4a7eec28198fee1a,cached,97.632,,
+olympic_disciplines,olympic_disciplines_discipline_competitors,dimdraw,122,900,60.0,c2fd2ce5cc57ba5fdd93486f19eb6754572170d36a8c8f9c4a7eec28198fee1a,cached,60.578,used its whole internal budget: an anytime result,True
+olympic_disciplines,olympic_disciplines_discipline_competitors,dimflux,122,900,60.0,c2fd2ce5cc57ba5fdd93486f19eb6754572170d36a8c8f9c4a7eec28198fee1a,cached,136.574,,
+olympic_disciplines,olympic_disciplines_discipline_competitors,fdp,122,900,60.0,c2fd2ce5cc57ba5fdd93486f19eb6754572170d36a8c8f9c4a7eec28198fee1a,cached,3.069,,False
+olympic_disciplines,olympic_disciplines_discipline_competitors,freese,122,900,,c2fd2ce5cc57ba5fdd93486f19eb6754572170d36a8c8f9c4a7eec28198fee1a,cached,16.581,,
+olympic_disciplines,olympic_disciplines_discipline_competitors,redraw,122,1800,,c2fd2ce5cc57ba5fdd93486f19eb6754572170d36a8c8f9c4a7eec28198fee1a,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+olympic_disciplines,olympic_disciplines_discipline_competitors,sugiyama,122,900,,c2fd2ce5cc57ba5fdd93486f19eb6754572170d36a8c8f9c4a7eec28198fee1a,cached,0.367,,
+olympic_disciplines,olympic_disciplines_sport_competitors,aeschlimann_schmid,57,900,,8e388ea4475b58f2a9452b7246345f839c03904877dca9c23c962dbb2303370a,cached,0.324,,
+olympic_disciplines,olympic_disciplines_sport_competitors,cole_ducrou_eklund,57,900,,8e388ea4475b58f2a9452b7246345f839c03904877dca9c23c962dbb2303370a,cached,7.304,,
+olympic_disciplines,olympic_disciplines_sport_competitors,dimdraw,57,900,60.0,8e388ea4475b58f2a9452b7246345f839c03904877dca9c23c962dbb2303370a,cached,60.313,used its whole internal budget: an anytime result,True
+olympic_disciplines,olympic_disciplines_sport_competitors,dimflux,57,900,60.0,8e388ea4475b58f2a9452b7246345f839c03904877dca9c23c962dbb2303370a,cached,123.963,,
+olympic_disciplines,olympic_disciplines_sport_competitors,fdp,57,900,60.0,8e388ea4475b58f2a9452b7246345f839c03904877dca9c23c962dbb2303370a,cached,4.769,,False
+olympic_disciplines,olympic_disciplines_sport_competitors,freese,57,900,,8e388ea4475b58f2a9452b7246345f839c03904877dca9c23c962dbb2303370a,cached,5.256,,
+olympic_disciplines,olympic_disciplines_sport_competitors,redraw,57,1800,,8e388ea4475b58f2a9452b7246345f839c03904877dca9c23c962dbb2303370a,cached,1057.496,,
+olympic_disciplines,olympic_disciplines_sport_competitors,sugiyama,57,900,,8e388ea4475b58f2a9452b7246345f839c03904877dca9c23c962dbb2303370a,cached,0.298,,
+olympic_disciplines,olympic_disciplines_sport_standing,aeschlimann_schmid,103,900,,233dae9adeae50a67d18668c3f7cbf5155738b07c092915c1a038eec7892f061,cached,0.497,,
+olympic_disciplines,olympic_disciplines_sport_standing,cole_ducrou_eklund,103,900,,233dae9adeae50a67d18668c3f7cbf5155738b07c092915c1a038eec7892f061,cached,105.72,,
+olympic_disciplines,olympic_disciplines_sport_standing,dimdraw,103,900,60.0,233dae9adeae50a67d18668c3f7cbf5155738b07c092915c1a038eec7892f061,cached,60.319,used its whole internal budget: an anytime result,True
+olympic_disciplines,olympic_disciplines_sport_standing,dimflux,103,900,60.0,233dae9adeae50a67d18668c3f7cbf5155738b07c092915c1a038eec7892f061,cached,135.494,,
+olympic_disciplines,olympic_disciplines_sport_standing,fdp,103,900,60.0,233dae9adeae50a67d18668c3f7cbf5155738b07c092915c1a038eec7892f061,cached,2.017,,False
+olympic_disciplines,olympic_disciplines_sport_standing,freese,103,900,,233dae9adeae50a67d18668c3f7cbf5155738b07c092915c1a038eec7892f061,cached,19.475,,
+olympic_disciplines,olympic_disciplines_sport_standing,redraw,103,1800,,233dae9adeae50a67d18668c3f7cbf5155738b07c092915c1a038eec7892f061,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+olympic_disciplines,olympic_disciplines_sport_standing,sugiyama,103,900,,233dae9adeae50a67d18668c3f7cbf5155738b07c092915c1a038eec7892f061,cached,0.329,,
+olympic_disciplines,olympic_disciplines_standing,aeschlimann_schmid,22,900,,91b046da0a130eb61fcb6a666079e16c8acb3287a6b35ba04968dcdb084a6f83,cached,0.151,,
+olympic_disciplines,olympic_disciplines_standing,cole_ducrou_eklund,22,900,,91b046da0a130eb61fcb6a666079e16c8acb3287a6b35ba04968dcdb084a6f83,cached,1.217,,
+olympic_disciplines,olympic_disciplines_standing,dimdraw,22,900,60.0,91b046da0a130eb61fcb6a666079e16c8acb3287a6b35ba04968dcdb084a6f83,cached,0.252,,False
+olympic_disciplines,olympic_disciplines_standing,dimflux,22,900,60.0,91b046da0a130eb61fcb6a666079e16c8acb3287a6b35ba04968dcdb084a6f83,cached,43.885,,
+olympic_disciplines,olympic_disciplines_standing,fdp,22,900,60.0,91b046da0a130eb61fcb6a666079e16c8acb3287a6b35ba04968dcdb084a6f83,cached,4.139,,False
+olympic_disciplines,olympic_disciplines_standing,freese,22,900,,91b046da0a130eb61fcb6a666079e16c8acb3287a6b35ba04968dcdb084a6f83,cached,1.283,,
+olympic_disciplines,olympic_disciplines_standing,redraw,22,900,,91b046da0a130eb61fcb6a666079e16c8acb3287a6b35ba04968dcdb084a6f83,cached,83.793,,
+olympic_disciplines,olympic_disciplines_standing,sugiyama,22,900,,91b046da0a130eb61fcb6a666079e16c8acb3287a6b35ba04968dcdb084a6f83,cached,0.203,,
+olympics,olympics_decision_structure,aeschlimann_schmid,35,900,,3f1e29928737453aa83a1048e5d3e393972329680706c59e9bf392d8e279ab2b,cached,0.261,,
+olympics,olympics_decision_structure,cole_ducrou_eklund,35,900,,3f1e29928737453aa83a1048e5d3e393972329680706c59e9bf392d8e279ab2b,cached,6.861,,
+olympics,olympics_decision_structure,dimdraw,35,900,60.0,3f1e29928737453aa83a1048e5d3e393972329680706c59e9bf392d8e279ab2b,cached,60.257,used its whole internal budget: an anytime result,True
+olympics,olympics_decision_structure,dimflux,35,900,60.0,3f1e29928737453aa83a1048e5d3e393972329680706c59e9bf392d8e279ab2b,cached,120.223,used its whole internal budget: an anytime result,
+olympics,olympics_decision_structure,fdp,35,1800,60.0,3f1e29928737453aa83a1048e5d3e393972329680706c59e9bf392d8e279ab2b,nonterminating,,fdp does not terminate on a context with equivalent attributes (Measured ∧ Individual events == Measured); not run. See tests/test_fdp_termination.py,
+olympics,olympics_decision_structure,freese,35,900,,3f1e29928737453aa83a1048e5d3e393972329680706c59e9bf392d8e279ab2b,cached,2.367,,
+olympics,olympics_decision_structure,redraw,35,900,,3f1e29928737453aa83a1048e5d3e393972329680706c59e9bf392d8e279ab2b,cached,372.556,,
+olympics,olympics_decision_structure,sugiyama,35,900,,3f1e29928737453aa83a1048e5d3e393972329680706c59e9bf392d8e279ab2b,cached,0.268,,
+olympics,olympics_decision_structure_format,aeschlimann_schmid,64,900,,e631dbdaf32ba46b6096bd52ade55ad76d4069db92342fbfb16399f79d38dd13,cached,0.351,,
+olympics,olympics_decision_structure_format,cole_ducrou_eklund,64,900,,e631dbdaf32ba46b6096bd52ade55ad76d4069db92342fbfb16399f79d38dd13,cached,35.324,,
+olympics,olympics_decision_structure_format,dimdraw,64,900,60.0,e631dbdaf32ba46b6096bd52ade55ad76d4069db92342fbfb16399f79d38dd13,cached,60.343,used its whole internal budget: an anytime result,True
+olympics,olympics_decision_structure_format,dimflux,64,900,60.0,e631dbdaf32ba46b6096bd52ade55ad76d4069db92342fbfb16399f79d38dd13,cached,126.026,used its whole internal budget: an anytime result,
+olympics,olympics_decision_structure_format,fdp,64,1800,60.0,e631dbdaf32ba46b6096bd52ade55ad76d4069db92342fbfb16399f79d38dd13,nonterminating,,fdp does not terminate on a context with equivalent attributes (Measured ∧ Individual events == Measured); not run. See tests/test_fdp_termination.py,
+olympics,olympics_decision_structure_format,freese,64,900,,e631dbdaf32ba46b6096bd52ade55ad76d4069db92342fbfb16399f79d38dd13,cached,3.878,,
+olympics,olympics_decision_structure_format,redraw,64,1800,,e631dbdaf32ba46b6096bd52ade55ad76d4069db92342fbfb16399f79d38dd13,cached,1686.668,,
+olympics,olympics_decision_structure_format,sugiyama,64,900,,e631dbdaf32ba46b6096bd52ade55ad76d4069db92342fbfb16399f79d38dd13,cached,0.243,,
+olympics,olympics_demands,aeschlimann_schmid,35,900,,15b9b18151f4117af1fa0e479e3685454e6b7f8b075f4c1f813a6513f984cec6,cached,0.276,,
+olympics,olympics_demands,cole_ducrou_eklund,35,900,,15b9b18151f4117af1fa0e479e3685454e6b7f8b075f4c1f813a6513f984cec6,cached,4.4,,
+olympics,olympics_demands,dimdraw,35,900,60.0,15b9b18151f4117af1fa0e479e3685454e6b7f8b075f4c1f813a6513f984cec6,cached,60.265,used its whole internal budget: an anytime result,True
+olympics,olympics_demands,dimflux,35,900,60.0,15b9b18151f4117af1fa0e479e3685454e6b7f8b075f4c1f813a6513f984cec6,cached,103.23,used its whole internal budget: an anytime result,
+olympics,olympics_demands,fdp,35,900,60.0,15b9b18151f4117af1fa0e479e3685454e6b7f8b075f4c1f813a6513f984cec6,cached,0.414,,False
+olympics,olympics_demands,freese,35,900,,15b9b18151f4117af1fa0e479e3685454e6b7f8b075f4c1f813a6513f984cec6,cached,1.62,,
+olympics,olympics_demands,redraw,35,900,,15b9b18151f4117af1fa0e479e3685454e6b7f8b075f4c1f813a6513f984cec6,cached,593.212,,
+olympics,olympics_demands,sugiyama,35,900,,15b9b18151f4117af1fa0e479e3685454e6b7f8b075f4c1f813a6513f984cec6,cached,0.185,,
+olympics,olympics_equipment,aeschlimann_schmid,21,900,,31bdef72a01f1d3f97536404fd2046daa4b1f3485105232b422f9640fe114865,cached,0.211,,
+olympics,olympics_equipment,cole_ducrou_eklund,21,900,,31bdef72a01f1d3f97536404fd2046daa4b1f3485105232b422f9640fe114865,cached,1.019,,
+olympics,olympics_equipment,dimdraw,21,900,60.0,31bdef72a01f1d3f97536404fd2046daa4b1f3485105232b422f9640fe114865,cached,0.152,,False
+olympics,olympics_equipment,dimflux,21,900,60.0,31bdef72a01f1d3f97536404fd2046daa4b1f3485105232b422f9640fe114865,cached,6.955,,
+olympics,olympics_equipment,fdp,21,900,60.0,31bdef72a01f1d3f97536404fd2046daa4b1f3485105232b422f9640fe114865,cached,2.896,,False
+olympics,olympics_equipment,freese,21,900,,31bdef72a01f1d3f97536404fd2046daa4b1f3485105232b422f9640fe114865,cached,0.911,,
+olympics,olympics_equipment,redraw,21,900,,31bdef72a01f1d3f97536404fd2046daa4b1f3485105232b422f9640fe114865,cached,115.514,,
+olympics,olympics_equipment,sugiyama,21,900,,31bdef72a01f1d3f97536404fd2046daa4b1f3485105232b422f9640fe114865,cached,0.201,,
+olympics,olympics_equipment_medium,aeschlimann_schmid,53,900,,9abf0eb389f4cb84afb78315462c388d01a595c4efb065d59b25e41f8f6b6104,cached,0.34,,
+olympics,olympics_equipment_medium,cole_ducrou_eklund,53,900,,9abf0eb389f4cb84afb78315462c388d01a595c4efb065d59b25e41f8f6b6104,cached,10.669,,
+olympics,olympics_equipment_medium,dimdraw,53,900,60.0,9abf0eb389f4cb84afb78315462c388d01a595c4efb065d59b25e41f8f6b6104,cached,60.307,used its whole internal budget: an anytime result,True
+olympics,olympics_equipment_medium,dimflux,53,900,60.0,9abf0eb389f4cb84afb78315462c388d01a595c4efb065d59b25e41f8f6b6104,cached,123.241,used its whole internal budget: an anytime result,
+olympics,olympics_equipment_medium,fdp,53,900,60.0,9abf0eb389f4cb84afb78315462c388d01a595c4efb065d59b25e41f8f6b6104,cached,60.422,used its whole internal budget: an anytime result,True
+olympics,olympics_equipment_medium,freese,53,900,,9abf0eb389f4cb84afb78315462c388d01a595c4efb065d59b25e41f8f6b6104,cached,4.702,,
+olympics,olympics_equipment_medium,redraw,53,1800,,9abf0eb389f4cb84afb78315462c388d01a595c4efb065d59b25e41f8f6b6104,cached,1205.728,,
+olympics,olympics_equipment_medium,sugiyama,53,900,,9abf0eb389f4cb84afb78315462c388d01a595c4efb065d59b25e41f8f6b6104,cached,0.306,,
+olympics,olympics_format,aeschlimann_schmid,18,900,,010c8d8bcf410bacadfc21ba93f6a29dd891336bd4e02575b21b71f0e0d2a77a,cached,0.306,,
+olympics,olympics_format,cole_ducrou_eklund,18,900,,010c8d8bcf410bacadfc21ba93f6a29dd891336bd4e02575b21b71f0e0d2a77a,cached,0.945,,
+olympics,olympics_format,dimdraw,18,900,60.0,010c8d8bcf410bacadfc21ba93f6a29dd891336bd4e02575b21b71f0e0d2a77a,cached,0.167,,False
+olympics,olympics_format,dimflux,18,900,60.0,010c8d8bcf410bacadfc21ba93f6a29dd891336bd4e02575b21b71f0e0d2a77a,cached,1.589,,
+olympics,olympics_format,fdp,18,900,60.0,010c8d8bcf410bacadfc21ba93f6a29dd891336bd4e02575b21b71f0e0d2a77a,cached,1.493,,False
+olympics,olympics_format,freese,18,900,,010c8d8bcf410bacadfc21ba93f6a29dd891336bd4e02575b21b71f0e0d2a77a,cached,0.617,,
+olympics,olympics_format,redraw,18,900,,010c8d8bcf410bacadfc21ba93f6a29dd891336bd4e02575b21b71f0e0d2a77a,cached,49.774,,
+olympics,olympics_format,sugiyama,18,900,,010c8d8bcf410bacadfc21ba93f6a29dd891336bd4e02575b21b71f0e0d2a77a,cached,0.152,,
+olympics,olympics_institution,aeschlimann_schmid,16,900,,a1b31c2aa4e9e1754a1322145f79c5f2152a934ee6bb2f6b451ce27787c0a98a,cached,0.201,,
+olympics,olympics_institution,cole_ducrou_eklund,16,900,,a1b31c2aa4e9e1754a1322145f79c5f2152a934ee6bb2f6b451ce27787c0a98a,cached,0.781,,
+olympics,olympics_institution,dimdraw,16,900,60.0,a1b31c2aa4e9e1754a1322145f79c5f2152a934ee6bb2f6b451ce27787c0a98a,cached,0.245,,False
+olympics,olympics_institution,dimflux,16,900,60.0,a1b31c2aa4e9e1754a1322145f79c5f2152a934ee6bb2f6b451ce27787c0a98a,cached,1.147,,
+olympics,olympics_institution,fdp,16,900,60.0,a1b31c2aa4e9e1754a1322145f79c5f2152a934ee6bb2f6b451ce27787c0a98a,cached,0.447,,False
+olympics,olympics_institution,freese,16,900,,a1b31c2aa4e9e1754a1322145f79c5f2152a934ee6bb2f6b451ce27787c0a98a,cached,0.473,,
+olympics,olympics_institution,redraw,16,900,,a1b31c2aa4e9e1754a1322145f79c5f2152a934ee6bb2f6b451ce27787c0a98a,cached,43.056,,
+olympics,olympics_institution,sugiyama,16,900,,a1b31c2aa4e9e1754a1322145f79c5f2152a934ee6bb2f6b451ce27787c0a98a,cached,0.175,,
+olympics,olympics_institution_origins,aeschlimann_schmid,81,900,,9716e220e0b46bffd07a025e065694cd6908b446f8988b63a4e743a443449264,cached,0.432,,
+olympics,olympics_institution_origins,cole_ducrou_eklund,81,900,,9716e220e0b46bffd07a025e065694cd6908b446f8988b63a4e743a443449264,cached,19.066,,
+olympics,olympics_institution_origins,dimdraw,81,900,60.0,9716e220e0b46bffd07a025e065694cd6908b446f8988b63a4e743a443449264,cached,60.289,used its whole internal budget: an anytime result,True
+olympics,olympics_institution_origins,dimflux,81,900,60.0,9716e220e0b46bffd07a025e065694cd6908b446f8988b63a4e743a443449264,cached,123.345,used its whole internal budget: an anytime result,
+olympics,olympics_institution_origins,fdp,81,900,60.0,9716e220e0b46bffd07a025e065694cd6908b446f8988b63a4e743a443449264,cached,1.346,,False
+olympics,olympics_institution_origins,freese,81,900,,9716e220e0b46bffd07a025e065694cd6908b446f8988b63a4e743a443449264,cached,9.571,,
+olympics,olympics_institution_origins,redraw,81,1800,,9716e220e0b46bffd07a025e065694cd6908b446f8988b63a4e743a443449264,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+olympics,olympics_institution_origins,sugiyama,81,900,,9716e220e0b46bffd07a025e065694cd6908b446f8988b63a4e743a443449264,cached,0.424,,
+olympics,olympics_origins,aeschlimann_schmid,12,900,,2a4a32e19f091822f96a271f9daae9862a7ec9f5073b7d42209403e6adac60fd,cached,0.178,,
+olympics,olympics_origins,cole_ducrou_eklund,12,900,,2a4a32e19f091822f96a271f9daae9862a7ec9f5073b7d42209403e6adac60fd,cached,0.499,,
+olympics,olympics_origins,dimdraw,12,900,60.0,2a4a32e19f091822f96a271f9daae9862a7ec9f5073b7d42209403e6adac60fd,cached,0.18,,False
+olympics,olympics_origins,dimflux,12,900,60.0,2a4a32e19f091822f96a271f9daae9862a7ec9f5073b7d42209403e6adac60fd,cached,2.519,,
+olympics,olympics_origins,fdp,12,900,60.0,2a4a32e19f091822f96a271f9daae9862a7ec9f5073b7d42209403e6adac60fd,cached,0.624,,False
+olympics,olympics_origins,freese,12,900,,2a4a32e19f091822f96a271f9daae9862a7ec9f5073b7d42209403e6adac60fd,cached,0.326,,
+olympics,olympics_origins,redraw,12,900,,2a4a32e19f091822f96a271f9daae9862a7ec9f5073b7d42209403e6adac60fd,cached,9.943,,
+olympics,olympics_origins,sugiyama,12,900,,2a4a32e19f091822f96a271f9daae9862a7ec9f5073b7d42209403e6adac60fd,cached,0.182,,
+olympics,olympics_structure,aeschlimann_schmid,28,900,,19f15c6bc16b24c75db0b1428771ba38547d2add5228a3c6fe8b2b13b5b0e89d,cached,0.164,,
+olympics,olympics_structure,cole_ducrou_eklund,28,900,,19f15c6bc16b24c75db0b1428771ba38547d2add5228a3c6fe8b2b13b5b0e89d,cached,1.889,,
+olympics,olympics_structure,dimdraw,28,900,60.0,19f15c6bc16b24c75db0b1428771ba38547d2add5228a3c6fe8b2b13b5b0e89d,cached,0.81,,False
+olympics,olympics_structure,dimflux,28,900,60.0,19f15c6bc16b24c75db0b1428771ba38547d2add5228a3c6fe8b2b13b5b0e89d,cached,61.392,used its whole internal budget: an anytime result,
+olympics,olympics_structure,fdp,28,900,60.0,19f15c6bc16b24c75db0b1428771ba38547d2add5228a3c6fe8b2b13b5b0e89d,cached,5.941,,False
+olympics,olympics_structure,freese,28,900,,19f15c6bc16b24c75db0b1428771ba38547d2add5228a3c6fe8b2b13b5b0e89d,cached,1.656,,
+olympics,olympics_structure,redraw,28,900,,19f15c6bc16b24c75db0b1428771ba38547d2add5228a3c6fe8b2b13b5b0e89d,cached,294.617,,
+olympics,olympics_structure,sugiyama,28,900,,19f15c6bc16b24c75db0b1428771ba38547d2add5228a3c6fe8b2b13b5b0e89d,cached,0.217,,
+olympics,olympics_structure_format,aeschlimann_schmid,139,900,,5c06fcb09cdceb5fcc785fe1c1d9fb050b5524ead780d89d6b218db3d295fd63,cached,0.628,,
+olympics,olympics_structure_format,cole_ducrou_eklund,139,900,,5c06fcb09cdceb5fcc785fe1c1d9fb050b5524ead780d89d6b218db3d295fd63,cached,220.468,,
+olympics,olympics_structure_format,dimdraw,139,900,60.0,5c06fcb09cdceb5fcc785fe1c1d9fb050b5524ead780d89d6b218db3d295fd63,cached,60.634,used its whole internal budget: an anytime result,True
+olympics,olympics_structure_format,dimflux,139,900,60.0,5c06fcb09cdceb5fcc785fe1c1d9fb050b5524ead780d89d6b218db3d295fd63,cached,132.591,used its whole internal budget: an anytime result,
+olympics,olympics_structure_format,fdp,139,900,60.0,5c06fcb09cdceb5fcc785fe1c1d9fb050b5524ead780d89d6b218db3d295fd63,cached,4.014,,False
+olympics,olympics_structure_format,freese,139,900,,5c06fcb09cdceb5fcc785fe1c1d9fb050b5524ead780d89d6b218db3d295fd63,cached,34.048,,
+olympics,olympics_structure_format,redraw,139,1800,,5c06fcb09cdceb5fcc785fe1c1d9fb050b5524ead780d89d6b218db3d295fd63,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+olympics,olympics_structure_format,sugiyama,139,900,,5c06fcb09cdceb5fcc785fe1c1d9fb050b5524ead780d89d6b218db3d295fd63,cached,0.611,,
+olympics,olympics_venue,aeschlimann_schmid,18,900,,c7281b07be5302baea7d189cd280a73b10c098ce9922126c0feb7f760947bea7,cached,0.138,,
+olympics,olympics_venue,cole_ducrou_eklund,18,900,,c7281b07be5302baea7d189cd280a73b10c098ce9922126c0feb7f760947bea7,cached,0.98,,
+olympics,olympics_venue,dimdraw,18,900,60.0,c7281b07be5302baea7d189cd280a73b10c098ce9922126c0feb7f760947bea7,cached,0.338,,False
+olympics,olympics_venue,dimflux,18,900,60.0,c7281b07be5302baea7d189cd280a73b10c098ce9922126c0feb7f760947bea7,cached,8.215,,
+olympics,olympics_venue,fdp,18,900,60.0,c7281b07be5302baea7d189cd280a73b10c098ce9922126c0feb7f760947bea7,cached,7.595,,False
+olympics,olympics_venue,freese,18,900,,c7281b07be5302baea7d189cd280a73b10c098ce9922126c0feb7f760947bea7,cached,0.746,,
+olympics,olympics_venue,redraw,18,900,,c7281b07be5302baea7d189cd280a73b10c098ce9922126c0feb7f760947bea7,cached,57.93,,
+olympics,olympics_venue,sugiyama,18,900,,c7281b07be5302baea7d189cd280a73b10c098ce9922126c0feb7f760947bea7,cached,0.152,,
+olympics,olympics_venue_equipment,aeschlimann_schmid,98,900,,d8feb60fde1ef80d631e1d782f58493837a4e8a3a2805a245c9e6cb7195aadf2,cached,0.322,,
+olympics,olympics_venue_equipment,cole_ducrou_eklund,98,900,,d8feb60fde1ef80d631e1d782f58493837a4e8a3a2805a245c9e6cb7195aadf2,cached,222.505,,
+olympics,olympics_venue_equipment,dimdraw,98,900,60.0,d8feb60fde1ef80d631e1d782f58493837a4e8a3a2805a245c9e6cb7195aadf2,cached,60.306,used its whole internal budget: an anytime result,True
+olympics,olympics_venue_equipment,dimflux,98,900,60.0,d8feb60fde1ef80d631e1d782f58493837a4e8a3a2805a245c9e6cb7195aadf2,cached,134.398,used its whole internal budget: an anytime result,
+olympics,olympics_venue_equipment,fdp,98,900,60.0,d8feb60fde1ef80d631e1d782f58493837a4e8a3a2805a245c9e6cb7195aadf2,cached,2.152,,False
+olympics,olympics_venue_equipment,freese,98,900,,d8feb60fde1ef80d631e1d782f58493837a4e8a3a2805a245c9e6cb7195aadf2,cached,17.635,,
+olympics,olympics_venue_equipment,redraw,98,1800,,d8feb60fde1ef80d631e1d782f58493837a4e8a3a2805a245c9e6cb7195aadf2,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+olympics,olympics_venue_equipment,sugiyama,98,900,,d8feb60fde1ef80d631e1d782f58493837a4e8a3a2805a245c9e6cb7195aadf2,cached,0.464,,
+olympics,olympics_venue_equipment_demands,aeschlimann_schmid,444,900,,0864486de306a58580a51fcdd0b088b3f8c0e0d74caa9c9c02d1cc363553fd46,cached,2.031,,
+olympics,olympics_venue_equipment_demands,cole_ducrou_eklund,444,900,,0864486de306a58580a51fcdd0b088b3f8c0e0d74caa9c9c02d1cc363553fd46,declined,606.056,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+olympics,olympics_venue_equipment_demands,dimdraw,444,900,60.0,0864486de306a58580a51fcdd0b088b3f8c0e0d74caa9c9c02d1cc363553fd46,cached,61.913,used its whole internal budget: an anytime result,True
+olympics,olympics_venue_equipment_demands,dimflux,444,900,60.0,0864486de306a58580a51fcdd0b088b3f8c0e0d74caa9c9c02d1cc363553fd46,cached,341.596,used its whole internal budget: an anytime result,
+olympics,olympics_venue_equipment_demands,fdp,444,900,60.0,0864486de306a58580a51fcdd0b088b3f8c0e0d74caa9c9c02d1cc363553fd46,cached,34.632,,False
+olympics,olympics_venue_equipment_demands,freese,444,1800,,0864486de306a58580a51fcdd0b088b3f8c0e0d74caa9c9c02d1cc363553fd46,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+olympics,olympics_venue_equipment_demands,redraw,444,1800,,0864486de306a58580a51fcdd0b088b3f8c0e0d74caa9c9c02d1cc363553fd46,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+olympics,olympics_venue_equipment_demands,sugiyama,444,900,,0864486de306a58580a51fcdd0b088b3f8c0e0d74caa9c9c02d1cc363553fd46,cached,2.789,,
+seasoning_planner,seasoning_planner,aeschlimann_schmid,532,900,,751e80a2c3eb8b68257b656961ed02f2c9fd5feacb26eefd625d15fcbbbfa892,cached,1.914,,
+seasoning_planner,seasoning_planner,cole_ducrou_eklund,532,900,,751e80a2c3eb8b68257b656961ed02f2c9fd5feacb26eefd625d15fcbbbfa892,declined,484.534,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+seasoning_planner,seasoning_planner,dimdraw,532,900,60.0,751e80a2c3eb8b68257b656961ed02f2c9fd5feacb26eefd625d15fcbbbfa892,cached,61.481,used its whole internal budget: an anytime result,True
+seasoning_planner,seasoning_planner,dimflux,532,900,60.0,751e80a2c3eb8b68257b656961ed02f2c9fd5feacb26eefd625d15fcbbbfa892,cached,643.019,,
+seasoning_planner,seasoning_planner,fdp,532,900,60.0,751e80a2c3eb8b68257b656961ed02f2c9fd5feacb26eefd625d15fcbbbfa892,cached,98.804,used its whole internal budget: an anytime result,True
+seasoning_planner,seasoning_planner,freese,532,1800,,751e80a2c3eb8b68257b656961ed02f2c9fd5feacb26eefd625d15fcbbbfa892,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+seasoning_planner,seasoning_planner,redraw,532,1800,,751e80a2c3eb8b68257b656961ed02f2c9fd5feacb26eefd625d15fcbbbfa892,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+seasoning_planner,seasoning_planner,sugiyama,532,900,,751e80a2c3eb8b68257b656961ed02f2c9fd5feacb26eefd625d15fcbbbfa892,cached,1.739,,
+seasoning_planner,seasoning_planner_herbs,aeschlimann_schmid,39,900,,65545d971aaf9523e931f602f8995943df7cab5d6924cc2f7b631e7074156e24,cached,0.275,,
+seasoning_planner,seasoning_planner_herbs,cole_ducrou_eklund,39,900,,65545d971aaf9523e931f602f8995943df7cab5d6924cc2f7b631e7074156e24,cached,18.602,,
+seasoning_planner,seasoning_planner_herbs,dimdraw,39,900,60.0,65545d971aaf9523e931f602f8995943df7cab5d6924cc2f7b631e7074156e24,cached,60.291,used its whole internal budget: an anytime result,True
+seasoning_planner,seasoning_planner_herbs,dimflux,39,900,60.0,65545d971aaf9523e931f602f8995943df7cab5d6924cc2f7b631e7074156e24,cached,121.443,,
+seasoning_planner,seasoning_planner_herbs,fdp,39,900,60.0,65545d971aaf9523e931f602f8995943df7cab5d6924cc2f7b631e7074156e24,cached,60.484,used its whole internal budget: an anytime result,True
+seasoning_planner,seasoning_planner_herbs,freese,39,900,,65545d971aaf9523e931f602f8995943df7cab5d6924cc2f7b631e7074156e24,cached,2.831,,
+seasoning_planner,seasoning_planner_herbs,redraw,39,900,,65545d971aaf9523e931f602f8995943df7cab5d6924cc2f7b631e7074156e24,cached,462.609,,
+seasoning_planner,seasoning_planner_herbs,sugiyama,39,900,,65545d971aaf9523e931f602f8995943df7cab5d6924cc2f7b631e7074156e24,cached,0.257,,
+seasoning_planner,seasoning_planner_herbs_dish,aeschlimann_schmid,84,900,,976ae2255a4512bd061e4d6952f16b245f41235eae35a1a35636e89ef1a0432b,cached,0.432,,
+seasoning_planner,seasoning_planner_herbs_dish,cole_ducrou_eklund,84,900,,976ae2255a4512bd061e4d6952f16b245f41235eae35a1a35636e89ef1a0432b,cached,303.417,,
+seasoning_planner,seasoning_planner_herbs_dish,dimdraw,84,900,60.0,976ae2255a4512bd061e4d6952f16b245f41235eae35a1a35636e89ef1a0432b,cached,60.349,used its whole internal budget: an anytime result,True
+seasoning_planner,seasoning_planner_herbs_dish,dimflux,84,900,60.0,976ae2255a4512bd061e4d6952f16b245f41235eae35a1a35636e89ef1a0432b,cached,161.937,,
+seasoning_planner,seasoning_planner_herbs_dish,fdp,84,900,60.0,976ae2255a4512bd061e4d6952f16b245f41235eae35a1a35636e89ef1a0432b,cached,1.39,,False
+seasoning_planner,seasoning_planner_herbs_dish,freese,84,900,,976ae2255a4512bd061e4d6952f16b245f41235eae35a1a35636e89ef1a0432b,cached,6.479,,
+seasoning_planner,seasoning_planner_herbs_dish,redraw,84,1800,,976ae2255a4512bd061e4d6952f16b245f41235eae35a1a35636e89ef1a0432b,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+seasoning_planner,seasoning_planner_herbs_dish,sugiyama,84,900,,976ae2255a4512bd061e4d6952f16b245f41235eae35a1a35636e89ef1a0432b,cached,0.282,,
+seasoning_planner,seasoning_planner_other,aeschlimann_schmid,37,900,,da1b2a0d17540e2cbeeeb888ed4a16d4a852cd0ababfa1958ea01dc6c89b9d18,cached,0.304,,
+seasoning_planner,seasoning_planner_other,cole_ducrou_eklund,37,900,,da1b2a0d17540e2cbeeeb888ed4a16d4a852cd0ababfa1958ea01dc6c89b9d18,cached,6.843,,
+seasoning_planner,seasoning_planner_other,dimdraw,37,900,60.0,da1b2a0d17540e2cbeeeb888ed4a16d4a852cd0ababfa1958ea01dc6c89b9d18,cached,60.189,used its whole internal budget: an anytime result,True
+seasoning_planner,seasoning_planner_other,dimflux,37,900,60.0,da1b2a0d17540e2cbeeeb888ed4a16d4a852cd0ababfa1958ea01dc6c89b9d18,cached,121.071,,
+seasoning_planner,seasoning_planner_other,fdp,37,900,60.0,da1b2a0d17540e2cbeeeb888ed4a16d4a852cd0ababfa1958ea01dc6c89b9d18,cached,0.515,,False
+seasoning_planner,seasoning_planner_other,freese,37,900,,da1b2a0d17540e2cbeeeb888ed4a16d4a852cd0ababfa1958ea01dc6c89b9d18,cached,2.397,,
+seasoning_planner,seasoning_planner_other,redraw,37,900,,da1b2a0d17540e2cbeeeb888ed4a16d4a852cd0ababfa1958ea01dc6c89b9d18,cached,462.341,,
+seasoning_planner,seasoning_planner_other,sugiyama,37,900,,da1b2a0d17540e2cbeeeb888ed4a16d4a852cd0ababfa1958ea01dc6c89b9d18,cached,0.252,,
+seasoning_planner,seasoning_planner_seasonings,aeschlimann_schmid,421,900,,cfa55796de5f650b0dcb5c65b3a83c03523ead00854cc3a0c9ff5fb159827944,cached,1.957,,
+seasoning_planner,seasoning_planner_seasonings,cole_ducrou_eklund,421,900,,cfa55796de5f650b0dcb5c65b3a83c03523ead00854cc3a0c9ff5fb159827944,declined,626.242,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+seasoning_planner,seasoning_planner_seasonings,dimdraw,421,900,60.0,cfa55796de5f650b0dcb5c65b3a83c03523ead00854cc3a0c9ff5fb159827944,cached,61.799,used its whole internal budget: an anytime result,True
+seasoning_planner,seasoning_planner_seasonings,dimflux,421,900,60.0,cfa55796de5f650b0dcb5c65b3a83c03523ead00854cc3a0c9ff5fb159827944,cached,330.228,,
+seasoning_planner,seasoning_planner_seasonings,fdp,421,900,60.0,cfa55796de5f650b0dcb5c65b3a83c03523ead00854cc3a0c9ff5fb159827944,cached,35.636,,False
+seasoning_planner,seasoning_planner_seasonings,freese,421,1800,,cfa55796de5f650b0dcb5c65b3a83c03523ead00854cc3a0c9ff5fb159827944,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+seasoning_planner,seasoning_planner_seasonings,redraw,421,1800,,cfa55796de5f650b0dcb5c65b3a83c03523ead00854cc3a0c9ff5fb159827944,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+seasoning_planner,seasoning_planner_seasonings,sugiyama,421,900,,cfa55796de5f650b0dcb5c65b3a83c03523ead00854cc3a0c9ff5fb159827944,cached,1.224,,
+seasoning_planner,seasoning_planner_seeds,aeschlimann_schmid,80,900,,9cd28f61b76a66fc131db858711e557ad531af416bab66559604823fed8b6d14,cached,0.56,,
+seasoning_planner,seasoning_planner_seeds,cole_ducrou_eklund,80,900,,9cd28f61b76a66fc131db858711e557ad531af416bab66559604823fed8b6d14,cached,77.426,,
+seasoning_planner,seasoning_planner_seeds,dimdraw,80,900,60.0,9cd28f61b76a66fc131db858711e557ad531af416bab66559604823fed8b6d14,cached,60.435,used its whole internal budget: an anytime result,True
+seasoning_planner,seasoning_planner_seeds,dimflux,80,900,60.0,9cd28f61b76a66fc131db858711e557ad531af416bab66559604823fed8b6d14,cached,136.234,,
+seasoning_planner,seasoning_planner_seeds,fdp,80,900,60.0,9cd28f61b76a66fc131db858711e557ad531af416bab66559604823fed8b6d14,cached,1.003,,False
+seasoning_planner,seasoning_planner_seeds,freese,80,900,,9cd28f61b76a66fc131db858711e557ad531af416bab66559604823fed8b6d14,cached,8.485,,
+seasoning_planner,seasoning_planner_seeds,redraw,80,1800,,9cd28f61b76a66fc131db858711e557ad531af416bab66559604823fed8b6d14,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+seasoning_planner,seasoning_planner_seeds,sugiyama,80,900,,9cd28f61b76a66fc131db858711e557ad531af416bab66559604823fed8b6d14,cached,0.387,,
+seasoning_planner,seasoning_planner_spices,aeschlimann_schmid,219,900,,5f4121e782b6e774775613b2eb0d551bcf082dd92637280632e99480aeb93f36,cached,1.062,,
+seasoning_planner,seasoning_planner_spices,cole_ducrou_eklund,219,900,,5f4121e782b6e774775613b2eb0d551bcf082dd92637280632e99480aeb93f36,declined,542.111,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+seasoning_planner,seasoning_planner_spices,dimdraw,219,900,60.0,5f4121e782b6e774775613b2eb0d551bcf082dd92637280632e99480aeb93f36,cached,60.893,used its whole internal budget: an anytime result,True
+seasoning_planner,seasoning_planner_spices,dimflux,219,900,60.0,5f4121e782b6e774775613b2eb0d551bcf082dd92637280632e99480aeb93f36,cached,149.818,,
+seasoning_planner,seasoning_planner_spices,fdp,219,900,60.0,5f4121e782b6e774775613b2eb0d551bcf082dd92637280632e99480aeb93f36,cached,8.105,,False
+seasoning_planner,seasoning_planner_spices,freese,219,900,,5f4121e782b6e774775613b2eb0d551bcf082dd92637280632e99480aeb93f36,invalid,429.823,output is not a usable drawing: diverged: coordinates up to 1.9e+40,
+seasoning_planner,seasoning_planner_spices,redraw,219,1800,,5f4121e782b6e774775613b2eb0d551bcf082dd92637280632e99480aeb93f36,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+seasoning_planner,seasoning_planner_spices,sugiyama,219,900,,5f4121e782b6e774775613b2eb0d551bcf082dd92637280632e99480aeb93f36,cached,0.715,,
+seasoning_planner,seasoning_planner_spices_dish,aeschlimann_schmid,304,900,,53ff92f7c5643e8ed57c588976874b228ee3f160119f32c48afe7e5a3bd45079,cached,0.832,,
+seasoning_planner,seasoning_planner_spices_dish,cole_ducrou_eklund,304,900,,53ff92f7c5643e8ed57c588976874b228ee3f160119f32c48afe7e5a3bd45079,declined,506.391,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+seasoning_planner,seasoning_planner_spices_dish,dimdraw,304,900,60.0,53ff92f7c5643e8ed57c588976874b228ee3f160119f32c48afe7e5a3bd45079,cached,61.325,used its whole internal budget: an anytime result,True
+seasoning_planner,seasoning_planner_spices_dish,dimflux,304,900,60.0,53ff92f7c5643e8ed57c588976874b228ee3f160119f32c48afe7e5a3bd45079,cached,268.64,,
+seasoning_planner,seasoning_planner_spices_dish,fdp,304,900,60.0,53ff92f7c5643e8ed57c588976874b228ee3f160119f32c48afe7e5a3bd45079,cached,26.842,,False
+seasoning_planner,seasoning_planner_spices_dish,freese,304,1800,,53ff92f7c5643e8ed57c588976874b228ee3f160119f32c48afe7e5a3bd45079,invalid,860.346,output is not a usable drawing: diverged: coordinates up to 3.1e+78,
+seasoning_planner,seasoning_planner_spices_dish,redraw,304,1800,,53ff92f7c5643e8ed57c588976874b228ee3f160119f32c48afe7e5a3bd45079,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+seasoning_planner,seasoning_planner_spices_dish,sugiyama,304,900,,53ff92f7c5643e8ed57c588976874b228ee3f160119f32c48afe7e5a3bd45079,cached,0.846,,
+tenpc_exoplanets,tenpc_exoplanets,aeschlimann_schmid,371,900,,1f36393bfb1b67778852af69cd65415d825c1e6ceaae661df27af02ffd0458c2,cached,1.154,,
+tenpc_exoplanets,tenpc_exoplanets,cole_ducrou_eklund,371,900,,1f36393bfb1b67778852af69cd65415d825c1e6ceaae661df27af02ffd0458c2,declined,705.377,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+tenpc_exoplanets,tenpc_exoplanets,dimdraw,371,900,60.0,1f36393bfb1b67778852af69cd65415d825c1e6ceaae661df27af02ffd0458c2,cached,61.496,used its whole internal budget: an anytime result,True
+tenpc_exoplanets,tenpc_exoplanets,dimflux,371,900,60.0,1f36393bfb1b67778852af69cd65415d825c1e6ceaae661df27af02ffd0458c2,cached,721.237,,
+tenpc_exoplanets,tenpc_exoplanets,fdp,371,900,60.0,1f36393bfb1b67778852af69cd65415d825c1e6ceaae661df27af02ffd0458c2,cached,31.094,,False
+tenpc_exoplanets,tenpc_exoplanets,freese,371,1800,,1f36393bfb1b67778852af69cd65415d825c1e6ceaae661df27af02ffd0458c2,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+tenpc_exoplanets,tenpc_exoplanets,redraw,371,1800,,1f36393bfb1b67778852af69cd65415d825c1e6ceaae661df27af02ffd0458c2,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+tenpc_exoplanets,tenpc_exoplanets,sugiyama,371,900,,1f36393bfb1b67778852af69cd65415d825c1e6ceaae661df27af02ffd0458c2,cached,0.985,,
+tenpc_exoplanets,tenpc_exoplanets_host_system,aeschlimann_schmid,15,900,,0a4e9be0380522d02386e46821a7eb3569c57c3c3b79a290e933fa10609e48ad,cached,0.197,,
+tenpc_exoplanets,tenpc_exoplanets_host_system,cole_ducrou_eklund,15,900,,0a4e9be0380522d02386e46821a7eb3569c57c3c3b79a290e933fa10609e48ad,cached,0.664,,
+tenpc_exoplanets,tenpc_exoplanets_host_system,dimdraw,15,900,60.0,0a4e9be0380522d02386e46821a7eb3569c57c3c3b79a290e933fa10609e48ad,cached,0.212,,False
+tenpc_exoplanets,tenpc_exoplanets_host_system,dimflux,15,900,60.0,0a4e9be0380522d02386e46821a7eb3569c57c3c3b79a290e933fa10609e48ad,cached,5.152,,
+tenpc_exoplanets,tenpc_exoplanets_host_system,fdp,15,900,60.0,0a4e9be0380522d02386e46821a7eb3569c57c3c3b79a290e933fa10609e48ad,cached,2.357,,False
+tenpc_exoplanets,tenpc_exoplanets_host_system,freese,15,900,,0a4e9be0380522d02386e46821a7eb3569c57c3c3b79a290e933fa10609e48ad,cached,0.715,,
+tenpc_exoplanets,tenpc_exoplanets_host_system,redraw,15,900,,0a4e9be0380522d02386e46821a7eb3569c57c3c3b79a290e933fa10609e48ad,cached,43.713,,
+tenpc_exoplanets,tenpc_exoplanets_host_system,sugiyama,15,900,,0a4e9be0380522d02386e46821a7eb3569c57c3c3b79a290e933fa10609e48ad,cached,0.136,,
+tenpc_exoplanets,tenpc_exoplanets_knowledge,aeschlimann_schmid,16,900,,02e2d9eed8f90e463aa29b374f7ad80b854ac2980aa049707334bf5bdd5e881a,cached,0.218,,
+tenpc_exoplanets,tenpc_exoplanets_knowledge,cole_ducrou_eklund,16,900,,02e2d9eed8f90e463aa29b374f7ad80b854ac2980aa049707334bf5bdd5e881a,cached,0.643,,
+tenpc_exoplanets,tenpc_exoplanets_knowledge,dimdraw,16,900,60.0,02e2d9eed8f90e463aa29b374f7ad80b854ac2980aa049707334bf5bdd5e881a,cached,0.222,,False
+tenpc_exoplanets,tenpc_exoplanets_knowledge,dimflux,16,900,60.0,02e2d9eed8f90e463aa29b374f7ad80b854ac2980aa049707334bf5bdd5e881a,cached,3.479,,
+tenpc_exoplanets,tenpc_exoplanets_knowledge,fdp,16,900,60.0,02e2d9eed8f90e463aa29b374f7ad80b854ac2980aa049707334bf5bdd5e881a,cached,1.551,,False
+tenpc_exoplanets,tenpc_exoplanets_knowledge,freese,16,900,,02e2d9eed8f90e463aa29b374f7ad80b854ac2980aa049707334bf5bdd5e881a,cached,0.365,,
+tenpc_exoplanets,tenpc_exoplanets_knowledge,redraw,16,900,,02e2d9eed8f90e463aa29b374f7ad80b854ac2980aa049707334bf5bdd5e881a,cached,48.01,,
+tenpc_exoplanets,tenpc_exoplanets_knowledge,sugiyama,16,900,,02e2d9eed8f90e463aa29b374f7ad80b854ac2980aa049707334bf5bdd5e881a,cached,0.133,,
+tenpc_exoplanets,tenpc_exoplanets_planet_host,aeschlimann_schmid,34,900,,e9003581b2dd58d2a6d44cfbe814e32050b6220c4faccf46781723468c21d3fa,cached,0.263,,
+tenpc_exoplanets,tenpc_exoplanets_planet_host,cole_ducrou_eklund,34,900,,e9003581b2dd58d2a6d44cfbe814e32050b6220c4faccf46781723468c21d3fa,cached,2.71,,
+tenpc_exoplanets,tenpc_exoplanets_planet_host,dimdraw,34,900,60.0,e9003581b2dd58d2a6d44cfbe814e32050b6220c4faccf46781723468c21d3fa,cached,60.244,used its whole internal budget: an anytime result,True
+tenpc_exoplanets,tenpc_exoplanets_planet_host,dimflux,34,900,60.0,e9003581b2dd58d2a6d44cfbe814e32050b6220c4faccf46781723468c21d3fa,cached,88.457,,
+tenpc_exoplanets,tenpc_exoplanets_planet_host,fdp,34,900,60.0,e9003581b2dd58d2a6d44cfbe814e32050b6220c4faccf46781723468c21d3fa,cached,62.392,used its whole internal budget: an anytime result,True
+tenpc_exoplanets,tenpc_exoplanets_planet_host,freese,34,900,,e9003581b2dd58d2a6d44cfbe814e32050b6220c4faccf46781723468c21d3fa,cached,1.302,,
+tenpc_exoplanets,tenpc_exoplanets_planet_host,redraw,34,900,,e9003581b2dd58d2a6d44cfbe814e32050b6220c4faccf46781723468c21d3fa,cached,409.301,,
+tenpc_exoplanets,tenpc_exoplanets_planet_host,sugiyama,34,900,,e9003581b2dd58d2a6d44cfbe814e32050b6220c4faccf46781723468c21d3fa,cached,0.176,,
+tenpc_exoplanets,tenpc_exoplanets_planet_host_system,aeschlimann_schmid,79,900,,8a434798086e893be619085e671abbcc5d2714dc000f5a38db128977b922b7cd,cached,0.53,,
+tenpc_exoplanets,tenpc_exoplanets_planet_host_system,cole_ducrou_eklund,79,900,,8a434798086e893be619085e671abbcc5d2714dc000f5a38db128977b922b7cd,cached,22.375,,
+tenpc_exoplanets,tenpc_exoplanets_planet_host_system,dimdraw,79,900,60.0,8a434798086e893be619085e671abbcc5d2714dc000f5a38db128977b922b7cd,cached,60.302,used its whole internal budget: an anytime result,True
+tenpc_exoplanets,tenpc_exoplanets_planet_host_system,dimflux,79,900,60.0,8a434798086e893be619085e671abbcc5d2714dc000f5a38db128977b922b7cd,cached,125.498,,
+tenpc_exoplanets,tenpc_exoplanets_planet_host_system,fdp,79,900,60.0,8a434798086e893be619085e671abbcc5d2714dc000f5a38db128977b922b7cd,cached,1.001,,False
+tenpc_exoplanets,tenpc_exoplanets_planet_host_system,freese,79,900,,8a434798086e893be619085e671abbcc5d2714dc000f5a38db128977b922b7cd,cached,10.611,,
+tenpc_exoplanets,tenpc_exoplanets_planet_host_system,redraw,79,1800,,8a434798086e893be619085e671abbcc5d2714dc000f5a38db128977b922b7cd,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+tenpc_exoplanets,tenpc_exoplanets_planet_host_system,sugiyama,79,900,,8a434798086e893be619085e671abbcc5d2714dc000f5a38db128977b922b7cd,cached,0.326,,
+tenpc_exoplanets,tenpc_exoplanets_planet_knowledge,aeschlimann_schmid,73,900,,56427b1e77f1e51298eaaa68f0f8398184cc665e1a8f5ab24a83a123f6bd4954,cached,0.53,,
+tenpc_exoplanets,tenpc_exoplanets_planet_knowledge,cole_ducrou_eklund,73,900,,56427b1e77f1e51298eaaa68f0f8398184cc665e1a8f5ab24a83a123f6bd4954,cached,17.618,,
+tenpc_exoplanets,tenpc_exoplanets_planet_knowledge,dimdraw,73,900,60.0,56427b1e77f1e51298eaaa68f0f8398184cc665e1a8f5ab24a83a123f6bd4954,cached,60.265,used its whole internal budget: an anytime result,True
+tenpc_exoplanets,tenpc_exoplanets_planet_knowledge,dimflux,73,900,60.0,56427b1e77f1e51298eaaa68f0f8398184cc665e1a8f5ab24a83a123f6bd4954,cached,125.519,,
+tenpc_exoplanets,tenpc_exoplanets_planet_knowledge,fdp,73,900,60.0,56427b1e77f1e51298eaaa68f0f8398184cc665e1a8f5ab24a83a123f6bd4954,cached,60.878,used its whole internal budget: an anytime result,True
+tenpc_exoplanets,tenpc_exoplanets_planet_knowledge,freese,73,900,,56427b1e77f1e51298eaaa68f0f8398184cc665e1a8f5ab24a83a123f6bd4954,cached,9.201,,
+tenpc_exoplanets,tenpc_exoplanets_planet_knowledge,redraw,73,1800,,56427b1e77f1e51298eaaa68f0f8398184cc665e1a8f5ab24a83a123f6bd4954,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+tenpc_exoplanets,tenpc_exoplanets_planet_knowledge,sugiyama,73,900,,56427b1e77f1e51298eaaa68f0f8398184cc665e1a8f5ab24a83a123f6bd4954,cached,0.312,,
+tenpc_exoplanets,tenpc_exoplanets_planet_system,aeschlimann_schmid,30,900,,fdbef672fb4af4cd4a5c8ad9d2b4656f871c00c46c69cfcce4d0a63797fb53ca,cached,0.285,,
+tenpc_exoplanets,tenpc_exoplanets_planet_system,cole_ducrou_eklund,30,900,,fdbef672fb4af4cd4a5c8ad9d2b4656f871c00c46c69cfcce4d0a63797fb53ca,cached,2.416,,
+tenpc_exoplanets,tenpc_exoplanets_planet_system,dimdraw,30,900,60.0,fdbef672fb4af4cd4a5c8ad9d2b4656f871c00c46c69cfcce4d0a63797fb53ca,cached,60.217,used its whole internal budget: an anytime result,True
+tenpc_exoplanets,tenpc_exoplanets_planet_system,dimflux,30,900,60.0,fdbef672fb4af4cd4a5c8ad9d2b4656f871c00c46c69cfcce4d0a63797fb53ca,cached,83.274,,
+tenpc_exoplanets,tenpc_exoplanets_planet_system,fdp,30,900,60.0,fdbef672fb4af4cd4a5c8ad9d2b4656f871c00c46c69cfcce4d0a63797fb53ca,cached,35.891,,False
+tenpc_exoplanets,tenpc_exoplanets_planet_system,freese,30,900,,fdbef672fb4af4cd4a5c8ad9d2b4656f871c00c46c69cfcce4d0a63797fb53ca,cached,1.745,,
+tenpc_exoplanets,tenpc_exoplanets_planet_system,redraw,30,900,,fdbef672fb4af4cd4a5c8ad9d2b4656f871c00c46c69cfcce4d0a63797fb53ca,cached,428.774,,
+tenpc_exoplanets,tenpc_exoplanets_planet_system,sugiyama,30,900,,fdbef672fb4af4cd4a5c8ad9d2b4656f871c00c46c69cfcce4d0a63797fb53ca,cached,0.211,,
+tenpc_stars,tenpc_stars,aeschlimann_schmid,732,900,,764ba561472d084c900630095fae538c82bec7d5a24872b7d8207ae114d8e822,cached,3.261,,
+tenpc_stars,tenpc_stars,cole_ducrou_eklund,732,1800,,764ba561472d084c900630095fae538c82bec7d5a24872b7d8207ae114d8e822,declined,881.498,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+tenpc_stars,tenpc_stars,dimdraw,732,900,60.0,764ba561472d084c900630095fae538c82bec7d5a24872b7d8207ae114d8e822,cached,62.231,used its whole internal budget: an anytime result,True
+tenpc_stars,tenpc_stars,dimflux,732,1800,60.0,764ba561472d084c900630095fae538c82bec7d5a24872b7d8207ae114d8e822,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+tenpc_stars,tenpc_stars,fdp,732,900,60.0,764ba561472d084c900630095fae538c82bec7d5a24872b7d8207ae114d8e822,cached,163.462,used its whole internal budget: an anytime result,True
+tenpc_stars,tenpc_stars,freese,732,1800,,764ba561472d084c900630095fae538c82bec7d5a24872b7d8207ae114d8e822,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+tenpc_stars,tenpc_stars,redraw,732,1800,,764ba561472d084c900630095fae538c82bec7d5a24872b7d8207ae114d8e822,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+tenpc_stars,tenpc_stars,sugiyama,732,900,,764ba561472d084c900630095fae538c82bec7d5a24872b7d8207ae114d8e822,cached,3.015,,
+tenpc_stars,tenpc_stars_company,aeschlimann_schmid,20,900,,ad550012c9aad29930c105c8627ed1c900ca969486eba1c30ae0913ced373c16,cached,0.215,,
+tenpc_stars,tenpc_stars_company,cole_ducrou_eklund,20,900,,ad550012c9aad29930c105c8627ed1c900ca969486eba1c30ae0913ced373c16,cached,0.993,,
+tenpc_stars,tenpc_stars_company,dimdraw,20,900,60.0,ad550012c9aad29930c105c8627ed1c900ca969486eba1c30ae0913ced373c16,cached,0.22,,False
+tenpc_stars,tenpc_stars_company,dimflux,20,900,60.0,ad550012c9aad29930c105c8627ed1c900ca969486eba1c30ae0913ced373c16,cached,9.068,,
+tenpc_stars,tenpc_stars_company,fdp,20,900,60.0,ad550012c9aad29930c105c8627ed1c900ca969486eba1c30ae0913ced373c16,cached,0.236,,False
+tenpc_stars,tenpc_stars_company,freese,20,900,,ad550012c9aad29930c105c8627ed1c900ca969486eba1c30ae0913ced373c16,cached,0.816,,
+tenpc_stars,tenpc_stars_company,redraw,20,900,,ad550012c9aad29930c105c8627ed1c900ca969486eba1c30ae0913ced373c16,cached,126.436,,
+tenpc_stars,tenpc_stars_company,sugiyama,20,900,,ad550012c9aad29930c105c8627ed1c900ca969486eba1c30ae0913ced373c16,cached,0.145,,
+tenpc_stars,tenpc_stars_company_planets,aeschlimann_schmid,60,900,,c3fdcfc695758d371770ff1b7490de7279b811c8cf2fe8f6774fd33331be88c9,cached,0.359,,
+tenpc_stars,tenpc_stars_company_planets,cole_ducrou_eklund,60,900,,c3fdcfc695758d371770ff1b7490de7279b811c8cf2fe8f6774fd33331be88c9,cached,18.598,,
+tenpc_stars,tenpc_stars_company_planets,dimdraw,60,900,60.0,c3fdcfc695758d371770ff1b7490de7279b811c8cf2fe8f6774fd33331be88c9,cached,60.343,used its whole internal budget: an anytime result,True
+tenpc_stars,tenpc_stars_company_planets,dimflux,60,900,60.0,c3fdcfc695758d371770ff1b7490de7279b811c8cf2fe8f6774fd33331be88c9,cached,165.122,,
+tenpc_stars,tenpc_stars_company_planets,fdp,60,900,60.0,c3fdcfc695758d371770ff1b7490de7279b811c8cf2fe8f6774fd33331be88c9,cached,0.607,,False
+tenpc_stars,tenpc_stars_company_planets,freese,60,900,,c3fdcfc695758d371770ff1b7490de7279b811c8cf2fe8f6774fd33331be88c9,cached,5.43,,
+tenpc_stars,tenpc_stars_company_planets,redraw,60,1800,,c3fdcfc695758d371770ff1b7490de7279b811c8cf2fe8f6774fd33331be88c9,cached,1640.259,,
+tenpc_stars,tenpc_stars_company_planets,sugiyama,60,900,,c3fdcfc695758d371770ff1b7490de7279b811c8cf2fe8f6774fd33331be88c9,cached,0.227,,
+tenpc_stars,tenpc_stars_knowledge,aeschlimann_schmid,14,900,,b52aabb7f65671e45ab847f56493fb65f5cb36202731e7ec416860232c17832c,cached,0.214,,
+tenpc_stars,tenpc_stars_knowledge,cole_ducrou_eklund,14,900,,b52aabb7f65671e45ab847f56493fb65f5cb36202731e7ec416860232c17832c,cached,0.598,,
+tenpc_stars,tenpc_stars_knowledge,dimdraw,14,900,60.0,b52aabb7f65671e45ab847f56493fb65f5cb36202731e7ec416860232c17832c,cached,0.134,,False
+tenpc_stars,tenpc_stars_knowledge,dimflux,14,900,60.0,b52aabb7f65671e45ab847f56493fb65f5cb36202731e7ec416860232c17832c,cached,3.11,,
+tenpc_stars,tenpc_stars_knowledge,fdp,14,900,60.0,b52aabb7f65671e45ab847f56493fb65f5cb36202731e7ec416860232c17832c,cached,0.86,,False
+tenpc_stars,tenpc_stars_knowledge,freese,14,900,,b52aabb7f65671e45ab847f56493fb65f5cb36202731e7ec416860232c17832c,cached,0.608,,
+tenpc_stars,tenpc_stars_knowledge,redraw,14,900,,b52aabb7f65671e45ab847f56493fb65f5cb36202731e7ec416860232c17832c,cached,18.993,,
+tenpc_stars,tenpc_stars_knowledge,sugiyama,14,900,,b52aabb7f65671e45ab847f56493fb65f5cb36202731e7ec416860232c17832c,cached,0.137,,
+tenpc_stars,tenpc_stars_nature_spectral,aeschlimann_schmid,26,900,,f437b214c765497a1dd8cd3db351b01dd28d4e3b5cb9345bd13fcd817a6aad27,cached,0.225,,
+tenpc_stars,tenpc_stars_nature_spectral,cole_ducrou_eklund,26,900,,f437b214c765497a1dd8cd3db351b01dd28d4e3b5cb9345bd13fcd817a6aad27,cached,1.568,,
+tenpc_stars,tenpc_stars_nature_spectral,dimdraw,26,900,60.0,f437b214c765497a1dd8cd3db351b01dd28d4e3b5cb9345bd13fcd817a6aad27,cached,0.241,,False
+tenpc_stars,tenpc_stars_nature_spectral,dimflux,26,900,60.0,f437b214c765497a1dd8cd3db351b01dd28d4e3b5cb9345bd13fcd817a6aad27,cached,13.881,,
+tenpc_stars,tenpc_stars_nature_spectral,fdp,26,900,60.0,f437b214c765497a1dd8cd3db351b01dd28d4e3b5cb9345bd13fcd817a6aad27,cached,33.197,,False
+tenpc_stars,tenpc_stars_nature_spectral,freese,26,900,,f437b214c765497a1dd8cd3db351b01dd28d4e3b5cb9345bd13fcd817a6aad27,cached,1.434,,
+tenpc_stars,tenpc_stars_nature_spectral,redraw,26,900,,f437b214c765497a1dd8cd3db351b01dd28d4e3b5cb9345bd13fcd817a6aad27,cached,200.326,,
+tenpc_stars,tenpc_stars_nature_spectral,sugiyama,26,900,,f437b214c765497a1dd8cd3db351b01dd28d4e3b5cb9345bd13fcd817a6aad27,cached,0.2,,
+tenpc_stars,tenpc_stars_nature_spectral_wd,aeschlimann_schmid,35,900,,02fb8b4bce006f9f165b46ef824e97dbe65f6b50dd201a8e0bca3719c3e4ab08,cached,0.274,,
+tenpc_stars,tenpc_stars_nature_spectral_wd,cole_ducrou_eklund,35,900,,02fb8b4bce006f9f165b46ef824e97dbe65f6b50dd201a8e0bca3719c3e4ab08,cached,2.874,,
+tenpc_stars,tenpc_stars_nature_spectral_wd,dimdraw,35,900,60.0,02fb8b4bce006f9f165b46ef824e97dbe65f6b50dd201a8e0bca3719c3e4ab08,cached,0.306,,False
+tenpc_stars,tenpc_stars_nature_spectral_wd,dimflux,35,900,60.0,02fb8b4bce006f9f165b46ef824e97dbe65f6b50dd201a8e0bca3719c3e4ab08,cached,36.339,,
+tenpc_stars,tenpc_stars_nature_spectral_wd,fdp,35,900,60.0,02fb8b4bce006f9f165b46ef824e97dbe65f6b50dd201a8e0bca3719c3e4ab08,cached,60.632,used its whole internal budget: an anytime result,True
+tenpc_stars,tenpc_stars_nature_spectral_wd,freese,35,900,,02fb8b4bce006f9f165b46ef824e97dbe65f6b50dd201a8e0bca3719c3e4ab08,cached,2.341,,
+tenpc_stars,tenpc_stars_nature_spectral_wd,redraw,35,900,,02fb8b4bce006f9f165b46ef824e97dbe65f6b50dd201a8e0bca3719c3e4ab08,cached,288.305,,
+tenpc_stars,tenpc_stars_nature_spectral_wd,sugiyama,35,900,,02fb8b4bce006f9f165b46ef824e97dbe65f6b50dd201a8e0bca3719c3e4ab08,cached,0.216,,
+tenpc_stars,tenpc_stars_physical,aeschlimann_schmid,311,900,,865e5a35da4a35ec7488819e411c4f77ebe4d98c17160800c9fd7aa57a68751c,cached,1.338,,
+tenpc_stars,tenpc_stars_physical,cole_ducrou_eklund,311,900,,865e5a35da4a35ec7488819e411c4f77ebe4d98c17160800c9fd7aa57a68751c,declined,817.42,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+tenpc_stars,tenpc_stars_physical,dimdraw,311,900,60.0,865e5a35da4a35ec7488819e411c4f77ebe4d98c17160800c9fd7aa57a68751c,cached,61.168,used its whole internal budget: an anytime result,True
+tenpc_stars,tenpc_stars_physical,dimflux,311,900,60.0,865e5a35da4a35ec7488819e411c4f77ebe4d98c17160800c9fd7aa57a68751c,cached,264.192,,
+tenpc_stars,tenpc_stars_physical,fdp,311,1800,60.0,865e5a35da4a35ec7488819e411c4f77ebe4d98c17160800c9fd7aa57a68751c,timeout,1800.0,still running after the 1800 s wall-clock budget; killed,
+tenpc_stars,tenpc_stars_physical,freese,311,900,,865e5a35da4a35ec7488819e411c4f77ebe4d98c17160800c9fd7aa57a68751c,invalid,787.332,output is not a usable drawing: diverged: coordinates up to 9.1e+79,
+tenpc_stars,tenpc_stars_physical,redraw,311,1800,,865e5a35da4a35ec7488819e411c4f77ebe4d98c17160800c9fd7aa57a68751c,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+tenpc_stars,tenpc_stars_physical,sugiyama,311,900,,865e5a35da4a35ec7488819e411c4f77ebe4d98c17160800c9fd7aa57a68751c,cached,0.616,,
+tenpc_stars,tenpc_stars_spectral_company,aeschlimann_schmid,109,900,,c03faa01b2ab1bc1ca6da5e04bcd0b36cb9f7b7e49727be489ba985755992baf,cached,0.549,,
+tenpc_stars,tenpc_stars_spectral_company,cole_ducrou_eklund,109,900,,c03faa01b2ab1bc1ca6da5e04bcd0b36cb9f7b7e49727be489ba985755992baf,cached,207.458,,
+tenpc_stars,tenpc_stars_spectral_company,dimdraw,109,900,60.0,c03faa01b2ab1bc1ca6da5e04bcd0b36cb9f7b7e49727be489ba985755992baf,cached,60.495,used its whole internal budget: an anytime result,True
+tenpc_stars,tenpc_stars_spectral_company,dimflux,109,900,60.0,c03faa01b2ab1bc1ca6da5e04bcd0b36cb9f7b7e49727be489ba985755992baf,cached,136.631,,
+tenpc_stars,tenpc_stars_spectral_company,fdp,109,900,60.0,c03faa01b2ab1bc1ca6da5e04bcd0b36cb9f7b7e49727be489ba985755992baf,cached,2.303,,False
+tenpc_stars,tenpc_stars_spectral_company,freese,109,900,,c03faa01b2ab1bc1ca6da5e04bcd0b36cb9f7b7e49727be489ba985755992baf,cached,16.633,,
+tenpc_stars,tenpc_stars_spectral_company,redraw,109,1800,,c03faa01b2ab1bc1ca6da5e04bcd0b36cb9f7b7e49727be489ba985755992baf,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+tenpc_stars,tenpc_stars_spectral_company,sugiyama,109,900,,c03faa01b2ab1bc1ca6da5e04bcd0b36cb9f7b7e49727be489ba985755992baf,cached,0.406,,
+tenpc_stars,tenpc_stars_spectral_knowledge,aeschlimann_schmid,57,900,,f801c60db6d3abe8638868b59e4436d2f904935ac746cb3be756ab8a465947b0,cached,0.371,,
+tenpc_stars,tenpc_stars_spectral_knowledge,cole_ducrou_eklund,57,900,,f801c60db6d3abe8638868b59e4436d2f904935ac746cb3be756ab8a465947b0,cached,25.019,,
+tenpc_stars,tenpc_stars_spectral_knowledge,dimdraw,57,900,60.0,f801c60db6d3abe8638868b59e4436d2f904935ac746cb3be756ab8a465947b0,cached,60.308,used its whole internal budget: an anytime result,True
+tenpc_stars,tenpc_stars_spectral_knowledge,dimflux,57,900,60.0,f801c60db6d3abe8638868b59e4436d2f904935ac746cb3be756ab8a465947b0,cached,122.969,,
+tenpc_stars,tenpc_stars_spectral_knowledge,fdp,57,900,60.0,f801c60db6d3abe8638868b59e4436d2f904935ac746cb3be756ab8a465947b0,cached,60.41,used its whole internal budget: an anytime result,True
+tenpc_stars,tenpc_stars_spectral_knowledge,freese,57,900,,f801c60db6d3abe8638868b59e4436d2f904935ac746cb3be756ab8a465947b0,cached,4.779,,
+tenpc_stars,tenpc_stars_spectral_knowledge,redraw,57,1800,,f801c60db6d3abe8638868b59e4436d2f904935ac746cb3be756ab8a465947b0,cached,1106.299,,
+tenpc_stars,tenpc_stars_spectral_knowledge,sugiyama,57,900,,f801c60db6d3abe8638868b59e4436d2f904935ac746cb3be756ab8a465947b0,cached,0.267,,
+tenpc_stars,tenpc_stars_spectral_planets,aeschlimann_schmid,36,900,,a88ee5e12b129c4e255b547219c2f99b90407dcf1ac337bc3050dfb51ca749a3,cached,0.258,,
+tenpc_stars,tenpc_stars_spectral_planets,cole_ducrou_eklund,36,900,,a88ee5e12b129c4e255b547219c2f99b90407dcf1ac337bc3050dfb51ca749a3,cached,3.003,,
+tenpc_stars,tenpc_stars_spectral_planets,dimdraw,36,900,60.0,a88ee5e12b129c4e255b547219c2f99b90407dcf1ac337bc3050dfb51ca749a3,cached,0.322,,False
+tenpc_stars,tenpc_stars_spectral_planets,dimflux,36,900,60.0,a88ee5e12b129c4e255b547219c2f99b90407dcf1ac337bc3050dfb51ca749a3,cached,28.292,,
+tenpc_stars,tenpc_stars_spectral_planets,fdp,36,900,60.0,a88ee5e12b129c4e255b547219c2f99b90407dcf1ac337bc3050dfb51ca749a3,cached,60.277,used its whole internal budget: an anytime result,True
+tenpc_stars,tenpc_stars_spectral_planets,freese,36,900,,a88ee5e12b129c4e255b547219c2f99b90407dcf1ac337bc3050dfb51ca749a3,cached,1.985,,
+tenpc_stars,tenpc_stars_spectral_planets,redraw,36,900,,a88ee5e12b129c4e255b547219c2f99b90407dcf1ac337bc3050dfb51ca749a3,cached,281.442,,
+tenpc_stars,tenpc_stars_spectral_planets,sugiyama,36,900,,a88ee5e12b129c4e255b547219c2f99b90407dcf1ac337bc3050dfb51ca749a3,cached,0.176,,
+wd40pc,wd40pc,aeschlimann_schmid,728,900,,cd16eea9bbf9c172966bc79423527fd4812fd395c4f304cacefd6af68861b0c4,cached,3.66,,
+wd40pc,wd40pc,cole_ducrou_eklund,728,900,,cd16eea9bbf9c172966bc79423527fd4812fd395c4f304cacefd6af68861b0c4,declined,561.988,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+wd40pc,wd40pc,dimdraw,728,900,60.0,cd16eea9bbf9c172966bc79423527fd4812fd395c4f304cacefd6af68861b0c4,cached,63.235,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc,dimflux,728,1800,60.0,cd16eea9bbf9c172966bc79423527fd4812fd395c4f304cacefd6af68861b0c4,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+wd40pc,wd40pc,fdp,728,900,60.0,cd16eea9bbf9c172966bc79423527fd4812fd395c4f304cacefd6af68861b0c4,cached,136.075,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc,freese,728,1800,,cd16eea9bbf9c172966bc79423527fd4812fd395c4f304cacefd6af68861b0c4,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+wd40pc,wd40pc,redraw,728,1800,,cd16eea9bbf9c172966bc79423527fd4812fd395c4f304cacefd6af68861b0c4,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+wd40pc,wd40pc,sugiyama,728,900,,cd16eea9bbf9c172966bc79423527fd4812fd395c4f304cacefd6af68861b0c4,cached,2.145,,
+wd40pc,wd40pc_appearance,aeschlimann_schmid,47,900,,5e9da83d75e1144fa2059eadc4d6714e453f4458856bbbae1007b1c563d6d6e1,cached,0.235,,
+wd40pc,wd40pc_appearance,cole_ducrou_eklund,47,900,,5e9da83d75e1144fa2059eadc4d6714e453f4458856bbbae1007b1c563d6d6e1,cached,12.891,,
+wd40pc,wd40pc_appearance,dimdraw,47,900,60.0,5e9da83d75e1144fa2059eadc4d6714e453f4458856bbbae1007b1c563d6d6e1,cached,60.371,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc_appearance,dimflux,47,900,60.0,5e9da83d75e1144fa2059eadc4d6714e453f4458856bbbae1007b1c563d6d6e1,cached,128.483,,
+wd40pc,wd40pc_appearance,fdp,47,900,60.0,5e9da83d75e1144fa2059eadc4d6714e453f4458856bbbae1007b1c563d6d6e1,cached,0.759,,False
+wd40pc,wd40pc_appearance,freese,47,900,,5e9da83d75e1144fa2059eadc4d6714e453f4458856bbbae1007b1c563d6d6e1,cached,3.475,,
+wd40pc,wd40pc_appearance,redraw,47,1800,,5e9da83d75e1144fa2059eadc4d6714e453f4458856bbbae1007b1c563d6d6e1,cached,1500.387,,
+wd40pc,wd40pc_appearance,sugiyama,47,900,,5e9da83d75e1144fa2059eadc4d6714e453f4458856bbbae1007b1c563d6d6e1,cached,0.214,,
+wd40pc,wd40pc_appearance_parameters,aeschlimann_schmid,319,900,,d6372bf1824374c0e2f352b83a1e2022bcbe2b71571b88f54a9bdd50ad27da17,cached,0.995,,
+wd40pc,wd40pc_appearance_parameters,cole_ducrou_eklund,319,900,,d6372bf1824374c0e2f352b83a1e2022bcbe2b71571b88f54a9bdd50ad27da17,declined,486.232,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+wd40pc,wd40pc_appearance_parameters,dimdraw,319,900,60.0,d6372bf1824374c0e2f352b83a1e2022bcbe2b71571b88f54a9bdd50ad27da17,cached,61.488,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc_appearance_parameters,dimflux,319,900,60.0,d6372bf1824374c0e2f352b83a1e2022bcbe2b71571b88f54a9bdd50ad27da17,cached,338.56,,
+wd40pc,wd40pc_appearance_parameters,fdp,319,900,60.0,d6372bf1824374c0e2f352b83a1e2022bcbe2b71571b88f54a9bdd50ad27da17,cached,25.891,,False
+wd40pc,wd40pc_appearance_parameters,freese,319,900,,d6372bf1824374c0e2f352b83a1e2022bcbe2b71571b88f54a9bdd50ad27da17,invalid,677.1,output is not a usable drawing: diverged: coordinates up to 2.0e+84,
+wd40pc,wd40pc_appearance_parameters,redraw,319,1800,,d6372bf1824374c0e2f352b83a1e2022bcbe2b71571b88f54a9bdd50ad27da17,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+wd40pc,wd40pc_appearance_parameters,sugiyama,319,900,,d6372bf1824374c0e2f352b83a1e2022bcbe2b71571b88f54a9bdd50ad27da17,cached,0.784,,
+wd40pc,wd40pc_appearance_temperature,aeschlimann_schmid,97,900,,f7edc3ebf3f5154c01a85f0510539a3a5efe831adb0a148d6a9a5760920e3981,cached,0.498,,
+wd40pc,wd40pc_appearance_temperature,cole_ducrou_eklund,97,900,,f7edc3ebf3f5154c01a85f0510539a3a5efe831adb0a148d6a9a5760920e3981,cached,148.084,,
+wd40pc,wd40pc_appearance_temperature,dimdraw,97,900,60.0,f7edc3ebf3f5154c01a85f0510539a3a5efe831adb0a148d6a9a5760920e3981,cached,60.353,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc_appearance_temperature,dimflux,97,900,60.0,f7edc3ebf3f5154c01a85f0510539a3a5efe831adb0a148d6a9a5760920e3981,cached,128.13,,
+wd40pc,wd40pc_appearance_temperature,fdp,97,900,60.0,f7edc3ebf3f5154c01a85f0510539a3a5efe831adb0a148d6a9a5760920e3981,cached,1.389,,False
+wd40pc,wd40pc_appearance_temperature,freese,97,900,,f7edc3ebf3f5154c01a85f0510539a3a5efe831adb0a148d6a9a5760920e3981,cached,15.142,,
+wd40pc,wd40pc_appearance_temperature,redraw,97,1800,,f7edc3ebf3f5154c01a85f0510539a3a5efe831adb0a148d6a9a5760920e3981,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+wd40pc,wd40pc_appearance_temperature,sugiyama,97,900,,f7edc3ebf3f5154c01a85f0510539a3a5efe831adb0a148d6a9a5760920e3981,cached,0.464,,
+wd40pc,wd40pc_binarity,aeschlimann_schmid,13,900,,1697b5cc068c64975feb71f1b0c7956f40f295d9981f94732bb508709cf54709,cached,0.271,,
+wd40pc,wd40pc_binarity,cole_ducrou_eklund,13,900,,1697b5cc068c64975feb71f1b0c7956f40f295d9981f94732bb508709cf54709,cached,0.569,,
+wd40pc,wd40pc_binarity,dimdraw,13,900,60.0,1697b5cc068c64975feb71f1b0c7956f40f295d9981f94732bb508709cf54709,cached,0.206,,False
+wd40pc,wd40pc_binarity,dimflux,13,900,60.0,1697b5cc068c64975feb71f1b0c7956f40f295d9981f94732bb508709cf54709,cached,2.506,,
+wd40pc,wd40pc_binarity,fdp,13,900,60.0,1697b5cc068c64975feb71f1b0c7956f40f295d9981f94732bb508709cf54709,cached,1.843,,False
+wd40pc,wd40pc_binarity,freese,13,900,,1697b5cc068c64975feb71f1b0c7956f40f295d9981f94732bb508709cf54709,cached,0.437,,
+wd40pc,wd40pc_binarity,redraw,13,900,,1697b5cc068c64975feb71f1b0c7956f40f295d9981f94732bb508709cf54709,cached,25.824,,
+wd40pc,wd40pc_binarity,sugiyama,13,900,,1697b5cc068c64975feb71f1b0c7956f40f295d9981f94732bb508709cf54709,cached,0.142,,
+wd40pc,wd40pc_cooling,aeschlimann_schmid,14,900,,929e9c6fde59cee533b8a3766cd0527762d5ac4f6583386f5b5adf37e610ec28,cached,0.205,,
+wd40pc,wd40pc_cooling,cole_ducrou_eklund,14,900,,929e9c6fde59cee533b8a3766cd0527762d5ac4f6583386f5b5adf37e610ec28,cached,0.494,,
+wd40pc,wd40pc_cooling,dimdraw,14,900,60.0,929e9c6fde59cee533b8a3766cd0527762d5ac4f6583386f5b5adf37e610ec28,cached,0.203,,False
+wd40pc,wd40pc_cooling,dimflux,14,900,60.0,929e9c6fde59cee533b8a3766cd0527762d5ac4f6583386f5b5adf37e610ec28,cached,2.957,,
+wd40pc,wd40pc_cooling,fdp,14,900,60.0,929e9c6fde59cee533b8a3766cd0527762d5ac4f6583386f5b5adf37e610ec28,cached,0.691,,False
+wd40pc,wd40pc_cooling,freese,14,900,,929e9c6fde59cee533b8a3766cd0527762d5ac4f6583386f5b5adf37e610ec28,cached,0.496,,
+wd40pc,wd40pc_cooling,redraw,14,900,,929e9c6fde59cee533b8a3766cd0527762d5ac4f6583386f5b5adf37e610ec28,cached,27.301,,
+wd40pc,wd40pc_cooling,sugiyama,14,900,,929e9c6fde59cee533b8a3766cd0527762d5ac4f6583386f5b5adf37e610ec28,cached,0.133,,
+wd40pc,wd40pc_mass_binarity,aeschlimann_schmid,23,900,,d46f2081b06c03401d0f8f354a4605b6cb558489b63586a98b8c1e201b317a7f,cached,0.232,,
+wd40pc,wd40pc_mass_binarity,cole_ducrou_eklund,23,900,,d46f2081b06c03401d0f8f354a4605b6cb558489b63586a98b8c1e201b317a7f,cached,1.308,,
+wd40pc,wd40pc_mass_binarity,dimdraw,23,900,60.0,d46f2081b06c03401d0f8f354a4605b6cb558489b63586a98b8c1e201b317a7f,cached,0.611,,False
+wd40pc,wd40pc_mass_binarity,dimflux,23,900,60.0,d46f2081b06c03401d0f8f354a4605b6cb558489b63586a98b8c1e201b317a7f,cached,12.004,,
+wd40pc,wd40pc_mass_binarity,fdp,23,900,60.0,d46f2081b06c03401d0f8f354a4605b6cb558489b63586a98b8c1e201b317a7f,cached,9.035,,False
+wd40pc,wd40pc_mass_binarity,freese,23,900,,d46f2081b06c03401d0f8f354a4605b6cb558489b63586a98b8c1e201b317a7f,cached,0.706,,
+wd40pc,wd40pc_mass_binarity,redraw,23,900,,d46f2081b06c03401d0f8f354a4605b6cb558489b63586a98b8c1e201b317a7f,cached,130.555,,
+wd40pc,wd40pc_mass_binarity,sugiyama,23,900,,d46f2081b06c03401d0f8f354a4605b6cb558489b63586a98b8c1e201b317a7f,cached,0.191,,
+wd40pc,wd40pc_parameters,aeschlimann_schmid,46,900,,a97e052dbb3ca99ed46762c42a7f872b68e5723d3ea1bfd81fcc5e56cae5ffe0,cached,0.215,,
+wd40pc,wd40pc_parameters,cole_ducrou_eklund,46,900,,a97e052dbb3ca99ed46762c42a7f872b68e5723d3ea1bfd81fcc5e56cae5ffe0,cached,5.237,,
+wd40pc,wd40pc_parameters,dimdraw,46,900,60.0,a97e052dbb3ca99ed46762c42a7f872b68e5723d3ea1bfd81fcc5e56cae5ffe0,cached,60.221,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc_parameters,dimflux,46,900,60.0,a97e052dbb3ca99ed46762c42a7f872b68e5723d3ea1bfd81fcc5e56cae5ffe0,cached,121.506,,
+wd40pc,wd40pc_parameters,fdp,46,900,60.0,a97e052dbb3ca99ed46762c42a7f872b68e5723d3ea1bfd81fcc5e56cae5ffe0,cached,32.219,,False
+wd40pc,wd40pc_parameters,freese,46,900,,a97e052dbb3ca99ed46762c42a7f872b68e5723d3ea1bfd81fcc5e56cae5ffe0,cached,2.658,,
+wd40pc,wd40pc_parameters,redraw,46,1800,,a97e052dbb3ca99ed46762c42a7f872b68e5723d3ea1bfd81fcc5e56cae5ffe0,cached,1414.562,,
+wd40pc,wd40pc_parameters,sugiyama,46,900,,a97e052dbb3ca99ed46762c42a7f872b68e5723d3ea1bfd81fcc5e56cae5ffe0,cached,0.207,,
+wd40pc,wd40pc_parameters_binarity,aeschlimann_schmid,112,900,,ad79a2d28c3389209f7765df0c170238ff76d17bc316945b98521ad62660aeca,cached,0.579,,
+wd40pc,wd40pc_parameters_binarity,cole_ducrou_eklund,112,900,,ad79a2d28c3389209f7765df0c170238ff76d17bc316945b98521ad62660aeca,cached,157.432,,
+wd40pc,wd40pc_parameters_binarity,dimdraw,112,900,60.0,ad79a2d28c3389209f7765df0c170238ff76d17bc316945b98521ad62660aeca,cached,60.592,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc_parameters_binarity,dimflux,112,900,60.0,ad79a2d28c3389209f7765df0c170238ff76d17bc316945b98521ad62660aeca,cached,133.191,,
+wd40pc,wd40pc_parameters_binarity,fdp,112,900,60.0,ad79a2d28c3389209f7765df0c170238ff76d17bc316945b98521ad62660aeca,cached,2.799,,False
+wd40pc,wd40pc_parameters_binarity,freese,112,900,,ad79a2d28c3389209f7765df0c170238ff76d17bc316945b98521ad62660aeca,cached,17.569,,
+wd40pc,wd40pc_parameters_binarity,redraw,112,1800,,ad79a2d28c3389209f7765df0c170238ff76d17bc316945b98521ad62660aeca,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+wd40pc,wd40pc_parameters_binarity,sugiyama,112,900,,ad79a2d28c3389209f7765df0c170238ff76d17bc316945b98521ad62660aeca,cached,0.293,,
+wd40pc,wd40pc_physical,aeschlimann_schmid,534,900,,7139b7ad1de9b1e411e5406acc00c030712db99b27af3aaf392d443440c1151a,cached,1.626,,
+wd40pc,wd40pc_physical,cole_ducrou_eklund,534,900,,7139b7ad1de9b1e411e5406acc00c030712db99b27af3aaf392d443440c1151a,declined,449.061,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+wd40pc,wd40pc_physical,dimdraw,534,900,60.0,7139b7ad1de9b1e411e5406acc00c030712db99b27af3aaf392d443440c1151a,cached,61.547,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc_physical,dimflux,534,900,60.0,7139b7ad1de9b1e411e5406acc00c030712db99b27af3aaf392d443440c1151a,cached,894.714,,
+wd40pc,wd40pc_physical,fdp,534,900,60.0,7139b7ad1de9b1e411e5406acc00c030712db99b27af3aaf392d443440c1151a,cached,66.522,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc_physical,freese,534,1800,,7139b7ad1de9b1e411e5406acc00c030712db99b27af3aaf392d443440c1151a,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+wd40pc,wd40pc_physical,redraw,534,1800,,7139b7ad1de9b1e411e5406acc00c030712db99b27af3aaf392d443440c1151a,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+wd40pc,wd40pc_physical,sugiyama,534,900,,7139b7ad1de9b1e411e5406acc00c030712db99b27af3aaf392d443440c1151a,cached,1.305,,
+wd40pc,wd40pc_spectral,aeschlimann_schmid,30,900,,1aa68ba485efc5ac0008855f45fe09bda65bbc4251af18ad861a9ead7bce642b,cached,0.263,,
+wd40pc,wd40pc_spectral,cole_ducrou_eklund,30,900,,1aa68ba485efc5ac0008855f45fe09bda65bbc4251af18ad861a9ead7bce642b,cached,2.561,,
+wd40pc,wd40pc_spectral,dimdraw,30,900,60.0,1aa68ba485efc5ac0008855f45fe09bda65bbc4251af18ad861a9ead7bce642b,cached,60.172,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc_spectral,dimflux,30,900,60.0,1aa68ba485efc5ac0008855f45fe09bda65bbc4251af18ad861a9ead7bce642b,cached,123.567,,
+wd40pc,wd40pc_spectral,fdp,30,900,60.0,1aa68ba485efc5ac0008855f45fe09bda65bbc4251af18ad861a9ead7bce642b,cached,60.261,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc_spectral,freese,30,900,,1aa68ba485efc5ac0008855f45fe09bda65bbc4251af18ad861a9ead7bce642b,cached,1.196,,
+wd40pc,wd40pc_spectral,redraw,30,900,,1aa68ba485efc5ac0008855f45fe09bda65bbc4251af18ad861a9ead7bce642b,cached,452.699,,
+wd40pc,wd40pc_spectral,sugiyama,30,900,,1aa68ba485efc5ac0008855f45fe09bda65bbc4251af18ad861a9ead7bce642b,cached,0.198,,
+wd40pc,wd40pc_spectral_knowledge,aeschlimann_schmid,83,900,,9f55723c7de3c9a0c3526f2f2e536b7fb8539ff45210f413afc8026e96820310,cached,0.47,,
+wd40pc,wd40pc_spectral_knowledge,cole_ducrou_eklund,83,900,,9f55723c7de3c9a0c3526f2f2e536b7fb8539ff45210f413afc8026e96820310,cached,177.469,,
+wd40pc,wd40pc_spectral_knowledge,dimdraw,83,900,60.0,9f55723c7de3c9a0c3526f2f2e536b7fb8539ff45210f413afc8026e96820310,cached,60.495,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc_spectral_knowledge,dimflux,83,900,60.0,9f55723c7de3c9a0c3526f2f2e536b7fb8539ff45210f413afc8026e96820310,cached,130.397,,
+wd40pc,wd40pc_spectral_knowledge,fdp,83,900,60.0,9f55723c7de3c9a0c3526f2f2e536b7fb8539ff45210f413afc8026e96820310,cached,62.493,used its whole internal budget: an anytime result,True
+wd40pc,wd40pc_spectral_knowledge,freese,83,900,,9f55723c7de3c9a0c3526f2f2e536b7fb8539ff45210f413afc8026e96820310,cached,12.753,,
+wd40pc,wd40pc_spectral_knowledge,redraw,83,1800,,9f55723c7de3c9a0c3526f2f2e536b7fb8539ff45210f413afc8026e96820310,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+wd40pc,wd40pc_spectral_knowledge,sugiyama,83,900,,9f55723c7de3c9a0c3526f2f2e536b7fb8539ff45210f413afc8026e96820310,cached,0.35,,
+zoo,zoo_anatomy,aeschlimann_schmid,132,900,,65ece60b5838bc0324e2ad3b0e5215496d6d9b0eaa03bb21378445a977e8ab45,cached,0.585,,
+zoo,zoo_anatomy,cole_ducrou_eklund,132,1800,,65ece60b5838bc0324e2ad3b0e5215496d6d9b0eaa03bb21378445a977e8ab45,declined,1242.608,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+zoo,zoo_anatomy,dimdraw,132,900,60.0,65ece60b5838bc0324e2ad3b0e5215496d6d9b0eaa03bb21378445a977e8ab45,cached,60.406,used its whole internal budget: an anytime result,True
+zoo,zoo_anatomy,dimflux,132,900,60.0,65ece60b5838bc0324e2ad3b0e5215496d6d9b0eaa03bb21378445a977e8ab45,cached,128.045,,
+zoo,zoo_anatomy,fdp,132,900,60.0,65ece60b5838bc0324e2ad3b0e5215496d6d9b0eaa03bb21378445a977e8ab45,cached,4.188,,False
+zoo,zoo_anatomy,freese,132,900,,65ece60b5838bc0324e2ad3b0e5215496d6d9b0eaa03bb21378445a977e8ab45,cached,26.137,,
+zoo,zoo_anatomy,redraw,132,1800,,65ece60b5838bc0324e2ad3b0e5215496d6d9b0eaa03bb21378445a977e8ab45,timeout,1800.2,still running after the 1800 s wall-clock budget; killed,
+zoo,zoo_anatomy,sugiyama,132,900,,65ece60b5838bc0324e2ad3b0e5215496d6d9b0eaa03bb21378445a977e8ab45,cached,0.409,,
+zoo,zoo_anatomy_physiology,aeschlimann_schmid,492,900,,247a025cb6b3ec6f542fec541746b83966c43c672e37191a37ef6d4bf201df0d,cached,1.521,,
+zoo,zoo_anatomy_physiology,cole_ducrou_eklund,492,900,,247a025cb6b3ec6f542fec541746b83966c43c672e37191a37ef6d4bf201df0d,declined,484.844,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+zoo,zoo_anatomy_physiology,dimdraw,492,900,60.0,247a025cb6b3ec6f542fec541746b83966c43c672e37191a37ef6d4bf201df0d,cached,62.341,used its whole internal budget: an anytime result,True
+zoo,zoo_anatomy_physiology,dimflux,492,900,60.0,247a025cb6b3ec6f542fec541746b83966c43c672e37191a37ef6d4bf201df0d,cached,781.936,,
+zoo,zoo_anatomy_physiology,fdp,492,900,60.0,247a025cb6b3ec6f542fec541746b83966c43c672e37191a37ef6d4bf201df0d,cached,75.45,used its whole internal budget: an anytime result,True
+zoo,zoo_anatomy_physiology,freese,492,1800,,247a025cb6b3ec6f542fec541746b83966c43c672e37191a37ef6d4bf201df0d,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+zoo,zoo_anatomy_physiology,redraw,492,1800,,247a025cb6b3ec6f542fec541746b83966c43c672e37191a37ef6d4bf201df0d,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+zoo,zoo_anatomy_physiology,sugiyama,492,900,,247a025cb6b3ec6f542fec541746b83966c43c672e37191a37ef6d4bf201df0d,cached,1.741,,
+zoo,zoo_class_anatomy,aeschlimann_schmid,152,900,,6ddb77f8467261811c263199caf5d5d8416344dfb62e416abb5f9163b820a0e3,cached,0.682,,
+zoo,zoo_class_anatomy,cole_ducrou_eklund,152,1800,,6ddb77f8467261811c263199caf5d5d8416344dfb62e416abb5f9163b820a0e3,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+zoo,zoo_class_anatomy,dimdraw,152,900,60.0,6ddb77f8467261811c263199caf5d5d8416344dfb62e416abb5f9163b820a0e3,cached,60.665,used its whole internal budget: an anytime result,True
+zoo,zoo_class_anatomy,dimflux,152,900,60.0,6ddb77f8467261811c263199caf5d5d8416344dfb62e416abb5f9163b820a0e3,cached,183.611,,
+zoo,zoo_class_anatomy,fdp,152,1800,60.0,6ddb77f8467261811c263199caf5d5d8416344dfb62e416abb5f9163b820a0e3,nonterminating,,fdp does not terminate on a context with equivalent attributes ([feathers 1] == [type 2]); not run. See tests/test_fdp_termination.py,
+zoo,zoo_class_anatomy,freese,152,900,,6ddb77f8467261811c263199caf5d5d8416344dfb62e416abb5f9163b820a0e3,cached,26.836,,
+zoo,zoo_class_anatomy,redraw,152,1800,,6ddb77f8467261811c263199caf5d5d8416344dfb62e416abb5f9163b820a0e3,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+zoo,zoo_class_anatomy,sugiyama,152,900,,6ddb77f8467261811c263199caf5d5d8416344dfb62e416abb5f9163b820a0e3,cached,0.443,,
+zoo,zoo_class_ecology,aeschlimann_schmid,268,900,,484c1b779a12400c2f030f44ea64fdbd3b3579b20e514d4b21d9ddeb12287ef0,cached,0.781,,
+zoo,zoo_class_ecology,cole_ducrou_eklund,268,900,,484c1b779a12400c2f030f44ea64fdbd3b3579b20e514d4b21d9ddeb12287ef0,declined,527.594,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+zoo,zoo_class_ecology,dimdraw,268,900,60.0,484c1b779a12400c2f030f44ea64fdbd3b3579b20e514d4b21d9ddeb12287ef0,cached,61.18,used its whole internal budget: an anytime result,True
+zoo,zoo_class_ecology,dimflux,268,900,60.0,484c1b779a12400c2f030f44ea64fdbd3b3579b20e514d4b21d9ddeb12287ef0,cached,175.402,,
+zoo,zoo_class_ecology,fdp,268,900,60.0,484c1b779a12400c2f030f44ea64fdbd3b3579b20e514d4b21d9ddeb12287ef0,cached,17.167,,False
+zoo,zoo_class_ecology,freese,268,900,,484c1b779a12400c2f030f44ea64fdbd3b3579b20e514d4b21d9ddeb12287ef0,invalid,842.229,output is not a usable drawing: diverged: coordinates up to 2.9e+64,
+zoo,zoo_class_ecology,redraw,268,1800,,484c1b779a12400c2f030f44ea64fdbd3b3579b20e514d4b21d9ddeb12287ef0,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+zoo,zoo_class_ecology,sugiyama,268,900,,484c1b779a12400c2f030f44ea64fdbd3b3579b20e514d4b21d9ddeb12287ef0,cached,0.747,,
+zoo,zoo_class_physiology,aeschlimann_schmid,56,900,,633d0072d07a0668974c7894c32499c61fe7f862954a3a6b9a071e43c3d605e7,cached,0.335,,
+zoo,zoo_class_physiology,cole_ducrou_eklund,56,900,,633d0072d07a0668974c7894c32499c61fe7f862954a3a6b9a071e43c3d605e7,cached,145.212,,
+zoo,zoo_class_physiology,dimdraw,56,900,60.0,633d0072d07a0668974c7894c32499c61fe7f862954a3a6b9a071e43c3d605e7,cached,60.327,used its whole internal budget: an anytime result,True
+zoo,zoo_class_physiology,dimflux,56,900,60.0,633d0072d07a0668974c7894c32499c61fe7f862954a3a6b9a071e43c3d605e7,cached,124.707,,
+zoo,zoo_class_physiology,fdp,56,1800,60.0,633d0072d07a0668974c7894c32499c61fe7f862954a3a6b9a071e43c3d605e7,nonterminating,,fdp does not terminate on a context with equivalent attributes ([milk 1] == [type 1]); not run. See tests/test_fdp_termination.py,
+zoo,zoo_class_physiology,freese,56,900,,633d0072d07a0668974c7894c32499c61fe7f862954a3a6b9a071e43c3d605e7,cached,5.199,,
+zoo,zoo_class_physiology,redraw,56,1800,,633d0072d07a0668974c7894c32499c61fe7f862954a3a6b9a071e43c3d605e7,cached,1353.594,,
+zoo,zoo_class_physiology,sugiyama,56,900,,633d0072d07a0668974c7894c32499c61fe7f862954a3a6b9a071e43c3d605e7,cached,0.318,,
+zoo,zoo_ecology,aeschlimann_schmid,135,900,,b3addce8370014887f026c94d7749d9de0a3259045d659d2656f0c30211be1fe,cached,0.629,,
+zoo,zoo_ecology,cole_ducrou_eklund,135,900,,b3addce8370014887f026c94d7749d9de0a3259045d659d2656f0c30211be1fe,declined,449.014,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+zoo,zoo_ecology,dimdraw,135,900,60.0,b3addce8370014887f026c94d7749d9de0a3259045d659d2656f0c30211be1fe,cached,60.603,used its whole internal budget: an anytime result,True
+zoo,zoo_ecology,dimflux,135,900,60.0,b3addce8370014887f026c94d7749d9de0a3259045d659d2656f0c30211be1fe,cached,128.025,,
+zoo,zoo_ecology,fdp,135,900,60.0,b3addce8370014887f026c94d7749d9de0a3259045d659d2656f0c30211be1fe,cached,81.834,used its whole internal budget: an anytime result,True
+zoo,zoo_ecology,freese,135,900,,b3addce8370014887f026c94d7749d9de0a3259045d659d2656f0c30211be1fe,cached,23.438,,
+zoo,zoo_ecology,redraw,135,1800,,b3addce8370014887f026c94d7749d9de0a3259045d659d2656f0c30211be1fe,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+zoo,zoo_ecology,sugiyama,135,900,,b3addce8370014887f026c94d7749d9de0a3259045d659d2656f0c30211be1fe,cached,0.596,,
+zoo,zoo_physiology,aeschlimann_schmid,32,900,,d5678feb67a5f28780b693e55a746b137b5eddb086f098652ffb13a15c26df22,cached,0.177,,
+zoo,zoo_physiology,cole_ducrou_eklund,32,900,,d5678feb67a5f28780b693e55a746b137b5eddb086f098652ffb13a15c26df22,cached,2.826,,
+zoo,zoo_physiology,dimdraw,32,900,60.0,d5678feb67a5f28780b693e55a746b137b5eddb086f098652ffb13a15c26df22,cached,60.254,used its whole internal budget: an anytime result,True
+zoo,zoo_physiology,dimflux,32,900,60.0,d5678feb67a5f28780b693e55a746b137b5eddb086f098652ffb13a15c26df22,cached,81.837,,
+zoo,zoo_physiology,fdp,32,900,60.0,d5678feb67a5f28780b693e55a746b137b5eddb086f098652ffb13a15c26df22,cached,37.902,,False
+zoo,zoo_physiology,freese,32,900,,d5678feb67a5f28780b693e55a746b137b5eddb086f098652ffb13a15c26df22,cached,1.774,,
+zoo,zoo_physiology,redraw,32,900,,d5678feb67a5f28780b693e55a746b137b5eddb086f098652ffb13a15c26df22,cached,336.129,,
+zoo,zoo_physiology,sugiyama,32,900,,d5678feb67a5f28780b693e55a746b137b5eddb086f098652ffb13a15c26df22,cached,0.245,,
+zoo,zoo_physiology_ecology,aeschlimann_schmid,781,900,,eafdfd47c1019f184b441087d64f5d8bdf10708531f99e00976633c9fa90b843,cached,4.344,,
+zoo,zoo_physiology_ecology,cole_ducrou_eklund,781,900,,eafdfd47c1019f184b441087d64f5d8bdf10708531f99e00976633c9fa90b843,declined,670.363,"no satisfactory layer diagram found within 6 passes (candidate offset pool of 30), max_solutions and max_search_calls per pass; try increasing n1, n2, fallback_passes, max_solutions or max_search_calls",
+zoo,zoo_physiology_ecology,dimdraw,781,900,60.0,eafdfd47c1019f184b441087d64f5d8bdf10708531f99e00976633c9fa90b843,cached,62.648,used its whole internal budget: an anytime result,True
+zoo,zoo_physiology_ecology,dimflux,781,1800,60.0,eafdfd47c1019f184b441087d64f5d8bdf10708531f99e00976633c9fa90b843,cached,1669.963,,
+zoo,zoo_physiology_ecology,fdp,781,900,60.0,eafdfd47c1019f184b441087d64f5d8bdf10708531f99e00976633c9fa90b843,cached,174.183,used its whole internal budget: an anytime result,True
+zoo,zoo_physiology_ecology,freese,781,1800,,eafdfd47c1019f184b441087d64f5d8bdf10708531f99e00976633c9fa90b843,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+zoo,zoo_physiology_ecology,redraw,781,1800,,eafdfd47c1019f184b441087d64f5d8bdf10708531f99e00976633c9fa90b843,timeout,1800.1,still running after the 1800 s wall-clock budget; killed,
+zoo,zoo_physiology_ecology,sugiyama,781,900,,eafdfd47c1019f184b441087d64f5d8bdf10708531f99e00976633c9fa90b843,cached,2.761,,

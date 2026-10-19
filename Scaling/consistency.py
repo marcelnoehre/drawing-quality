@@ -2,14 +2,20 @@
 
 Because the levels of a nesting nest, a concept in the coarser scale *is* a
 concept of the finer one, matched by extent. The same algorithm therefore draws it
-twice, with no memory in between, and the two placements can be compared. That
-comparison is the whole of RQ4.
+twice, with no memory in between, and the two placements can be compared.
 
 **Only ranks, never coordinates.** Two runs on related inputs do not produce
 comparable coordinates: the origin and the scale are arbitrary, so any statistic
 built on distances measures those as much as the placement. The measure here is
 Kendall's tau between the horizontal *ranks* of the shared concepts, which is
 invariant under translation, scaling and any monotone rescaling of x.
+
+**A mirror image of the whole drawing is not an inconsistency.** Mirroring negates
+every x, so it negates tau and nothing else. The consistency that is ranked is
+therefore |tau|, the left-to-right order kept one way round or the other; the signed
+tau is kept beside it. A mirror of one branch inside the drawing still lowers |tau|,
+because the rest of the drawing does not flip with it, and the per-stratum taus say
+which kind of change happened (pipeline.md, *Consistency*).
 
 **Vertical movement is reported separately.** New concepts insert into chains and
 push shared ones up or down, which is forced by the order rather than chosen by
@@ -111,9 +117,9 @@ def rank_drift(a: Drawing, b: Drawing) -> float:
     whatever the algorithm does.
 
     The normaliser is floor(n^2 / 2), the maximum of sum |i - s(i)| over
-    permutations s, attained by the reversal. It used to be n(n - 1), which is not
-    attainable: a reversal scored 0.67 at n = 4 and 0.51 at n = 46, so the column
-    was neither bounded by 1 nor comparable between pairs of different size.
+    permutations s, attained by the reversal, so drift lies in [0, 1] and is
+    comparable between pairs of different size. (n(n - 1), a tempting alternative,
+    is not attainable: a reversal would score 0.67 at n = 4 and 0.51 at n = 46.)
     """
     shared = shared_extents(a, b)
     if len(shared) < 2:
@@ -164,11 +170,13 @@ def tau_by_stratum(a: Drawing, b: Drawing) -> list[dict]:
 
 def stratum_summary(rows: list[dict]) -> dict:
     """How the per-stratum taus are distributed: flipped, held, or neither."""
-    usable = [r for r in rows if r["tau"] is not None]
+    # A stratum whose concepts all share one x in either drawing has no order to
+    # compare (tau undefined); like a stratum of one, it is left out.
+    usable = [r for r in rows if r["tau"] is not None and r["tau"] == r["tau"]]
     if not usable:
         return {"n_strata": len(rows), "n_strata_compared": 0,
                 "frac_strata_strong": "", "frac_strata_inverted": "",
-                "strata_bimodality": "", "strata_sign_agreement": ""}
+                "strata_decisiveness": "", "strata_sign_agreement": ""}
     strong = [r for r in usable if abs(r["tau"]) > 0.5]
     inverted = [r for r in usable if r["tau"] < -0.5]
     # Do the strata agree on a direction? Three patterns have to be told apart:
@@ -179,25 +187,40 @@ def stratum_summary(rows: list[dict]) -> dict:
     positive = sum(1 for r in usable if r["tau"] > 0)
     agreement = max(positive, len(usable) - positive) / len(usable)
     # Mean |tau| over the strata: near 1 means every stratum either held or
-    # flipped, near 0 means no stratum did either, which is a scramble.
-    bimodality = sum(abs(r["tau"]) for r in usable) / len(usable)
+    # flipped, near 0 means no stratum did either, which is a scramble. Over strata
+    # of three or more only: two concepts are always in order or reversed, so a
+    # stratum of two has |tau| = 1 whatever happened to it and would make a scramble
+    # look decisive. Their sign still counts towards the agreement above.
+    sized = [r for r in usable if r["n"] >= 3]
+    decisiveness = sum(abs(r["tau"]) for r in sized) / len(sized) if sized else None
     return {
         "n_strata": len(rows),
         "n_strata_compared": len(usable),
         "frac_strata_strong": round(len(strong) / len(usable), 3),
         "frac_strata_inverted": round(len(inverted) / len(usable), 3),
-        "strata_bimodality": round(bimodality, 3),
+        "strata_decisiveness": "" if decisiveness is None else round(decisiveness, 3),
         "strata_sign_agreement": round(agreement, 3),
     }
 
 
 def compare(a: Drawing, b: Drawing) -> dict:
-    """Everything recorded for one (coarser, finer, algorithm) triple."""
+    """Everything recorded for one (coarser, finer, algorithm) triple.
+
+    Tau-b is undefined when one drawing gives every shared concept the same x: there
+    is no left-to-right order to compare. That is an outcome of the algorithm, and it
+    keeps no order at all, so it is recorded as tau = 0 with `tau_undefined` set,
+    rather than as a NaN that nothing downstream could rank.
+    """
     tau, p, n_shared = tau_x(a, b)
+    undefined = n_shared >= 2 and tau != tau
+    if undefined:
+        tau, p = 0.0, 1.0
     strata = tau_by_stratum(a, b)
     return {
         "n_shared": n_shared,
         "tau_x": tau,
+        "tau_abs": abs(tau),
+        "tau_undefined": undefined,
         "p_value": p,
         "rank_drift": rank_drift(a, b),
         "thin": n_shared < THIN_OVERLAP,

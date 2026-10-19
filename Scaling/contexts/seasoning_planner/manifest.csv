@@ -1,0 +1,10 @@
+context,scale,short_name,filename,kind,chain,chain_step,attributes,concepts,width,height,incomparable_pairs,drawable,description,note
+seasoning_planner,seasoning_planner_dish,dish,contexts/seasoning_planner/seasoning_planner_dish.cxt,facet,,,9,11,9,3,36,False,The dish categories alone.,"below the drawable minimum of 12 concepts; recorded, never drawn"
+seasoning_planner,seasoning_planner_herbs,herbs,contexts/seasoning_planner/seasoning_planner_herbs.cxt,facet,,,9,39,13,7,502,True,Which herbs go on the same dishes.,
+seasoning_planner,seasoning_planner_seeds,seeds,contexts/seasoning_planner/seasoning_planner_seeds.cxt,facet,,,12,80,22,9,2348,True,Which seed and fruit spices go on the same dishes.,
+seasoning_planner,seasoning_planner_other,other,contexts/seasoning_planner/seasoning_planner_other.cxt,facet,,,7,37,13,7,424,True,"Which bark, flower, root and bulb spices go on the same dishes.",
+seasoning_planner,seasoning_planner_spices,spices,contexts/seasoning_planner/seasoning_planner_spices.cxt,apposition,,,19,219,61,10,20603,True,"The spices, with the herbs set aside.",
+seasoning_planner,seasoning_planner_herbs_dish,herbs_dish,contexts/seasoning_planner/seasoning_planner_herbs_dish.cxt,apposition,,,18,84,30,7,2942,True,Which herbs go with which kind of dish.,
+seasoning_planner,seasoning_planner_spices_dish,spices_dish,contexts/seasoning_planner/seasoning_planner_spices_dish.cxt,apposition,,,28,304,89,11,41646,True,Which spices go with which kind of dish.,
+seasoning_planner,seasoning_planner_seasonings,seasonings,contexts/seasoning_planner/seasoning_planner_seasonings.cxt,apposition,,,28,421,114,12,81079,True,"The whole seasoning chart, without the dish categories.",
+seasoning_planner,seasoning_planner,seasoning_planner,contexts/seasoning_planner/seasoning_planner.cxt,full,,,37,532,152,12,132148,True,"The data themselves, the identity scale-measure (id, K).",

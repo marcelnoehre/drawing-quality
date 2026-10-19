@@ -1,27 +1,111 @@
-context,scale,kind,chain,chain_step,n_scale_attrs,n_concepts,width,height,incomparable_pairs,drawable,description
-instruments,excitation,facet,,,13,21,13,5,154,True,How the sound is set going.
-instruments,capability,facet,,,5,13,4,6,24,True,What the instrument can play.
-instruments,practice,facet,,,7,46,16,8,695,True,"Where and how it is played, including posture and mobility."
-instruments,making,facet,,,7,17,6,6,73,True,"What it is made of, where it came from, whether it needs power."
-instruments,family-excitation,chain,hornbostel-sachs,1,19,27,15,6,260,True,Each family split by how it is excited.
-instruments,family-excitation-mechanism,chain,hornbostel-sachs,2,30,33,17,6,409,True,Those branches split again by the pitch mechanism they use.
-instruments,playing-mechanism,apposition,,,19,35,16,6,465,True,The mechanics of playing: how sound starts and how pitch is chosen.
-instruments,family-making,apposition,,,11,39,14,6,535,True,"Which families are built from which materials, which is where the woodwind and brass distinction actually lives."
-instruments,family-practice,apposition,,,11,107,35,9,4668,True,Which families populate which ensembles.
-instruments,capability-practice-making,apposition,,,19,319,81,12,44818,True,"The instrument as a musician meets it, setting aside how the sound is produced: what it can play, where it is played and what it is made of."
-instruments,instruments,full,,,42,576,138,14,153192,True,"The data themselves, the identity scale-measure (id, K)."
-olympics,structure,facet,,,6,28,8,7,190,True,How the contest is organised and how a winner is settled.
-olympics,demands,facet,,,6,35,12,6,369,True,What the discipline asks of the body.
-olympics,equipment,facet,equipment-medium,1,6,21,7,6,111,True,"What is carried, ridden or played with. Also the root of the equipment chain."
-olympics,venue,facet,,,6,18,7,5,88,True,Where it is contested and on what surface.
-olympics,format,facet,,,5,18,5,6,63,True,How play is bounded and scored.
-olympics,institution,facet,,,4,16,6,5,55,True,"Its standing: age, professionalism, audience, schools."
-olympics,origins,facet,,,5,12,4,5,25,True,"Where the modern form was codified, and whether women contest it."
-olympics,decision-structure,chain,typology,1,12,35,10,8,337,True,"How the result is settled, each way split by who contests it."
-olympics,decision-structure-format,chain,typology,2,18,64,15,11,1364,True,Those branches split again by how play is bounded.
-olympics,equipment-medium,chain,equipment-medium,2,15,53,18,7,1027,True,"Equipment split by the medium it is used in: a runner on ice, a boat on water and a ball on grass are different sports."
-olympics,structure-format,apposition,,,11,139,33,11,7201,True,The rules of the contest: how it is run and how it is decided.
-olympics,institution-origins,apposition,,,9,81,20,9,2134,True,Where the discipline came from and what standing it now has.
-olympics,venue-equipment,apposition,,,12,98,31,9,3877,True,What the ground you play on requires you to carry or ride.
-olympics,venue-equipment-demands,apposition,,,18,444,126,11,90466,True,"The physical side of competing: the surface underfoot, the gear in hand and the effort required."
-olympics,olympics,full,,,38,10463,,,,False,"The data themselves, the identity scale-measure (id, K)."
+context,scale,short_name,kind,chain,chain_step,n_scale_attrs,n_concepts,width,height,incomparable_pairs,drawable,description
+diagnosis,diagnosis_lower,lower,facet,,,6,19,7,5,96,True,"The lower urinary tract symptoms: urgency, pain on urination, burning."
+diagnosis,diagnosis_upper,upper,facet,,,7,18,7,5,84,True,"The signs of upper-tract, systemic illness: fever, nausea, back pain."
+diagnosis,diagnosis_diagnosis,diagnosis,facet,,,4,10,4,4,20,False,What the patient was diagnosed with.
+diagnosis,diagnosis_lower_diagnosis,lower_diagnosis,apposition,,,10,38,12,7,474,True,Which lower-tract symptoms go with which diagnosis.
+diagnosis,diagnosis_upper_diagnosis,upper_diagnosis,apposition,,,11,36,10,7,400,True,Which upper-tract and systemic signs go with which diagnosis.
+diagnosis,diagnosis_symptoms,symptoms,apposition,,,13,78,21,8,2297,True,"The patient's whole presentation, before any diagnosis."
+diagnosis,diagnosis,diagnosis,full,,,17,88,22,9,2949,True,"The data themselves, the identity scale-measure (id, K)."
+instruments,instruments_excitation,excitation,facet,,,13,21,13,5,154,True,How the sound is set going.
+instruments,instruments_capability,capability,facet,,,5,13,4,6,24,True,What the instrument can play.
+instruments,instruments_practice,practice,facet,,,7,46,16,8,695,True,"Where and how it is played, including posture and mobility."
+instruments,instruments_making,making,facet,,,7,17,6,6,73,True,"What it is made of, where it came from, whether it needs power."
+instruments,instruments_family_excitation,family_excitation,chain,hornbostel_sachs,1,19,27,15,6,260,True,Each family split by how it is excited.
+instruments,instruments_family_excitation_mechanism,family_excitation_mechanism,chain,hornbostel_sachs,2,30,33,17,6,409,True,Those branches split again by the pitch mechanism they use.
+instruments,instruments_playing_mechanism,playing_mechanism,apposition,,,19,35,16,6,465,True,The mechanics of playing: how sound starts and how pitch is chosen.
+instruments,instruments_family_making,family_making,apposition,,,11,39,14,6,535,True,"Which families are built from which materials, which is where the woodwind and brass distinction actually lives."
+instruments,instruments_family_practice,family_practice,apposition,,,11,107,35,9,4668,True,Which families populate which ensembles.
+instruments,instruments_capability_practice_making,capability_practice_making,apposition,,,19,319,81,12,44818,True,"The instrument as a musician meets it, setting aside how the sound is produced: what it can play, where it is played and what it is made of."
+instruments,instruments,instruments,full,,,42,576,138,14,153192,True,"The data themselves, the identity scale-measure (id, K)."
+living_beings_and_water,living_beings_and_water_taxa,taxa,apposition,,,9,12,4,5,29,True,"Plants and animals by where they live, and the mammals: Hanika and Hirth's published scale."
+living_beings_and_water,living_beings_and_water,living_beings_and_water,full,,,9,19,6,6,91,True,"The data themselves, the identity scale-measure (id, K)."
+music,music_motion,motion,facet,,,4,12,4,5,24,True,How the piece moves: its tempo and rhythm.
+music,music_form,form,facet,,,4,5,2,4,1,False,"How it is built: proportion, craft, clarity of texture."
+music,music_character,character,facet,,,3,6,2,4,3,False,What it expresses.
+music,music_form_character,form_character,apposition,,,7,27,7,7,162,True,How it is built against what it expresses.
+music,music_motion_character,motion_character,apposition,,,7,42,11,8,512,True,Its temperament: how it moves and what it expresses.
+music,music_motion_form,motion_form,apposition,,,8,53,15,8,862,True,How it moves against how it is built.
+music,music,music,full,,,11,163,41,10,10233,True,"The data themselves, the identity scale-measure (id, K)."
+olympic_disciplines,olympic_disciplines_competitors,competitors,apposition,,,6,17,5,7,50,True,"Who competes: which genders may enter, and whether alone or in a team."
+olympic_disciplines,olympic_disciplines_standing,standing,apposition,,,7,22,5,8,86,True,"Its place in the Games: how long it has been on the programme, how many medal events it has, whether it has a Paralympic counterpart."
+olympic_disciplines,olympic_disciplines_discipline,discipline,apposition,,,6,25,9,6,181,True,What kind of sport it is and where it is contested.
+olympic_disciplines,olympic_disciplines_sport_competitors,sport_competitors,apposition,,,10,57,13,9,908,True,"Which kinds of sport are contested by whom, alone or in teams."
+olympic_disciplines,olympic_disciplines_sport_standing,sport_standing,apposition,,,11,103,22,11,3760,True,Which kinds of sport hold what place in the programme.
+olympic_disciplines,olympic_disciplines_competitors_standing,competitors_standing,apposition,,,13,113,19,14,3756,True,"How far the programme opens each discipline to women, men and mixed teams, against how established and large it is."
+olympic_disciplines,olympic_disciplines_discipline_competitors,discipline_competitors,apposition,,,12,122,24,10,5137,True,"The discipline as it is contested -- what sport, where, by whom -- setting aside its place in the Games."
+olympic_disciplines,olympic_disciplines,olympic_disciplines,full,,,19,529,88,15,115006,True,"The data themselves, the identity scale-measure (id, K)."
+olympics,olympics_structure,structure,facet,,,6,28,8,7,190,True,How the contest is organised and how a winner is settled.
+olympics,olympics_demands,demands,facet,,,6,35,12,6,369,True,What the discipline asks of the body.
+olympics,olympics_equipment,equipment,facet,equipment_medium,1,6,21,7,6,111,True,"What is carried, ridden or played with. Also the root of the equipment chain."
+olympics,olympics_venue,venue,facet,,,6,18,7,5,88,True,Where it is contested and on what surface.
+olympics,olympics_format,format,facet,,,5,18,5,6,63,True,How play is bounded and scored.
+olympics,olympics_institution,institution,facet,,,4,16,6,5,55,True,"Its standing: age, professionalism, audience, schools."
+olympics,olympics_origins,origins,facet,,,5,12,4,5,25,True,"Where the modern form was codified, and whether women contest it."
+olympics,olympics_decision_structure,decision_structure,chain,typology,1,12,35,10,8,337,True,"How the result is settled, each way split by who contests it."
+olympics,olympics_decision_structure_format,decision_structure_format,chain,typology,2,18,64,15,11,1364,True,Those branches split again by how play is bounded.
+olympics,olympics_equipment_medium,equipment_medium,chain,equipment_medium,2,15,53,18,7,1027,True,"Equipment split by the medium it is used in: a runner on ice, a boat on water and a ball on grass are different sports."
+olympics,olympics_structure_format,structure_format,apposition,,,11,139,33,11,7201,True,The rules of the contest: how it is run and how it is decided.
+olympics,olympics_institution_origins,institution_origins,apposition,,,9,81,20,9,2134,True,Where the discipline came from and what standing it now has.
+olympics,olympics_venue_equipment,venue_equipment,apposition,,,12,98,31,9,3877,True,What the ground you play on requires you to carry or ride.
+olympics,olympics_venue_equipment_demands,venue_equipment_demands,apposition,,,18,444,126,11,90466,True,"The physical side of competing: the surface underfoot, the gear in hand and the effort required."
+olympics,olympics,olympics,full,,,38,10463,,,,False,"The data themselves, the identity scale-measure (id, K)."
+seasoning_planner,seasoning_planner_dish,dish,facet,,,9,11,9,3,36,False,The dish categories alone.
+seasoning_planner,seasoning_planner_herbs,herbs,facet,,,9,39,13,7,502,True,Which herbs go on the same dishes.
+seasoning_planner,seasoning_planner_seeds,seeds,facet,,,12,80,22,9,2348,True,Which seed and fruit spices go on the same dishes.
+seasoning_planner,seasoning_planner_other,other,facet,,,7,37,13,7,424,True,"Which bark, flower, root and bulb spices go on the same dishes."
+seasoning_planner,seasoning_planner_spices,spices,apposition,,,19,219,61,10,20603,True,"The spices, with the herbs set aside."
+seasoning_planner,seasoning_planner_herbs_dish,herbs_dish,apposition,,,18,84,30,7,2942,True,Which herbs go with which kind of dish.
+seasoning_planner,seasoning_planner_spices_dish,spices_dish,apposition,,,28,304,89,11,41646,True,Which spices go with which kind of dish.
+seasoning_planner,seasoning_planner_seasonings,seasonings,apposition,,,28,421,114,12,81079,True,"The whole seasoning chart, without the dish categories."
+seasoning_planner,seasoning_planner,seasoning_planner,full,,,37,532,152,12,132148,True,"The data themselves, the identity scale-measure (id, K)."
+tenpc_exoplanets,tenpc_exoplanets_planet,planet,facet,,,5,10,3,5,14,False,What kind of planet it is: its mass band and how strongly it is irradiated.
+tenpc_exoplanets,tenpc_exoplanets_host,host,facet,,,3,5,2,4,1,False,What kind of star it orbits.
+tenpc_exoplanets,tenpc_exoplanets_system,system,facet,,,2,4,2,3,1,False,"Whether it has company: other planets, other stars."
+tenpc_exoplanets,tenpc_exoplanets_knowledge,knowledge,facet,,,6,16,5,7,43,True,"How it is known: method, mass provenance, distance, archive status."
+tenpc_exoplanets,tenpc_exoplanets_host_system,host_system,apposition,,,5,15,5,6,44,True,"The planetary system as a whole: what star, how many planets, how many stars."
+tenpc_exoplanets,tenpc_exoplanets_planet_system,planet_system,apposition,,,7,30,10,7,243,True,Whether planets of a given kind come alone or in company.
+tenpc_exoplanets,tenpc_exoplanets_planet_knowledge,planet_knowledge,apposition,,,11,73,18,10,1639,True,"How well each kind of planet is known, and by which method: the detection bias made visible."
+tenpc_exoplanets,tenpc_exoplanets_planet_host,planet_host,apposition,,,8,34,9,8,301,True,Which kinds of planets orbit which kinds of stars.
+tenpc_exoplanets,tenpc_exoplanets_planet_host_system,planet_host_system,apposition,,,10,79,22,8,2206,True,"Everything about the planet and where it lives, setting aside how we know it."
+tenpc_exoplanets,tenpc_exoplanets,tenpc_exoplanets,full,,,16,371,74,12,55973,True,"The data themselves, the identity scale-measure (id, K)."
+tenpc_stars,tenpc_stars_nature,nature,facet,classification,1,4,8,4,4,11,False,What kind of object it is. Also the root of the classification chain.
+tenpc_stars,tenpc_stars_nature_spectral,nature_spectral,chain,classification,2,13,26,5,12,136,True,Each kind of object placed on the temperature sequence.
+tenpc_stars,tenpc_stars_nature_spectral_wd,nature_spectral_wd,chain,classification,3,19,35,9,12,365,True,And the white dwarfs split into their own spectral classes.
+tenpc_stars,tenpc_stars_spectral,spectral,facet,,,9,10,1,10,0,False,Where it sits on the temperature sequence.
+tenpc_stars,tenpc_stars_wd,wd,facet,,,6,11,5,5,22,False,The white-dwarf spectral classes.
+tenpc_stars,tenpc_stars_planets,planets,facet,,,5,9,3,6,6,False,Its planets.
+tenpc_stars,tenpc_stars_company,company,facet,,,6,20,6,7,81,True,"The system it belongs to: how many bodies, its role, its companions."
+tenpc_stars,tenpc_stars_knowledge,knowledge,facet,,,5,14,5,5,44,True,What the catalogue records about how it is seen.
+tenpc_stars,tenpc_stars_spectral_planets,spectral_planets,apposition,,,14,36,7,11,252,True,Which kinds of stars host planets.
+tenpc_stars,tenpc_stars_spectral_knowledge,spectral_knowledge,apposition,,,14,57,10,12,896,True,How completely each kind of object is catalogued.
+tenpc_stars,tenpc_stars_company_planets,company_planets,apposition,,,11,60,16,9,1184,True,The system an object lives in: its companions and its planets.
+tenpc_stars,tenpc_stars_spectral_company,spectral_company,apposition,,,15,109,16,14,3862,True,"Which kinds of objects come in company, and with what: multiplicity along the temperature sequence."
+tenpc_stars,tenpc_stars_physical,physical,apposition,,,30,311,54,15,38928,True,"Everything about the object and its system, setting aside how it is catalogued."
+tenpc_stars,tenpc_stars,tenpc_stars,full,,,35,732,130,16,233771,True,"The data themselves, the identity scale-measure (id, K)."
+wd40pc,wd40pc_atmosphere,atmosphere,facet,,,2,4,2,3,1,False,What its atmosphere is made of.
+wd40pc,wd40pc_mass,mass,facet,,,3,5,2,4,2,False,How heavy it is.
+wd40pc,wd40pc_temperature,temperature,facet,,,3,4,1,4,0,False,How hot it is.
+wd40pc,wd40pc_age,age,facet,,,3,4,1,4,0,False,How long it has been cooling.
+wd40pc,wd40pc_knowledge,knowledge,facet,,,3,6,2,4,3,False,"How it is seen: whether a fit exists, which reference volume it is in."
+wd40pc,wd40pc_binarity,binarity,facet,,,6,13,5,6,28,True,The company it keeps.
+wd40pc,wd40pc_spectral,spectral,facet,,,8,30,12,5,308,True,What its spectrum shows.
+wd40pc,wd40pc_cooling,cooling,apposition,,,6,14,4,7,27,True,Where it is on its cooling track: how hot it still is and how long it has been cooling.
+wd40pc,wd40pc_mass_binarity,mass_binarity,apposition,,,9,23,9,7,145,True,Whether its mass points to a binary past: low-mass and massive white dwarfs against their company.
+wd40pc,wd40pc_parameters,parameters,apposition,,,9,46,12,9,620,True,"Its fitted physical parameters: how heavy, how hot, how old."
+wd40pc,wd40pc_appearance,appearance,apposition,,,10,47,19,6,839,True,What its spectrum shows and what its atmosphere is made of.
+wd40pc,wd40pc_spectral_knowledge,spectral_knowledge,apposition,,,11,83,25,7,2703,True,"How completely each spectral class is characterised, and how much of it lies in the nearest volumes."
+wd40pc,wd40pc_appearance_temperature,appearance_temperature,apposition,,,13,97,30,8,3798,True,Why it looks the way it does: its spectrum against how hot it is.
+wd40pc,wd40pc_parameters_binarity,parameters_binarity,apposition,,,15,112,28,9,4814,True,"How mass, temperature and age relate to the company it keeps."
+wd40pc,wd40pc_appearance_parameters,appearance_parameters,apposition,,,19,319,74,11,44008,True,"Everything about the white dwarf itself, setting aside its company and how it is catalogued."
+wd40pc,wd40pc_physical,physical,apposition,,,25,534,123,12,129074,True,"Everything about the white dwarf and its company, setting aside how it is catalogued."
+wd40pc,wd40pc,wd40pc,full,,,28,728,154,13,242069,True,"The data themselves, the identity scale-measure (id, K)."
+zoo,zoo_class,class,facet,,,7,9,7,3,21,False,Which zoological class it belongs to.
+zoo,zoo_physiology,physiology,facet,,,8,32,10,6,317,True,"How its body works: reproduction, breathing, venom."
+zoo,zoo_class_physiology,class_physiology,apposition,,,15,56,17,7,1093,True,"How each class reproduces, breathes and defends itself."
+zoo,zoo_anatomy,anatomy,facet,,,18,132,33,9,6747,True,How the animal is built.
+zoo,zoo_ecology,ecology,facet,,,10,135,42,7,7577,True,"How it lives: whether it flies or swims, hunts, is kept by people, how big it is."
+zoo,zoo_class_anatomy,class_anatomy,apposition,,,25,152,34,10,9015,True,How each class of animal is built.
+zoo,zoo_class_ecology,class_ecology,apposition,,,17,268,69,8,31531,True,Where and how each class of animal lives.
+zoo,zoo_anatomy_physiology,anatomy_physiology,apposition,,,26,492,95,13,103730,True,"The animal itself, inside and out, setting aside how it lives."
+zoo,zoo_physiology_ecology,physiology_ecology,apposition,,,18,781,157,11,274419,True,"How its body's workings fit its way of life: breathing in water, venom for hunting."
+zoo,zoo,zoo,full,,,43,4579,,,,False,"The data themselves, the identity scale-measure (id, K)."

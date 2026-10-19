@@ -10,8 +10,8 @@ its extent is an extent of the original context, that is, that it equals its own
 closure there. That is one closure per attribute. Enumerating the extents of the
 scale, which is exponential, is not needed and is not done.
 
-**Nesting.** For RQ4 we need pairs where the coarser view's extents are all
-extents of the finer one. This is checked by enumerating both extent sets, which
+**Nesting.** Comparing drawings across scales needs pairs where the coarser view's
+extents are all extents of the finer one. This is checked by enumerating both extent sets, which
 is affordable at our sizes, and is written out as a matrix so that it is derived
 from the files rather than asserted in prose.
 
@@ -35,8 +35,10 @@ from pathlib import Path
 
 import conceptflow as cf
 
-# CLAUDE.md sets this floor: below eight shared concepts a rank correlation over
-# the shared nodes has too little to work with.
+# Below eight shared concepts a rank correlation over the shared nodes has too
+# little to work with. For a nested pair of drawable
+# scales it never binds: the pair shares every concept of the coarser scale, which
+# has at least 12. It matters only for pairs with a scale outside the drawable band.
 THIN_OVERLAP = 8
 
 

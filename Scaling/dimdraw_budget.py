@@ -6,20 +6,14 @@ Its generator asks odis for a drawing with a 60 second budget:
 DimDraw computes a two-dimension extension, which is NP-hard, so the alternative
 is that the problem is genuinely intractable at that size.
 
-The two have opposite consequences. If the cap is the problem, raise it and
-dimdraw may reach the middle of our range. If the problem is intractable, dimdraw
-is unusable above roughly fifty concepts, and with zschalig and lessink absent and
-dimflux excluded, no structure-driven algorithm is left for RQ2 to contrast.
+The answer is neither alternative as stated: the cost tracks incomparable pairs
+rather than concept count. `Cn5` from DimDraw's own data set consumes any budget at
+32 concepts, while `instruments_family_excitation` finishes in 0.41 s at 27 with
+260 incomparable pairs. There is no single concept count above which it is
+unusable, and a capped result is a legitimate drawing, recorded with its budget.
+See pipeline.md, *What the algorithms do, measured*.
 
-**Answered, and neither alternative as stated.** The cost tracks incomparable
-pairs rather than concept count: `Cn5` from DimDraw's own data set consumes any
-budget at 32 concepts, while our `family-excitation` finishes in 0.41 s at 27 with
-260 incomparable pairs. So there is no single concept count above which it is
-unusable, and the sensitivity check found identical scores at 60 s and 600 s on
-three mid-size scales. dimdraw stays in: it is anytime, and a capped result is a
-legitimate drawing, recorded with its budget. See pipeline.md.
-
-    python dimdraw_budget.py --context contexts/instruments/practice.cxt --budget 600
+    python dimdraw_budget.py --context contexts/instruments/instruments_practice.cxt --budget 600
 """
 import argparse, time
 from pathlib import Path
@@ -28,7 +22,7 @@ import odis
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--context', type=Path,
-                        default=Path('contexts/instruments/practice.cxt'))
+                        default=Path('contexts/instruments/instruments_practice.cxt'))
     parser.add_argument('--budget', type=float, default=600.0,
                         help='seconds given to odis')
     args = parser.parse_args()

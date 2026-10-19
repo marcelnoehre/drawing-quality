@@ -1,0 +1,11 @@
+context,scale,short_name,filename,kind,chain,chain_step,attributes,concepts,width,height,incomparable_pairs,drawable,description,note
+zoo,zoo_class,class,contexts/zoo/zoo_class.cxt,facet,,,7,9,7,3,21,False,Which zoological class it belongs to.,"below the drawable minimum of 12 concepts; recorded, never drawn"
+zoo,zoo_physiology,physiology,contexts/zoo/zoo_physiology.cxt,facet,,,8,32,10,6,317,True,"How its body works: reproduction, breathing, venom.",
+zoo,zoo_class_physiology,class_physiology,contexts/zoo/zoo_class_physiology.cxt,apposition,,,15,56,17,7,1093,True,"How each class reproduces, breathes and defends itself.",
+zoo,zoo_anatomy,anatomy,contexts/zoo/zoo_anatomy.cxt,facet,,,18,132,33,9,6747,True,How the animal is built.,
+zoo,zoo_ecology,ecology,contexts/zoo/zoo_ecology.cxt,facet,,,10,135,42,7,7577,True,"How it lives: whether it flies or swims, hunts, is kept by people, how big it is.",
+zoo,zoo_class_anatomy,class_anatomy,contexts/zoo/zoo_class_anatomy.cxt,apposition,,,25,152,34,10,9015,True,How each class of animal is built.,
+zoo,zoo_class_ecology,class_ecology,contexts/zoo/zoo_class_ecology.cxt,apposition,,,17,268,69,8,31531,True,Where and how each class of animal lives.,
+zoo,zoo_anatomy_physiology,anatomy_physiology,contexts/zoo/zoo_anatomy_physiology.cxt,apposition,,,26,492,95,13,103730,True,"The animal itself, inside and out, setting aside how it lives.",
+zoo,zoo_physiology_ecology,physiology_ecology,contexts/zoo/zoo_physiology_ecology.cxt,apposition,,,18,781,157,11,274419,True,"How its body's workings fit its way of life: breathing in water, venom for hunting.",
+zoo,zoo,zoo,contexts/zoo/zoo.cxt,full,,,43,4579,,,,False,"The data themselves, the identity scale-measure (id, K).","far outside the drawable band; recorded, never drawn"

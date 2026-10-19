@@ -166,3 +166,104 @@ doi:10.5281/zenodo.7669746 · Akeson et al. 2013, PASP 125, 989 · Rein 2012,
 arXiv:1211.7121 · Chen & Kipping 2017, ApJ 834, 17 · Kopparapu et al. 2013, ApJ 765,
 131 · Kopparapu et al. 2014, ApJL 787, L29 · Sanchis-Ojeda et al. 2014, ApJ 787, 47
 · Kaminski et al. 2018, A&A 618, A115.
+
+# Scales of this context
+
+Ten scale-measures, built by `../build_scales.py` and verified by
+`../verify_scale.py`. The groupings, with the reason for each and the candidates
+rejected, are in `groupings.md` beside this file, fixed before any drawing. The
+machine-readable summaries are `manifest.csv` and `nesting.csv`.
+
+| Scale | Kind | One sentence | Attributes | Concepts | Width | Height | Drawn |
+|---|---|---|---|---|---|---|---|
+| `tenpc_exoplanets_planet` | facet | what kind of planet it is | 5 | 10 | 3 | 5 | no |
+| `tenpc_exoplanets_host` | facet | what kind of star it orbits | 3 | 5 | 2 | 4 | no |
+| `tenpc_exoplanets_system` | facet | whether it has company | 2 | 4 | 2 | 3 | no |
+| `tenpc_exoplanets_knowledge` | facet | how it is known, including how far away it is | 6 | 16 | 5 | 7 | yes |
+| `tenpc_exoplanets_host_system` | apposition | the planetary system as a whole | 5 | 15 | 5 | 6 | yes |
+| `tenpc_exoplanets_planet_system` | apposition | whether planets of a given kind come alone or in company | 7 | 30 | 10 | 7 | yes |
+| `tenpc_exoplanets_planet_knowledge` | apposition | how well each kind of planet is known, and by which method | 11 | 73 | 18 | 10 | yes |
+| `tenpc_exoplanets_planet_host` | apposition | which kinds of planets orbit which kinds of stars | 8 | 34 | 9 | 8 | yes |
+| `tenpc_exoplanets_planet_host_system` | apposition | everything about the planet and where it lives, setting aside how we know it | 10 | 79 | 22 | 8 | yes |
+| `tenpc_exoplanets` | full | the data themselves, the identity scale-measure | 16 | 371 | 74 | 12 | yes |
+
+## Why these scales
+
+**The groups are the README's own.** The attributes above are already sorted into
+six groups: mass regime, orbit and irradiation, detection and knowledge,
+architecture, host star, archive status. The scales use four, merged where a group
+is too small to be a view on its own: *planet* (mass regime with orbit and
+irradiation), *host*, *system* (architecture) and *knowledge* (detection with
+archive status). Grouping by what an attribute is about, as the data's own
+documentation already does, rather than by anything a drawing could show, is what
+keeps the choice independent of the results.
+
+**Knowledge is kept apart from the planet.** The Caveats above note that some
+attributes "describe the state of knowledge rather than the object". A concept
+mixing the two answers a muddled question, so the physical views -- planet, host,
+system and their combinations -- never contain a knowledge attribute, and knowledge
+is joined only to the planet, in `planet_knowledge`, where the question *is* how
+the state of knowledge depends on the kind of planet. Two attributes are filed
+differently from the attribute table above for that reason: the minimum-mass flag
+says how a mass is known, not what it is, and **distance** (`host within 5 pc`)
+says where a system is relative to us, not what kind of star the host is. In a
+distance-limited sample, distance is what decides how well a system is seen. The
+companion star context files distance the same way.
+
+**Three facets are recorded but never drawn.** With two to five attributes each,
+planet, host and system have 4 to 10 concepts, below the drawable minimum of 12,
+where every algorithm draws almost the same picture. Knowledge, with six
+attributes, has 16 and is drawn.
+
+**Every apposition answers one question**, written as one sentence in the table.
+Two candidates were rejected for failing that: knowledge joined to the host, and
+knowledge joined to the system, each of which would only say "how we know things
+about planets around these stars".
+
+**There is no refinement chain.** A chain refines a scale with conjunctions that
+reach outside it, along a genuine parent-child hierarchy. The hierarchies here --
+the mass bands, the two instellation edges, M dwarf containing fully convective --
+are already built into the attributes as ordinal pairs, and the planet-class
+typology one might want ("hot Jupiter", "temperate super-Earth") lies wholly inside
+the planet group, where a conjunction adds nothing.
+
+## Nesting
+
+`planet_host_system` is the mid-range root, as `capability_practice_making` is for
+instruments: the three smaller physical views (15, 30 and 34 concepts) nest into it,
+and it nests into the full context. With the knowledge facet nesting into
+`planet_knowledge` and the full context, that gives 10 usable nested pairs, every
+one of them with both scales drawn.
+
+## Two things to know when reading results
+
+- **No drawable scale has two equivalent attributes**, so fdp, which never
+  terminates on such a context, is expected to draw all of them; and no object
+  shares a name with an attribute.
+- **The habitable zone has no node.** As explained above, a planet in the
+  conservative habitable zone is one above the outer edge and not above the inner
+  one, and a negation is never a scale attribute. The 13 such planets are
+  therefore not a concept in any of these scales; they are visible only as the
+  difference between two.
+
+## What is computed from these scales
+
+Of the 10 scales above, **7 are drawable** -- between 12 and 1000 concepts, with
+width at least 3 -- from 15 to 371 concepts; the others are recorded and never
+drawn. Of 23 nested pairs, **10 are usable**: both scales drawable, and sharing at
+least 8 concepts. From these, `../../run_harness.py` computes:
+
+- **a drawing of every drawable scale by each of the eight algorithms**, under a
+  30-minute budget per drawing; one that does not happen is recorded as a failure,
+  with its reason, and counted against the algorithm;
+- **the quality of every drawing**, on the 13 metrics of the drawing-quality
+  analysis;
+- **the consistency of every usable pair**: whether each algorithm keeps the
+  left-to-right order of the coarser scale's concepts in its drawing of the finer
+  one, as Kendall tau against a permutation null;
+- **this context's ranking of the algorithms**, which enters the overall ranking
+  with the same weight as every other context.
+
+The definitions are in `../README.md`, *Drawable and usable*; the results in
+`../../drawings.csv`, `quality.csv`, `consistency.csv` and `ranking.csv`.
+

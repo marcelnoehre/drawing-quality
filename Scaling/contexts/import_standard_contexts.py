@@ -53,6 +53,50 @@ HERE = Path(__file__).resolve().parent
 SOURCE = HERE.parent.parent / "contexts" / "real-world" / "original"
 MARKER = ".imported-from"
 
+# Corrections applied while importing, so that re-importing reproduces them instead
+# of silently undoing a hand edit. Only attribute *labels* are ever corrected here,
+# never an incidence: the lattice of a corrected context is the lattice of its
+# source, under names that say what its columns hold.
+#
+# zoo: the first eleven yes/no variables carry the label of the variable before
+# them in the UCI Zoo order, and the label "venomous" is missing. Checked against
+# the animals, not assumed: "[hair 1]" holds exactly the 20 birds, so it is
+# feathers; "[eggs 1]" exactly the 41 mammals, so it is milk; "[breathes 1]" holds
+# frog, honeybee, pit viper, scorpion, sea snake, sea wasp, stingray and wasp, so it
+# is venomous; no fish has "[backbone 1]", so it is breathes. fins, leg, tail,
+# domestic, catsize and type are correct. Both readers, odis and ConceptFlow, parse
+# the file identically, so this is the file's labelling, not its format.
+LABEL_CORRECTIONS = {
+    "zoo": {
+        "animal-name": "hair", "hair": "feathers", "feathers": "eggs", "eggs": "milk",
+        "milk": "airborne", "airborne": "aquatic", "aquatic": "predator",
+        "predator": "toothed", "toothed": "backbone", "backbone": "breathes",
+        "breathes": "venomous",
+    },
+}
+
+
+def correct_labels(name: str, text: str) -> str:
+    """Apply LABEL_CORRECTIONS to the attribute names of a Burmeister file.
+
+    Attribute names have the form "[variable value]"; only the variable is renamed,
+    all at once, so no rename feeds into another. Objects and incidences are left
+    exactly as they are.
+    """
+    mapping = LABEL_CORRECTIONS.get(name)
+    if not mapping:
+        return text
+    lines = text.split("\n")
+    n_objects, n_attributes = int(lines[2]), int(lines[3])
+    first = 5 + n_objects
+    for i in range(first, first + n_attributes):
+        label = lines[i]
+        if label.startswith("[") and " " in label:
+            variable, rest = label[1:].split(" ", 1)
+            if variable in mapping:
+                lines[i] = f"[{mapping[variable]} {rest}"
+    return "\n".join(lines)
+
 # A lattice bigger than this cannot be drawn legibly at full size. Such contexts
 # are still worth importing: their chain simply has to stop below the top.
 DRAWABLE_LIMIT = 500
@@ -63,6 +107,15 @@ WIDTH_LIMIT = 600
 # Imported whatever its size: the published worked example the construction is
 # checked against before anything larger is scaled.
 BASELINE = {"living_beings_and_water"}
+
+# Qualify on size but are not imported: their attributes are individuals (dolphins,
+# numbered events, unnamed organisations) with no published meaning to group by,
+# and this corpus exists to be scaled by meaning.
+EXCLUDED = {
+    "brunson_club": "organisations unnamed and untyped, nothing to group by",
+    "dolphins": "attributes are individual dolphins, nothing to group by",
+    "southern_woman": "attributes are numbered events, nothing to group by",
+}
 
 # When two files hold the same data, keep these names rather than the first
 # alphabetically: seasoning_planner is the name the literature uses, and
@@ -142,6 +195,8 @@ def qualifies(record: dict, min_concepts: int, min_size: int) -> tuple[bool, str
     if record["twin"]:
         how = "same data as" if record.get("twin_exact") else "same data, relabelled, as"
         return False, f"{how} {record['twin']}"
+    if record["name"] in EXCLUDED:
+        return False, f"excluded: {EXCLUDED[record['name']]}"
     if record["name"] in BASELINE:
         return True, ""
     if record["width"] is not None and record["width"] < 3:
@@ -160,10 +215,13 @@ def import_context(record: dict) -> str:
         return "skipped (folder exists and is not an import)"
     target_dir.mkdir(parents=True, exist_ok=True)
     (target_dir / f"{record['name']}.cxt").write_text(
-        record["path"].read_text(encoding="utf-8"), encoding="utf-8")
+        correct_labels(record["name"], record["path"].read_text(encoding="utf-8")),
+        encoding="utf-8")
+    note = ("attribute labels corrected on import; see LABEL_CORRECTIONS and the README\n"
+            if record["name"] in LABEL_CORRECTIONS else "")
     marker.write_text(
         f"{record['path'].relative_to(HERE.parent.parent.parent)}\n"
-        f"imported by contexts/import_standard_contexts.py\n", encoding="utf-8")
+        f"imported by contexts/import_standard_contexts.py\n{note}", encoding="utf-8")
     return "imported"
 
 

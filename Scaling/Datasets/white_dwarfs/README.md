@@ -44,7 +44,7 @@ Run from inside `pipeline/`. The pipeline reproduces the deliverables byte for b
 ### Input data (`pipeline/data/`)
 
 These are the original files of CDS catalogue J/MNRAS/527/8687, unmodified, as downloaded from
-VizieR by the user.
+VizieR.
 
 | File | Content |
 |---|---|

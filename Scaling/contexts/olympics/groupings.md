@@ -68,7 +68,7 @@ just the two facets listed.
 |---|---|
 | a decision-only level | 8 concepts, under the floor. |
 | refining `venue` by surface within venue type | Adds nothing: 18 concepts before and 18 after. See the construction rule below. |
-| `structure-format-demands` and similar triples | 559 concepts and valid, but over the drawable ceiling and no better a sentence than the triple that fits. |
+| `structure-format-demands` and similar triples | 559 concepts and valid, but over the drawable ceiling and no better a sentence than the triple that fits. *Note, 16 October 2026: the ceiling was 500 when this was written and is now 1000, so the first reason has lapsed; the second stands. The scale is not added now, because these scales have been drawn and their results seen.* |
 | summer against winter as an attribute | Not in the context by design; it would split the lattice trivially in two. |
 
 ## Construction rule learned here
@@ -113,3 +113,32 @@ diagrams are read.
 
 No other conjunctions are used. The facet and apposition scales carry original
 attributes unchanged.
+
+---
+
+## 2026-10-15: scales renamed, groupings unchanged
+
+Every scale file is now named after its parent context, `<context>_<name>.cxt`,
+lowercase with underscores only, so a scale can be identified wherever it ends up.
+Each scale's attributes are also now written in one canonical order shared by all
+scales of this context. Neither change touches a grouping, an attribute or an
+incidence: every scale was checked to have exactly the same lattice as before,
+extent for extent. The record above is left as it was written; this is how its
+names map to the current files.
+
+| Name above | Scale now |
+|---|---|
+| `structure` | `olympics_structure` |
+| `demands` | `olympics_demands` |
+| `equipment` | `olympics_equipment` |
+| `venue` | `olympics_venue` |
+| `format` | `olympics_format` |
+| `institution` | `olympics_institution` |
+| `origins` | `olympics_origins` |
+| `decision-structure` | `olympics_decision_structure` |
+| `decision-structure-format` | `olympics_decision_structure_format` |
+| `equipment-medium` | `olympics_equipment_medium` |
+| `structure-format` | `olympics_structure_format` |
+| `institution-origins` | `olympics_institution_origins` |
+| `venue-equipment` | `olympics_venue_equipment` |
+| `venue-equipment-demands` | `olympics_venue_equipment_demands` |

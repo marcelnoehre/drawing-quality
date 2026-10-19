@@ -4,7 +4,7 @@ Binary formal contexts, one folder each, in Burmeister (`.cxt`) format. These ar
 the full contexts: the data as collected, before any scaling. Scale-measures are
 built from them in a later step and are not part of this folder.
 
-They come from two places. Five were **collected and built here**, and ten are
+They come from two places. Five were **collected and built here**, and seven are
 **standard examples imported** from the surrounding drawing-quality repository.
 
 ## Collected and built here
@@ -73,26 +73,26 @@ with different thresholds removes imports that no longer qualify.
 | `seasoning_planner` | 56 | 37 | 532 | 152 | concepts |
 | `olympic_disciplines` | 50 | 19 | 529 | 88 | concepts |
 | `wood_properties` | 29 | 28 | 315 | 91 | concepts |
-| `dolphins` | 62 | 62 | 282 | 113 | both |
 | `music` | 31 | 11 | 163 | 41 | concepts |
 | `diagnosis` | 120 | 17 | 88 | 22 | both |
-| `southern_woman` | 18 | 14 | 65 | 16 | concepts |
-| `brunson_club` | 25 | 15 | 62 | 21 | concepts |
 | `living_beings_and_water` | 8 | 9 | 19 | 6 | baseline |
 
 The lower end of that table is where the judgement sits. `diagnosis` has only 88
 concepts but 120 objects, so as a drawing problem it is squarely in our range.
-`southern_woman` and `brunson_club` are smaller again, at 65 and 62 concepts, and
-are in because both are classic two-mode network data sets, the Davis Southern Women
-study and a club membership network. They bring a kind of data the rest of the
-corpus lacks, and at that size a chain still has three or four levels. Below them
-the next candidate is `foundedness` at 57 concepts, where the examples become
-textbook illustrations rather than data.
+
+**Three that qualify on size are excluded**: `dolphins` (282 concepts),
+`southern_woman` (65) and `brunson_club` (62). Their attributes are individuals --
+dolphins, numbered events, unnamed organisations -- and no published source says
+anything about them that a grouping could rest on; the groupings analysts have
+proposed for them are derived from these same matrices. This corpus exists to be
+scaled by meaning, so `import_standard_contexts.py` excludes them (`EXCLUDED`, with
+the reason).
 
 **Living Beings and Water is in for a different reason.** With 19 concepts it fails
 the filter, and it is imported anyway because it is the published worked example
-that the construction is validated against before anything larger is scaled. It is a
-method check, not a member of the corpus.
+that the construction is validated against before anything larger is scaled. It is
+also ranked like every other context. Its one usable pair carries little
+information, so the test across contexts is also reported without it.
 
 **The three largest cannot be drawn at full size.** Zoo, the spices planner and the
 olympic disciplines example have lattices of 4579, 532 and 529 concepts. They are
@@ -101,7 +101,7 @@ terminating at the data.
 
 **Duplicates were dropped.** `gewuerz_planer` is the same table as
 `seasoning_planner`. `tealady` is the Southern Women data under first names and
-numbered events, which `southern_woman` carries under the real names of the study,
+numbered events, a twin of the excluded `southern_woman`,
 and `futtertabelle` repeats `bird_diet`; all of those fall below the size filter in
 any case.
 
@@ -114,6 +114,14 @@ As a side effect the measurement reproduces three published numbers exactly: 457
 concepts for zoo and 19 for Living Beings and Water, both as reported by Hanika and
 Hirth, and 532 for the shipped spices file, which is the figure that differs from
 the 421 quoted in their papers.
+
+### Corrections made on import
+
+Imported contexts are copied unchanged, with one exception, made in the import
+script so that re-importing reproduces it: **zoo**, whose first eleven yes/no
+variables carry the label of the variable before them in the source file. Its labels
+are corrected on import; its objects and incidences are untouched. The evidence is
+in `zoo/README.md`, the table in `import_standard_contexts.py`, `LABEL_CORRECTIONS`.
 
 ## How these files are produced
 
@@ -174,8 +182,8 @@ silently. The individual READMEs flag where it would bite.
 
 A scale-measure is a coarser view of one context: the same objects, fewer
 distinctions. Scales live in the folder of the context they come from, so
-`instruments/` holds `instruments.cxt` and, beside it, `excitation.cxt`,
-`family-excitation.cxt` and the rest. The identity scale-measure is the context
+`instruments/` holds `instruments.cxt` and, beside it, `instruments_excitation.cxt`,
+`instruments_family_excitation.cxt` and the rest. The identity scale-measure is the context
 file itself, which is why no copy of it is written.
 
 | File in a context folder | What it is |
@@ -200,21 +208,50 @@ appositions add more, and `nesting.csv` records which pairs those are.
 
 ### Drawable and usable
 
-A scale is **drawable** when a layout algorithm can actually take it: between 12
-and 1000 concepts, with width at least 3. Below that floor every algorithm produces
-the same picture. The ceiling is provisional: it is not from the literature and not
-from the colleague's data, and it is meant to be replaced once the ten algorithms
-have been timed at a few sizes. It is set where it is so that the identity
-scale-measure of the contexts we have is admitted without pretending we know where
-the limit falls. A scale outside the band
-is still built and still measured, because it says something about the data, but
-the `drawable` column exists so that nothing downstream feeds it to a layout run by
-accident. The olympics context is the case in point, at 10463 concepts.
+A scale is **drawable** when it is given to the drawing algorithms: between 12 and
+1000 concepts, with width at least 3. Below 12 concepts every algorithm produces
+nearly the same picture, so there is nothing to compare. Width is the largest set
+of concepts none of which lies above another; at width 1 or 2 the lattice is
+essentially a chain, with nothing to arrange left to right, which is why ordinal
+groups such as a temperature sequence are never drawn on their own. The ceiling of
+1000 keeps a sweep practical; the full olympics lattice, at 10463 concepts, is the
+one scale beyond it. A scale outside the band is still built and measured, because
+it is a legitimate view of the data, and the `drawable` column makes sure nothing
+downstream draws it by accident.
 
-A nested pair is **usable** for a cross-level comparison when it nests, shares at
-least eight concepts, and both sides are drawable. Nesting is set inclusion and
-costs nothing to compute, so pairs involving an undrawable scale stay in the matrix
-and are marked unusable rather than dropped.
+A pair of scales is **nested** when every concept of the coarser one is also a
+concept of the finer one, so the coarser scale's concepts reappear in the finer
+scale's drawing and their positions can be compared. A nested pair is **usable**
+when, in addition, both scales are drawable and they share at least eight concepts,
+fewer being too little for a rank correlation to mean anything. Usable pairs are
+the comparisons the consistency measure is computed on; nesting costs nothing to
+compute, so pairs involving an undrawable scale stay in the matrix and are marked
+unusable rather than dropped.
+
+What is computed from them, per context: a drawing of every drawable scale by each
+of the eight algorithms, the quality of every drawing on 13 metrics, the
+consistency of every usable pair, and a ranking. See the main `README.md`, *What is
+computed*.
+
+### Scaled so far
+
+| Context | Scales | Drawable | Nested pairs | Usable pairs | Drawn sizes (concepts) |
+|---|---|---|---|---|---|
+| `instruments` | 11 | 11 | 17 | 17 | 13–576 |
+| `olympics` | 15 | 14 | 30 | 16 | 12–444 |
+| `tenpc_exoplanets` | 10 | 7 | 23 | 10 | 15–371 |
+| `tenpc_stars` | 14 | 10 | 37 | 19 | 14–732 |
+| `wd40pc` | 17 | 12 | 61 | 35 | 13–728 |
+| `olympic_disciplines` | 8 | 8 | 14 | 14 | 17–529 |
+| `music` | 7 | 5 | 12 | 6 | 12–163 |
+| `diagnosis` | 7 | 6 | 12 | 9 | 18–88 |
+| `zoo` | 10 | 8 | 19 | 7 | 32–781 |
+| `living_beings_and_water` | 2 | 2 | 1 | 1 | 12–19 |
+| `seasoning_planner` | 9 | 8 | 20 | 17 | 37–532 |
+| **all** | **110** | **91** | **246** | **151** | |
+
+Each scaled context's own README lists its scales, says which are drawn and why,
+and ends with *What is computed from these scales*.
 
 Nothing is asserted in prose. `build_scales.py` checks every scale as it writes
 it, and `verify_scale.py` rechecks and regenerates the matrix:

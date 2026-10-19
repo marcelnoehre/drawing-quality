@@ -163,3 +163,95 @@ doi:10.5281/zenodo.7669746 · Golovin et al. 2023, A&A 670, A19 · Chabrier & Ba
 1997, A&A 327, 1039 · Kirkpatrick, Henry & Irwin 1997, AJ 113, 1421 · Kirkpatrick
 2005, ARA&A 43, 195 · Cushing et al. 2011, ApJ 743, 50 · Sion et al. 1983, ApJ 269,
 253 · Eyer et al. 2023, A&A 674, A13.
+
+# Scales of this context
+
+Fourteen scale-measures, built by `../build_scales.py` and verified by
+`../verify_scale.py`. The groupings, with the reason for each and the candidates
+rejected, are in `groupings.md` beside this file, fixed before any drawing. The
+machine-readable summaries are `manifest.csv` and `nesting.csv`.
+
+| Scale | Kind | One sentence | Attributes | Concepts | Width | Height | Drawn |
+|---|---|---|---|---|---|---|---|
+| `tenpc_stars_nature` | facet, step 1 | what kind of object it is | 4 | 8 | 4 | 4 | no |
+| `tenpc_stars_nature_spectral` | chain, step 2 | each kind of object placed on the temperature sequence | 13 | 26 | 5 | 12 | yes |
+| `tenpc_stars_nature_spectral_wd` | chain, step 3 | and the white dwarfs split into their classes | 19 | 35 | 9 | 12 | yes |
+| `tenpc_stars_spectral` | facet | where it sits on the temperature sequence | 9 | 10 | 1 | 10 | no |
+| `tenpc_stars_wd` | facet | the white-dwarf classes | 6 | 11 | 5 | 5 | no |
+| `tenpc_stars_planets` | facet | its planets | 5 | 9 | 3 | 6 | no |
+| `tenpc_stars_company` | facet | the system it belongs to | 6 | 20 | 6 | 7 | yes |
+| `tenpc_stars_knowledge` | facet | what the catalogue records about how it is seen | 5 | 14 | 5 | 5 | yes |
+| `tenpc_stars_spectral_planets` | apposition | which kinds of stars host planets | 14 | 36 | 7 | 11 | yes |
+| `tenpc_stars_spectral_knowledge` | apposition | how completely each kind of object is catalogued | 14 | 57 | 10 | 12 | yes |
+| `tenpc_stars_company_planets` | apposition | its companions and its planets | 11 | 60 | 16 | 9 | yes |
+| `tenpc_stars_spectral_company` | apposition | multiplicity along the temperature sequence | 15 | 109 | 16 | 14 | yes |
+| `tenpc_stars_physical` | apposition | everything about the object and its system, setting aside how it is catalogued | 30 | 311 | 54 | 15 | yes |
+| `tenpc_stars` | full | the data themselves, the identity scale-measure | 35 | 732 | 130 | 16 | yes |
+
+## Why these scales
+
+**The groups are the README's own**, with catalogue facts kept apart from the
+object, as the Caveats above ask. The emission-line flag is "about the catalogue,
+not the star", the candidate flag says a class is unconfirmed, the Gaia variability
+flag says what Gaia DR3 reported, and distance and Gaia photometry say how an
+object is seen from here; together they form *knowledge*. The subdwarf flag says
+what kind of object it is and joins *nature*. Distance is treated the same way in
+the companion exoplanet context, since it is the same fact about the same systems.
+
+**There is one real hierarchy, built as a chain.** Classification goes from what
+kind of object it is, to its spectral type, which covers everything but white
+dwarfs, to the white dwarfs' own classes. Each step keeps everything before it. The
+first step has only 8 concepts and is recorded but not drawn; the last step grows
+only 1.35 times, because only 21 objects are white dwarfs, and is flagged as a
+shallow transition.
+
+**The spectral sequence alone is never drawn.** Every spectral class contains the
+next (G or later contains K or later, and so on), so its lattice is a chain of
+width 1: there is nothing for a layout algorithm to arrange. It enters the
+drawable scales in combination with something else.
+
+**Every apposition answers one question**, written as one sentence in the table.
+`physical` is the mid-range root: every drawable physical view nests into it, and
+it nests into the full context, as `capability_practice_making` does for
+instruments. Two broader combinations were rejected as the physical view with
+groups left out, with no question of their own, and knowledge joined to company or
+to planets failed the one-sentence test.
+
+## Nesting
+
+37 nested pairs, of which 19 have both scales drawn: the classification chain
+(26 into 35), every drawable physical view into `physical`, and every drawable
+scale into the full context. `knowledge` nests into `spectral_knowledge` and the full
+context only, as the one group that is not physical. For a ladder figure, `company`
+(20) nests into `company_planets` (60), `physical` (311) and the full context (732).
+
+## Two things to know when reading results
+
+- **No drawable scale has two equivalent attributes**, so fdp is expected to draw
+  all of them, and no object shares a name with an attribute.
+- **The two smallest drawable scales are knowledge (14) and company (20).** A
+  comparison from one of them carries little information when the scale it nests
+  into is large; the permutation null accounts for that, and the ranking compares
+  algorithms only on the same pair.
+
+## What is computed from these scales
+
+Of the 14 scales above, **10 are drawable** -- between 12 and 1000 concepts, with
+width at least 3 -- from 14 to 732 concepts; the others are recorded and never
+drawn. Of 37 nested pairs, **19 are usable**: both scales drawable, and sharing at
+least 8 concepts. From these, `../../run_harness.py` computes:
+
+- **a drawing of every drawable scale by each of the eight algorithms**, under a
+  30-minute budget per drawing; one that does not happen is recorded as a failure,
+  with its reason, and counted against the algorithm;
+- **the quality of every drawing**, on the 13 metrics of the drawing-quality
+  analysis;
+- **the consistency of every usable pair**: whether each algorithm keeps the
+  left-to-right order of the coarser scale's concepts in its drawing of the finer
+  one, as Kendall tau against a permutation null;
+- **this context's ranking of the algorithms**, which enters the overall ranking
+  with the same weight as every other context.
+
+The definitions are in `../README.md`, *Drawable and usable*; the results in
+`../../drawings.csv`, `quality.csv`, `consistency.csv` and `ranking.csv`.
+

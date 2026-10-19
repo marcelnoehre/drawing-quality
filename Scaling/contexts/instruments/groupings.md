@@ -95,3 +95,28 @@ result.
 
 No other conjunctions are used. The facet and apposition scales carry original
 attributes unchanged.
+
+---
+
+## 2026-10-15: scales renamed, groupings unchanged
+
+Every scale file is now named after its parent context, `<context>_<name>.cxt`,
+lowercase with underscores only, so a scale can be identified wherever it ends up.
+Each scale's attributes are also now written in one canonical order shared by all
+scales of this context. Neither change touches a grouping, an attribute or an
+incidence: every scale was checked to have exactly the same lattice as before,
+extent for extent. The record above is left as it was written; this is how its
+names map to the current files.
+
+| Name above | Scale now |
+|---|---|
+| `excitation` | `instruments_excitation` |
+| `capability` | `instruments_capability` |
+| `practice` | `instruments_practice` |
+| `making` | `instruments_making` |
+| `family-excitation` | `instruments_family_excitation` |
+| `family-excitation-mechanism` | `instruments_family_excitation_mechanism` |
+| `playing-mechanism` | `instruments_playing_mechanism` |
+| `family-making` | `instruments_family_making` |
+| `family-practice` | `instruments_family_practice` |
+| `capability-practice-making` | `instruments_capability_practice_making` |
