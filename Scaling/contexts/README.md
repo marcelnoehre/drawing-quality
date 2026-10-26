@@ -229,7 +229,7 @@ compute, so pairs involving an undrawable scale stay in the matrix and are marke
 unusable rather than dropped.
 
 What is computed from them, per context: a drawing of every drawable scale by each
-of the eight algorithms, the quality of every drawing on 13 metrics, the
+of the eight algorithms, the quality of every drawing on 14 metrics, the
 consistency of every usable pair, and a ranking. See the main `README.md`, *What is
 computed*.
 

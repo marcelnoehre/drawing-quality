@@ -1,6 +1,6 @@
 """Draw every scale with every algorithm, score and compare the drawings, rank the algorithms.
 
-Four passes -- draw, score on the thirteen quality metrics, compare across scales, rank --
+Four passes -- draw, score on the fourteen quality metrics, compare across scales, rank --
 each idempotent and cached, each writing long-format CSVs. Long format rather
 than wide: contexts have different numbers of scales, so a column per scale would
 break the first time a context is added, while different scale counts are just
@@ -15,7 +15,7 @@ different row counts here.
 |---|---|
 | `scales.csv` | scale, copied from the per-context manifests |
 | `drawings.csv` | scale x algorithm: status, failure reason, runtime |
-| `quality.csv` | scale x algorithm: the thirteen quality scores |
+| `quality.csv` | scale x algorithm: the fourteen quality scores |
 | `consistency.csv` | nested pair x algorithm: tau, rank drift, the permutation null |
 | `consistency_strata.csv` | nested pair x algorithm x rank stratum |
 | `ranking.csv`, `sensitivity.csv`, `profile.csv` | written by `ranking.py` from the files above |
@@ -449,11 +449,11 @@ def drawing_row(spec: dict, algorithm: str, previous: dict, retry_failed: bool) 
 
 
 # ---------------------------------------------------------------------------
-# Pass 2: drawing quality, the thirteen metrics
+# Pass 2: drawing quality, the fourteen metrics
 # ---------------------------------------------------------------------------
 
 def quality_row(job: tuple[str, str, str, str]) -> dict:
-    """Score one drawing on the thirteen metrics the repository's analysis uses.
+    """Score one drawing on the fourteen metrics the repository's analysis uses.
 
     Every score must be present, a finite number and within [0, 1] -- the range the
     metrics are defined on. Anything else is refused here, where it can be traced to
@@ -678,6 +678,14 @@ def main() -> int:
     # Whatever succeeded is saved, whatever failed is listed; the run then stops
     # before the ranking, which would refuse an unscored drawing anyway.
     merge_csv(HERE / "quality.csv", quality_rows, ("context", "scale", "algorithm"))
+    # Scores of anything that is not (or no longer) a valid drawing -- a failure, an
+    # invalid layout, a drawing of an older file -- are removed, not left to linger.
+    # Only the current metrics are kept as columns, so a metric the repository has
+    # retired does not survive as an empty column.
+    columns = ["context", "scale", "algorithm", *QUALITY_METRICS, "fingerprint"]
+    kept = [{k: r.get(k, "") for k in columns} for r in read_csv(HERE / "quality.csv")
+            if status.get((r["context"], r["scale"], r["algorithm"])) in ("drawn", "cached")]
+    write_csv(HERE / "quality.csv", kept)
     print(f"\nquality: {len(quality_rows)} drawings scored, the rest unchanged since last time")
 
     contexts = sorted({s["context"] for s in scales})

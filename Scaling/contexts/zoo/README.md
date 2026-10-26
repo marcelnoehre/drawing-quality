@@ -190,7 +190,7 @@ concepts. From these, `../../run_harness.py` computes:
 - **a drawing of every drawable scale by each of the eight algorithms**, under a
   30-minute budget per drawing; one that does not happen is recorded as a failure,
   with its reason, and counted against the algorithm;
-- **the quality of every drawing**, on the 13 metrics of the drawing-quality
+- **the quality of every drawing**, on the 14 metrics of the drawing-quality
   analysis;
 - **the consistency of every usable pair**: whether each algorithm keeps the
   left-to-right order of the coarser scale's concepts in its drawing of the finer

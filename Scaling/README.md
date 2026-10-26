@@ -39,7 +39,7 @@ that draws and measures them, and the results.
 | `consistency.py` | Kendall tau on x-ranks and its magnitude, rank drift, per-stratum tau. `--self-test` runs three adversarial fixtures. |
 | `nulls.py` | The permutation null, restricted to rank strata. `--self-test`. |
 | `run_harness.py` | Draws every scale with every algorithm under a 30-minute budget, scores the drawings, compares across scales, then ranks. Recomputes only what changed. |
-| `ranking.py` | Ranks the algorithms on quality (the repository's 13 metrics in its four families), on consistency, and on both combined, penalising failed drawings and weighting each view by log₂ of its size; writes the weight sweep and the profile. |
+| `ranking.py` | Ranks the algorithms on quality (the repository's 14 metrics in its four families), on consistency, and on both combined, penalising failed drawings and weighting each view by log₂ of its size; writes the weight sweep and the profile. |
 | `ladder_figure.py` | The best and the worst algorithm drawing one ladder of nested scales, the followed concepts coloured by position. |
 | `robustness.py` | Repeats the test across contexts without Living Beings and Water, with astronomy as one case, and with pairwise Wilcoxon tests; writes `robustness.csv`. |
 | `column_order.py` | Draws four scales under shuffled columns and rows and compares with the canonical drawings; writes `column_order.csv`, and with `--figure` the column-order figure. |
@@ -53,7 +53,7 @@ All are long format — one row per observation, never one column per level.
 |---|---|
 | `scales.csv` | scale: size, width, height, incomparable pairs, whether it is worth drawing |
 | `drawings.csv` | (scale, algorithm): status — drawn, or how it failed and why — and runtime |
-| `quality.csv` | (scale, algorithm): the 13 metric scores of the drawing |
+| `quality.csv` | (scale, algorithm): the 14 metric scores of the drawing |
 | `consistency.csv` | (nested pair, algorithm): tau, rank drift, the null, the stratum summary |
 | `consistency_strata.csv` | (nested pair, algorithm, rank stratum): tau within that stratum |
 | `ranking.csv` | (context, view weighting, measure, algorithm): mean rank, 1 = best, for quality, consistency and combined |
@@ -87,7 +87,7 @@ computations.
    30-minute budget per drawing. A drawing that does not happen is a failure --
    declined, timed out, crashed or known not to terminate -- recorded with its
    reason and counted against the algorithm, never dropped.
-2. **Score** every drawing on the 13 metrics of the drawing-quality analysis, in its
+2. **Score** every drawing on the 14 metrics of the drawing-quality analysis, in its
    four families: crossings, layering, slopes, clearance.
 3. **Compare** each usable pair: does the algorithm keep the left-to-right order of
    the coarser scale's concepts in its drawing of the finer one -- one way round or

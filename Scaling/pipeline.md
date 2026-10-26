@@ -41,7 +41,7 @@ intact as the view grows; this can.
 | Pass | Does | Writes |
 |---|---|---|
 | 1. draw | every algorithm draws every drawable scale, under a time budget | `drawings.csv`, `graphml/`, `drawings/` |
-| 2. score | every drawing is scored on the 13 quality metrics of the repository's analysis | `quality.csv` |
+| 2. score | every drawing is scored on the 14 quality metrics of the repository's analysis | `quality.csv` |
 | 3. compare | for every usable nested pair, how far each algorithm kept the coarser scale's concepts in their left-to-right order | `consistency.csv`, `consistency_strata.csv` |
 | 4. rank | the algorithms on quality, on consistency and on both, per context and across contexts, with a significance test | `ranking.csv`, `sensitivity.csv`, `profile.csv`, `friedman.csv` |
 
@@ -273,7 +273,7 @@ against:
 
 | Component | Version |
 |---|---|
-| `drawing-quality` (this repository's generators and metrics) | `d552419be28e2d278b16e38ef0a3b98863ca7688` |
+| `drawing-quality` (this repository's generators and metrics) | `112731db0662915d571f2553682d804ffd298e81` |
 | `domduerr/redraw` | `80f62a97a5ff41d173b61113cc90f80864f49f41` |
 | conexp-clj | 3.1.0 standalone, OpenJDK 25 |
 | `odis-python` | 2026.9.1 |
@@ -286,14 +286,14 @@ After updating any generator, redraw rather than reuse cached drawings.
 
 # Quality
 
-Every drawing is scored on the **13 metrics** the repository's own analysis uses
+Every drawing is scored on the **14 metrics** the repository's own analysis uses
 (`analysis/results.ipynb`), in its four families:
 
 | Family | Metrics |
 |---|---|
 | Crossings | `edge_crossing`, `crossing_angle` |
 | Layering | `layer_consistency`, `vertical_axis_balance` |
-| Slopes | `slope_verticality`, `slope_harmony`, `edge_length_uniformity`, `slope_standard`, `visual_chain_linearity` |
+| Slopes | `slope_verticality`, `slope_economy`, `slope_parallelism`, `edge_length_uniformity`, `slope_standard`, `visual_chain_linearity` |
 | Clearance | `node_edge_conflict`, `node_node_conflict`, `edge_edge_conflict`, `nested_suitability` |
 
 Each score lies in [0, 1], 1 best. A score that is missing, not a number or outside
@@ -445,7 +445,7 @@ simply last.
 
 | Case | What it means | How the ranking treats it |
 |---|---|---|
-| **Failed** (`declined`, `timeout`, `error`, `nonterminating`) | the algorithm was asked to draw the scale and did not produce a drawing | **penalised**: last place, shared with the other failures, on all 13 metrics of that scale and on every usable pair the scale is part of, weighted by the size of the scale (below) |
+| **Failed** (`declined`, `timeout`, `error`, `nonterminating`, `invalid`) | the algorithm was asked to draw the scale and did not produce a drawing | **penalised**: last place, shared with the other failures, on all 14 metrics of that scale and on every usable pair the scale is part of, weighted by the size of the scale (below) |
 | **Not attempted** | the algorithm has not been run on that scale | the context is **not ranked** until it has been; never treated as a failure, and never a reason to drop the algorithm |
 | **Drawn but not scored** | a drawing exists but its scores are missing or not numbers | **an error that stops the ranking**: the gap is in the pipeline, not the algorithm's |
 
@@ -647,7 +647,7 @@ left. **Rank stratum**: concepts at the same height in the lattice.
 | | `runtime_s`, `wall_budget_s` | seconds for the whole drawing, and the budget it ran under, in seconds |
 | | `internal_budget_s`, `used_internal_budget` | the algorithm's own budget, and whether the drawing used all of it, where that can be inferred |
 | | `source_sha256` | the exact `.cxt` drawn |
-| `quality.csv` | the 13 metrics | scores of one drawing, each in [0, 1], 1 best |
+| `quality.csv` | the 14 metrics | scores of one drawing, each in [0, 1], 1 best |
 | `ranking.csv` | `measure` | `crossings`, `layering`, `slopes`, `clearance`, `quality` (their mean), `consistency` (by \|tau\|), `combined`, `combined_half`, `consistency_signed`, `combined_signed` |
 | | `view_weighting` | `log2`, the ranking, or `equal` |
 | | `mean_rank` | 1 best on every comparison; with k algorithms, k last everywhere |
@@ -800,21 +800,21 @@ equally. All numbers are in `ranking.csv`, `friedman.csv`, `sensitivity.csv` and
 
 | Algorithm | Crossings | Layering | Slopes | Clearance | **Quality** | **Consistency** | **Combined** | Half and half | Every view equal | Consistency, signed |
 |---|---|---|---|---|---|---|---|---|---|---|
-| dimdraw | 2.22 | 3.39 | 2.86 | 3.58 | **3.01** | **3.23** | **3.06** | 3.12 | 3.18 | 4.11 |
-| dimflux | 2.93 | 4.63 | 4.82 | 2.74 | **3.78** | **3.43** | **3.71** | 3.61 | 3.77 | 4.14 |
-| sugiyama | 4.65 | 3.82 | 4.18 | 4.28 | **4.23** | **3.46** | **4.08** | 3.85 | 4.13 | 3.25 |
-| freese | 5.23 | 2.81 | 4.48 | 5.23 | **4.44** | **5.07** | **4.56** | 4.75 | 4.44 | 5.45 |
-| fdp | 3.71 | 6.05 | 4.19 | 4.83 | **4.70** | **4.12** | **4.58** | 4.41 | 4.68 | 3.68 |
-| aeschlimann_schmid | 5.49 | 3.58 | 4.56 | 4.76 | **4.60** | **4.56** | **4.59** | 4.58 | 4.73 | 3.40 |
-| cole_ducrou_eklund | 5.40 | 5.15 | 4.89 | 4.16 | **4.90** | **5.46** | **5.01** | 5.18 | 4.82 | 5.42 |
-| redraw | 6.37 | 6.56 | 6.01 | 6.41 | **6.34** | **6.67** | **6.40** | 6.50 | 6.26 | 6.56 |
+| dimdraw | 2.22 | 3.39 | 2.99 | 3.58 | **3.05** | **3.23** | **3.08** | 3.14 | 3.21 | 4.11 |
+| dimflux | 2.93 | 4.63 | 4.67 | 2.74 | **3.74** | **3.43** | **3.68** | 3.59 | 3.73 | 4.14 |
+| sugiyama | 4.65 | 3.82 | 4.22 | 4.28 | **4.24** | **3.46** | **4.09** | 3.85 | 4.15 | 3.25 |
+| fdp | 3.71 | 6.05 | 3.95 | 4.83 | **4.64** | **4.12** | **4.53** | 4.38 | 4.62 | 3.68 |
+| freese | 5.23 | 2.81 | 4.72 | 5.23 | **4.50** | **5.07** | **4.61** | 4.78 | 4.49 | 5.45 |
+| aeschlimann_schmid | 5.49 | 3.58 | 4.72 | 4.76 | **4.64** | **4.56** | **4.62** | 4.60 | 4.76 | 3.40 |
+| cole_ducrou_eklund | 5.40 | 5.15 | 4.58 | 4.16 | **4.83** | **5.46** | **4.95** | 5.14 | 4.76 | 5.42 |
+| redraw | 6.37 | 6.56 | 6.15 | 6.41 | **6.37** | **6.67** | **6.43** | 6.52 | 6.29 | 6.56 |
 
 - **dimdraw is first in every one of the 11 contexts**, and first overall for every
   weight on consistency from 0 to 1 (`sensitivity.csv`), with every view counting
   equally, and with signed tau.
-- **dimflux is second**; sugiyama, freese, fdp and aeschlimann_schmid lie within
-  half a rank of one another, so their order among themselves is not settled;
-  cole_ducrou_eklund and redraw are last.
+- **dimflux is second**; sugiyama, fdp, freese and aeschlimann_schmid follow
+  between 4.09 and 4.62, freese and aeschlimann_schmid only 0.01 apart, so their
+  order among themselves is not settled; cole_ducrou_eklund and redraw are last.
 - **Consistency by |tau| and by signed tau rank the algorithms differently**:
   sugiyama, aeschlimann_schmid and fdp keep much of their order *mirrored*, so
   signed tau ranks them as the most consistent and |tau| does not. dimdraw is the
@@ -824,17 +824,17 @@ Per context, combined:
 
 | Context | First | Second | Third | Last |
 |---|---|---|---|---|
-| diagnosis | dimdraw 3.32 | freese 3.65 | dimflux 3.86 | redraw 6.39 |
-| instruments | dimdraw 2.86 | dimflux 3.76 | sugiyama 3.82 | fdp 5.99 |
-| living_beings_and_water | dimdraw 3.50 | dimflux 3.90 | cole_ducrou_eklund 3.98 | fdp 5.40 |
-| music | dimdraw 3.22 | dimflux 3.41 | freese 3.76 | redraw 6.50 |
-| olympic_disciplines | dimdraw 3.14 | dimflux 3.60 | fdp 3.81 | redraw 6.89 |
-| olympics | dimdraw 3.36 | dimflux 3.83 | freese 3.85 | redraw 6.42 |
-| seasoning_planner | dimdraw 2.46 | dimflux 3.19 | fdp 3.51 | redraw 6.95 |
-| tenpc_exoplanets | dimdraw 3.24 | fdp 3.41 | dimflux 3.62 | redraw 6.83 |
-| tenpc_stars | dimdraw 3.13 | sugiyama 3.66 | aeschlimann_schmid 4.17 | redraw 6.21 |
-| wd40pc | dimdraw 2.80 | fdp 3.87 | dimflux 3.91 | redraw 6.60 |
-| zoo | dimdraw 2.57 | dimflux 3.48 | sugiyama 3.64 | redraw 6.82 |
+| diagnosis | dimdraw 3.38 | freese 3.73 | dimflux 3.86 | redraw 6.40 |
+| instruments | dimdraw 2.89 | dimflux 3.75 | sugiyama 3.81 | fdp 5.95 |
+| living_beings_and_water | dimdraw 3.47 | dimflux 3.87 | cole_ducrou_eklund 3.92 | fdp 5.44 |
+| music | dimdraw 3.27 | dimflux 3.31 | freese 3.80 | redraw 6.54 |
+| olympic_disciplines | dimdraw 3.19 | dimflux 3.54 | fdp 3.75 | redraw 6.93 |
+| olympics | dimdraw 3.39 | dimflux 3.80 | freese 3.93 | redraw 6.43 |
+| seasoning_planner | dimdraw 2.49 | dimflux 3.22 | fdp 3.46 | redraw 6.97 |
+| tenpc_exoplanets | dimdraw 3.29 | fdp 3.31 | dimflux 3.56 | redraw 6.85 |
+| tenpc_stars | dimdraw 3.15 | sugiyama 3.72 | aeschlimann_schmid 4.20 | redraw 6.25 |
+| wd40pc | dimdraw 2.81 | fdp 3.82 | dimflux 3.90 | redraw 6.62 |
+| zoo | dimdraw 2.58 | dimflux 3.44 | sugiyama 3.64 | redraw 6.83 |
 
 ## Across contexts
 
@@ -900,9 +900,9 @@ as the view grows. 165 comparisons have tau below −0.5, so near-mirrors are co
 | redraw | 52 | 39 timeouts |
 
 The longest successful drawing took 28 minutes (redraw). Ten drawings needed more
-than 15 minutes; counting them as timeouts, as a 15-minute budget would, leaves the
-order of the algorithms unchanged, and redraw, which gains most from the longer
-budget, stays last.
+than 15 minutes; counting them as timeouts, as a 15-minute budget would, changes
+the order only by swapping freese and aeschlimann_schmid, which are 0.01 apart, and
+redraw, which gains most from the longer budget, stays last.
 
 ## Ladder figures
 

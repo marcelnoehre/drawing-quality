@@ -4,7 +4,7 @@
 that hardly moves anything because it barely lays anything out: the most stable
 layouts are not the best ones. So each algorithm is ranked on
 
-* **drawing quality**, by the thirteen metrics of the surrounding repository and
+* **drawing quality**, by the fourteen metrics of the surrounding repository and
   exactly the aggregation its own analysis uses (`analysis/results.ipynb`):
   ranks within each lattice, averaged within each of four families -- Crossings,
   Layering, Slopes, Clearance -- and the families averaged with equal weight; and
@@ -87,8 +87,8 @@ DRAWN = ("drawn", "cached")
 QUALITY_FAMILIES = {
     "crossings": ["edge_crossing", "crossing_angle"],
     "layering": ["layer_consistency", "vertical_axis_balance"],
-    "slopes": ["slope_verticality", "slope_harmony", "edge_length_uniformity",
-               "slope_standard", "visual_chain_linearity"],
+    "slopes": ["slope_verticality", "slope_economy", "slope_parallelism",
+               "edge_length_uniformity", "slope_standard", "visual_chain_linearity"],
     "clearance": ["node_edge_conflict", "node_node_conflict", "edge_edge_conflict",
                   "nested_suitability"],
 }

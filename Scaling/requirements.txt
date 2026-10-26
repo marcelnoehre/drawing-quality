@@ -24,7 +24,7 @@ requests==2.34.2
 scikit-learn==1.9.1
 
 # Not installable with pip, and pinned in pipeline.md under "Pinned versions":
-#   marcelnoehre/drawing-quality   d552419be28e2d278b16e38ef0a3b98863ca7688
+#   marcelnoehre/drawing-quality   112731db0662915d571f2553682d804ffd298e81
 #   domduerr/redraw                80f62a97a5ff41d173b61113cc90f80864f49f41
 #   conexp-clj                     3.1.0 standalone, openjdk 25, served on :8080
 #   Python                         3.14.4
