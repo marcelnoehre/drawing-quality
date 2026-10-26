@@ -32,7 +32,8 @@ from lattice_metrics.node_conflict import nearest_node_distances, node_node_conf
 from lattice_metrics.slopes import (
     DEFAULT_ANGLE_TOLERANCE,
     edge_min_slope,
-    slope_harmony_score,
+    slope_economy_score,
+    slope_parallelism_score,
     slope_standard_score,
     slope_verticality_score,
 )
@@ -354,10 +355,109 @@ def test_node_node_conflict_min_score_is_closest_pair_on_score_scale():
 
 # ----------------------------------------------------------------- slope ---
 
-def test_uniform_slopes_score_higher_than_mixed():
-    uniform = layout_of(DIAMOND_EDGES, {'a': (0, 2), 'b': (-1, 1), 'c': (1, 1), 'd': (0, 0)})
-    mixed = layout_of(DIAMOND_EDGES, {'a': (0, 2), 'b': (-5, 1), 'c': (1, 1.9), 'd': (0, 0)})
-    assert slope_harmony_score(uniform) > slope_harmony_score(mixed)
+def test_vertical_chain_is_maximally_economical():
+    layout = layout_of(CHAIN_EDGES, {'a': (0, 0), 'b': (0, 1), 'c': (0, 2), 'd': (0, 3)})
+    assert slope_economy_score(layout) == pytest.approx(1.0)
+
+
+def test_zigzag_chain_uses_twice_the_needed_directions():
+    # A chain needs one direction; the zigzag uses two.
+    layout = layout_of(CHAIN_EDGES, {'a': (0, 0), 'b': (1, 1), 'c': (0, 2), 'd': (1, 3)})
+    assert slope_economy_score(layout) == pytest.approx(0.5)
+
+
+def test_economy_is_independent_of_edge_count():
+    # The size dependence of the old entropy-based slope harmony: two
+    # directions on a chain score the same, however long the chain.
+    def zigzag(n):
+        edges = [(i, i + 1) for i in range(n)]
+        return layout_of(edges, {i: (i % 2, i) for i in range(n + 1)})
+    assert slope_economy_score(zigzag(4)) == pytest.approx(slope_economy_score(zigzag(20)))
+
+
+B3_EDGES = [
+    ('0', 'a'), ('0', 'b'), ('0', 'c'),
+    ('a', 'ab'), ('a', 'ac'), ('b', 'ab'), ('b', 'bc'), ('c', 'ac'), ('c', 'bc'),
+    ('ab', '1'), ('ac', '1'), ('bc', '1'),
+]
+
+
+def additive_b3():
+    vec = {'a': np.array([-1.0, 1.0]), 'b': np.array([0.0, 1.0]), 'c': np.array([1.0, 1.0])}
+    positions = {}
+    for node in ['0', 'a', 'b', 'c', 'ab', 'ac', 'bc', '1']:
+        atoms = 'abc' if node == '1' else node.strip('0')
+        positions[node] = tuple(sum((vec[x] for x in atoms), np.zeros(2)))
+    return layout_of(B3_EDGES, positions)
+
+
+def test_additive_boolean_lattice_is_ideal():
+    # B3 needs three directions (three atoms); an additive drawing uses
+    # exactly those and draws every covering square as a parallelogram.
+    layout = additive_b3()
+    assert slope_economy_score(layout) == pytest.approx(1.0)
+    assert slope_parallelism_score(layout) == pytest.approx(1.0)
+
+
+def test_additive_drawing_from_dilworth_chains_is_ideal():
+    # O(P) for P = {x < y, z}: the 3 x 2 grid. width(P) = 2, so the chain
+    # x < y shares one vector and z gets the other -- two directions,
+    # although P has three join-irreducibles.
+    grid = {(i, j): (j - i, i + j) for i in range(3) for j in range(2)}
+    edges = [((i, j), (i + 1, j)) for i in range(2) for j in range(2)]
+    edges += [((i, 0), (i, 1)) for i in range(3)]
+    layout = layout_of(edges, grid)
+    assert slope_economy_score(layout) == pytest.approx(1.0)
+    assert slope_parallelism_score(layout) == pytest.approx(1.0)
+
+
+DIAMOND_UP_EDGES = [('0', 'a'), ('0', 'b'), ('a', '1'), ('b', '1')]
+
+
+def test_kite_square_is_neither_economical_nor_parallel():
+    # Four directions where two suffice, and both opposite pairs skewed.
+    layout = layout_of(DIAMOND_UP_EDGES, {'0': (0, 0), 'a': (-1, 1), 'b': (1, 1), '1': (0, 3)})
+    assert slope_economy_score(layout) == pytest.approx(0.5)
+    assert slope_parallelism_score(layout) == pytest.approx(0.0)
+
+
+def test_left_and_right_leaning_edges_are_different_directions():
+    # A rhombus uses exactly the two directions its bottom element forces;
+    # folding mirror images together would claim only one.
+    layout = layout_of(DIAMOND_UP_EDGES, {'0': (0, 0), 'a': (-1, 1), 'b': (1, 1), '1': (0, 2)})
+    assert slope_economy_score(layout) == pytest.approx(1.0)
+    assert slope_parallelism_score(layout) == pytest.approx(1.0)
+
+
+M3_EDGES = [('0', 'a'), ('0', 'b'), ('0', 'c'), ('a', '1'), ('b', '1'), ('c', '1')]
+
+
+def test_m3_known_values():
+    # Three directions are forced and suffice. Only the outer square (a, c)
+    # is a parallelogram: 2 of 6 opposite pairs are parallel.
+    layout = layout_of(M3_EDGES, {'0': (0, 0), 'a': (-1, 1), 'b': (0, 1), 'c': (1, 1), '1': (0, 2)})
+    assert slope_economy_score(layout) == pytest.approx(1.0)
+    assert slope_parallelism_score(layout) == pytest.approx(2 / 6)
+
+
+def test_m3_with_a_fourth_direction():
+    layout = layout_of(M3_EDGES, {'0': (0, 0), 'a': (-1, 1), 'b': (0, 1), 'c': (1, 1), '1': (0, 3)})
+    assert slope_economy_score(layout) == pytest.approx(3 / 5)
+
+
+def test_parallelism_without_covering_squares_is_vacuous():
+    n5 = [('0', 'a'), ('a', 'b'), ('b', '1'), ('0', 'c'), ('c', '1')]
+    layout = layout_of(n5, {'0': (0, 0), 'a': (-1, 1), 'b': (-1, 2), 'c': (1, 1.5), '1': (0, 3)})
+    assert slope_parallelism_score(layout) == pytest.approx(1.0)
+
+
+def test_directions_near_the_wraparound_cluster_together():
+    # 359 and 1 degrees are 2 degrees apart, not 358.
+    layout = layout_of([('a', 'b'), ('c', 'd')], {
+        'a': (0, 0), 'b': (np.cos(np.radians(-1)), np.sin(np.radians(-1))),
+        'c': (0, 5), 'd': (np.cos(np.radians(1)), 5 + np.sin(np.radians(1))),
+    })
+    assert slope_economy_score(layout) == pytest.approx(1.0)
 
 
 def test_forty_five_degree_edges_are_maximally_standard():
@@ -401,8 +501,7 @@ def test_edge_min_slope_none_when_no_edges():
 
 def test_edge_min_slope_reports_min_angle_from_horizontal():
     '''
-    Neither slope_harmony_score (only cares whether edges agree with each
-    other) nor slope_standard_score (averages over all edges) flags a
+    Neither slope_economy_score (only counts directions) nor slope_standard_score (averages over all edges) flags a
     single near-horizontal edge on its own -- the minimum here is what actually surfaces that risk, since a
     near-horizontal edge in a Hasse diagram makes it hard to tell which
     endpoint sits above the other in the order.
@@ -537,15 +636,15 @@ def test_near_parallel_incident_edges_penalized():
     assert edge_edge_conflict_score(layout) < 1.0
 
 
-def test_catches_what_slope_harmony_does_not():
-    # slope_harmony_score *rewards* p1 and p2 for sharing (almost) the same
-    # slope -- with only one slope cluster in the whole drawing, it scores
-    # a perfect 1.0. But the two edges meet at a single shared vertex, so
+def test_catches_what_slope_economy_does_not():
+    # slope_economy_score does not penalize p1 and p2 for sharing (almost)
+    # the same direction -- one direction cluster where two are forced is
+    # clipped to a perfect 1.0. But the two edges meet at a single shared vertex, so
     # that same near-identical slope is exactly the angular ambiguity
     # edge_edge_conflict_score is meant to catch: the two concerns are
     # complementary, not redundant.
     layout = layout_of(NEAR_PARALLEL_EDGES, NEAR_PARALLEL_POSITIONS)
-    assert slope_harmony_score(layout) == pytest.approx(1.0)
+    assert slope_economy_score(layout) == pytest.approx(1.0)
     assert edge_edge_conflict_score(layout) < 1.0
 
 

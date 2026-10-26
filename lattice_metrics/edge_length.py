@@ -14,8 +14,8 @@ slopes.py), not for an actual drawing flaw.
 
 :func:`edge_length_uniformity_score` instead only compares edges that are
 already free to match: it groups edges by slope, using the same
-tolerance-based clustering :func:`~lattice_metrics.slopes.slope_harmony_score`
-uses (so 'same slope' means the same thing in both metrics), then scores
+tolerance-based clustering and tolerance the slope metrics in
+:mod:`lattice_metrics.slopes` use (so 'same slope' means the same thing there), then scores
 length uniformity *within* each slope group by its coefficient of variation
 (std / mean, clipped to [0, 1] since it isn't itself bounded). Group scores
 are averaged weighted by group size, so a slope shared by many edges must

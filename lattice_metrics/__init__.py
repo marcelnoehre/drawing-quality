@@ -18,7 +18,13 @@ from .graph_utils import LatticeLayout, load_layout, poset_width
 from .layering import layer_consistency_score, structural_width
 from .nesting import bottleneck_clearance_radius, nested_suitability_score
 from .node_conflict import node_node_conflict_min_score, node_node_conflict_score
-from .slopes import edge_min_slope, slope_harmony_score, slope_standard_score, slope_verticality_score
+from .slopes import (
+    edge_min_slope,
+    slope_economy_score,
+    slope_parallelism_score,
+    slope_standard_score,
+    slope_verticality_score,
+)
 from .symmetry import vertical_axis_balance_score
 
 __all__ = [
@@ -36,7 +42,8 @@ __all__ = [
     'edge_length_uniformity_score',
     'layer_consistency_score',
     'structural_width',
-    'slope_harmony_score',
+    'slope_economy_score',
+    'slope_parallelism_score',
     'slope_standard_score',
     'slope_verticality_score',
     'edge_min_slope',
@@ -56,7 +63,8 @@ _SCORE_METRICS = {
     'edge_crossing': edge_crossing_score,
     'edge_length_uniformity': edge_length_uniformity_score,
     'layer_consistency': layer_consistency_score,
-    'slope_harmony': slope_harmony_score,
+    'slope_economy': slope_economy_score,
+    'slope_parallelism': slope_parallelism_score,
     'slope_standard': slope_standard_score,
     'slope_verticality': slope_verticality_score,
     'nested_suitability': nested_suitability_score,

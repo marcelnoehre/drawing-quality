@@ -14,7 +14,7 @@ angle-related metrics:
   cross at an interior point (edges sharing an endpoint are explicitly
   excluded there -- that is not a crossing).
 - This module scores edges that *do* share an endpoint, where the concern
-  is the opposite of slope harmony's: two such edges being close in angle
+  is the opposite of slope economy's: two such edges being close in angle
   concentrates the ambiguity at a single point instead of spreading it
   across the drawing.
 

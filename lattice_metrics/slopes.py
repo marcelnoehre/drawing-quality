@@ -1,14 +1,19 @@
 '''
-Slope harmony and slope standardness.
+Slope metrics.
 
-Both operate on the *unsigned* angle each edge makes with the horizontal, in
-[0, 90], since an edge running up-left and its mirror image running up-right
-are equally 'harmonious'/'standard' in a Hasse diagram -- only the steepness
-matters, not which side it leans to.
+Standardness and verticality operate on the *unsigned* angle each edge makes
+with the horizontal, in [0, 90]: an edge running up-left and its mirror image
+running up-right are equally steep, and only the steepness matters there.
+
+Economy and parallelism instead use *signed* directions of cover edges, as in
+an additive drawing, where each irreducible gets its own vector and mirror
+images are different vectors. Economy asks whether the drawing uses more
+directions than the order forces; parallelism asks whether it uses them
+consistently, i.e. whether covering squares are drawn as parallelograms.
 '''
 from __future__ import annotations
 
-from typing import Optional, Sequence, Tuple
+from typing import Dict, Hashable, List, Optional, Sequence, Tuple
 
 import numpy as np
 
@@ -53,11 +58,11 @@ def edge_min_slope(layout: LatticeLayout) -> Optional[float]:
     Minimum edge angle from horizontal (in [0, 90]), or ``None`` if the
     drawing has no (non-degenerate) edges.
 
-    A companion to slope_harmony_score/slope_standard_score's squashed
+    A companion to slope_economy_score/slope_standard_score's squashed
     numbers, neither of which flags a single near-horizontal edge on its
-    own: slope_harmony only cares whether edges agree with *each other*
-    (a drawing where every edge is equally near-horizontal scores a
-    perfect 1.0), and slope_standard averages over all edges, so one
+    own: slope_economy only counts directions (a drawing whose edges all
+    share one near-horizontal direction can score a perfect 1.0), and
+    slope_standard averages over all edges, so one
     horizontal edge among many canonical ones barely moves it. A
     near-horizontal edge is its own distinct
     legibility problem in a Hasse diagram -- the vertical position is
@@ -99,33 +104,124 @@ def slope_verticality_score(layout: LatticeLayout) -> float:
     return float(np.sin(np.radians(2.0 * clamped)))
 
 
-def slope_harmony_score(layout: LatticeLayout, angle_tolerance: float = DEFAULT_ANGLE_TOLERANCE) -> float:
+def _signed_cover_directions(layout: LatticeLayout) -> Dict[Tuple[Hashable, Hashable], float]:
     '''
-    1.0 = every edge shares (up to ``angle_tolerance`` degrees) a common
-    slope; lower as edges spread across more, and more evenly populated,
-    distinct slopes.
-
-    Uses the normalized entropy of the slope-cluster size distribution
-    rather than raw cluster count, so a drawing with one dominant slope and
-    a single outlier scores much better than one split evenly across the
-    same number of clusters -- cluster count alone can't distinguish those,
-    but they read very differently.
+    Every cover edge u -> v (u < v) mapped to the direction of the drawn
+    vector from u to v, in degrees in [0, 360). Signed, unlike the angles
+    above: in an additive drawing an edge leaning left and one leaning
+    right belong to different irreducibles, so they are different
+    directions here. Zero-length edges have no direction and are omitted.
     '''
-    angles = _unsigned_edge_angles(layout)
-    if len(angles) == 0:
-        return 1.0
-    if len(angles) == 1:
-        return 1.0
+    positions = layout.positions
+    directions = {}
+    for u, v in layout.transitive_reduction.edges():
+        dx, dy = positions[v] - positions[u]
+        if dx == 0 and dy == 0:
+            continue
+        directions[(u, v)] = float(np.degrees(np.arctan2(dy, dx)) % 360.0)
+    return directions
 
-    groups = group_within_tolerance(np.sort(angles), angle_tolerance)
-    sizes = np.array([len(g) for g in groups], dtype=float)
-    if len(sizes) == 1:
-        return 1.0
 
-    probs = sizes / sizes.sum()
-    entropy = float(-np.sum(probs * np.log(probs)))
-    max_entropy = np.log(len(angles))  # entropy if every edge were its own cluster
-    return float(1.0 - entropy / max_entropy)
+def _angular_difference(a: float, b: float) -> float:
+    d = abs(a - b) % 360.0
+    return min(d, 360.0 - d)
+
+
+def _count_direction_clusters(directions: np.ndarray, tolerance: float) -> int:
+    '''
+    :func:`group_within_tolerance` on the circle: cut it at the widest gap
+    between consecutive directions, which no group can usefully span, and
+    group the unrolled values as usual.
+    '''
+    ordered = np.sort(directions)
+    gaps = np.diff(np.append(ordered, ordered[0] + 360.0))
+    cut = int(np.argmax(gaps)) + 1
+    unrolled = np.concatenate([ordered[cut:], ordered[:cut] + 360.0])
+    return len(group_within_tolerance(unrolled, tolerance))
+
+
+def min_direction_count(layout: LatticeLayout) -> int:
+    '''
+    Lower bound on the number of distinct edge directions in any drawing of
+    the order: the largest number of upper or lower covers of one element.
+    The cover edges at one element must all point in different directions,
+    or they would lie on top of each other.
+
+    Tight for distributive lattices L = O(P): the largest up-degree equals
+    width(P), and an additive drawing that gives each chain of a Dilworth
+    decomposition of P one vector uses exactly that many directions.
+    '''
+    cover = layout.transitive_reduction
+    return max((max(cover.in_degree(x), cover.out_degree(x)) for x in cover.nodes), default=0)
+
+
+def slope_economy_score(layout: LatticeLayout, angle_tolerance: float = DEFAULT_ANGLE_TOLERANCE) -> float:
+    '''
+    k_min / k: the fewest edge directions the order allows
+    (:func:`min_direction_count`) over the number of distinct signed
+    directions the drawing uses (clusters of diameter ``angle_tolerance``).
+
+    1.0 = the drawing uses no more slopes than the order forces, e.g. a
+    vertical chain or an additive drawing of a distributive lattice from a
+    minimum chain decomposition; a Boolean lattice B_n is not penalized for
+    its n directions. Independent of the number of edges. Clipped at 1.0:
+    k < k_min only happens when cover edges at one element are within
+    ``angle_tolerance`` of overlapping, which edge_edge_conflict_score
+    penalizes instead.
+    '''
+    directions = _signed_cover_directions(layout)
+    if not directions:
+        return 1.0
+    k = _count_direction_clusters(np.array(list(directions.values())), angle_tolerance)
+    return float(min(1.0, min_direction_count(layout) / k))
+
+
+def covering_squares(layout: LatticeLayout) -> List[Tuple[Hashable, Hashable, Hashable, Hashable]]:
+    '''
+    Every (x, a, b, y) with a, b distinct upper covers of x and y an upper
+    cover of both. In a lattice this means x = a meet b and y = a join b,
+    with all four relations covers. Each unordered {a, b} appears once.
+    '''
+    cover = layout.transitive_reduction
+    squares = []
+    for x in cover.nodes:
+        uppers = list(cover.successors(x))
+        for i, a in enumerate(uppers):
+            above_a = set(cover.successors(a))
+            for b in uppers[i + 1:]:
+                for y in above_a.intersection(cover.successors(b)):
+                    squares.append((x, a, b, y))
+    return squares
+
+
+def slope_parallelism_score(layout: LatticeLayout, angle_tolerance: float = DEFAULT_ANGLE_TOLERANCE) -> float:
+    '''
+    Share of opposite-edge pairs of covering squares (see
+    :func:`covering_squares`) drawn parallel, i.e. with signed directions
+    within ``angle_tolerance`` of each other. Each square contributes two
+    pairs: x -> a with b -> y, and x -> b with a -> y.
+
+    This is the parallelogram rule of additive drawings, where each edge
+    is parallel to the vector of the irreducible that labels it and
+    opposite sides of a covering square carry the same label. Additive
+    drawings of distributive lattices score 1.0. For non-distributive
+    lattices 1.0 can be unreachable (the three squares of M3 cannot all be
+    parallelograms), so the score is meant for comparing drawings of the
+    same lattice. A pair with a zero-length edge counts as not parallel.
+    Returns 1.0 when there are no covering squares (e.g. chains, N5).
+    '''
+    squares = covering_squares(layout)
+    if not squares:
+        return 1.0
+    directions = _signed_cover_directions(layout)
+
+    def parallel(e: Tuple[Hashable, Hashable], f: Tuple[Hashable, Hashable]) -> bool:
+        if e not in directions or f not in directions:
+            return False
+        return _angular_difference(directions[e], directions[f]) <= angle_tolerance
+
+    hits = sum(parallel((x, a), (b, y)) + parallel((x, b), (a, y)) for x, a, b, y in squares)
+    return hits / (2 * len(squares))
 
 
 def slope_standard_score(
