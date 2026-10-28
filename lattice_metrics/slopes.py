@@ -9,7 +9,9 @@ Economy and parallelism instead use *signed* directions of cover edges, as in
 an additive drawing, where each irreducible gets its own vector and mirror
 images are different vectors. Economy asks whether the drawing uses more
 directions than the order forces; parallelism asks whether it uses them
-consistently, i.e. whether covering squares are drawn as parallelograms.
+consistently, i.e. whether cover edges that are the same step at different
+heights (transposed edges, e.g. opposite sides of a covering square) are drawn
+parallel.
 '''
 from __future__ import annotations
 
@@ -176,42 +178,65 @@ def slope_economy_score(layout: LatticeLayout, angle_tolerance: float = DEFAULT_
     return float(min(1.0, min_direction_count(layout) / k))
 
 
-def covering_squares(layout: LatticeLayout) -> List[Tuple[Hashable, Hashable, Hashable, Hashable]]:
+def transposed_cover_pairs(
+    layout: LatticeLayout,
+) -> List[Tuple[Tuple[Hashable, Hashable], Tuple[Hashable, Hashable]]]:
     '''
-    Every (x, a, b, y) with a, b distinct upper covers of x and y an upper
-    cover of both. In a lattice this means x = a meet b and y = a join b,
-    with all four relations covers. Each unordered {a, b} appears once.
+    Every pair of cover edges (u -> v, u' -> v') where u -> v transposes up
+    to u' -> v': v meet u' = u and v join u' = v'. Joining with u' maps
+    the lower edge onto the upper one and meeting with v maps it back, so
+    both are the same step taken at different heights. The sides u -> u'
+    and v -> v' need not be covers.
+
+    Includes the opposite sides of every covering square (x, a, b, y):
+    x -> a with b -> y, and x -> b with a -> y. Unlike squares alone it
+    also pairs edges across pentagons (N5 has no covering square but two
+    transposed pairs) and across several squares at once (in a distributive
+    lattice, every two comparable edges carrying the same join-irreducible).
+    Pairs whose meet or join does not exist (non-lattices) are skipped.
     '''
     cover = layout.transitive_reduction
-    squares = []
-    for x in cover.nodes:
-        uppers = list(cover.successors(x))
-        for i, a in enumerate(uppers):
-            above_a = set(cover.successors(a))
-            for b in uppers[i + 1:]:
-                for y in above_a.intersection(cover.successors(b)):
-                    squares.append((x, a, b, y))
-    return squares
+    closure = layout.transitive_closure
+    nodes = list(cover.nodes)
+    bit = {x: 1 << i for i, x in enumerate(nodes)}
+    down = {x: bit[x] | sum(bit[p] for p in closure.predecessors(x)) for x in nodes}
+    up = {x: bit[x] | sum(bit[s] for s in closure.successors(x)) for x in nodes}
+    by_down = {mask: x for x, mask in down.items()}
+    by_up = {mask: x for x, mask in up.items()}
+
+    pairs = []
+    for u, v in cover.edges:
+        for w in nodes:
+            if w == u or not down[w] & bit[u] or by_down.get(down[v] & down[w]) != u:
+                continue
+            top = by_up.get(up[v] & up[w])
+            if top is not None and cover.has_edge(w, top):
+                pairs.append(((u, v), (w, top)))
+    return pairs
 
 
 def slope_parallelism_score(layout: LatticeLayout, angle_tolerance: float = DEFAULT_ANGLE_TOLERANCE) -> float:
     '''
-    Share of opposite-edge pairs of covering squares (see
-    :func:`covering_squares`) drawn parallel, i.e. with signed directions
-    within ``angle_tolerance`` of each other. Each square contributes two
-    pairs: x -> a with b -> y, and x -> b with a -> y.
+    Share of transposed cover pairs (see :func:`transposed_cover_pairs`)
+    drawn parallel, i.e. with signed directions within ``angle_tolerance``
+    of each other.
 
-    This is the parallelogram rule of additive drawings, where each edge
-    is parallel to the vector of the irreducible that labels it and
-    opposite sides of a covering square carry the same label. Additive
-    drawings of distributive lattices score 1.0. For non-distributive
-    lattices 1.0 can be unreachable (the three squares of M3 cannot all be
-    parallelograms), so the score is meant for comparing drawings of the
-    same lattice. A pair with a zero-length edge counts as not parallel.
-    Returns 1.0 when there are no covering squares (e.g. chains, N5).
+    This generalizes the parallelogram rule of additive drawings, where
+    each edge is parallel to the vector of the irreducible that labels it
+    and opposite sides of a covering square carry the same label: the
+    upper edge of a transposed pair adds exactly what the lower one adds.
+    Only directions are compared, never lengths, so the score does not
+    ask for additivity itself. Additive drawings of distributive lattices
+    score 1.0. For other lattices 1.0 can be unreachable (in M3, 0 -> a
+    transposes to both b -> 1 and c -> 1, which cannot be parallel), so
+    the score is meant for comparing drawings of the same lattice. Each
+    pair is checked on its own, so directions can still drift through a
+    chain of pairs that are not themselves transposed. A pair with a
+    zero-length edge counts as not parallel. Returns 1.0 when there are no
+    transposed pairs (chains).
     '''
-    squares = covering_squares(layout)
-    if not squares:
+    pairs = transposed_cover_pairs(layout)
+    if not pairs:
         return 1.0
     directions = _signed_cover_directions(layout)
 
@@ -220,8 +245,7 @@ def slope_parallelism_score(layout: LatticeLayout, angle_tolerance: float = DEFA
             return False
         return _angular_difference(directions[e], directions[f]) <= angle_tolerance
 
-    hits = sum(parallel((x, a), (b, y)) + parallel((x, b), (a, y)) for x, a, b, y in squares)
-    return hits / (2 * len(squares))
+    return sum(parallel(e, f) for e, f in pairs) / len(pairs)
 
 
 def slope_standard_score(

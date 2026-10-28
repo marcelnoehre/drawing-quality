@@ -36,6 +36,7 @@ from lattice_metrics.slopes import (
     slope_parallelism_score,
     slope_standard_score,
     slope_verticality_score,
+    transposed_cover_pairs,
 )
 from lattice_metrics.symmetry import vertical_axis_balance_score
 
@@ -445,10 +446,57 @@ def test_m3_with_a_fourth_direction():
     assert slope_economy_score(layout) == pytest.approx(3 / 5)
 
 
-def test_parallelism_without_covering_squares_is_vacuous():
-    n5 = [('0', 'a'), ('a', 'b'), ('b', '1'), ('0', 'c'), ('c', '1')]
-    layout = layout_of(n5, {'0': (0, 0), 'a': (-1, 1), 'b': (-1, 2), 'c': (1, 1.5), '1': (0, 3)})
+N5_EDGES = [('0', 'a'), ('a', 'b'), ('b', '1'), ('0', 'c'), ('c', '1')]
+
+
+def test_n5_transposed_pairs():
+    # N5 has no covering square, but 0 -> a transposes to c -> 1 and
+    # 0 -> c to b -> 1 (a join c = b join c = 1, the meets are 0).
+    layout = layout_of(N5_EDGES, {'0': (0, 0), 'a': (-1, 1), 'b': (-2, 2), 'c': (1, 1), '1': (-1, 3)})
+    assert sorted(transposed_cover_pairs(layout)) == [(('0', 'a'), ('c', '1')), (('0', 'c'), ('b', '1'))]
+
+
+def test_n5_parallelogram_drawing_is_ideal():
+    # The textbook N5: a parallelogram 0, b, 1, c with a on the side 0 -> b.
+    layout = layout_of(N5_EDGES, {'0': (0, 0), 'a': (-1, 1), 'b': (-2, 2), 'c': (1, 1), '1': (-1, 3)})
     assert slope_parallelism_score(layout) == pytest.approx(1.0)
+
+
+def test_n5_skewed_drawings_are_penalized():
+    # Moving b breaks 0 -> c || b -> 1 but keeps 0 -> a || c -> 1.
+    half = layout_of(N5_EDGES, {'0': (0, 0), 'a': (-1, 1), 'b': (-2.3, 2.2), 'c': (1, 1), '1': (-1, 3)})
+    assert slope_parallelism_score(half) == pytest.approx(0.5)
+    skewed = layout_of(N5_EDGES, {'0': (0, 0), 'a': (-1, 1), 'b': (-1, 2), 'c': (1, 1.5), '1': (0, 3)})
+    assert slope_parallelism_score(skewed) == pytest.approx(0.0)
+
+
+def test_parallelism_of_a_chain_is_vacuous():
+    layout = layout_of(CHAIN_EDGES, {'a': (0, 3), 'b': (1, 2), 'c': (0, 1), 'd': (2, 0)})
+    assert transposed_cover_pairs(layout) == []
+    assert slope_parallelism_score(layout) == pytest.approx(1.0)
+
+
+def test_boolean_lattice_pairs_reach_across_squares():
+    # 0 -> a transposes to b -> ab, c -> ac (squares) and bc -> 1 (no
+    # square contains both); each of the 6 middle edges, e.g. a -> ab,
+    # transposes only to the top edge ac -> 1. 3 x 3 + 6 x 1 = 15.
+    pairs = transposed_cover_pairs(additive_b3())
+    assert len(pairs) == 15
+    assert (('0', 'a'), ('bc', '1')) in pairs
+
+
+def test_parallelism_catches_drift_across_squares():
+    # 3 x 2 grid with rungs at 0, 4 and 8 degrees: neighbouring rungs are
+    # within tolerance, but the outer two transpose directly and are not.
+    # Pairs: 3 between rungs, 2 between the uprights, all parallel but one.
+    rung = {i: np.array([np.cos(np.radians(4 * i)), np.sin(np.radians(4 * i))]) for i in range(3)}
+    positions = {(i, 0): (0.0, 2.0 * i) for i in range(3)}
+    positions.update({(i, 1): tuple(np.array([0.0, 2.0 * i]) + rung[i]) for i in range(3)})
+    edges = [((i, j), (i + 1, j)) for i in range(2) for j in range(2)]
+    edges += [((i, 0), (i, 1)) for i in range(3)]
+    layout = layout_of(edges, positions)
+    assert len(transposed_cover_pairs(layout)) == 5
+    assert slope_parallelism_score(layout) == pytest.approx(4 / 5)
 
 
 def test_directions_near_the_wraparound_cluster_together():
