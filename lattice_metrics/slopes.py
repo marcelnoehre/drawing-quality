@@ -28,7 +28,7 @@ DEFAULT_CANONICAL_ANGLES = (
     90.0,
 )
 
-DEFAULT_ANGLE_TOLERANCE = 5.0
+DEFAULT_ANGLE_TOLERANCE = 1.0
 
 
 def edge_angles_and_lengths(layout: LatticeLayout) -> Tuple[np.ndarray, np.ndarray]:

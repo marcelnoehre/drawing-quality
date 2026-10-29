@@ -34,8 +34,8 @@ from .geometry import unsigned_angle_deg
 from .graph_utils import LatticeLayout
 
 # Deliberately *not* the tolerance :mod:`lattice_metrics.slopes` uses for
-# 'the same slope' (5 degrees). That one answers whether two *separate*
-# edges read as parallel, and orientation differences of a few degrees are
+# 'the same slope' (1 degree). That one answers whether two *separate*
+# edges share a slope, and orientation differences of a few degrees are
 # already noticeable. This one answers whether two edges leaving the *same*
 # point can be told apart, and they overlap near that point: their
 # separation at distance r from it is only about r * sin(angle), so edges a

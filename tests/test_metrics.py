@@ -486,10 +486,11 @@ def test_boolean_lattice_pairs_reach_across_squares():
 
 
 def test_parallelism_catches_drift_across_squares():
-    # 3 x 2 grid with rungs at 0, 4 and 8 degrees: neighbouring rungs are
+    # 3 x 2 grid with rungs 0.8 tolerances apart: neighbouring rungs are
     # within tolerance, but the outer two transpose directly and are not.
     # Pairs: 3 between rungs, 2 between the uprights, all parallel but one.
-    rung = {i: np.array([np.cos(np.radians(4 * i)), np.sin(np.radians(4 * i))]) for i in range(3)}
+    step = np.radians(0.8 * DEFAULT_ANGLE_TOLERANCE)
+    rung = {i: np.array([np.cos(i * step), np.sin(i * step)]) for i in range(3)}
     positions = {(i, 0): (0.0, 2.0 * i) for i in range(3)}
     positions.update({(i, 1): tuple(np.array([0.0, 2.0 * i]) + rung[i]) for i in range(3)})
     edges = [((i, j), (i + 1, j)) for i in range(2) for j in range(2)]
@@ -500,10 +501,11 @@ def test_parallelism_catches_drift_across_squares():
 
 
 def test_directions_near_the_wraparound_cluster_together():
-    # 359 and 1 degrees are 2 degrees apart, not 358.
+    # Just below and just above 0 degrees are close, not almost 360 apart.
+    half = np.radians(0.4 * DEFAULT_ANGLE_TOLERANCE)
     layout = layout_of([('a', 'b'), ('c', 'd')], {
-        'a': (0, 0), 'b': (np.cos(np.radians(-1)), np.sin(np.radians(-1))),
-        'c': (0, 5), 'd': (np.cos(np.radians(1)), 5 + np.sin(np.radians(1))),
+        'a': (0, 0), 'b': (np.cos(-half), np.sin(-half)),
+        'c': (0, 5), 'd': (np.cos(half), 5 + np.sin(half)),
     })
     assert slope_economy_score(layout) == pytest.approx(1.0)
 

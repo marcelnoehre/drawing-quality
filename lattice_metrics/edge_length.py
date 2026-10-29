@@ -14,8 +14,8 @@ slopes.py), not for an actual drawing flaw.
 
 :func:`edge_length_uniformity_score` instead only compares edges that are
 already free to match: it groups edges by slope, using the same
-tolerance-based clustering and tolerance the slope metrics in
-:mod:`lattice_metrics.slopes` use (so 'same slope' means the same thing there), then scores
+tolerance-based clustering as :mod:`lattice_metrics.slopes` but a looser
+tolerance (see :data:`DEFAULT_ANGLE_TOLERANCE`), then scores
 length uniformity *within* each slope group by its coefficient of variation
 (std / mean, clipped to [0, 1] since it isn't itself bounded). Group scores
 are averaged weighted by group size, so a slope shared by many edges must
@@ -30,7 +30,15 @@ from typing import List
 import numpy as np
 
 from .graph_utils import LatticeLayout, group_within_tolerance
-from .slopes import DEFAULT_ANGLE_TOLERANCE, edge_angles_and_lengths
+from .slopes import edge_angles_and_lengths
+
+# Looser than the 1 degree 'same slope' of the slope metrics, which asks
+# whether two edges share a slope. This asks which edges are free to share a
+# length: at a common vertical span, length = span / sin(angle), so a slope
+# difference of d forces a relative length difference of about cot(angle) * d,
+# under 10% at 45 degrees for 5 degrees. A tighter tolerance leaves such
+# edges in separate groups, never compared, and singleton groups score 1.0.
+DEFAULT_ANGLE_TOLERANCE = 5.0
 
 
 def _length_groups_by_slope(layout: LatticeLayout, angle_tolerance: float) -> List[np.ndarray]:
