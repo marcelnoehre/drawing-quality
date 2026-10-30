@@ -34,9 +34,8 @@ DEFAULT_ANGLE_TOLERANCE = 1.0
 def edge_angles_and_lengths(layout: LatticeLayout) -> Tuple[np.ndarray, np.ndarray]:
     '''
     Every edge's unsigned angle from horizontal (in [0, 90]) paired with its
-    drawn length, in matching order -- the shared per-edge geometry this
-    module and :mod:`lattice_metrics.edge_length` both score. Zero-length
-    edges (coincident endpoints) have no defined angle and are skipped.
+    drawn length, in matching order. Zero-length edges (coincident
+    endpoints) have no defined angle and are skipped.
     '''
     positions = layout.positions
     angles = []
@@ -49,6 +48,29 @@ def edge_angles_and_lengths(layout: LatticeLayout) -> Tuple[np.ndarray, np.ndarr
         angles.append(float(np.degrees(np.arctan2(abs(dy), abs(dx)))))
         lengths.append(float(np.hypot(dx, dy)))
     return np.array(angles), np.array(lengths)
+
+
+def edge_directions_and_lengths(layout: LatticeLayout) -> Tuple[np.ndarray, np.ndarray]:
+    '''
+    Every edge's line direction (in [0, 180), measured counter-clockwise
+    from horizontal) paired with its drawn length, in matching order -- the
+    per-edge geometry :mod:`lattice_metrics.edge_length` scores. Unlike the
+    unsigned angle, an edge leaning left (direction above 90) and its mirror
+    image leaning right (below 90) are different directions; unlike the
+    signed directions below, an edge's orientation does not matter, so 0 and
+    180 are the same (horizontal) direction. Zero-length edges are skipped.
+    '''
+    positions = layout.positions
+    directions = []
+    lengths = []
+    for u, v in layout.graph.edges():
+        dx = positions[u][0] - positions[v][0]
+        dy = positions[u][1] - positions[v][1]
+        if dx == 0 and dy == 0:
+            continue
+        directions.append(float(np.degrees(np.arctan2(dy, dx)) % 180.0))
+        lengths.append(float(np.hypot(dx, dy)))
+    return np.array(directions), np.array(lengths)
 
 
 def _unsigned_edge_angles(layout: LatticeLayout) -> np.ndarray:
@@ -129,17 +151,25 @@ def _angular_difference(a: float, b: float) -> float:
     return min(d, 360.0 - d)
 
 
-def _count_direction_clusters(directions: np.ndarray, tolerance: float) -> int:
+def group_directions(directions: np.ndarray, tolerance: float, period: float = 360.0) -> List[np.ndarray]:
     '''
-    :func:`group_within_tolerance` on the circle: cut it at the widest gap
-    between consecutive directions, which no group can usefully span, and
-    group the unrolled values as usual.
+    :func:`group_within_tolerance` on the circle of circumference
+    ``period``: cut it at the widest gap between consecutive directions,
+    which no group can usefully span, and group the unrolled values as
+    usual. Returns the indices into ``directions`` of each group's members.
     '''
-    ordered = np.sort(directions)
-    gaps = np.diff(np.append(ordered, ordered[0] + 360.0))
+    order = np.argsort(directions)
+    ordered = directions[order]
+    gaps = np.diff(np.append(ordered, ordered[0] + period))
     cut = int(np.argmax(gaps)) + 1
-    unrolled = np.concatenate([ordered[cut:], ordered[:cut] + 360.0])
-    return len(group_within_tolerance(unrolled, tolerance))
+    order = np.concatenate([order[cut:], order[:cut]])
+    unrolled = np.concatenate([ordered[cut:], ordered[:cut] + period])
+    sizes = [len(g) for g in group_within_tolerance(unrolled, tolerance)]
+    return np.split(order, np.cumsum(sizes)[:-1])
+
+
+def _count_direction_clusters(directions: np.ndarray, tolerance: float) -> int:
+    return len(group_directions(directions, tolerance))
 
 
 def min_direction_count(layout: LatticeLayout) -> int:

@@ -13,9 +13,12 @@ geometric fact that gives it a legible, varied slope structure (see
 slopes.py), not for an actual drawing flaw.
 
 :func:`edge_length_uniformity_score` instead only compares edges that are
-already free to match: it groups edges by slope, using the same
-tolerance-based clustering as :mod:`lattice_metrics.slopes` but a looser
-tolerance (see :data:`DEFAULT_ANGLE_TOLERANCE`), then scores
+already free to match: it groups edges by line direction in [0, 180) --
+so an edge leaning left and its mirror image leaning right are separate
+groups, as in the signed slope metrics, while 0 and 180 both mean
+horizontal -- using the same circular tolerance-based clustering as
+:mod:`lattice_metrics.slopes` but a looser tolerance (see
+:data:`DEFAULT_ANGLE_TOLERANCE`), then scores
 length uniformity *within* each slope group by its coefficient of variation
 (std / mean, clipped to [0, 1] since it isn't itself bounded). Group scores
 are averaged weighted by group size, so a slope shared by many edges must
@@ -29,8 +32,8 @@ from typing import List
 
 import numpy as np
 
-from .graph_utils import LatticeLayout, group_within_tolerance
-from .slopes import edge_angles_and_lengths
+from .graph_utils import LatticeLayout
+from .slopes import edge_directions_and_lengths, group_directions
 
 # Looser than the 1 degree 'same slope' of the slope metrics, which asks
 # whether two edges share a slope. This asks which edges are free to share a
@@ -42,17 +45,10 @@ DEFAULT_ANGLE_TOLERANCE = 5.0
 
 
 def _length_groups_by_slope(layout: LatticeLayout, angle_tolerance: float) -> List[np.ndarray]:
-    angles, lengths = edge_angles_and_lengths(layout)
-    if len(angles) == 0:
+    directions, lengths = edge_directions_and_lengths(layout)
+    if len(directions) == 0:
         return []
-
-    order = np.argsort(angles)
-    sorted_angles = angles[order]
-    sorted_lengths = lengths[order]
-
-    angle_groups = group_within_tolerance(sorted_angles, angle_tolerance)
-    sizes = [len(g) for g in angle_groups]
-    return np.split(sorted_lengths, np.cumsum(sizes)[:-1])
+    return [lengths[g] for g in group_directions(directions, angle_tolerance, period=180.0)]
 
 
 def _coefficient_of_variation_score(group: np.ndarray) -> float:
@@ -70,8 +66,8 @@ def edge_length_uniformity_score(
     angle_tolerance: float = DEFAULT_ANGLE_TOLERANCE,
 ) -> float:
     '''
-    1.0 = within every group of (approximately) same-slope edges, all
-    lengths match exactly; lower as same-slope edges vary more in length.
+    1.0 = within every group of (approximately) same-direction edges, all
+    lengths match exactly; lower as same-direction edges vary more in length.
 
     Returns 1.0 for layouts with no edges, since there is nothing to
     penalize.

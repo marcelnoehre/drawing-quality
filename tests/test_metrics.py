@@ -637,24 +637,47 @@ def test_different_slopes_at_same_layer_are_not_penalized():
 
 
 def test_length_variation_within_a_shared_slope_is_penalized():
-    # b1 and b2 share the exact same slope (dy/dx = 2/3 for both) but b2 is
-    # half the length of b1 -- unlike the previous test, this variation
-    # can't be explained away by a slope difference, so it should cost.
+    # b1 and b2 share the exact same direction (both lean left at
+    # dy/dx = 2/3) but b2 is half the length of b1 -- unlike the previous
+    # test, this variation can't be explained away by a slope difference,
+    # so it should cost.
+    edges = [('d', 'b1'), ('d', 'b2')]
+    positions = {'d': (0, 4), 'b1': (-3, 2), 'b2': (-1.5, 3)}
+    layout = layout_of(edges, positions)
+    assert edge_length_uniformity_score(layout) < 1.0
+
+
+def test_mirror_image_edges_are_not_compared():
+    # Same steepness (dy/dx = 2/3) but leaning opposite ways: directions
+    # ~33.7 and ~146.3 degrees, two different slopes in the drawing, so
+    # their different lengths are not penalized.
     edges = [('d', 'b1'), ('d', 'b2')]
     positions = {'d': (0, 4), 'b1': (-3, 2), 'b2': (1.5, 3)}
+    layout = layout_of(edges, positions)
+    assert edge_length_uniformity_score(layout) == pytest.approx(1.0)
+
+
+def test_near_horizontal_directions_wrap_around():
+    # Directions ~1 and ~179 degrees are both nearly horizontal, 2 degrees
+    # apart across 0/180, so they share a group and their lengths differ.
+    edges = [('a', 'b'), ('c', 'd')]
+    positions = {
+        'a': (0, 0), 'b': (10, np.tan(np.radians(1)) * 10),
+        'c': (0, 5), 'd': (20, 5 - np.tan(np.radians(1)) * 20),
+    }
     layout = layout_of(edges, positions)
     assert edge_length_uniformity_score(layout) < 1.0
 
 
 def test_lone_outlier_slope_does_not_drag_down_a_uniform_majority():
-    # Three edges share a 45-degree slope and an identical length; a fourth
-    # edge at a very different, unmatched slope and a wildly different
+    # Three edges share a direction and an identical length; a fourth
+    # edge at a very different, unmatched direction and a wildly different
     # length has nothing to be compared against, so it can't be scored and
     # must not drag the (otherwise perfectly uniform) result down.
-    edges = [('d', 'p1'), ('p1', 'q'), ('d', 'p2'), ('d', 'r')]
+    edges = [('d', 'p1'), ('p1', 'q'), ('q', 'p2'), ('d', 'r')]
     positions = {
         'd': (0, 4),
-        'p1': (-1, 3), 'q': (-2, 2), 'p2': (1, 3),  # all 45 deg, length sqrt(2)
+        'p1': (-1, 3), 'q': (-2, 2), 'p2': (-3, 1),  # all 135 deg, length sqrt(2)
         'r': (50, 0),                                # ~4.6 deg, length ~50.2
     }
     layout = layout_of(edges, positions)
