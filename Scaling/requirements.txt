@@ -8,7 +8,7 @@
 pandas==3.0.6
 numpy==2.5.3
 scipy==1.18.1
-conceptflow==0.1.1
+conceptflow==0.6.0
 
 # The drawing-quality repository's generators and metrics, imported directly by
 # node_extents.py and run_harness.py. The
@@ -24,7 +24,7 @@ requests==2.34.2
 scikit-learn==1.9.1
 
 # Not installable with pip, and pinned in pipeline.md under "Pinned versions":
-#   marcelnoehre/drawing-quality   112731db0662915d571f2553682d804ffd298e81
+#   marcelnoehre/drawing-quality   f1643a4147ff9d431d78d8a12e2d4ba4931a1fce
 #   domduerr/redraw                80f62a97a5ff41d173b61113cc90f80864f49f41
 #   conexp-clj                     3.1.0 standalone, openjdk 25, served on :8080
 #   Python                         3.14.4

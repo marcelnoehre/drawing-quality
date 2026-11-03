@@ -48,6 +48,8 @@ from pathlib import Path
 
 import numpy as np
 import conceptflow as cf
+import conceptflow.io  # noqa: F401  (cf.io is a subpackage, not loaded by the line above)
+from conceptflow.metrics import lattice_width
 
 HERE = Path(__file__).resolve().parent
 SOURCE = HERE.parent.parent / "contexts" / "real-world" / "original"
@@ -124,35 +126,11 @@ EXCLUDED = {
 PREFERRED_DUPLICATE = {"seasoning_planner", "southern_woman", "bird_diet"}
 
 
-def width(extents: list[frozenset[int]]) -> int:
-    """Largest antichain. By Dilworth that is the number of concepts minus a maximum
-    matching of the strict inclusion order, taken over all comparable pairs."""
-    items = sorted(extents, key=len)
-    n = len(items)
-    adjacency: list[list[int]] = [[] for _ in range(n)]
-    for a in range(n):
-        for b in range(a + 1, n):
-            if items[a] < items[b]:
-                adjacency[a].append(b)
-
-    matched = [-1] * n
-
-    def augment(u: int, seen: list[bool]) -> bool:
-        for v in adjacency[u]:
-            if not seen[v]:
-                seen[v] = True
-                if matched[v] == -1 or augment(matched[v], seen):
-                    matched[v] = u
-                    return True
-        return False
-
-    return n - sum(1 for u in range(n) if augment(u, [False] * n))
-
-
 def measure(path: Path) -> dict:
     context = cf.io.read_cxt(path)
     incidence = np.asarray(context.incidence, dtype=bool)
-    extents = [c.extent for c in cf.algorithms.enumerate_concepts(context)]
+    lattice = cf.ConceptLattice.from_context(context)
+    extents = [c.extent for c in lattice.concepts]
     n_obj, n_att = context.n_objects, context.n_attributes
     return {
         "name": path.stem,
@@ -161,7 +139,7 @@ def measure(path: Path) -> dict:
         "attributes": n_att,
         "density": float(incidence.sum()) / (n_obj * n_att) if n_obj and n_att else 0.0,
         "concepts": len(extents),
-        "width": width(extents) if len(extents) <= WIDTH_LIMIT else None,
+        "width": lattice_width(lattice) if len(extents) <= WIDTH_LIMIT else None,
         # Same table, same object order: certainly one data set twice.
         "signature": (n_obj, n_att, tuple(sorted(tuple(row) for row in incidence.tolist()))),
         # Same shape, same row and column degrees, same lattice size: the same data

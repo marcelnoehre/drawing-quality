@@ -265,7 +265,8 @@ it, and `verify_scale.py` rechecks and regenerates the matrix:
 Because the map is the identity on objects, Prop. 20 says a scale is a
 scale-measure exactly when each of its attributes is one on its own, so the check
 is one closure per attribute rather than an enumeration of the scale's extents.
-Both commands exit non-zero on failure.
+Building, checking and nesting use ConceptFlow's `scale_measure`,
+`scale_measure_problems` and `refines`. Both commands exit non-zero on failure.
 
 ## Conventions
 

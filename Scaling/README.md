@@ -34,6 +34,7 @@ that draws and measures them, and the results.
 | `contexts/import_standard_contexts.py` | Measures the repository's own contexts and imports those large enough to scale. |
 | `contexts/build_scales.py` | Builds the scales of a context, measures them, verifies each one. |
 | `contexts/verify_scale.py` | Checks the scale-measure property per attribute and writes the nesting matrix. |
+| | Both use [ConceptFlow](https://github.com/anuragxorma/conceptflow) for the FCA operations: `scale_measure` builds a scale, `scale_measure_problems` checks it, `refines` decides nesting, and `lattice_width`, `lattice_height` and `incomparable_pairs` measure it. |
 | `node_extents.py` | Records which concept every node is while a drawing is written, as `<scale>.extents.json`. Nothing downstream is trustworthy without this. |
 | `graphml_loader.py` | Loads a drawing as `extent -> (x, y)` from that record, checking it against the lattice and the drawn edges every time. |
 | `consistency.py` | Kendall tau on x-ranks and its magnitude, rank drift, per-stratum tau. `--self-test` runs three adversarial fixtures. |
@@ -134,7 +135,7 @@ python3 -m venv .venv
 
 `requirements.txt` pins the exact versions the current results were produced with,
 including the parts of the surrounding repository's stack that the harness imports.
-The `dim-flux` pin matters: 1.0.10 is the first version that keeps the whole
+Scales are built, checked and measured with ConceptFlow 0.6.0. The `dim-flux` pin matters: 1.0.10 is the first version that keeps the whole
 context, so its drawings can be matched by extent at all. `redraw` additionally
 needs conexp-clj 3.1.0 serving on :8080; the harness refuses to start without it.
 

@@ -112,13 +112,16 @@ which has at least 12.
 ## Checking the scales
 
 `build_scales.py` builds every scale and checks it as it writes it, and
-`verify_scale.py` checks again and writes the nesting matrix. Because a scale keeps
-the objects unchanged, Hanika and Hirth's Prop. 20 makes a scale a scale-measure
-exactly when each of its attributes is one, so the check is one closure per
-attribute: its extent must be closed in the full context. Nesting is checked by
-enumerating both extent sets. Each context's `manifest.csv` lists its scales with
-their size, width, height and number of incomparable concept pairs, and
-`nesting.csv` holds the pairwise nesting.
+`verify_scale.py` checks again and writes the nesting matrix. The FCA operations
+are ConceptFlow's (version 0.6.0): `scale_measure` builds a scale from attribute
+projections and conjunctions, `scale_measure_problems` checks it, `refines`
+decides nesting, and `lattice_width`, `lattice_height` and `incomparable_pairs`
+measure it. Because a scale keeps the objects unchanged, Hanika and Hirth's
+Prop. 20 makes a scale a scale-measure exactly when each of its attributes is one,
+so the check is one closure per attribute: its extent must be closed in the full
+context. Nesting is checked by enumerating both extent sets. Each context's
+`manifest.csv` lists its scales with their size, width, height and number of
+incomparable concept pairs, and `nesting.csv` holds the pairwise nesting.
 
 ## Names and column order
 
@@ -273,9 +276,10 @@ against:
 
 | Component | Version |
 |---|---|
-| `drawing-quality` (this repository's generators and metrics) | `112731db0662915d571f2553682d804ffd298e81` |
+| `drawing-quality` (this repository's generators and metrics) | `f1643a4147ff9d431d78d8a12e2d4ba4931a1fce` |
 | `domduerr/redraw` | `80f62a97a5ff41d173b61113cc90f80864f49f41` |
 | conexp-clj | 3.1.0 standalone, OpenJDK 25 |
+| `conceptflow` | 0.6.0 (builds, checks and measures the scales) |
 | `odis-python` | 2026.9.1 |
 | `dim-flux` | 1.0.11 |
 | Python | 3.14.4; packages in `requirements.txt` |
@@ -745,8 +749,12 @@ panel per scale, from a small scale up to the largest drawable one. The concepts
 the first scale appear in every panel, coloured by their left-to-right position in
 that algorithm's first panel (purple leftmost, yellow rightmost); an algorithm that
 keeps the order keeps the colours running left to right as the lattice grows. Each
-panel gives |tau| against the first, marked "mirrored" where the order is kept the
-other way round.
+panel gives CO = |tau| against the first, marked "mirrored" where the order is kept
+the other way round. A colour bar under the first panel of the last row shows the
+colours running from left to right. The figures are sized for a full-width figure in the paper and
+carry no title: each column is headed once by its view and size, the rows by the
+algorithms' names, and the script prints what the caption needs (the number of
+followed concepts and the two combined ranks). `--labels` sets the column names.
 
 **The followed concepts must recur in every panel**, so the first scale must nest
 into every other. Spanning the size range is not enough on its own: two scales that
@@ -800,21 +808,22 @@ equally. All numbers are in `ranking.csv`, `friedman.csv`, `sensitivity.csv` and
 
 | Algorithm | Crossings | Layering | Slopes | Clearance | **Quality** | **Consistency** | **Combined** | Half and half | Every view equal | Consistency, signed |
 |---|---|---|---|---|---|---|---|---|---|---|
-| dimdraw | 2.22 | 3.39 | 2.99 | 3.58 | **3.05** | **3.23** | **3.08** | 3.14 | 3.21 | 4.11 |
-| dimflux | 2.93 | 4.63 | 4.67 | 2.74 | **3.74** | **3.43** | **3.68** | 3.59 | 3.73 | 4.14 |
-| sugiyama | 4.65 | 3.82 | 4.22 | 4.28 | **4.24** | **3.46** | **4.09** | 3.85 | 4.15 | 3.25 |
-| fdp | 3.71 | 6.05 | 3.95 | 4.83 | **4.64** | **4.12** | **4.53** | 4.38 | 4.62 | 3.68 |
-| freese | 5.23 | 2.81 | 4.72 | 5.23 | **4.50** | **5.07** | **4.61** | 4.78 | 4.49 | 5.45 |
-| aeschlimann_schmid | 5.49 | 3.58 | 4.72 | 4.76 | **4.64** | **4.56** | **4.62** | 4.60 | 4.76 | 3.40 |
-| cole_ducrou_eklund | 5.40 | 5.15 | 4.58 | 4.16 | **4.83** | **5.46** | **4.95** | 5.14 | 4.76 | 5.42 |
-| redraw | 6.37 | 6.56 | 6.15 | 6.41 | **6.37** | **6.67** | **6.43** | 6.52 | 6.29 | 6.56 |
+| dimdraw | 2.22 | 3.39 | 3.16 | 3.58 | **3.09** | **3.23** | **3.12** | 3.16 | 3.24 | 4.11 |
+| dimflux | 2.93 | 4.63 | 4.64 | 2.74 | **3.74** | **3.43** | **3.68** | 3.58 | 3.73 | 4.14 |
+| sugiyama | 4.65 | 3.82 | 4.01 | 4.28 | **4.19** | **3.46** | **4.04** | 3.83 | 4.10 | 3.25 |
+| fdp | 3.71 | 6.05 | 3.81 | 4.83 | **4.60** | **4.12** | **4.50** | 4.36 | 4.59 | 3.68 |
+| aeschlimann_schmid | 5.49 | 3.58 | 4.65 | 4.76 | **4.62** | **4.56** | **4.61** | 4.59 | 4.74 | 3.40 |
+| freese | 5.23 | 2.81 | 4.95 | 5.23 | **4.55** | **5.07** | **4.66** | 4.81 | 4.54 | 5.45 |
+| cole_ducrou_eklund | 5.40 | 5.15 | 4.54 | 4.16 | **4.81** | **5.46** | **4.94** | 5.14 | 4.75 | 5.42 |
+| redraw | 6.37 | 6.56 | 6.24 | 6.41 | **6.39** | **6.67** | **6.45** | 6.53 | 6.31 | 6.56 |
 
-- **dimdraw is first in every one of the 11 contexts**, and first overall for every
+- **dimdraw is first in nine of the 11 contexts**, and first overall for every
   weight on consistency from 0 to 1 (`sensitivity.csv`), with every view counting
-  equally, and with signed tau.
-- **dimflux is second**; sugiyama, fdp, freese and aeschlimann_schmid follow
-  between 4.09 and 4.62, freese and aeschlimann_schmid only 0.01 apart, so their
-  order among themselves is not settled; cole_ducrou_eklund and redraw are last.
+  equally, and with signed tau. In music dimflux is ahead by 0.001, a tie; in
+  tenpc_exoplanets fdp is ahead by 0.09.
+- **dimflux is second**; sugiyama, fdp, aeschlimann_schmid and freese follow
+  between 4.04 and 4.66, so their order among themselves is not settled;
+  cole_ducrou_eklund and redraw are last.
 - **Consistency by |tau| and by signed tau rank the algorithms differently**:
   sugiyama, aeschlimann_schmid and fdp keep much of their order *mirrored*, so
   signed tau ranks them as the most consistent and |tau| does not. dimdraw is the
@@ -824,17 +833,17 @@ Per context, combined:
 
 | Context | First | Second | Third | Last |
 |---|---|---|---|---|
-| diagnosis | dimdraw 3.38 | freese 3.73 | dimflux 3.86 | redraw 6.40 |
-| instruments | dimdraw 2.89 | dimflux 3.75 | sugiyama 3.81 | fdp 5.95 |
-| living_beings_and_water | dimdraw 3.47 | dimflux 3.87 | cole_ducrou_eklund 3.92 | fdp 5.44 |
-| music | dimdraw 3.27 | dimflux 3.31 | freese 3.80 | redraw 6.54 |
-| olympic_disciplines | dimdraw 3.19 | dimflux 3.54 | fdp 3.75 | redraw 6.93 |
-| olympics | dimdraw 3.39 | dimflux 3.80 | freese 3.93 | redraw 6.43 |
-| seasoning_planner | dimdraw 2.49 | dimflux 3.22 | fdp 3.46 | redraw 6.97 |
-| tenpc_exoplanets | dimdraw 3.29 | fdp 3.31 | dimflux 3.56 | redraw 6.85 |
-| tenpc_stars | dimdraw 3.15 | sugiyama 3.72 | aeschlimann_schmid 4.20 | redraw 6.25 |
-| wd40pc | dimdraw 2.81 | fdp 3.82 | dimflux 3.90 | redraw 6.62 |
-| zoo | dimdraw 2.58 | dimflux 3.44 | sugiyama 3.64 | redraw 6.83 |
+| diagnosis | dimdraw 3.43 | freese 3.79 | dimflux 3.87 | redraw 6.41 |
+| instruments | dimdraw 2.91 | sugiyama 3.74 | dimflux 3.77 | fdp 5.94 |
+| living_beings_and_water | dimdraw 3.54 | dimflux 3.77 | cole_ducrou_eklund 3.89 | redraw 5.52 |
+| music | dimflux 3.272 | dimdraw 3.273 | freese 3.86 | redraw 6.54 |
+| olympic_disciplines | dimdraw 3.20 | dimflux 3.55 | fdp 3.77 | redraw 6.95 |
+| olympics | dimdraw 3.40 | dimflux 3.80 | freese 3.98 | redraw 6.45 |
+| seasoning_planner | dimdraw 2.54 | dimflux 3.23 | fdp 3.43 | redraw 6.96 |
+| tenpc_exoplanets | fdp 3.26 | dimdraw 3.35 | dimflux 3.58 | redraw 6.86 |
+| tenpc_stars | dimdraw 3.17 | sugiyama 3.65 | aeschlimann_schmid 4.18 | redraw 6.28 |
+| wd40pc | dimdraw 2.86 | fdp 3.79 | dimflux 3.91 | redraw 6.63 |
+| zoo | dimdraw 2.61 | dimflux 3.47 | sugiyama 3.60 | redraw 6.83 |
 
 ## Across contexts
 
@@ -844,16 +853,16 @@ correction:
 
 | Algorithm | Mean rank over contexts | Holm-adjusted p against dimdraw |
 |---|---|---|
-| dimdraw | 1.00 | -- |
-| dimflux | 2.45 | 0.16 |
-| sugiyama | 4.00 | 0.008 |
-| fdp | 4.91 | < 0.001 |
-| freese | 4.91 | < 0.001 |
+| dimdraw | 1.18 | -- |
+| dimflux | 2.45 | 0.22 |
+| sugiyama | 3.91 | 0.02 |
+| fdp | 4.73 | 0.002 |
+| freese | 5.00 | 0.001 |
 | aeschlimann_schmid | 5.36 | < 0.001 |
-| cole_ducrou_eklund | 5.55 | < 0.001 |
-| redraw | 7.82 | < 0.001 |
+| cole_ducrou_eklund | 5.45 | < 0.001 |
+| redraw | 7.91 | < 0.001 |
 
-The Friedman test rejects that the algorithms perform alike (χ²_F = 54.8, F_F = 24.6
+The Friedman test rejects that the algorithms perform alike (χ²_F = 53.4, F_F = 22.6
 with 7 and 70 degrees of freedom, p < 10⁻⁶). dimdraw is better than six of the
 seven others beyond chance; dimflux is not distinguishable from it at α = 0.05. By
 the Nemenyi critical difference, 3.17, dimdraw differs from fdp, freese,
@@ -872,8 +881,8 @@ ways:
 | pairwise Wilcoxon signed-rank tests, Holm-adjusted | 11 | dimdraw; all seven, dimflux included (p = 0.007 each) |
 
 On the combined score the Friedman test rejects equal performance in every variant (p < 10⁻¹³). The
-Wilcoxon tests are the stronger result because dimdraw is first in every context,
-so every difference has the same sign. On quality alone every variant agrees with
+Wilcoxon tests are the stronger result because no algorithm beats dimdraw in more
+than one context, and then only narrowly. On quality alone every variant agrees with
 the combined ranking. On consistency alone the best-ranked algorithm alternates
 between dimdraw and sugiyama across the variants, and only redraw is worse than the
 best in all of them: consistency does not single out one algorithm.
@@ -900,9 +909,9 @@ as the view grows. 165 comparisons have tau below −0.5, so near-mirrors are co
 | redraw | 52 | 39 timeouts |
 
 The longest successful drawing took 28 minutes (redraw). Ten drawings needed more
-than 15 minutes; counting them as timeouts, as a 15-minute budget would, changes
-the order only by swapping freese and aeschlimann_schmid, which are 0.01 apart, and
-redraw, which gains most from the longer budget, stays last.
+than 15 minutes; counting them as timeouts, as a 15-minute budget would, leaves the
+order of the algorithms unchanged, and redraw, which gains most from the longer
+budget, stays last.
 
 ## Ladder figures
 
