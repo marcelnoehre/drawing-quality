@@ -1,31 +1,31 @@
-"""Draw again, without a time limit or under a longer one, every drawing that timed out.
+"""Draw again, under a budget of seven days, every drawing that timed out.
 
     python rerun_timeouts.py --dry-run                    # list what would run
-    python rerun_timeouts.py                              # run them, no time limit
-    python rerun_timeouts.py --stop                       # end a run, from another shell
-    python rerun_timeouts.py --hours 24                   # or a fixed budget per drawing
-    python rerun_timeouts.py --algorithm redraw --jobs 4
+    python rerun_timeouts.py                              # run them, 7 days each
+    python rerun_timeouts.py --stop                       # end a run early, from another shell
+    python rerun_timeouts.py --hours 24                   # another budget per drawing
+    python rerun_timeouts.py --algorithm redraw
 
 Only drawings recorded in `drawings.csv` as `timeout` under a smaller budget are
 attempted. Every other outcome -- a drawing, a decline, an invalid layout, a known
 non-termination -- does not depend on the budget and is left as it is.
 
-**Without `--hours`** there is no time limit. Every drawing starts at once, so all
-of them have been running for the same time whenever the run ends. `--stop` ends it:
-every drawing still running is killed and recorded as a timeout, with the time it
-ran as its budget, which is then the same for all of them. Drawings that finish are
-recorded with the budget `inf`. With `--jobs` below the number of drawings, the
-later ones start later and get less time, so the budgets differ.
-
-**With `--hours`**, each drawing is killed at that budget, as in a normal run.
+Every drawing starts at once, so all of them have been running for the same time
+whenever the run ends. A drawing still running at the budget is killed and
+recorded as a timeout, a failure. The run ends by itself when the last drawing has
+finished or reached the budget; `--stop` ends it earlier, killing every drawing
+still running and recording it as a timeout with the time it ran as its budget,
+which is then the same for all of them. With `--jobs` below the number of
+drawings, the later ones start later, so the budgets differ.
 
 Each attempt goes through `run_harness.drawing_row`, so it is drawn, checked and
 recorded exactly as in a normal run: in its own process, with its extents recorded
-and diverged or collapsed output marked `invalid`. Each outcome is merged into
-`drawings.csv` the moment it finishes and logged to `logs/rerun_timeouts.csv`. A
-drawing that has finished, or timed out under the budget asked for, is not
-attempted again; one killed by `--stop` is, when a run without a limit is started
-again, from the beginning.
+and diverged or collapsed output marked `invalid`. Each outcome, with how long it
+ran, is merged into `drawings.csv` the moment it finishes and logged to
+`logs/rerun_timeouts.csv`; every hour the log says how long the run has gone and
+how many drawings are still running. A drawing that has finished, or timed out
+under the budget asked for, is not attempted again; one killed by `--stop` is, from
+the beginning, when the run is started again.
 
 redraw needs a checkout of https://github.com/domduerr/redraw beside this
 repository (or `REDRAW_ROOT` pointing at one) and the conexp-clj API on port 8080.
@@ -43,13 +43,13 @@ from __future__ import annotations
 
 import argparse
 import csv
-import math
 import os
 import signal
 import subprocess
 import sys
 import time
-from concurrent.futures import CancelledError, ThreadPoolExecutor, as_completed
+from collections import Counter
+from concurrent.futures import FIRST_COMPLETED, CancelledError, ThreadPoolExecutor, wait
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -66,9 +66,9 @@ DRAWINGS_CSV = HERE / "drawings.csv"
 LOG = HERE / "logs" / "rerun_timeouts.csv"
 PID_FILE = HERE / "logs" / "rerun_timeouts.pid"
 
-# The harness needs a number to wait for; without a limit it waits ten years, and
-# the drawings that finish are recorded with the budget "inf".
-NO_LIMIT_S = 10 * 365 * 24 * 3600
+DEFAULT_HOURS = 7 * 24
+# How often the log says how far the run has got, in seconds.
+HEARTBEAT_S = 3600
 
 
 def timed_out(budget_s: float, algorithm: str | None) -> list[tuple[dict, str]]:
@@ -137,15 +137,44 @@ def stop_run() -> int:
     return 0
 
 
+def record(row: dict, stopped: bool, finished: int, killed: int, log_state: dict,
+           total: int) -> tuple[int, int]:
+    """Write one outcome to drawings.csv and the log; return the updated counts."""
+    if stopped and row["status"] == "error" and "code -9" in row.get("note", ""):
+        # Killed by --stop mid-run: whatever it had written is not a drawing.
+        ran = float(row["runtime_s"])
+        partial = graphml_path(row["algorithm"], row["context"], row["scale"])
+        partial.unlink(missing_ok=True)
+        sidecar(partial).unlink(missing_ok=True)
+        row.update(status="timeout", wall_budget_s=round(ran),
+                   note=f"still running when the run was stopped after {ran / 3600:.2f} h; killed")
+        killed += 1
+    elif row["status"] == "timeout":
+        killed += 1
+    else:
+        finished += 1
+    merge_csv(DRAWINGS_CSV, [row], ("context", "scale", "algorithm"))
+    if log_state["writer"] is None:
+        log_state["writer"] = csv.DictWriter(log_state["file"], fieldnames=["finished", *row])
+        if log_state["header"]:
+            log_state["writer"].writeheader()
+    log_state["writer"].writerow({"finished": time.strftime("%Y-%m-%d %H:%M"), **row})
+    log_state["file"].flush()
+    print(f"  [{finished + killed:3d}/{total}] {row['algorithm']:20s} {row['scale']:45s} "
+          f"{row['status']:14s} {row.get('runtime_s', '')} s", flush=True)
+    return finished, killed
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--hours", type=float,
-                        help="wall-clock budget per drawing, in hours (default: no limit)")
+    parser.add_argument("--hours", type=float, default=DEFAULT_HOURS,
+                        help=f"wall-clock budget per drawing, in hours (default: {DEFAULT_HOURS}, "
+                             f"seven days)")
     parser.add_argument("--algorithm", choices=ALGORITHMS, help="only this algorithm")
     parser.add_argument("--jobs", type=int,
-                        help="drawings at a time (default: all of them without a limit, "
-                             "at most half the cores with one)")
+                        help="drawings at a time (default: all of them, so that all get "
+                             "the same time)")
     parser.add_argument("--conexp-jar", type=Path, default=DEFAULT_CONEXP_JAR)
     parser.add_argument("--dry-run", action="store_true", help="list the drawings and stop")
     parser.add_argument("--stop", action="store_true",
@@ -154,23 +183,16 @@ def main() -> int:
     if args.stop:
         return stop_run()
 
-    limited = args.hours is not None
-    if limited and args.hours * 3600 <= run_harness.WALL_BUDGET_S:
+    budget_s = int(args.hours * 3600)
+    if budget_s <= run_harness.WALL_BUDGET_S:
         raise SystemExit(f"--hours must exceed the {run_harness.WALL_BUDGET_S // 60}-minute "
                          f"budget the timeouts were recorded under")
-    budget_s = int(args.hours * 3600) if limited else math.inf
     todo = timed_out(budget_s, args.algorithm)
-    if args.jobs:
-        jobs = args.jobs
-    elif limited:
-        jobs = max(1, min(len(todo), (os.cpu_count() or 2) // 2))
-    else:
-        jobs = max(1, len(todo))
-    budget_text = f"{args.hours:g} h budget each" if limited else "no time limit"
-    print(f"{len(todo)} timed-out drawings, {jobs} at a time, {budget_text}")
-    if not limited and jobs < len(todo):
+    jobs = args.jobs or max(1, len(todo))
+    print(f"{len(todo)} timed-out drawings, {jobs} at a time, {args.hours:g} h budget each")
+    if jobs < len(todo):
         print("  note: with fewer jobs than drawings, the later ones start later and "
-              "get less time before a --stop")
+              "so get less time before a --stop")
     if jobs > (os.cpu_count() or 1):
         print(f"  note: {jobs} at a time on {os.cpu_count()} cores; they share the CPUs")
     for spec, algorithm in todo:
@@ -191,14 +213,14 @@ def main() -> int:
         server = start_conexp(args.conexp_jar)
 
     # drawing_row and draw read the budget from the module when they run.
-    run_harness.WALL_BUDGET_S = budget_s if limited else NO_LIMIT_S
+    run_harness.WALL_BUDGET_S = budget_s
     previous = {(r["context"], r["scale"], r["algorithm"]): r for r in read_csv(DRAWINGS_CSV)}
     LOG.parent.mkdir(exist_ok=True)
     PID_FILE.write_text(str(os.getpid()))
     new_log = not LOG.exists()
     started = time.time()
     stopping = {"at": None}
-    futures = []
+    futures: dict = {}
 
     def stop(_signum, _frame):
         # Kill every drawing in progress; each then returns as a killed process, which
@@ -220,39 +242,27 @@ def main() -> int:
     finished = killed = 0
     try:
         with ThreadPoolExecutor(max_workers=jobs) as pool, LOG.open("a", newline="") as log:
-            writer = None
-            futures.extend(pool.submit(drawing_row, spec, algorithm, previous, False)
-                           for spec, algorithm in todo)
-            for future in as_completed(futures):
-                try:
-                    row = future.result()      # a fault on our side stops the run
-                except CancelledError:
-                    continue                   # never started; its old record stands
-                if stopping["at"] is not None and row["status"] == "error" \
-                        and "code -9" in row.get("note", ""):
-                    # Killed mid-run: whatever it had written is not a drawing.
-                    ran = float(row["runtime_s"])
-                    partial = graphml_path(row["algorithm"], row["context"], row["scale"])
-                    partial.unlink(missing_ok=True)
-                    sidecar(partial).unlink(missing_ok=True)
-                    row.update(status="timeout", wall_budget_s=round(ran),
-                               note=f"still running when the run was stopped after "
-                                    f"{ran / 3600:.2f} h; killed")
-                    killed += 1
-                else:
-                    finished += 1
-                    if not limited and row.get("wall_budget_s") == NO_LIMIT_S:
-                        row["wall_budget_s"] = "inf"
-                merge_csv(DRAWINGS_CSV, [row], ("context", "scale", "algorithm"))
-                if writer is None:
-                    writer = csv.DictWriter(log, fieldnames=["finished", *row])
-                    if new_log:
-                        writer.writeheader()
-                writer.writerow({"finished": time.strftime("%Y-%m-%d %H:%M"), **row})
-                log.flush()
-                print(f"  [{finished + killed:3d}/{len(todo)}] {row['algorithm']:20s} "
-                      f"{row['scale']:45s} {row['status']:14s} {row.get('runtime_s', '')}",
-                      flush=True)
+            log_state = {"file": log, "writer": None, "header": new_log}
+            futures.update({pool.submit(drawing_row, spec, algorithm, previous, False):
+                            (algorithm, spec["scale"]) for spec, algorithm in todo})
+            pending, next_beat = set(futures), started + HEARTBEAT_S
+            while pending:
+                done, pending = wait(pending, timeout=max(0.0, next_beat - time.time()),
+                                     return_when=FIRST_COMPLETED)
+                if time.time() >= next_beat and pending:
+                    next_beat += HEARTBEAT_S
+                    running = Counter(futures[f][0] for f in pending)
+                    print(f"{time.strftime('%Y-%m-%d %H:%M')}, after "
+                          f"{(time.time() - started) / 3600:.1f} h: {finished} finished, "
+                          f"{killed} timed out, still running: "
+                          + ", ".join(f"{a} {n}" for a, n in running.most_common()), flush=True)
+                for future in done:
+                    try:
+                        row = future.result()  # a fault on our side stops the run
+                    except CancelledError:
+                        continue               # never started; its old record stands
+                    finished, killed = record(row, stopping["at"] is not None, finished,
+                                              killed, log_state, len(todo))
     except EnvironmentFault as exc:
         print(f"stopped: {exc}", file=sys.stderr)
         return 1
@@ -261,8 +271,8 @@ def main() -> int:
             server.kill()
         PID_FILE.unlink(missing_ok=True)
     hours = ((stopping["at"] or time.time()) - started) / 3600
-    print(f"done after {hours:.2f} h: {finished} finished, {killed} still running and "
-          f"recorded as timeouts, {len(todo) - finished - killed} not started")
+    print(f"done after {hours:.2f} h: {finished} finished, {killed} recorded as timeouts, "
+          f"{len(todo) - finished - killed} not started")
     return 0
 
 
