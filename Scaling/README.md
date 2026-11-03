@@ -40,7 +40,7 @@ that draws and measures them, and the results.
 | `consistency.py` | Kendall tau on x-ranks and its magnitude, rank drift, per-stratum tau. `--self-test` runs three adversarial fixtures. |
 | `nulls.py` | The permutation null, restricted to rank strata. `--self-test`. |
 | `run_harness.py` | Draws every scale with every algorithm under a 30-minute budget, scores the drawings, compares across scales, then ranks. Recomputes only what changed. |
-| `rerun_timeouts.py` | Draws again, under a longer budget, every drawing recorded as a timeout, and records the outcomes in `drawings.csv`. |
+| `rerun_timeouts.py` | Draws again, without a time limit or under a longer one, every drawing recorded as a timeout, and records the outcomes in `drawings.csv`. |
 | `ranking.py` | Ranks the algorithms on quality (the repository's 14 metrics in its four families), on consistency, and on both combined, penalising failed drawings and weighting each view by log₂ of its size; writes the weight sweep and the profile. |
 | `ladder_figure.py` | The best and the worst algorithm drawing one ladder of nested scales, the followed concepts coloured by position. |
 | `robustness.py` | Repeats the test across contexts without Living Beings and Water, with astronomy as one case, and with pairwise Wilcoxon tests; writes `robustness.csv`. |
@@ -221,12 +221,12 @@ No system setting is changed. It starts redraw's conexp server if needed. Plug t
 laptop in and leave it on a hard surface; every finished drawing is saved as it
 happens, so an interruption costs only the drawings in progress.
 
-## Rerunning the timeouts under a longer budget
+## Rerunning the timeouts without a time limit
 
 `rerun_timeouts.py` draws again every drawing recorded in `drawings.csv` as a
-timeout, under a budget of `--hours` per drawing, and leaves every other outcome as
-it is: a drawing, a decline, an invalid layout or a known non-termination does not
-depend on the budget. It is meant for a server, from a fresh clone:
+timeout and leaves every other outcome as it is: a drawing, a decline, an invalid
+layout or a known non-termination does not depend on the budget. It is meant for a
+server, from a fresh clone:
 
 ```bash
 git clone <this repository> drawing-quality
@@ -238,25 +238,30 @@ mkdir tools                                            # beside both: the conexp
 cd drawing-quality/Scaling
 python3.14 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
-.venv/bin/python rerun_timeouts.py --hours 24 --dry-run   # what would run
+.venv/bin/python rerun_timeouts.py --dry-run              # what would run
 mkdir -p logs
-setsid nohup .venv/bin/python -u rerun_timeouts.py --hours 24 --jobs 27 \
+setsid nohup .venv/bin/python -u rerun_timeouts.py \
     > logs/rerun_timeouts.log 2>&1 < /dev/null &
 tail -f logs/rerun_timeouts.log                           # progress
+.venv/bin/python rerun_timeouts.py --stop                 # end it, whenever
 ```
 
-The budget is per drawing, so a run takes at most ⌈drawings / jobs⌉ × hours;
-`--jobs` defaults to half the cores. `--algorithm` restricts it to one algorithm.
+Without `--hours` there is no time limit, and every drawing starts at once, so all
+of them have been running for the same time whenever the run ends. It ends by
+itself when every drawing has finished, or with `--stop`: every drawing still
+running is then killed and recorded as a timeout, with the time it ran as its
+budget. Do not end it by killing the process, which records nothing for the
+drawings still running. `--hours` instead gives each drawing a fixed budget, and
+`--algorithm` restricts the run to one algorithm.
+
 Before drawing anything it loads every generator it needs, and it starts the
 conexp-clj API for redraw if it is not running. Each outcome is written to
-`drawings.csv` as it finishes, so a stopped run resumes where it left off when
-started again; to stop it, kill its process group.
-
-When it has finished, commit the new drawings and their record:
+`drawings.csv` as it finishes. When the run has ended, commit the new drawings and
+their record:
 
 ```bash
 git add drawings.csv graphml drawings
-git commit -m "Scaling: timed-out drawings redrawn under a 24-hour budget"
+git commit -m "Scaling: timed-out drawings redrawn without a time limit"
 ```
 
 Scoring, comparing and ranking with them is then
