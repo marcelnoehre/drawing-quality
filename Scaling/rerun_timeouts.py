@@ -1,7 +1,7 @@
 """Draw again, under a budget of seven days, every drawing that timed out.
 
     python rerun_timeouts.py --dry-run                    # list what would run
-    python rerun_timeouts.py                              # run them, 7 days each
+    python rerun_timeouts.py                              # run them, 8 at a time, 7 days each
     python rerun_timeouts.py --stop                       # end a run early, from another shell
     python rerun_timeouts.py --hours 24                   # another budget per drawing
     python rerun_timeouts.py --algorithm redraw
@@ -10,20 +10,26 @@ Only drawings recorded in `drawings.csv` as `timeout` under a smaller budget are
 attempted. Every other outcome -- a drawing, a decline, an invalid layout, a known
 non-termination -- does not depend on the budget and is left as it is.
 
-Every drawing starts at once, so all of them have been running for the same time
-whenever the run ends. A drawing still running at the budget is killed and
-recorded as a timeout, a failure. The run ends by itself when the last drawing has
-finished or reached the budget; `--stop` ends it earlier, killing every drawing
-still running and recording it as a timeout with the time it ran as its budget,
-which is then the same for all of them. With `--jobs` below the number of
-drawings, the later ones start later, so the budgets differ.
+Eight drawings run at a time (`--jobs`), and each gets the full budget from the
+moment it starts. They start in this order: DimFlux first and ReDraw last, the
+other algorithms between them by how few drawings they have to redo, and within
+each algorithm the smallest lattice first, so that quick drawings finish early. A
+drawing still running at the budget is killed and recorded as a timeout, a
+failure. The run ends by itself when the last drawing has finished or reached the
+budget; `--stop` ends it earlier, killing every drawing still running and
+recording it as a timeout with the time it ran as its budget. A drawing not yet
+started keeps its old record.
 
 Each attempt goes through `run_harness.drawing_row`, so it is drawn, checked and
 recorded exactly as in a normal run: in its own process, with its extents recorded
 and diverged or collapsed output marked `invalid`. Each outcome, with how long it
 ran, is merged into `drawings.csv` the moment it finishes and logged to
-`logs/rerun_timeouts.csv`; every hour the log says how long the run has gone and
-how many drawings are still running. A drawing that has finished, or timed out
+`logs/rerun_timeouts.csv`. The log says when each drawing starts, and every hour
+how long the run has gone, how many drawings are running and waiting, and the
+latest progress of each running one. That progress comes from
+`logs/progress/<algorithm>/<scale>.log`, which every drawing writes while it runs:
+each main step of its algorithm as it starts and ends, its iteration counts, and
+every ten minutes which of its functions it is in (`progress.py`). A drawing that has finished, or timed out
 under the budget asked for, is not attempted again; one killed by `--stop` is, from
 the beginning, when the run is started again.
 
@@ -55,6 +61,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
+import progress  # noqa: E402
 import run_harness  # noqa: E402
 from node_extents import sidecar  # noqa: E402
 from run_harness import (ALGORITHMS, EnvironmentFault, conexp_reachable,  # noqa: E402
@@ -65,8 +72,10 @@ DEFAULT_CONEXP_JAR = HERE.parent.parent / "tools" / "conexp-clj.jar"
 DRAWINGS_CSV = HERE / "drawings.csv"
 LOG = HERE / "logs" / "rerun_timeouts.csv"
 PID_FILE = HERE / "logs" / "rerun_timeouts.pid"
+PROGRESS = HERE / "logs" / "progress"
 
 DEFAULT_HOURS = 7 * 24
+DEFAULT_JOBS = 8
 # How often the log says how far the run has got, in seconds.
 HEARTBEAT_S = 3600
 
@@ -81,8 +90,12 @@ def timed_out(budget_s: float, algorithm: str | None) -> list[tuple[dict, str]]:
         if float(r["wall_budget_s"] or 0) >= budget_s:
             continue                       # already timed out under this budget or more
         todo.append((specs[(r["context"], r["scale"])], r["algorithm"]))
-    # Largest first, so with fewer jobs than drawings the long ones start first.
-    return sorted(todo, key=lambda job: -int(job[0]["concepts"]))
+    # DimFlux first and ReDraw last; the others by how few drawings they have to
+    # redo; within an algorithm the smallest lattice first.
+    count = Counter(a for _, a in todo)
+    place = {"dimflux": 0, "redraw": 2}
+    return sorted(todo, key=lambda job: (place.get(job[1], 1), count[job[1]], job[1],
+                                         int(job[0]["concepts"]), job[0]["scale"]))
 
 
 def start_conexp(jar: Path) -> subprocess.Popen:
@@ -172,9 +185,8 @@ def main() -> int:
                         help=f"wall-clock budget per drawing, in hours (default: {DEFAULT_HOURS}, "
                              f"seven days)")
     parser.add_argument("--algorithm", choices=ALGORITHMS, help="only this algorithm")
-    parser.add_argument("--jobs", type=int,
-                        help="drawings at a time (default: all of them, so that all get "
-                             "the same time)")
+    parser.add_argument("--jobs", type=int, default=DEFAULT_JOBS,
+                        help=f"drawings at a time (default: {DEFAULT_JOBS})")
     parser.add_argument("--conexp-jar", type=Path, default=DEFAULT_CONEXP_JAR)
     parser.add_argument("--dry-run", action="store_true", help="list the drawings and stop")
     parser.add_argument("--stop", action="store_true",
@@ -188,11 +200,9 @@ def main() -> int:
         raise SystemExit(f"--hours must exceed the {run_harness.WALL_BUDGET_S // 60}-minute "
                          f"budget the timeouts were recorded under")
     todo = timed_out(budget_s, args.algorithm)
-    jobs = args.jobs or max(1, len(todo))
-    print(f"{len(todo)} timed-out drawings, {jobs} at a time, {args.hours:g} h budget each")
-    if jobs < len(todo):
-        print("  note: with fewer jobs than drawings, the later ones start later and "
-              "so get less time before a --stop")
+    jobs = max(1, min(args.jobs, len(todo)))
+    print(f"{len(todo)} timed-out drawings, {jobs} at a time, {args.hours:g} h budget each, "
+          f"in this order:")
     if jobs > (os.cpu_count() or 1):
         print(f"  note: {jobs} at a time on {os.cpu_count()} cores; they share the CPUs")
     for spec, algorithm in todo:
@@ -214,6 +224,8 @@ def main() -> int:
 
     # drawing_row and draw read the budget from the module when they run.
     run_harness.WALL_BUDGET_S = budget_s
+    # Each drawing's worker inherits this and writes its progress there.
+    os.environ[progress.ENV] = str(PROGRESS)
     previous = {(r["context"], r["scale"], r["algorithm"]): r for r in read_csv(DRAWINGS_CSV)}
     LOG.parent.mkdir(exist_ok=True)
     PID_FILE.write_text(str(os.getpid()))
@@ -239,23 +251,34 @@ def main() -> int:
     signal.signal(signal.SIGTERM, stop)
     signal.signal(signal.SIGINT, stop)
 
+    def attempt(spec, algorithm):
+        print(f"  started {algorithm} on {spec['scale']} ({spec['concepts']} concepts)",
+              flush=True)
+        return drawing_row(spec, algorithm, previous, False)
+
     finished = killed = 0
     try:
         with ThreadPoolExecutor(max_workers=jobs) as pool, LOG.open("a", newline="") as log:
             log_state = {"file": log, "writer": None, "header": new_log}
-            futures.update({pool.submit(drawing_row, spec, algorithm, previous, False):
-                            (algorithm, spec["scale"]) for spec, algorithm in todo})
+            futures.update({pool.submit(attempt, spec, algorithm): (algorithm, spec["scale"])
+                            for spec, algorithm in todo})
             pending, next_beat = set(futures), started + HEARTBEAT_S
             while pending:
                 done, pending = wait(pending, timeout=max(0.0, next_beat - time.time()),
                                      return_when=FIRST_COMPLETED)
                 if time.time() >= next_beat and pending:
                     next_beat += HEARTBEAT_S
-                    running = Counter(futures[f][0] for f in pending)
+                    running = Counter(futures[f][0] for f in pending if f.running())
+                    waiting = sum(not f.running() for f in pending)
                     print(f"{time.strftime('%Y-%m-%d %H:%M')}, after "
                           f"{(time.time() - started) / 3600:.1f} h: {finished} finished, "
-                          f"{killed} timed out, still running: "
+                          f"{killed} timed out, {waiting} waiting, running: "
                           + ", ".join(f"{a} {n}" for a, n in running.most_common()), flush=True)
+                    for f in pending:
+                        if f.running():
+                            algorithm, scale = futures[f]
+                            print(f"    {algorithm:20s} {scale:40s} "
+                                  f"{progress.latest(PROGRESS, algorithm, scale)}", flush=True)
                 for future in done:
                     try:
                         row = future.result()  # a fault on our side stops the run

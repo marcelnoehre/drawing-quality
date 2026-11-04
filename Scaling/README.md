@@ -41,6 +41,7 @@ that draws and measures them, and the results.
 | `nulls.py` | The permutation null, restricted to rank strata. `--self-test`. |
 | `run_harness.py` | Draws every scale with every algorithm under a 30-minute budget, scores the drawings, compares across scales, then ranks. Recomputes only what changed. |
 | `rerun_timeouts.py` | Draws again, under a seven-day budget, every drawing recorded as a timeout, and records the outcomes and their runtimes in `drawings.csv`. |
+| `progress.py` | While `rerun_timeouts.py` runs, each drawing's steps, iteration counts and current function, every ten minutes, in `logs/progress/`. |
 | `ranking.py` | Ranks the algorithms on quality (the repository's 14 metrics in its four families), on consistency, and on both combined, penalising failed drawings and weighting each view by log₂ of its size; writes the weight sweep and the profile. |
 | `ladder_figure.py` | The best and the worst algorithm drawing one ladder of nested scales, the followed concepts coloured by position. |
 | `robustness.py` | Repeats the test across contexts without Living Beings and Water, with astronomy as one case, and with pairwise Wilcoxon tests; writes `robustness.csv`. |
@@ -247,20 +248,27 @@ tail -f logs/rerun_timeouts.log                           # progress
 .venv/bin/python rerun_timeouts.py --stop                 # end it early, if needed
 ```
 
-Every drawing gets seven days and all start at once, so all of them have been
-running for the same time whenever the run ends. A drawing still running after
-seven days is killed and recorded as a timeout, a failure. The run ends by itself
-when the last drawing has finished or reached seven days. `--stop` ends it earlier:
-every drawing still running is then killed and recorded as a timeout, with the
-time it ran as its budget. Do not end it by killing the process, which records
-nothing for the drawings still running. `--hours` sets another budget, and
-`--algorithm` restricts the run to one algorithm.
+Eight drawings run at a time, and each gets seven days from the moment it starts.
+They start in this order: the two DimFlux drawings first and the ReDraw drawings
+last, the other algorithms between them by how few drawings they have to redo, and
+within each algorithm the smallest lattice first, so that quick drawings finish
+early; `--dry-run` prints the order. A drawing still running after seven days is
+killed and recorded as a timeout, a failure. The run ends by itself when the last
+drawing has finished or reached seven days, which with eight at a time can take
+several weeks at worst. `--stop` ends it earlier: every drawing still running is
+then killed and recorded as a timeout, with the time it ran as its budget, and the
+drawings not yet started keep their old record. Do not end it by killing the
+process, which records nothing for the drawings still running. `--jobs` sets how
+many run at a time, `--hours` another budget, and `--algorithm` restricts the run
+to one algorithm.
 
 Before drawing anything it loads every generator it needs, and it starts the
 conexp-clj API for redraw if it is not running. Each outcome is written to
 `drawings.csv` the moment it finishes, with how long it ran (`runtime_s`), and
-every hour the log says how long the run has gone and how many drawings are still
-running. The results can therefore be committed at any point, the drawings
+every hour the log says how long the run has gone, how many drawings are running
+and waiting, and the latest line of each running drawing's progress file,
+`logs/progress/<algorithm>/<scale>.log`, which records each main step of its
+algorithm, its iteration counts, and every ten minutes which function it is in. The results can therefore be committed at any point, the drawings
 finished so far included; when the run has ended, commit them once more:
 
 ```bash

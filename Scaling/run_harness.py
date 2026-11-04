@@ -95,6 +95,7 @@ from node_extents import (ALGORITHMS, RecordingFault, load_generator, recording,
 from consistency import compare, tau_by_stratum  # noqa: E402
 from graphml_loader import load_drawing  # noqa: E402
 from nulls import permutation_null  # noqa: E402
+import progress  # noqa: E402
 from ranking import QUALITY_METRICS  # noqa: E402
 
 CONTEXTS = HERE / "contexts"
@@ -286,9 +287,12 @@ def worker(algorithm: str, context: str, scale: str) -> int:
     module.DRAWINGS_ROOT = DRAWINGS / algorithm
 
     reported = io.StringIO()
+    # Only when DRAW_PROGRESS_DIR is set (rerun_timeouts.py): a log of the drawing's
+    # steps while it runs. It observes the generator and changes nothing it computes.
+    log = progress.install(algorithm, context, scale, module)
     started = time.perf_counter()
     try:
-        with contextlib.redirect_stdout(reported), \
+        with contextlib.redirect_stdout(progress.Tee(reported, log) if log else reported), \
                 recording(module, algorithm, scale_path(context, scale)):
             module.generate(context, scale_path(context, scale).resolve())
     except RecordingFault as exc:
