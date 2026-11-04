@@ -9,15 +9,22 @@ scale nests into each of the others), which `nesting.csv` is checked for.
 **Colour is position.** Each followed concept is coloured by its left-to-right
 position in that algorithm's drawing of the first scale. An algorithm that keeps
 the order as the lattice grows keeps the colours running left to right in every
-panel; one that rearranges mixes them. That is what tau measures, and each panel
-gives |tau| against the first, marked "mirrored" where the order is kept the other
-way round -- the colours then run right to left, which is not counted against it.
+panel; one that rearranges mixes them. That is what the order consistency score CO
+= |tau| measures, and each panel gives CO against the first, marked "mirrored" where
+the order is kept the other way round -- the colours then run right to left, which
+is not counted against it.
+
+The figure is made for a paper page: no title (what it shows belongs in the
+caption, which the script prints), each column headed once by its view and size,
+the rows by the algorithms' names, CO under each panel.
 
     python ladder_figure.py --all                            # every context, ladders by rule
     python ladder_figure.py --context wd40pc                 # one context, ladder by rule
     python ladder_figure.py --followed instruments_practice --out ladder_instruments_practice \\
         --scales instruments_family_practice instruments_capability_practice_making instruments
     python ladder_figure.py --algorithms dimdraw sugiyama    # choose the rows yourself
+    python ladder_figure.py --context diagnosis --labels "Upper-tract signs" \
+        "Signs and diagnosis" "Symptoms" "Full context"      # column names for a paper
 
 **The ladder is chosen by a rule that never looks at results** (`choose_ladder`):
 it ends at the context's largest drawable scale and its first scale nests into
@@ -60,6 +67,33 @@ GRAPHML_NS = "{http://graphml.graphdrawing.org/xmlns}"
 # groupings rule exists to prevent; both remain one command away.
 DEFAULT_CONTEXT = "instruments"
 MAX_PANELS = 4
+
+# The names the paper uses.
+ALGORITHM_NAMES = {
+    "dimdraw": "DimDraw", "dimflux": "DimFlux", "sugiyama": "Sugiyama", "fdp": "FDP",
+    "freese": "Freese", "aeschlimann_schmid": "AS", "cole_ducrou_eklund": "CDE",
+    "redraw": "ReDraw",
+}
+
+# Sized for a full-width figure in a two-column paper, so text is read at 1:1.
+PAGE_WIDTH_IN = 7.0
+FONT_SIZE = 8
+plt.rcParams.update({
+    "font.family": "serif",
+    "font.serif": ["STIX Two Text", "TeX Gyre Termes", "Times New Roman", "DejaVu Serif"],
+    "mathtext.fontset": "stix",
+    "font.size": FONT_SIZE,
+    "pdf.fonttype": 42,
+})
+
+
+def view_label(row: dict) -> str:
+    """A readable name for a view: group names joined by + for an apposition."""
+    if row["kind"] == "full":
+        return "Full context"
+    joiner = " + " if row["kind"] == "apposition" else " "
+    name = joiner.join(row["short_name"].split("_"))
+    return name[0].upper() + name[1:]
 
 
 def choose_ladder(context: str) -> list[str]:
@@ -120,26 +154,47 @@ def check_ladder(context: str, followed: str, scales: list[str]) -> None:
                          f"occur in every panel; choose a ladder from nesting.csv")
 
 
-def panel(ax, context, algorithm, scale, colour_of, tau, short) -> None:
+def panel(ax, context, algorithm, scale, colour_of, tau) -> int:
+    """Draw one panel; returns its number of concepts."""
     graphml = graphml_path(algorithm, context, scale)
     positions = read_positions(graphml)
     by_extent = load_drawing(HERE / "contexts" / context / f"{scale}.cxt", graphml)
     root = parse_xml(graphml).getroot().find(f"{GRAPHML_NS}graph")
     for e in root.findall(f"{GRAPHML_NS}edge"):
         (x1, y1), (x2, y2) = positions[e.get("source")], positions[e.get("target")]
-        ax.plot([x1, x2], [y1, y2], color="#c9c9c9", linewidth=0.35, zorder=1)
+        ax.plot([x1, x2], [y1, y2], color="#c9c9c9", linewidth=0.25, zorder=1)
     xs, ys = zip(*positions.values())
-    ax.scatter(xs, ys, s=5, color="#8a8a8a", zorder=2, linewidths=0)
+    ax.scatter(xs, ys, s=1.5, color="#8a8a8a", zorder=2, linewidths=0)
     followed = [(by_extent[e], c) for e, c in colour_of.items() if e in by_extent]
-    ax.scatter([p[0] for p, _ in followed], [p[1] for p, _ in followed], s=26,
-               c=[c for _, c in followed], zorder=3, linewidths=0.3, edgecolors="#222222")
-    title = f"{short}\n{len(positions)} concepts"
-    # |tau| is what is ranked; a negative tau means the order was kept mirrored,
-    # which the colours show running right to left.
-    title += "" if tau is None else (f",  |tau| = {abs(tau):.2f}"
-                                     + (" (mirrored)" if tau < 0 else ""))
-    ax.set_title(title, fontsize=8.5)
+    ax.scatter([p[0] for p, _ in followed], [p[1] for p, _ in followed], s=9,
+               c=[c for _, c in followed], zorder=3, linewidths=0.2, edgecolors="#222222")
+    # CO = |tau| is what is ranked; a negative tau means the order was kept
+    # mirrored, which the colours show running right to left.
+    if tau is not None:
+        ax.text(0.5, -0.04, rf"$\mathrm{{CO}} = {abs(tau):.2f}$" + (" (mirrored)" if tau < 0 else ""),
+                transform=ax.transAxes, ha="center", va="top")
     ax.set_axis_off()
+    return len(positions)
+
+
+def colour_key(fig, ax, cmap) -> None:
+    """A small colour bar under the first panel of the last row, which has no CO
+    label: the colours stand for left-to-right position in the first view, which
+    the caption says in words."""
+    import numpy as np
+    box = ax.get_position()
+    # On the line of the CO labels, which hang 0.04 axes heights below each panel.
+    line = FONT_SIZE / 72 / fig.get_figheight()
+    height = 0.6 * line
+    centre = box.y0 - 0.04 * box.height - line / 2
+    key = fig.add_axes((box.x0 + 0.25 * box.width, centre - height / 2, 0.5 * box.width, height))
+    key.imshow(np.linspace(0, 1, 256)[None, :], cmap=cmap, aspect="auto")
+    key.set_xticks([])
+    key.set_yticks([])
+    for side in key.spines.values():
+        side.set_linewidth(0.3)
+    key.text(-0.04, 0.5, "left", transform=key.transAxes, ha="right", va="center")
+    key.text(1.04, 0.5, "right", transform=key.transAxes, ha="left", va="center")
 
 
 def main() -> int:
@@ -156,6 +211,8 @@ def main() -> int:
     parser.add_argument("--algorithms", nargs=2, metavar=("TOP", "BOTTOM"),
                         help="the two rows; default: best and worst that draw the whole ladder")
     parser.add_argument("--out", help="basename, written into figures/; default ladder_<context>")
+    parser.add_argument("--labels", nargs="+",
+                        help="column names, one per panel; default: from the manifest")
     args = parser.parse_args()
     if args.all:
         contexts = sorted(p.parent.name for p in (HERE / "contexts").glob("*/manifest.csv"))
@@ -176,42 +233,48 @@ def main() -> int:
     else:
         ladder = choose_ladder(args.context)
         followed, scales = ladder[0], ladder[1:]
-    figure(args.context, followed, scales, args.algorithms, args.out or f"ladder_{args.context}")
+    figure(args.context, followed, scales, args.algorithms, args.out or f"ladder_{args.context}",
+           args.labels)
     return 0
 
 
-def figure(context: str, followed: str, scales: list[str], algorithms, out: str) -> None:
+def figure(context: str, followed: str, scales: list[str], algorithms, out: str,
+           labels: list[str] | None = None) -> None:
     """One ladder figure; raises SystemExit if it cannot be drawn honestly."""
     from types import SimpleNamespace
     args = SimpleNamespace(context=context, followed=followed, scales=scales,
                            algorithms=algorithms, out=out)
     ladder = [args.followed] + args.scales
+    if labels is not None and len(labels) != len(ladder):
+        raise SystemExit(f"--labels needs {len(ladder)} names, one per panel")
     check_ladder(args.context, args.followed, args.scales)
     best, worst, combined = choose_rows(args.context, ladder)
     rows = args.algorithms or [best, worst]
-    short = {r["scale"]: r["short_name"] for r in read(HERE / "contexts" / args.context / "manifest.csv")}
+    names = labels or [view_label(r) for s in ladder
+                       for r in read(HERE / "contexts" / args.context / "manifest.csv")
+                       if r["scale"] == s]
     tau = {(r["algorithm"], r["scale_b"]): float(r["tau_x"]) for r in read(HERE / "consistency.csv")
            if r["context"] == args.context and r["scale_a"] == args.followed and r["tau_x"]}
 
     cmap = plt.get_cmap("viridis")
-    fig, axes = plt.subplots(len(rows), len(ladder), figsize=(3.6 * len(ladder), 3.5 * len(rows)))
+    width = PAGE_WIDTH_IN
+    height = width / len(ladder) * 0.95 * len(rows) + 0.35
+    fig, axes = plt.subplots(len(rows), len(ladder), figsize=(width, height))
     for i, algorithm in enumerate(rows):
         first = load_drawing(HERE / "contexts" / args.context / f"{args.followed}.cxt",
                              graphml_path(algorithm, args.context, args.followed))
         order = sorted(first, key=lambda e: first[e][0])           # left to right
         colour_of = {e: cmap(k / max(1, len(order) - 1)) for k, e in enumerate(order)}
         for j, scale in enumerate(ladder):
-            panel(axes[i][j], args.context, algorithm, scale, colour_of,
-                  None if j == 0 else tau.get((algorithm, scale)), short.get(scale, scale))
-        label = (f"{algorithm}\ncombined rank {combined[algorithm]:.2f}"
-                 if algorithm in combined else algorithm)
-        axes[i][0].text(-0.08, 0.5, label, transform=axes[i][0].transAxes, rotation=90,
-                        ha="right", va="center", fontsize=10)
+            n = panel(axes[i][j], args.context, algorithm, scale, colour_of,
+                      None if j == 0 else tau.get((algorithm, scale)))
+            if i == 0:
+                axes[i][j].set_title(f"{names[j]}\n{n} concepts", fontsize=FONT_SIZE)
+        axes[i][0].text(-0.06, 0.5, ALGORITHM_NAMES.get(algorithm, algorithm),
+                        transform=axes[i][0].transAxes, rotation=90, ha="right", va="center")
 
-    fig.suptitle(f"{args.context}: the {len(first)} concepts of '{short.get(args.followed)}' followed as "
-                 f"the lattice grows, coloured by their left-to-right position in the first panel\n"
-                 f"(purple = leftmost, yellow = rightmost); |tau| against the first panel", fontsize=10.5)
-    fig.tight_layout(rect=(0.02, 0, 1, 0.95))
+    fig.tight_layout(pad=0.3, h_pad=1.2, w_pad=0.6)
+    colour_key(fig, axes[-1][0], cmap)
     out = args.out
     (HERE / "figures").mkdir(exist_ok=True)
     for suffix in ("pdf", "png"):
@@ -219,6 +282,9 @@ def figure(context: str, followed: str, scales: list[str], algorithms, out: str)
     plt.close(fig)
     print(f"{args.context}: rows {rows[0]} (best), {rows[1]} (worst among those drawing "
           f"the whole ladder) -> figures/{out}.pdf, .png")
+    ranks = ", ".join(f"{ALGORITHM_NAMES.get(a, a)} {combined[a]:.2f}" for a in rows if a in combined)
+    print(f"  for the caption: {len(first)} concepts of the first view followed; "
+          f"combined rank in this context: {ranks}")
 
 
 if __name__ == "__main__":

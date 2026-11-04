@@ -34,11 +34,13 @@ that draws and measures them, and the results.
 | `contexts/import_standard_contexts.py` | Measures the repository's own contexts and imports those large enough to scale. |
 | `contexts/build_scales.py` | Builds the scales of a context, measures them, verifies each one. |
 | `contexts/verify_scale.py` | Checks the scale-measure property per attribute and writes the nesting matrix. |
+| | Both use [ConceptFlow](https://github.com/anuragxorma/conceptflow) for the FCA operations: `scale_measure` builds a scale, `scale_measure_problems` checks it, `refines` decides nesting, and `lattice_width`, `lattice_height` and `incomparable_pairs` measure it. |
 | `node_extents.py` | Records which concept every node is while a drawing is written, as `<scale>.extents.json`. Nothing downstream is trustworthy without this. |
 | `graphml_loader.py` | Loads a drawing as `extent -> (x, y)` from that record, checking it against the lattice and the drawn edges every time. |
 | `consistency.py` | Kendall tau on x-ranks and its magnitude, rank drift, per-stratum tau. `--self-test` runs three adversarial fixtures. |
 | `nulls.py` | The permutation null, restricted to rank strata. `--self-test`. |
 | `run_harness.py` | Draws every scale with every algorithm under a 30-minute budget, scores the drawings, compares across scales, then ranks. Recomputes only what changed. |
+| `rerun_timeouts.py` | Draws again, under a seven-day budget, every drawing recorded as a timeout, and records the outcomes and their runtimes in `drawings.csv`. |
 | `ranking.py` | Ranks the algorithms on quality (the repository's 14 metrics in its four families), on consistency, and on both combined, penalising failed drawings and weighting each view by log₂ of its size; writes the weight sweep and the profile. |
 | `ladder_figure.py` | The best and the worst algorithm drawing one ladder of nested scales, the followed concepts coloured by position. |
 | `robustness.py` | Repeats the test across contexts without Living Beings and Water, with astronomy as one case, and with pairwise Wilcoxon tests; writes `robustness.csv`. |
@@ -134,7 +136,7 @@ python3 -m venv .venv
 
 `requirements.txt` pins the exact versions the current results were produced with,
 including the parts of the surrounding repository's stack that the harness imports.
-The `dim-flux` pin matters: 1.0.10 is the first version that keeps the whole
+Scales are built, checked and measured with ConceptFlow 0.6.0. The `dim-flux` pin matters: 1.0.10 is the first version that keeps the whole
 context, so its drawings can be matched by extent at all. `redraw` additionally
 needs conexp-clj 3.1.0 serving on :8080; the harness refuses to start without it.
 
@@ -218,6 +220,56 @@ the laptop will not sleep, lid closed or not; when it ends, sleep is allowed aga
 No system setting is changed. It starts redraw's conexp server if needed. Plug the
 laptop in and leave it on a hard surface; every finished drawing is saved as it
 happens, so an interruption costs only the drawings in progress.
+
+## Rerunning the timeouts under a seven-day budget
+
+`rerun_timeouts.py` draws again every drawing recorded in `drawings.csv` as a
+timeout, with only the algorithm that timed out on it, and leaves every other
+outcome as it is: a drawing, a decline, an invalid layout or a known
+non-termination does not depend on the budget. It is meant for a server, from a
+fresh clone:
+
+```bash
+git clone <this repository> drawing-quality
+git clone https://github.com/domduerr/redraw            # beside it, for redraw
+git -C redraw checkout 80f62a97a5ff41d173b61113cc90f80864f49f41
+mkdir tools                                            # beside both: the conexp-clj
+#   3.1.0 standalone jar as tools/conexp-clj.jar; redraw needs it, and Java
+
+cd drawing-quality/Scaling
+python3.14 -m venv .venv && .venv/bin/pip install -r requirements.txt
+
+.venv/bin/python rerun_timeouts.py --dry-run              # what would run
+mkdir -p logs
+setsid nohup .venv/bin/python -u rerun_timeouts.py \
+    > logs/rerun_timeouts.log 2>&1 < /dev/null &
+tail -f logs/rerun_timeouts.log                           # progress
+.venv/bin/python rerun_timeouts.py --stop                 # end it early, if needed
+```
+
+Every drawing gets seven days and all start at once, so all of them have been
+running for the same time whenever the run ends. A drawing still running after
+seven days is killed and recorded as a timeout, a failure. The run ends by itself
+when the last drawing has finished or reached seven days. `--stop` ends it earlier:
+every drawing still running is then killed and recorded as a timeout, with the
+time it ran as its budget. Do not end it by killing the process, which records
+nothing for the drawings still running. `--hours` sets another budget, and
+`--algorithm` restricts the run to one algorithm.
+
+Before drawing anything it loads every generator it needs, and it starts the
+conexp-clj API for redraw if it is not running. Each outcome is written to
+`drawings.csv` the moment it finishes, with how long it ran (`runtime_s`), and
+every hour the log says how long the run has gone and how many drawings are still
+running. The results can therefore be committed at any point, the drawings
+finished so far included; when the run has ended, commit them once more:
+
+```bash
+git add drawings.csv graphml drawings
+git commit -m "Scaling: timed-out drawings redrawn under a seven-day budget"
+```
+
+Scoring, comparing and ranking with them is then
+`run_harness.py --no-draw`, `ranking.py` and `robustness.py`.
 
 ## State
 

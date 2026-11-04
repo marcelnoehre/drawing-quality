@@ -5,15 +5,16 @@ on the command line.
 
 **Scale-measure property.** Our map is the identity on objects, so by HH
 Proposition 20 a scale is a scale-measure exactly when it is one for each of its
-attributes separately. For every attribute of the scale we therefore check that
-its extent is an extent of the original context, that is, that it equals its own
-closure there. That is one closure per attribute. Enumerating the extents of the
-scale, which is exponential, is not needed and is not done.
+attributes separately. For every attribute of the scale ConceptFlow's
+scale_measure_problems checks that its extent is an extent of the original
+context, that is, that it equals its own closure there. That is one closure per
+attribute. Enumerating the extents of the scale, which is exponential, is not
+needed and is not done.
 
 **Nesting.** Comparing drawings across scales needs pairs where the coarser view's
-extents are all extents of the finer one. This is checked by enumerating both extent sets, which
-is affordable at our sizes, and is written out as a matrix so that it is derived
-from the files rather than asserted in prose.
+extents are all extents of the finer one (ConceptFlow's refines). This is checked
+by enumerating both extent sets, which is affordable at our sizes, and is written
+out as a matrix so that it is derived from the files rather than asserted in prose.
 
     python contexts/verify_scale.py contexts/instruments/instruments.cxt \\
         contexts/instruments/excitation.cxt                     # one scale
@@ -34,6 +35,8 @@ import sys
 from pathlib import Path
 
 import conceptflow as cf
+import conceptflow.io  # noqa: F401  (cf.io is a subpackage, not loaded by the line above)
+from conceptflow.core import refines, scale_measure_problems
 
 # Below eight shared concepts a rank correlation over the shared nodes has too
 # little to work with. For a nested pair of drawable
@@ -42,57 +45,37 @@ import conceptflow as cf
 THIN_OVERLAP = 8
 
 
-def extents_of(context: cf.FormalContext) -> set[frozenset[int]]:
-    """Every extent of a context, as frozensets of object indices."""
-    return {c.extent for c in cf.algorithms.enumerate_concepts(context)}
-
-
-def check_scale_measure(original: cf.FormalContext,
-                        scale: cf.FormalContext) -> list[str]:
-    """HH Prop. 20 check. Returns a list of problems; empty means it is a scale-measure."""
-    problems: list[str] = []
-    if tuple(scale.objects) != tuple(original.objects):
-        problems.append("object sets differ, so the identity is not a map between them")
-        return problems
-
-    for index, name in enumerate(scale.attributes):
-        extent = scale.attribute_derivation([index])
-        # The same object set, closed in the original context.
-        closed = original.attribute_derivation(original.object_derivation(extent))
-        if closed != extent:
-            problems.append(
-                f"attribute {name!r}: its extent has {len(extent)} objects but closes to "
-                f"{len(closed)} in the original context, so it is not an extent there")
-    return problems
-
-
-def nesting_rows(contexts: dict[str, cf.FormalContext],
+def nesting_rows(lattices: dict[str, cf.ConceptLattice],
                  drawable: dict[str, bool] | None = None) -> list[dict]:
     """One row per ordered pair: does a's extent set sit inside b's, and how much overlaps.
 
-    A pair is *usable* for a cross-level comparison when it nests, shares enough
-    concepts to correlate ranks over, and both sides can actually be drawn. A scale
-    kept only to show how large the data are is nested under all the same way, but
-    nothing is ever drawn from it, so those pairs are marked unusable here rather
-    than being discovered later in the pipeline."""
-    extent_sets = {name: extents_of(context) for name, context in contexts.items()}
+    Whether a pair nests is ConceptFlow's refines(): every extent of a is an extent
+    of b, so a and b form a refinement pair. A pair is *usable* for a cross-level
+    comparison when it nests, shares enough concepts to correlate ranks over, and
+    both sides can actually be drawn. A scale kept only to show how large the data
+    are is nested under all the same way, but nothing is ever drawn from it, so
+    those pairs are marked unusable here rather than being discovered later in the
+    pipeline."""
+    extent_sets = {name: {c.extent for c in lattice.concepts}
+                   for name, lattice in lattices.items()}
     rows = []
-    for a in contexts:
-        for b in contexts:
+    for a in lattices:
+        for b in lattices:
             if a == b:
                 continue
             ext_a, ext_b = extent_sets[a], extent_sets[b]
             shared = len(ext_a & ext_b)
+            nested = refines(lattices[a], lattices[b])
             rows.append({
                 "scale_a": a,
                 "scale_b": b,
-                "nested": ext_a <= ext_b,
+                "nested": nested,
                 "ext_a": len(ext_a),
                 "ext_b": len(ext_b),
                 "shared": shared,
                 "ratio": round(len(ext_b) / len(ext_a), 3) if ext_a else "",
                 "thin": shared < THIN_OVERLAP,
-                "usable": bool(ext_a <= ext_b and shared >= THIN_OVERLAP
+                "usable": bool(nested and shared >= THIN_OVERLAP
                                and (drawable is None
                                     or (drawable.get(a, True) and drawable.get(b, True)))),
             })
@@ -125,7 +108,7 @@ def verify_directory(original_path: Path, directory: Path, matrix_path: Path | N
 
     failures = 0
     for name, scale in scales.items():
-        problems = check_scale_measure(original, scale)
+        problems = scale_measure_problems(original, scale)
         if problems:
             failures += 1
             print(f"FAIL {name}", file=sys.stderr)
@@ -141,7 +124,8 @@ def verify_directory(original_path: Path, directory: Path, matrix_path: Path | N
             with manifest.open(encoding="utf-8") as f:
                 drawable = {row["scale"]: row.get("drawable", "True") == "True"
                             for row in csv.DictReader(f)}
-        rows = nesting_rows(scales, drawable)
+        rows = nesting_rows({n: cf.ConceptLattice.from_context(s) for n, s in scales.items()},
+                            drawable)
         write_matrix(rows, matrix_path)
         nested = [r for r in rows if r["nested"]]
         thin = [r for r in nested if r["thin"]]
@@ -181,7 +165,7 @@ def main() -> int:
     original = cf.io.read_cxt(args.original)
     failures = 0
     for path in args.scales:
-        problems = check_scale_measure(original, cf.io.read_cxt(path))
+        problems = scale_measure_problems(original, cf.io.read_cxt(path))
         if problems:
             failures += 1
             print(f"FAIL {path}", file=sys.stderr)

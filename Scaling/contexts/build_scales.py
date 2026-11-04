@@ -29,16 +29,16 @@ import re
 import sys
 from pathlib import Path
 
-import numpy as np
 import conceptflow as cf
+import conceptflow.io  # noqa: F401  (cf.io is a subpackage, not loaded by the line above)
+from conceptflow.core import scale_measure, scale_measure_problems
+from conceptflow.metrics import incomparable_pairs, lattice_height, lattice_width
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from verify_scale import check_scale_measure, extents_of, nesting_rows, write_matrix  # noqa: E402
+from verify_scale import nesting_rows, write_matrix  # noqa: E402
 
 HERE = Path(__file__).resolve().parent          # the contexts directory
 ROOT = HERE.parent                              # the Scaling directory
-
-CONJUNCTION = " ∧ "   # the symbol used in the attribute names of a scale
 
 # Every scale file is named after its parent context: `<context>_<name>.cxt`, with
 # the full context keeping its own name. Lowercase and underscores only, which is
@@ -726,106 +726,36 @@ CATALOGUE = {"instruments": INSTRUMENT_SCALES, "olympics": OLYMPIC_SCALES,
 # ---------------------------------------------------------------------------
 # Construction
 # ---------------------------------------------------------------------------
-
-def build_scale(original: cf.FormalContext, attributes) -> cf.FormalContext:
-    """A context on the same objects whose attributes are the given conjunctions."""
-    if attributes is None:
-        return original
-
-    index = {name: i for i, name in enumerate(original.attributes)}
-    for conjuncts in attributes:
-        missing = [c for c in conjuncts if c not in index]
-        if missing:
-            raise KeyError(f"no such attribute in the original context: {missing}")
-
-    # Canonical column order. The drawing algorithms are deterministic in the file,
-    # not in the lattice: shuffling only the attribute columns of one scale changes
-    # the drawing in 85% of cases (pipeline.md, *What the algorithms do, measured*).
-    # So every scale of a
-    # context lists its attributes in one fixed order: by the positions its parts
-    # have in the full context, compared as a sorted tuple. Any two attributes that
-    # occur in two scales then stand in the same relative order in both, and the
-    # only input difference between two levels is the refinement itself. This
-    # changes how the file is written, never which attributes it has or what they
-    # hold, so the lattice is untouched.
-    attributes = sorted(attributes, key=lambda conjuncts: tuple(sorted(index[c] for c in conjuncts)))
-
-    columns, names = [], []
-    for conjuncts in attributes:
-        column = np.ones(original.n_objects, dtype=bool)
-        for conjunct in conjuncts:
-            column &= original.incidence[:, index[conjunct]]
-        columns.append(column)
-        names.append(CONJUNCTION.join(conjuncts))
-
-    if len(set(names)) != len(names):
-        raise ValueError("two scale attributes ended up with the same name")
-    return cf.FormalContext(objects=tuple(original.objects),
-                            attributes=tuple(names),
-                            incidence=np.column_stack(columns))
+#
+# Scales are built with ConceptFlow's scale_measure: original attributes kept as
+# they are, or conjunctions of them, on the same objects. It writes every scale of
+# a context with its attributes in one canonical order: by the positions their
+# parts have in the full context, compared as a sorted tuple. That matters because
+# the drawing algorithms are deterministic in the file, not in the lattice:
+# shuffling only the attribute columns of one scale changes the drawing in most
+# cases (pipeline.md, *What the algorithms do, measured*). Any two attributes that
+# occur in two scales then stand in the same relative order in both, and the only
+# input difference between two levels is the refinement itself. The order changes
+# how the file is written, never which attributes it has or what they hold, so the
+# lattice is untouched.
 
 
-def width(exts: list[frozenset[int]]) -> int:
-    """Largest antichain. By Dilworth that is the size minus a maximum matching of
-    the strict inclusion order, taken over all comparable pairs, not just covers."""
-    items = sorted(exts, key=len)
-    n = len(items)
-    adjacency: list[list[int]] = [[] for _ in range(n)]
-    for a in range(n):
-        for b in range(a + 1, n):
-            if items[a] < items[b]:
-                adjacency[a].append(b)
+def measure(lattice: cf.ConceptLattice) -> dict:
+    """Size and order indices of a scale's lattice, computed with ConceptFlow.
 
-    matched = [-1] * n
-
-    def augment(u: int, seen: list[bool]) -> bool:
-        for v in adjacency[u]:
-            if not seen[v]:
-                seen[v] = True
-                if matched[v] == -1 or augment(matched[v], seen):
-                    matched[v] = u
-                    return True
-        return False
-
-    matching = sum(1 for u in range(n) if augment(u, [False] * n))
-    return n - matching
-
-
-def height(exts: list[frozenset[int]]) -> int:
-    """Number of elements of a longest chain."""
-    items = sorted(exts, key=len)
-    longest: dict[frozenset[int], int] = {}
-    for position, a in enumerate(items):
-        longest[a] = max((longest[b] + 1 for b in items[:position] if b < a), default=1)
-    return max(longest.values()) if longest else 0
-
-
-def incomparable_pairs(exts: list[frozenset[int]]) -> int:
-    """Pairs of concepts neither of which contains the other.
-
-    Recorded for every scale because it is what drives the cost of a two-dimension
-    extension: DimDraw's work is orienting incomparable pairs, and its completion
-    tracks this far better than it tracks the number of concepts. It is also a
-    quadratic stand-in for order dimension, which is NP-hard, if dimension turns
-    out to be infeasible at our sizes.
+    The number of incomparable pairs is recorded for every scale because it is what
+    drives the cost of a two-dimension extension: DimDraw's work is orienting
+    incomparable pairs, and its completion tracks this far better than it tracks
+    the number of concepts.
     """
-    total = 0
-    for i, a in enumerate(exts):
-        for b in exts[i + 1:]:
-            if not (a <= b or b <= a):
-                total += 1
-    return total
-
-
-def measure(scale: cf.FormalContext) -> dict:
-    exts = list(extents_of(scale))
-    if len(exts) > MEASURE_LIMIT:
+    n = lattice.n_concepts
+    if n > MEASURE_LIMIT:
         # Quadratic quantities are left unmeasured rather than allowed to stall
         # the build; a scale this large is outside the drawable band anyway.
-        return {"concepts": len(exts), "width": None, "height": None,
+        return {"concepts": n, "width": None, "height": None,
                 "incomparable_pairs": None}
-    return {"concepts": len(exts), "width": width(exts), "height": height(exts),
-            "incomparable_pairs": incomparable_pairs(exts)}
+    return {"concepts": n, "width": lattice_width(lattice), "height": lattice_height(lattice),
+            "incomparable_pairs": incomparable_pairs(lattice)}
 
 
 def is_drawable(stats: dict) -> bool:
@@ -842,13 +772,13 @@ def build_context(name: str, quiet: bool = False) -> int:
     original_path = target / f"{name}.cxt"
     original = cf.io.read_cxt(original_path)
 
-    built: dict[str, cf.FormalContext] = {}
+    built: dict[str, cf.ConceptLattice] = {}
     rows = []
     failures = 0
 
     for spec in CATALOGUE[name]:
-        scale = build_scale(original, spec["attributes"])
-        problems = check_scale_measure(original, scale)
+        scale = scale_measure(original, spec["attributes"])
+        problems = scale_measure_problems(original, scale)
         if problems:
             failures += 1
             print(f"FAIL {spec['name']}: not a scale-measure", file=sys.stderr)
@@ -860,8 +790,8 @@ def build_context(name: str, quiet: bool = False) -> int:
         path = original_path if spec["kind"] == "full" else target / f"{sid}.cxt"
         if spec["kind"] != "full":
             cf.io.write_cxt(scale, path)
-        built[sid] = scale
-        stats = measure(scale)
+        built[sid] = cf.ConceptLattice.from_context(scale)
+        stats = measure(built[sid])
         drawable = is_drawable(stats)
         rows.append({
             "context": name,
