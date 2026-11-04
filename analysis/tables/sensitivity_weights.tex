@@ -1,0 +1,17 @@
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrrrrrrr@{}}
+\toprule
+ & \multicolumn{4}{c}{Metric weights} & \multicolumn{4}{c}{Family weights} \\
+\cmidrule(lr){2-5} \cmidrule(lr){6-9}
+Algorithm & $\mathbb{E}[r]$ & $r{=}1$ & $r{\le}3$ & $r{=}8$ & $\mathbb{E}[r]$ & $r{=}1$ & $r{\le}3$ & $r{=}8$ \\
+\midrule
+DimDraw & 2.43 & 37 & 75 & 0 & \textbf{2.06} & 27 & \textbf{91} & 0 \\
+DimFlux & 2.61 & 17 & 79 & 0 & 2.67 & \textbf{41} & 71 & 0 \\
+CDE & \textbf{1.98} & \textbf{44} & \textbf{90} & 0 & 2.93 & 11 & 66 & 0 \\
+Freese & 5.15 & 2 & 19 & 0 & 4.03 & 21 & 40 & 0 \\
+Sugiyama & 4.14 & 0 & 29 & 0 & 4.54 & 0 & 11 & 0 \\
+FDP & 5.05 & 0 & 8 & 0 & 5.42 & 0 & 14 & 5 \\
+AS & 7.01 & 0 & 0 & 32 & 6.54 & 0 & 7 & 16 \\
+ReDraw & 7.62 & 0 & 0 & 68 & 7.79 & 0 & 0 & 79 \\
+\bottomrule
+\end{tabular*}
