@@ -10,9 +10,9 @@ scale nests into each of the others), which `nesting.csv` is checked for.
 position in that algorithm's drawing of the first scale. An algorithm that keeps
 the order as the lattice grows keeps the colours running left to right in every
 panel; one that rearranges mixes them. That is what the order consistency score CO
-= |tau| measures, and each panel gives CO against the first, marked "mirrored" where
-the order is kept the other way round -- the colours then run right to left, which
-is not counted against it.
+= |tau| measures, and each panel gives CO against the first. A panel whose order is
+kept the other way round (tau < 0), which CO does not count against it, is shown
+reflected, so that its colours run left to right as well, and marked "mirrored".
 
 The figure is made for a paper page: no title (what it shows belongs in the
 caption, which the script prints), each column headed once by its view and size,
@@ -71,7 +71,7 @@ MAX_PANELS = 4
 # The names the paper uses.
 ALGORITHM_NAMES = {
     "dimdraw": "DimDraw", "dimflux": "DimFlux", "sugiyama": "Sugiyama", "fdp": "FDP",
-    "freese": "Freese", "aeschlimann_schmid": "AS", "cole_ducrou_eklund": "CDE",
+    "freese": "Freese", "aeschlimann_schmid": "Less Ink", "cole_ducrou_eklund": "CDE",
     "redraw": "ReDraw",
 }
 
@@ -169,8 +169,10 @@ def panel(ax, context, algorithm, scale, colour_of, tau) -> int:
     ax.scatter([p[0] for p, _ in followed], [p[1] for p, _ in followed], s=9,
                c=[c for _, c in followed], zorder=3, linewidths=0.2, edgecolors="#222222")
     # CO = |tau| is what is ranked; a negative tau means the order was kept
-    # mirrored, which the colours show running right to left.
+    # mirrored, so the panel is reflected back to compare with the first.
     if tau is not None:
+        if tau < 0:
+            ax.invert_xaxis()
         ax.text(0.5, -0.04, rf"$\mathrm{{CO}} = {abs(tau):.2f}$" + (" (mirrored)" if tau < 0 else ""),
                 transform=ax.transAxes, ha="center", va="top")
     ax.set_axis_off()
