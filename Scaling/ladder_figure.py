@@ -173,10 +173,34 @@ def panel(ax, context, algorithm, scale, colour_of, tau) -> int:
     if tau is not None:
         if tau < 0:
             ax.invert_xaxis()
-        ax.text(0.5, -0.04, rf"$\mathrm{{CO}} = {abs(tau):.2f}$" + (" (mirrored)" if tau < 0 else ""),
-                transform=ax.transAxes, ha="center", va="top")
+        co_meter(ax, tau)
     ax.set_axis_off()
     return len(positions)
+
+
+# The CO label as in teaser.py: the value, a thin meter on [0, 1] and "mirrored"
+# beneath when tau < 0. Offsets are in points below the panel, so the meter keeps its
+# size whatever the figure's.
+CO_TEXT_PT, CO_METER_PT, CO_MIRRORED_PT = 2, 13.5, 16.5
+CO_METER_WIDTH = 0.42                       # of the panel width
+INK, MIRRORED, TRACK = "#1f1f1f", "#3a3a3a", "#e2e2de"
+
+
+def co_meter(ax, tau: float) -> None:
+    from matplotlib.transforms import ScaledTranslation
+
+    def below(points):
+        return ax.transAxes + ScaledTranslation(0, -points / 72, ax.figure.dpi_scale_trans)
+
+    ax.text(0.5, 0, rf"$\mathrm{{CO}} = \mathbf{{{abs(tau):.2f}}}$", transform=below(CO_TEXT_PT),
+            ha="center", va="top", color=INK)
+    x0 = 0.5 - CO_METER_WIDTH / 2
+    for length, colour in ((1.0, TRACK), (abs(tau), INK)):
+        ax.plot([x0, x0 + CO_METER_WIDTH * length], [0, 0], transform=below(CO_METER_PT),
+                color=colour, linewidth=2.2, solid_capstyle="butt", clip_on=False)
+    if tau < 0:
+        ax.text(0.5, 0, "mirrored", transform=below(CO_MIRRORED_PT), ha="center", va="top",
+                fontsize=FONT_SIZE - 1.5, color=MIRRORED, style="italic")
 
 
 def colour_key(fig, ax, cmap) -> None:
@@ -185,10 +209,10 @@ def colour_key(fig, ax, cmap) -> None:
     the caption says in words."""
     import numpy as np
     box = ax.get_position()
-    # On the line of the CO labels, which hang 0.04 axes heights below each panel.
+    # On the line of the CO values, which hang CO_TEXT_PT points below each panel.
     line = FONT_SIZE / 72 / fig.get_figheight()
     height = 0.6 * line
-    centre = box.y0 - 0.04 * box.height - line / 2
+    centre = box.y0 - CO_TEXT_PT / 72 / fig.get_figheight() - line / 2
     key = fig.add_axes((box.x0 + 0.25 * box.width, centre - height / 2, 0.5 * box.width, height))
     key.imshow(np.linspace(0, 1, 256)[None, :], cmap=cmap, aspect="auto")
     key.set_xticks([])
@@ -260,7 +284,8 @@ def figure(context: str, followed: str, scales: list[str], algorithms, out: str,
 
     cmap = plt.get_cmap("viridis")
     width = PAGE_WIDTH_IN
-    height = width / len(ladder) * 0.95 * len(rows) + 0.35
+    # Each row also carries its CO meters and "mirrored" notes beneath the panels.
+    height = width / len(ladder) * 0.95 * len(rows) + 0.13 * len(rows) + 0.35
     fig, axes = plt.subplots(len(rows), len(ladder), figsize=(width, height))
     for i, algorithm in enumerate(rows):
         first = load_drawing(HERE / "contexts" / args.context / f"{args.followed}.cxt",
